@@ -1,0 +1,14 @@
+@use '../base/vars' as v;
+
+// Home hero
+.home-hero {
+    position: relative;
+    padding-top: 24px;
+    // min-height: 100vh;
+    // min-height: 100svh;
+    padding-bottom: 24px;
+
+    // background-color: red;
+
+    overflow: hidden;
+}

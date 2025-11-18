@@ -1,0 +1,17 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="css/imports.css" webc:keep>
+    <!-- <style @raw="getBundle('css')" webc:keep></style> -->
+</head>
+<body>
+    <header></header>
+    <main @html="this.content"></main>
+    <footer></footer>
+
+    <!-- <script type="module" @raw="getBundle('js')" webc:keep></script> -->
+    <script type="module" src="js/main.js" webc:keep></script>
+</body>
+</html>

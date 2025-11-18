@@ -1,0 +1,42 @@
+@use '../base/vars' as v;
+@use '../base/mixins' as mix;
+
+body {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+
+    min-height: 100vh;
+    min-height: 100svh;
+
+    font-family: v.font(secondary);
+    @include mix.fluid-type(20, 24, 400, 1920);
+    font-weight: 500;
+    line-height: 1.208;
+    letter-spacing: 0.02em;
+
+    background-color: v.color(primary-400);
+    color: v.color(light-0);
+
+    ::selection {
+        background: v.color(light-700);
+        color: v.color(primary-400);
+    }
+}
+
+main {
+    display: flex;
+    flex-wrap: wrap;
+    flex-grow: 1;
+}
+
+section {
+    width: 100%;
+}
+
+b {
+    font-weight: 700;
+}
+i {
+    font-style: italic;
+}

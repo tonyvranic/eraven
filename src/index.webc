@@ -1,0 +1,15 @@
+---
+layout: 'base.webc'
+title: 'Home'
+---
+
+<section class="home-hero">
+    <h1 class="hidden-title abs">
+        Electric Raven
+    </h1>
+    <div class="container-1920 fh">
+        <div class="hero-wrap f fc jc ac fh">
+            <loader-1></loader-1>
+        </div>
+    </div>
+</section>

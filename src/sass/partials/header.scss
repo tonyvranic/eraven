@@ -1,0 +1,8 @@
+@use '../base/vars' as v;
+@use "sass:map";
+
+
+header {
+    min-height: 100px;
+    background-color: v.color(primary-500);
+}

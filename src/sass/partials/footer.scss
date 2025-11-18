@@ -1,0 +1,6 @@
+@use '../base/vars' as v;
+
+footer {
+    min-height: 100px;
+    background-color: v.color(primary-500);
+}

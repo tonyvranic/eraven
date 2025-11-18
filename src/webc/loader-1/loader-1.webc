@@ -1,0 +1,23 @@
+<div er-method="loader-1" class="loader-1 fw tc light-100">
+    <h2 class="loader-1-title-1 h2">
+        Welcome
+    </h2>
+    <p class="loader-1-title-2 h2 fw abs-c">
+        We are setting things up
+    </p>
+    <div class="loader-1-title-3-wrap fw abs-c">
+        <p class="loader-1-title-3 text-24">
+            This may take a while...
+        </p>
+        <div class="loader-1-title-3-slide-1 slidedown-1">
+            <div class="o-h">
+                <p class="loader-1-title-3-slide-1-p text-24 pt-12 pb-12">
+                    A really, really <i><b>long</b></i> while
+                </p>
+            </div>
+        </div>
+        <div class="loader-1-loader f jc mt-40">
+            <div class="loader"></div>
+        </div>
+    </div>
+</div>

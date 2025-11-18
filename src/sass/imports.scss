@@ -1,0 +1,28 @@
+// Plugins
+// @use '../../node_modules/swiper/swiper.css';
+// @use '../../node_modules/swiper/modules/navigation.css';
+
+// Fonts
+@use './base/fonts.scss';
+
+
+// Defaults
+@use './base/reset-css.scss';
+@use './base/defaults.scss';
+
+
+// Utils
+@use './base/utils.scss';
+
+
+// Partials
+@use './partials/header.scss';
+@use './partials/footer.scss';
+
+
+// Tpls
+@use './tpls/home.scss';
+
+
+// Components
+@use './components/loader-1.scss';

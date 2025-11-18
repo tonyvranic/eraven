@@ -1,0 +1,29 @@
+.loader-1 {
+    opacity: 0;
+    visibility: hidden;
+
+    &.active {
+        opacity: 1;
+        visibility: visible;
+    }
+}
+
+.loader-1-title-3-slide-1 {
+    transition: grid-template-rows 2500ms,
+                visibility 2500ms;
+    
+    &.active {
+        .loader-1-title-3-slide-1-p {
+            opacity: 1;
+            visibility: visible;
+        }
+    }
+}
+
+.loader-1-title-3-slide-1-p {
+    opacity: 0;
+    visibility: hidden;
+
+    transition: opacity 2500ms ease-out 1250ms,
+                visibility 2500ms ease-out 1250ms;
+}

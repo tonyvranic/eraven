@@ -1,0 +1,11 @@
+// Fluid type mixin using clamp()
+@mixin fluid-type($min-size, $max-size, $min-screen, $max-screen) {
+    $slope: calc(($max-size - $min-size) / ($max-screen - $min-screen));
+    $intercept: $min-size - $slope * $min-screen;
+
+    font-size: clamp(
+        #{$min-size}px,
+        calc(#{$intercept}px + #{$slope} * 100vw),
+        #{$max-size}px
+    );
+}
