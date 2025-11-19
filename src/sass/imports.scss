@@ -13,16 +13,10 @@
 
 // Utils
 @use './base/utils.scss';
-
-
-// Partials
-@use './partials/header.scss';
-@use './partials/footer.scss';
-
-
-// Tpls
-@use './tpls/home.scss';
+@use './base/layout.scss';
 
 
 // Components
 @use './components/loader-1.scss';
+@use './components/header.scss';
+@use './components/footer.scss';

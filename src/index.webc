@@ -9,7 +9,7 @@ title: 'Home'
     </h1>
     <div class="container-1920 fh">
         <div class="hero-wrap f fc jc ac fh">
-            <loader-1></loader-1>
+            <home-hero></home-hero>
         </div>
     </div>
 </section>

@@ -1,0 +1,124 @@
+@use "sass:map";
+
+// Vars
+$layout: (
+    desktop: ( width: 1920px, columns: 20, rowGap: 20px, colGap: 20px, padding: 0px ),
+    xxl: ( width: 1536px, columns: 16, rowGap: 20px, colGap: 20px, padding: 20px ),
+    xl: ( width: 1280px, columns: 16, rowGap: 16px, colGap: 16px, padding: 20px ),
+    lg: ( width: 1024px, columns: 12, rowGap: 16px, colGap: 16px, padding: 20px ),
+    md: ( width: 800px, columns: 8, rowGap: 12px, colGap: 12px, padding: 20px ),
+    sm: ( width: 600px, columns: 4, rowGap: 12px, colGap: 12px, padding: 16px )
+);
+$spacing-values: 4, 8, 12, 16, 20, 24, 28, 32, 36, 40;
+
+
+// Extract breakpoints map just once
+$breakpoints: ();
+@each $bp, $data in $layout {
+    // Skip desktop — it's not a media query
+    @if $bp != desktop {
+        $breakpoints: map.merge($breakpoints, ($bp: map.get($data, width)));
+    }
+}
+
+// Media mixin // Media mixin // Media mixin // Media mixin
+@mixin respond($bp) {
+    @media (max-width: map.get($breakpoints, $bp)) {
+        @content;
+    }
+}
+
+// Layout // Layout // Layout // Layout // Layout // Layout
+.grid-layout {
+    display: grid;
+
+    // Desktop base style
+    grid-template-columns: repeat(map.get(map.get($layout, desktop), columns), 1fr);
+    column-gap: map.get(map.get($layout, desktop), colGap);
+    row-gap: map.get(map.get($layout, desktop), rowGap);
+    max-width: map.get(map.get($layout, desktop), width);
+    padding-left: map.get(map.get($layout, desktop), padding);
+    padding-right: map.get(map.get($layout, desktop), padding);
+    margin-left: auto;
+    margin-right: auto;
+
+    // Auto-generate responsive variations
+    @each $bp, $data in $layout {
+        @if $bp != desktop {
+            &.#{$bp} {
+                @include respond($bp) {
+                    grid-template-columns: repeat(map.get($data, columns), 1fr);
+                    column-gap: map.get($data, gap);
+                    row-gap: map.get($data, gap);
+                    padding-left: map.get($data, padding);
+                    padding-right: map.get($data, padding);
+                }
+            }
+        }
+    }
+}
+
+// Column span + offset // Column span + offset // Column span + offset
+// Normal cols
+$desktop-cols: map.get(map.get($layout, desktop), columns);
+
+@for $i from 1 through $desktop-cols {
+    .col-#{$i} { grid-column-end: span #{$i}; }
+    .offset-#{$i} { grid-column-start: #{$i + 1}; }
+}
+
+// Responsive cols
+@each $bp, $data in $layout {
+    @if $bp != desktop {
+        $cols: map.get($data, columns);
+
+        @for $i from 1 through $cols {
+            .#{$bp}\:col-#{$i} {
+                @include respond($bp) {
+                    grid-column-end: span #{$i};
+                }
+            }
+        }
+    }
+}
+
+// Spacings // Spacings // Spacings // Spacings // Spacings // Spacings
+// Normal spacing
+@each $s in $spacing-values {
+    .mt-#{$s} { margin-top: #{$s}px; }
+    .mb-#{$s} { margin-bottom: #{$s}px; }
+    .pt-#{$s} { padding-top: #{$s}px; }
+    .pb-#{$s} { padding-bottom: #{$s}px; }
+}
+
+// Responsive spacing
+@each $bp, $size in $breakpoints {
+    @each $s in $spacing-values {
+        .#{$bp}\:mt-#{$s} { @include respond($bp) { margin-top: #{$s}px; } }
+        .#{$bp}\:mb-#{$s} { @include respond($bp) { margin-bottom: #{$s}px; } }
+        .#{$bp}\:pt-#{$s} { @include respond($bp) { padding-top: #{$s}px; } }
+        .#{$bp}\:pb-#{$s} { @include respond($bp) { padding-bottom: #{$s}px; } }
+    }
+}
+
+// Display // Display // Display // Display // Display
+// Normal visibility
+.show { display: block; }
+.hide { display: none; }
+
+// Responsive auto-generation
+@each $bp, $size in $breakpoints {
+    // Show at and below breakpoint
+    .#{$bp}\:show {
+        @include respond($bp) {
+            display: block;
+        }
+    }
+
+    // Hide at and below breakpoint
+    .#{$bp}\:hide {
+        @include respond($bp) {
+            display: none;
+        }
+    }
+}

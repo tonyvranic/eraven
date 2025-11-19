@@ -1,0 +1,41 @@
+<header class="abs fw z-5">
+    <div class="header-wrap grid-layout bg-primary-600">
+        <div class="col-2 offset-1">
+            <div class="header-logo-wrap rel">
+                <span class="header-logo-backdrop abs-c z-1"></span>
+                <a href="index.html" aria-label="Homepage" title="Homepage" class="header-logo block w-backdrop rel-fw z-2">
+                    <img
+                        width="200" height="200"
+                        src="assets/logo.svg"
+                        alt="Electric Raven logo"
+                        class="abs-fw"
+                    >
+                </a>
+            </div>
+        </div>
+        <nav aria-label="Main" class="col-16 sm:hide offset-3 f je ac">
+            <ul class="header-nav-ul f">
+                <li>
+                    <a href="#" title="About Me" class="text-nav">
+                        About Me
+                    </a>
+                </li>
+                <li>
+                    <a href="#" title="Recipes" class="text-nav">
+                        Recipes
+                    </a>
+                </li>
+                <li>
+                    <a href="#" title="Blog" class="text-nav">
+                        Blog
+                    </a>
+                </li>
+                <li>
+                    <a href="#" title="Contact" class="text-nav">
+                        Contact
+                    </a>
+                </li>
+            </ul>
+        </nav>
+    </div>
+</header>
