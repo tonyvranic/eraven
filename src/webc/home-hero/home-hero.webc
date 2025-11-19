@@ -1,1 +1,25 @@
-test
+<section class="home-hero grid-layout md rel">
+    <h1 class="hidden-title abs">
+        Electric Raven
+    </h1>
+    <div class="home-hero-bcg f abs-fw z-1">
+        <div class="home-hero-col fg-1 bg-primary-400 fh rel">
+            <div class="home-hero-col-pattern abs-fw"></div>
+        </div>
+        <div class="home-hero-col fg-1 bg-primary-500 fh rel sm:hide">
+            <div class="home-hero-col-pattern abs-fw"></div>
+        </div>
+        <div class="home-hero-col fg-1 bg-primary-400 fh rel lg:hide">
+            <div class="home-hero-col-pattern abs-fw"></div>
+        </div>
+        <div class="home-hero-col fg-1 bg-primary-500 fh rel lg:hide">
+            <div class="home-hero-col-pattern abs-fw"></div>
+        </div>
+    </div>
+
+    <div class="hero-wrap start-2 col-18 md:start-1 md:col-8 f fc jc rel z-2">
+        <p class="h1 tc light-0">
+            Exploring the Intersection of <br> Creativity & Code
+        </p>
+    </div>
+</section>

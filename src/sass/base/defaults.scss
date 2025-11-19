@@ -40,3 +40,33 @@ b {
 i {
     font-style: italic;
 }
+
+
+// Scrollbar CSS
+// https://scrollbar.app/
+body {
+    --sb-track-color: #{v.color(primary-400)};
+    --sb-thumb-color: #{v.color(primary-700)};
+    --sb-size: 16px;
+}
+
+body::-webkit-scrollbar {
+    width: var(--sb-size)
+}
+
+body::-webkit-scrollbar-track {
+    background: var(--sb-track-color);
+    border-radius: 0px;
+}
+
+body::-webkit-scrollbar-thumb {
+    background: var(--sb-thumb-color);
+    border-radius: 0px;
+}
+
+@supports not selector(::-webkit-scrollbar) {
+    body {
+        scrollbar-color: var(--sb-thumb-color)
+                        var(--sb-track-color);
+    }
+}

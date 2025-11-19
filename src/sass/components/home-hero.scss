@@ -1,0 +1,28 @@
+.home-hero {
+    min-height: 100vh;
+    min-height: 100svh;
+}
+
+.home-hero-bcg {
+    filter: blur(3px);
+}
+
+.home-hero-col {
+    &:nth-child(2n) {
+        .home-hero-col-pattern {
+            background-size: 70%;
+            transform: scaleX(-1);
+        }
+    }
+}
+
+.home-hero-col-pattern {
+    background-image: url('/assets/media/patterns/intersection-pattern.svg');
+    background-size: 53.7%;
+    opacity: 0.25;
+
+    mix-blend-mode: overlay;
+
+    mask-image: linear-gradient(180deg,#FFF 0%, #FFF0 100%);
+    mask-size: 100%;
+}

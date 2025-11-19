@@ -1,6 +1,6 @@
 <header class="abs fw z-5">
     <div class="header-wrap grid-layout bg-primary-600">
-        <div class="col-2 offset-1">
+        <div class="col-2 start-2">
             <div class="header-logo-wrap rel">
                 <span class="header-logo-backdrop abs-c z-1"></span>
                 <a href="index.html" aria-label="Homepage" title="Homepage" class="header-logo block w-backdrop rel-fw z-2">
@@ -13,8 +13,13 @@
                 </a>
             </div>
         </div>
-        <nav aria-label="Main" class="col-16 sm:hide offset-3 f je ac">
+        <nav aria-label="Main" class="col-16 sm:hide start-4 f je ac">
             <ul class="header-nav-ul f">
+                <li>
+                    <a href="#" title="Settings" class="text-nav">
+                        Settings
+                    </a>
+                </li>
                 <li>
                     <a href="#" title="About Me" class="text-nav">
                         About Me

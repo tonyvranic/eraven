@@ -64,7 +64,7 @@ $desktop-cols: map.get(map.get($layout, desktop), columns);
 
 @for $i from 1 through $desktop-cols {
     .col-#{$i} { grid-column-end: span #{$i}; }
-    .offset-#{$i} { grid-column-start: #{$i + 1}; }
+    .start-#{$i} { grid-column-start: #{$i}; }
 }
 
 // Responsive cols
@@ -76,6 +76,11 @@ $desktop-cols: map.get(map.get($layout, desktop), columns);
             .#{$bp}\:col-#{$i} {
                 @include respond($bp) {
                     grid-column-end: span #{$i};
+                }
+            }
+            .#{$bp}\:start-#{$i} {
+                @include respond($bp) {
+                    grid-column-start: #{$i};
                 }
             }
         }

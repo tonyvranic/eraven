@@ -1,4 +1,5 @@
 @use '../base/vars' as v;
+@use '../base/layout.scss';
 
 header {
     min-height: 100px;
@@ -34,5 +35,11 @@ header {
 
     a {
         padding: 8px;
+    }
+}
+
+@include layout.respond(md) {
+    .header-nav-ul {
+        column-gap: 8px;
     }
 }
