@@ -16,5 +16,14 @@ export default defineConfig([
         },
         
         extends: ['js/recommended'],
-        languageOptions: { globals: globals.browser } },
+        languageOptions: { globals: globals.browser }
+    },
+    {
+        files: ['tools/**/*.js', 'eleventy.config.mjs'],
+        languageOptions: {
+            env: {
+                node: true
+            }
+        }
+    }
 ]);

@@ -1,4 +1,4 @@
-<header class="abs fw z-5">
+<header c-header class="abs fw z-5">
     <div class="header-wrap grid-layout bg-primary-600">
         <div class="col-2 start-2">
             <div class="header-logo-wrap rel">

@@ -1,6 +1,6 @@
-@use '../base/vars' as v;
+@use '../../sass/base/vars.scss' as v;
 
-footer {
+:scope {
     // min-height: 100px;
     background-color: v.color(primary-500);
 }

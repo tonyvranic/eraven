@@ -1,4 +1,4 @@
-<section class="home-hero grid-layout md rel">
+<section c-home-hero class="home-hero grid-layout md rel">
     <h1 class="hidden-title abs">
         Electric Raven
     </h1>

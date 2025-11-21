@@ -1,4 +1,4 @@
-<div er-method="loader-1" class="loader-1 fw tc light-100">
+<div c-loader-1 er-method="loader-1" class="fw tc light-100">
     <h2 class="loader-1-title-1 h2">
         Welcome
     </h2>

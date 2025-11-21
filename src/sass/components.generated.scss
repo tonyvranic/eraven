@@ -1,0 +1,19 @@
+// AUTO-GENERATED — DO NOT EDIT
+@use "sass:meta";
+
+[c-footer] {
+    @include meta.load-css('../webc/footer/footer.scss');
+}
+
+[c-header] {
+    @include meta.load-css('../webc/header/header.scss');
+}
+
+[c-home-hero] {
+    @include meta.load-css('../webc/home-hero/home-hero.scss');
+}
+
+[c-loader-1] {
+    @include meta.load-css('../webc/loader-1/loader-1.scss');
+}
+

@@ -5,7 +5,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Electric Raven</title>
     <meta name="description" content="Electric Raven Portfolio Website.">
-    <link rel="stylesheet" href="css/imports.css" webc:keep>
+    <link rel="stylesheet" href="css/main.css" webc:keep>
     <!-- <style @raw="getBundle('css')" webc:keep></style> -->
 </head>
 <body>

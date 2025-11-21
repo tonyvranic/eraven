@@ -1,7 +1,7 @@
-@use '../base/vars' as v;
-@use '../base/layout.scss';
+@use '../../sass/base/vars' as v;
+@use '../../sass/base/layout.scss';
 
-header {
+:scope {
     min-height: 100px;
     filter: drop-shadow(0px 12px 12px #00000054);
     // background-color: v.color(primary-500);
