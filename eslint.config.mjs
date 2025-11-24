@@ -1,7 +1,7 @@
 import js from '@eslint/js';
 import globals from 'globals';
 import { defineConfig } from 'eslint/config';
-import stylistic from '@stylistic/eslint-plugin'
+import stylistic from '@stylistic/eslint-plugin';
 
 export default defineConfig([
     { 
@@ -13,6 +13,7 @@ export default defineConfig([
         rules: {
             '@stylistic/indent': ['error', 4],
             '@stylistic/quotes': ['error', 'single'],
+            '@stylistic/semi': ['error', 'always'],
         },
         
         extends: ['js/recommended'],
