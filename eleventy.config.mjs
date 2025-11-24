@@ -3,12 +3,11 @@ import pluginWebc from '@11ty/eleventy-plugin-webc';
 import { EleventyHtmlBasePlugin } from '@11ty/eleventy';
 
 import { existsSync } from 'fs';
-import { unlink } from 'fs/promises';
 
 import { config as loadEnv } from 'dotenv';
 
-import initScssBuild from './build/scss.js';
-import initWebcBuild from './build/webc.js';
+import initScssBuild from './build/before/scss_before.js';
+import initWebcBuild from './build/after/webc_after.js';
 
 
 // Dot env
@@ -29,7 +28,7 @@ export default function (eleventyConfig) {
     // Plugins
     eleventyConfig.addPlugin(EleventyHtmlBasePlugin);
     eleventyConfig.addPlugin(pluginWebc, {
-        components: 'public/webc/**/*.webc'
+        components: 'src/webc/**/*.webc'
     });
 
     // Copies
@@ -51,6 +50,7 @@ export default function (eleventyConfig) {
 
 
     // Pipeline
+    // - Before compile
     eleventyConfig.on('eleventy.before', async () => {
         // JS bundling
         await esbuild.build({
@@ -65,14 +65,15 @@ export default function (eleventyConfig) {
             outdir: 'public/js',
         });
 
-
-        // WebC Compilation
-        await initWebcBuild();
-
-        
         // SCSS Compilation
         await initScssBuild(isProd);
     });
+
+    // - After compile
+    eleventyConfig.on('eleventy.after', async () => {
+        // WebC Corrections
+        await initWebcBuild();
+    })
 
 
     return {
