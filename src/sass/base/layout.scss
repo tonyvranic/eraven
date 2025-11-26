@@ -88,7 +88,7 @@ $desktop-cols: map.get(map.get($layout, desktop), columns);
 }
 
 // Spacings // Spacings // Spacings // Spacings // Spacings // Spacings
-// Normal spacing
+// Normal vertical spacing
 @each $s in $spacing-values {
     .mt-#{$s} { margin-top: #{$s}px; }
     .mb-#{$s} { margin-bottom: #{$s}px; }
@@ -96,7 +96,7 @@ $desktop-cols: map.get(map.get($layout, desktop), columns);
     .pb-#{$s} { padding-bottom: #{$s}px; }
 }
 
-// Responsive spacing
+// Responsive vertical spacing
 @each $bp, $size in $breakpoints {
     @each $s in $spacing-values {
         .#{$bp}\:mt-#{$s} { @include respond($bp) { margin-top: #{$s}px; } }
@@ -107,23 +107,28 @@ $desktop-cols: map.get(map.get($layout, desktop), columns);
 }
 
 // Display // Display // Display // Display // Display
-// Normal visibility
+
+// @er-group-start
+//   name="Display"
 .show { display: block; }
 .hide { display: none; }
 
 // Responsive auto-generation
 @each $bp, $size in $breakpoints {
-    // Show at and below breakpoint
+    // @er-class
+    //  desc="Show at and below breakpoint"
     .#{$bp}\:show {
         @include respond($bp) {
             display: block;
         }
     }
 
-    // Hide at and below breakpoint
+    // @er-class
+    //  desc="Hide at and below breakpoint"
     .#{$bp}\:hide {
         @include respond($bp) {
             display: none;
         }
     }
 }
+// @er-group-end

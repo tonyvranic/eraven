@@ -3,18 +3,24 @@
 // @use '../../node_modules/swiper/modules/navigation.css';
 
 // Fonts
+// @er-ignore-start
 @use './base/fonts.scss';
 
 
 // Defaults
 @use './base/reset-css.scss';
 @use './base/defaults.scss';
+// @er-ignore-end
 
 
 // Utils
 @use './base/utils.scss';
-@use './base/layout.scss';
 
+// @er-attr-start
+//  value="layout"
+@use './base/layout.scss';
+// @er-attr-end
 
 // Auto-imported component SCSS
+// @er-scope scoped
 @use './components.generated';
