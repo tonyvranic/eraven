@@ -48,8 +48,8 @@ $breakpoints: ();
             &.#{$bp} {
                 @include respond($bp) {
                     grid-template-columns: repeat(map.get($data, columns), 1fr);
-                    column-gap: map.get($data, gap);
-                    row-gap: map.get($data, gap);
+                    column-gap: map.get($data, colGap);
+                    row-gap: map.get($data, rowGap);
                     padding-left: map.get($data, padding);
                     padding-right: map.get($data, padding);
                 }
