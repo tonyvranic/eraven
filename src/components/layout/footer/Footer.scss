@@ -1,0 +1,6 @@
+@use 'vars' as v;
+
+.layout {
+    min-height: 100px;
+    background-color: v.color(light-850);
+}

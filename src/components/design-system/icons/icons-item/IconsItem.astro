@@ -1,0 +1,45 @@
+---
+import Icon from '../../../ui/icon/Icon.astro';
+import type { IconName } from '../../../ui/icon/Icon.types';
+
+/* Props */
+interface Props {
+  name: IconName;
+}
+
+const { 
+  name,
+} = Astro.props;
+
+/* Computed */
+
+---
+
+
+{/* Html */}
+<a
+  href="#"
+  title={name}
+  class:list={['component', 'bg-light-700']}
+  data-icons-item
+>
+  <Icon name={name} />
+</a>
+
+
+{/* Styles */}
+<style lang="scss">
+  @use './IconsItem.scss';
+</style>
+
+
+{/* Script */}
+<script>
+  import { animSmallItemButton } from '../../../../utils/anims/smallItemButton';
+
+  const items = document.querySelectorAll('[data-icons-item]');
+
+  items.forEach((item) => {
+    animSmallItemButton(item);
+  });
+</script>

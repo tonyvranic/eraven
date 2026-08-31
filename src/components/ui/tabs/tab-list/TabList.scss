@@ -1,0 +1,54 @@
+@use 'vars' as v;
+
+.component {
+    // Whitelabel - Base
+    --gap: #{v.space(sm)};
+
+    --padding-vertical: calc(#{v.space(sm)});
+    --padding-horizontal: calc(#{v.space(md)});
+    --border-radius: #{v.radius(lg)};
+
+    --surface-bg: #{v.color(light-850)};
+
+
+    // Whitelabel - Indicator
+    --indicator-surface-bg: #{v.color(primary-400)};
+    --indicator-radius: #{v.radius(lg)};
+
+
+    // Styles - Base
+    position: relative;
+    display: flex;
+    gap: var(--gap);
+
+    &:not(.no-padding) {
+        padding: var(--padding-vertical) var(--padding-horizontal);
+    }
+    border-radius: var(--border-radius);
+
+    background-color: var(--surface-bg);
+
+
+    // Styles - Indicator
+    .indicator {
+        position: absolute;
+        top: 0;
+        bottom: 0;
+        z-index: 0;
+
+        border-radius: var(--indicator-radius);
+
+        background-color: var(--indicator-surface-bg);
+    }
+
+
+    // Styles - Overrides
+    &:not(.grow-parent) {
+        width: fit-content;
+    }
+}
+
+
+.tabs-container {
+    position: relative;
+}

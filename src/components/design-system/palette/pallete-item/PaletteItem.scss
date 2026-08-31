@@ -1,0 +1,10 @@
+@use 'vars' as v;
+@use 'timings' as t;
+
+$step-width: v.space(lg) * 1.25;
+
+.component {
+    width: $step-width;
+    height: $step-width;
+    border-radius: v.radius(sm);
+}

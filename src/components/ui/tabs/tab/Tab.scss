@@ -1,0 +1,70 @@
+@use 'sass:color';
+
+@use 'vars' as v;
+@use 'timings' as t;
+@use 'typography' as typo;
+
+
+.button {
+    // Whitelabel - Base
+    --padding-vertical: calc(#{v.space(sm)} + #{v.space(xs)});
+    --padding-horizontal: calc(#{v.space(md)} + #{v.space(sm)});
+    --border-radius: #{v.radius(md)};
+
+    --surface-bg: transparent;
+    --surface-color: #{v.color(light-0)};
+
+    --border: #{v.space(2xs)} solid transparent;
+
+    --text-transform: uppercase;
+
+    --icon-gap: #{v.space(sm)};
+
+    $text-role: body;
+    $text-size: md;
+
+
+    // Whitelabel - Hover
+    --hover-surface-bg: #{color.adjust(v.color(light-0), $alpha: -0.9)};
+    --hover-surface-color: #{v.color(light-0)};
+    --hover-border-color: transparent;
+
+    // Whitelabel - Disabled
+    --disabled-opacity: 0.5;
+
+    
+    // Styles - Base
+    position: relative;
+    display: inline-flex;
+    padding: var(--padding-vertical) var(--padding-horizontal);
+
+    align-items: center;
+    justify-content: center;
+    gap: var(--icon-gap);
+    border-radius: var(--border-radius);
+    z-index: 1;
+
+    background-color: var(--surface-bg);
+    color: var(--surface-color);
+
+    border: var(--border);
+
+
+    text-transform: var(--text-transform);
+
+    cursor: pointer;
+
+    @include typo.type($text-role, $text-size);
+
+    @include t.tx((
+        background-color, color, opacity, border-color
+    ), 1, t.$power-2-o);
+
+
+    // Styles - Hover
+    &:hover {
+        background-color: var(--hover-surface-bg);
+        color: var(--hover-surface-color);
+        border-color: var(--hover-border-color);
+    }
+}

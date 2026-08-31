@@ -1,0 +1,377 @@
+@use 'sass:map';
+@use 'sass:string';
+
+@use 'vars' as v;
+@use 'mixins' as mix;
+@use 'typography' as typo;
+
+// Containers // Containers // Containers // Containers
+.container-1920 {
+    position: relative;
+    width: 100%;
+    padding: 0 20px;
+    max-width: 1920px;
+    margin: 0 auto;
+    z-index: 2;
+}
+.container-1280 {
+    position: relative;
+    width: 100%;
+    padding: 0 20px;
+    max-width: 1280px;
+    margin: 0 auto;
+    z-index: 2;
+}
+
+
+// Display styles // Display styles // Display styles
+.block {
+    display: block;
+}
+.inline {
+    display: inline;
+}
+.inline-block {
+    display: inline-block;
+}
+.none {
+    display: none;
+}
+.table {
+    display: table;
+}
+
+.f {
+    display: flex;
+    flex-wrap: wrap;
+}
+
+// Migrated to layout.scss
+// .f-nw {
+//     flex-wrap: nowrap;
+// }
+// .fc {
+//     flex-direction: column;
+// }
+// .fcr {
+//     flex-direction: column-reverse;
+// }
+// .frr {
+//     flex-direction: row-reverse;
+// }
+// .jsb {
+//     justify-content: space-between;
+// }
+// .jc {
+//     justify-content: center;
+// }
+// .je {
+//     justify-content: flex-end;
+// }
+// .as {
+//     align-items: flex-start;
+// }
+// .ae {
+//     align-items: flex-end;
+// }
+// .ac {
+//     align-items: center;
+// }
+// .acc {
+//     align-content: center;
+// }
+.ass {
+    align-self: flex-start;
+}
+.asc {
+    align-self: center;
+}
+.ase {
+    align-self: flex-end;
+}
+// .fs-0 {
+//     flex-shrink: 0;
+// }
+// .fg-1 {
+//     flex-grow: 1;
+// }
+
+.g {
+    display: grid;
+}
+.gtr-0 {
+    grid-template-rows: 0fr;
+}
+
+
+// Postions // Postions // Postions // Postions
+.rel {
+    position: relative;
+}
+.abs {
+    position: absolute;
+}
+.fix {
+    position: fixed;
+}
+.sticky {
+    position: sticky;
+}
+
+.z--1 {
+    z-index: -1;
+}
+
+.z-1 {
+    z-index: 1;
+}
+.z-2 {
+    z-index: 2;
+}
+.z-3 {
+    z-index: 3;
+}
+.z-4 {
+    z-index: 4;
+}
+.z-5 {
+    z-index: 5;
+}
+.z-6 {
+    z-index: 6;
+}
+.z-7 {
+    z-index: 7;
+}
+.z-8 {
+    z-index: 8;
+}
+.z-9 {
+    z-index: 9;
+}
+.z-10 {
+    z-index: 10;
+}
+
+
+// Font // Font // Font // Font // Font // Font // Font
+// Text vars
+// Title
+h1 {
+    @include typo.type(heading, xl);
+}
+h2 {
+    @include typo.type(heading, lg);
+}
+h3 {
+    @include typo.type(heading, md);
+}
+h4 {
+    @include typo.type(heading, sm);
+}
+h5 {
+    @include typo.type(heading, xs);
+}
+h6 {
+    @include typo.type(heading, 2xs);
+}
+
+
+// Text helpers
+.tl {
+    text-align: left;
+}
+.tc {
+    text-align: center;
+}
+.tr {
+    text-align: right;
+}
+.tnw {
+    white-space: nowrap;
+}
+
+.uc {
+    text-transform: uppercase;
+}
+
+
+// Other // Other // Other // Other // Other // Other
+// Generate color utility classes
+@each $name, $value in v.$colors {
+    .#{$name} {
+        color: #{$value};
+    }
+
+    .bg-#{$name} {
+        background-color: #{$value};
+    }
+}
+
+// Generate aspect ratio utility classes
+@each $name, $ratio in v.$aspect-ratios {
+    .aspect-#{$name} {
+        aspect-ratio: string.unquote($ratio);
+    }
+}
+
+.media {
+    overflow: hidden;
+
+    img, video {
+        width: 100%;
+        height: 100%;
+        object-fit: cover;
+    }
+
+    &.contain {
+        img, video {
+            object-fit: contain;
+        }
+    }
+}
+
+.fw {
+    width: 100%;
+}
+.fh {
+    height: 100%;
+}
+
+.abs-c {
+    position: absolute;
+    left: 50%;
+    top: 50%;
+    transform: translate(-50%, -50%);
+}
+.abs-fw {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+}
+.rel-fw {
+    position: relative;
+    width: 100%;
+    height: 100%;
+}
+
+.ofc {
+    object-fit: cover;
+}
+.ofc-alt {
+    object-fit: cover;
+}
+
+.no-events {
+    pointer-events: none;
+}
+.all-events {
+    pointer-events: all;
+}
+.cursor-pointer {
+    cursor: pointer;
+}
+
+.o-v {
+    overflow: visible;
+}
+.o-h {
+    overflow: hidden;
+}
+
+.scroll-style-vert {
+    overflow-y: auto;
+    overflow-x: hidden;
+    @include mix.scrollbar($axis: vertical);
+}
+.scroll-style-horiz {
+    overflow-y: hidden;
+    overflow-x: auto;
+    @include mix.scrollbar($axis: horizontal);
+}
+// .scroll-width {
+//     overflow-y: hidden;
+//     overflow-x: auto;
+// }
+// .scroll-height {
+//     overflow-y: auto;
+//     overflow-x: hidden;
+// }
+
+.side-text {
+    writing-mode: vertical-lr;
+    // transform: scale(-100%);
+}
+
+.hidden-title {
+    opacity: 0;
+    visibility: hidden;
+}
+.visually-hidden {
+    position: absolute;
+    width: 0px;
+    height: 0px;
+    overflow: hidden;
+    opacity: 0;
+    visibility: hidden;
+}
+
+.has-svg {
+    svg {
+        width: 100%;
+        height: 100%;
+        display: block;
+    }
+}
+
+.has-stroke {
+    svg {
+        // TODO - Single property values don't have to have a ";"
+        stroke: currentColor;
+    }
+}
+
+.slidedown-1 {
+    display: grid;
+    grid-template-rows: 0fr;
+
+    visibility: hidden;
+    transition: grid-template-rows 800ms,
+                visibility 800ms;
+
+    &.active {
+        grid-template-rows: 1fr;
+        visibility: visible;
+    }
+}
+
+.slideside-1 {
+    display: grid;
+    grid-template-columns: 0fr;
+
+    visibility: hidden;
+    transition: grid-template-columns 1200ms,
+                visibility 1200ms;
+
+    &.active {
+        grid-template-columns: 1fr;
+        visibility: visible;
+    }
+}
+
+
+// Spacings // Spacings // Spacings // Spacings // Spacings
+.mlr-auto {
+    margin-left: auto;
+    margin-right: auto;
+}
+.ml-auto {
+    margin-left: auto;
+    margin-right: 0;
+}
+.mr-auto {
+    margin-left: 0;
+    margin-right: auto;
+}

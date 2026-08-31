@@ -1,0 +1,59 @@
+@use 'vars' as v;
+@use 'functions' as f;
+
+// Fluid type mixin using clamp() - Using rem units for rigidness
+@mixin fluid-type(
+    $min-size, $max-size,
+    $min-screen: 400,
+    $max-screen: 1600
+) {
+    $base: f.strip-unit(v.$base-font-size);
+    $slope: calc((
+        $max-size * $base - $min-size * $base
+        ) / ($max-screen - $min-screen));
+    $intercept: $min-size * $base - $slope * $min-screen;
+
+    font-size: clamp(
+        #{$min-size}rem,
+        calc(#{$intercept}px + #{$slope} * 100vw),
+        #{$max-size}rem
+    );
+}
+
+@mixin scrollbar(
+    $axis: both,
+    $track-color: transparent,
+    $thumb-color: v.color(light-700),
+    $size: 16px,
+    $radius: 16px
+) {
+    --sb-track-color: #{$track-color};
+    --sb-thumb-color: #{$thumb-color};
+    --sb-size: #{$size};
+    --sb-radius: #{$radius};
+
+    &::-webkit-scrollbar {
+        @if $axis == vertical {
+            width: var(--sb-size);
+        } @else if $axis == horizontal {
+            height: var(--sb-size);
+        } @else {
+            width: var(--sb-size);
+            height: var(--sb-size);
+        }
+    }
+
+    &::-webkit-scrollbar-track {
+        background: var(--sb-track-color);
+        border-radius: 0px;
+    }
+
+    &::-webkit-scrollbar-thumb {
+        background: var(--sb-thumb-color);
+        border-radius: var(--sb-radius);
+    }
+
+    @supports not selector(::-webkit-scrollbar) {
+        scrollbar-color: var(--sb-thumb-color) var(--sb-track-color);
+    }
+}

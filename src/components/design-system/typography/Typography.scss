@@ -1,0 +1,10 @@
+@use 'vars' as v;
+
+.component {
+
+}
+
+.role-group {
+    width: 50%;
+    padding-right: v.space(md);
+}

@@ -1,0 +1,12 @@
+@use 'sass:map';
+
+@use 'typography' as typo;
+
+
+@each $typeName, $typeValue in typo.$typography {
+    @each $sizeName, $sizeValue in map.get($typeValue, sizes) {
+        .t-#{$typeName}-#{$sizeName} {
+            @include typo.type($typeName, $sizeName);
+        }
+    }
+}

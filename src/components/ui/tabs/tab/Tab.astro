@@ -1,0 +1,84 @@
+---
+/* Props */
+interface Props {
+  value: string;
+  grow?: boolean;
+  selected?: boolean;
+}
+
+const { 
+  value,
+  grow = true,
+  selected = false,
+} = Astro.props;
+
+
+/* Computed */
+---
+
+
+{/* Html */}
+<button
+  class:list={[
+    'button', grow ? 'grow' : '',
+    selected ? 'active' : '']
+  }
+  type="button"
+  data-tab
+  data-value={value}
+  aria-selected={selected ? 'true' : 'false'}
+>
+  <slot />
+</button>
+
+
+{/* Styles */}
+<style lang="scss">
+  @use './Tab.scss';
+</style>
+
+
+{/* Script */}
+<script>
+  import type { TabSelectEvent } from './Tab.types.ts';
+
+  import { queryFn } from '../../../../utils/queryFn';
+
+  const tabEls = document.querySelectorAll('[data-tab]');
+
+  tabEls.forEach(tabEl => {
+    // Queries
+    const tabWrapper = queryFn(tabEl, '[data-tabs-wrapper]', { closest: true });
+    if (!tabWrapper) return;
+
+
+    // Init
+    const value = tabEl.getAttribute('data-value');
+
+
+    // Events
+    tabEl.addEventListener('click', (e: Event) => {
+      e.preventDefault();
+
+      const event = new CustomEvent('tab-click', {
+        detail: { value }
+      });
+
+      tabWrapper.dispatchEvent(event);
+    })
+
+    // Update the active state of the button
+    tabEl.addEventListener('tab-select', ((e: TabSelectEvent) => {
+      const selectedValue = e.detail.value;
+      const tabValue = tabEl.getAttribute('data-value');
+
+      if (tabValue === selectedValue) {
+        tabEl.classList.add('active');
+        tabEl.setAttribute('aria-selected', 'true');
+      } else {
+        tabEl.classList.remove('active');
+        tabEl.setAttribute('aria-selected', 'false');
+      }
+    }) as EventListener);
+  });
+</script>

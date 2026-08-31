@@ -1,0 +1,92 @@
+---
+import type { IconName } from '../icon/Icon.types';
+import Icon from '../icon/Icon.astro';
+
+/* Props */
+interface Props {
+  name: string;
+  type?: 'button' | 'reset' | 'submit';
+  variant?: 'primary' | 'secondary';
+  leftIcon?: IconName;
+  rightIcon?: IconName;
+  disabled?: boolean;
+  iconOnly?: boolean;
+  fullWidth?: boolean;
+  form?: string;
+  class?: string;
+  noBorder?: boolean;
+
+  // For link behavior
+  to?: string;
+  target?: '_blank' | '_self' | '_parent' | '_top';
+  rel?: 'noopener noreferrer';
+}
+
+const {
+  name,
+  type = 'button',
+  variant = 'primary',
+  leftIcon,
+  rightIcon,
+  disabled = false,
+  iconOnly = false,
+  fullWidth = false,
+  form,
+  class: className,
+  noBorder = false,
+
+  to,
+  target,
+  rel,
+} = Astro.props;
+
+
+/* Computed */
+const Tag = to ? 'a' : 'button';
+
+const tagProps = to
+  ? { href: to, target, rel }
+  : { disabled, type, form };
+
+const classes = [
+  'component',
+  variant,
+  iconOnly && 'icon-only',
+  fullWidth && 'fw',
+  noBorder && 'no-border',
+  className,
+];
+---
+
+
+{/* Html */}
+<Tag
+  class:list={classes}
+  title={name}
+  aria-label={iconOnly ? name : undefined}
+  {...tagProps}
+>
+  {leftIcon && (
+    <div class="icon left-icon">
+      <Icon name={leftIcon} size={24} />
+    </div>
+  )}
+
+  {!iconOnly && (
+    <span class="text">
+      {name}
+    </span>
+  )}
+
+  {rightIcon && (
+    <div class="icon right-icon">
+      <Icon name={rightIcon} size={24} />
+    </div>
+  )}
+</Tag>
+
+
+{/* Styles */}
+<style lang="scss">
+  @use './Button.scss';
+</style>

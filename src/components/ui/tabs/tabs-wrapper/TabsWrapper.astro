@@ -1,0 +1,81 @@
+---
+/* Props */
+interface Props {
+  // Define your props here
+}
+
+const { 
+  /* Destructure your props here */
+} = Astro.props;
+
+
+/* Computed */
+---
+
+
+{/* Html */}
+<div 
+  class="tabs"
+  data-tabs-wrapper
+>
+  <slot />
+</div>
+
+
+{/* Styles */}
+<style lang="scss">
+  @use './TabsWrapper.scss';
+</style>
+
+
+{/* Script */}
+<script>
+  import type { TabSelectEvent } from "../tab/Tab.types";
+
+  import { queryFn } from "../../../../utils/queryFn";
+
+  const tabWrapperEls = document.querySelectorAll('[data-tabs-wrapper]');
+
+  tabWrapperEls.forEach(tabWrapperEl => {
+    // Queries
+    const tabEls = queryFn(tabWrapperEl, '[data-tab]', { all: true });
+    if (!tabEls) return;
+
+    const tabPanelEls = queryFn(tabWrapperEl, '[data-tab-panel]', { all: true });
+    if (!tabPanelEls) return;
+
+    const indicatorEl = queryFn(tabWrapperEl, '[data-tab-indicator]');
+
+
+    // Events
+    tabWrapperEl.addEventListener('tab-click', ((e: TabSelectEvent) => {
+      const value = e.detail.value;
+
+      notifyTabSelect(value, tabEls, tabPanelEls, indicatorEl as HTMLElement | null);
+    }) as EventListener);
+  });
+
+
+  // Functions
+  // Dispatch 'tab-select' event to all child components (tabs, panels, indicator)
+  function notifyTabSelect(
+    value: string,
+    tabEls: NodeListOf<Element>,
+    tabPanelEls: NodeListOf<Element>,
+    indicatorEl: HTMLElement | null
+  ) {
+    const event: TabSelectEvent = new CustomEvent('tab-select', {
+      detail: { value }
+    });
+
+    tabEls.forEach(tabEl => {
+      tabEl.dispatchEvent(event);
+    });
+    tabPanelEls.forEach(tabPanelEl => {
+      tabPanelEl.dispatchEvent(event);
+    });
+    if (indicatorEl) {
+      indicatorEl.dispatchEvent(event);
+    }
+  }
+</script>

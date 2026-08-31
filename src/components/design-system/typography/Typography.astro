@@ -1,0 +1,81 @@
+---
+import type { TypographyType } from '../../ui/text/Text.types';
+
+import Flex from '../../utils/Flex.astro';
+import { typographyConfig } from '../../ui/text/Text.types';
+import Text from '../../ui/text/Text.astro';
+
+/* Props */
+interface Props {
+  // Define your props here
+}
+
+const { 
+  /* Destructure your props here */
+} = Astro.props;
+
+
+/* Computed */
+---
+
+
+{/* Html */}
+<Flex dt={{ mt: 'lg'}} class={'component'}>
+  {Object.entries(typographyConfig).map(([role, sizes]) => (
+    <div class:list={'role-group'}>
+      <Text el="h3" type={`${role}-md` as TypographyType} class:list={['mb-sm']}>{role}</Text>
+      {sizes.map((size) => (
+        <a 
+          href="#"
+          title={`${role}-${size}`}
+          class:list={['sample', 'block', 'mb-lg']}
+          data-typography-item
+        >
+          <Text type={`${role}-${size}` as TypographyType} class:list={['light-100']}>
+            The quick brown fox jumps over the lazy dog.
+          </Text>
+        </a>
+      ))}
+    </div>
+  ))}
+</Flex>
+
+
+{/* Styles */}
+<style lang="scss">
+  @use './Typography.scss';
+</style>
+
+
+{/* Script */}
+<script>
+  // Init
+  const items = document.querySelectorAll('[data-typography-item]');
+
+
+  // Functions
+  function copyFontToClipboard(fontName: string) {
+    navigator.clipboard.writeText(fontName)
+      .then(() => {
+        // Optionally, you can show a success message or provide feedback to the user
+        console.log(`Copied ${fontName} to clipboard`);
+      })
+      .catch((err) => {
+        // Handle errors if the copy action fails
+        console.error('Failed to copy font: ', err);
+      });
+  }
+
+
+  // Event Listeners
+  items.forEach((item) => {
+    item.addEventListener('click', (e) => {
+      e.preventDefault();
+      const fontName = item.getAttribute('title');
+
+      if (fontName) {
+        copyFontToClipboard(fontName);
+      }
+    });
+  });
+</script>

@@ -1,0 +1,64 @@
+---
+/* Props */
+interface Props {
+  value: string;
+  selected?: boolean;
+}
+
+const { 
+  value,
+  selected = false,
+} = Astro.props;
+
+
+/* Computed */
+---
+
+
+{/* Html */}
+<div 
+  class:list={['component']}
+  data-tab-panel
+  data-value={value}
+  style={{ display: selected ? 'block' : 'none' }}
+>
+  <slot />
+</div>
+
+
+{/* Styles */}
+<style lang="scss">
+  @use './TabPanel.scss';
+</style>
+
+
+{/* Script */}
+<script>
+  import type { TabSelectEvent } from "../tab/Tab.types";
+
+  import { animToggleContent } from "../../../../utils/anims/toggleContent.ts";
+
+  const tabPanelEls = document.querySelectorAll('[data-tab-panel]');
+
+  tabPanelEls.forEach(tabPanelEl => {
+    // Queries
+    const value = tabPanelEl.getAttribute('data-value');
+    if (!value) return;
+
+
+    // Events
+    // Listen for 'tab-select' event to toggle the visibility of the panel
+    tabPanelEl.addEventListener('tab-select', ((e: TabSelectEvent) => {
+      const selectedValue = e.detail.value;
+
+      toggleContent(tabPanelEl, value === selectedValue);
+    }) as EventListener);
+  });
+
+
+  // Functions
+  // Show the panel if its value matches the selected value, otherwise hide it
+  function toggleContent(tabPanelEl: Element, show: boolean) {
+    animToggleContent(tabPanelEl, show);
+  }
+</script>

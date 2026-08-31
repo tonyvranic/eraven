@@ -1,0 +1,74 @@
+---
+import Cell from "../../../utils/Cell.astro";
+import Flex from "../../../utils/Flex.astro";
+import Grid from "../../../utils/Grid.astro";
+import Text from "../../../ui/text/Text.astro";
+---
+
+
+{/* Html */}
+<section class:list={['hero', 'em-style-secondary', 'bg-primary-400', 'filled-bg']}>
+  <!-- White Text -->
+  <div class:list={['hero-wrap-outer-abs', 'abs-fw', 'z-2', 'bg-light-900', 'no-events']} aria-hidden="true">
+    <Grid sm class:list={['fh']}>
+      <!-- Bg Patterns -->
+      <div class:list={['hero-bg-patterns', 'abs-fw', 'z-1']}>
+        <!-- Main Pattern -->
+        <div 
+          class:list={['hero-bg-pattern', 'abs-fw', 'z-1']}
+          style={'background-image: url("/patterns/intersection-pattern.svg");'}
+        />
+
+        <!-- Hover Pattern -->
+        <div class:list={['hero-bg-pattern-mask', 'abs-fw', 'z-2']}>
+          <div 
+            class:list={['hero-bg-pattern', 'type-hover', 'fh']} 
+            style={'background-image: url("/patterns/intersection-pattern-hover.svg");'}
+          />
+        </div>
+
+        <!-- Overlay behind text, to make it more legible -->
+        <div class:list={['hero-bg-pattern-overlay', 'abs-fw', 'z-3', 'bg-light-900']} />
+      </div>
+  
+      <!-- Text -->
+      <Cell 
+        dt={{ start: 1, span: 6 }}
+        sm={{ start: 1, span: 12 }}
+      >
+        <Flex 
+          dt={{ dir: 'column', justify: 'center', align: 'center' }} 
+          class:list={['hero-wrap', 'fh', 'rel', 'z-2']}
+        >
+          <Text el="h1" type="display-2xl" class:list={['hero-title', 'tr', 'light-100']}>
+            Exploring the <em>intersection</em><br> of creativity<br> & code
+          </Text>
+        </Flex>
+      </Cell>
+    </Grid>
+  </div>
+
+  <!-- Foreground -->
+  <Grid sm class:list={['hero-wrap-outer', 'fh',  'rel', 'z-1']}>
+    <Cell 
+      dt={{ start: 1, span: 6 }}
+      sm={{ start: 1, span: 12 }}
+      class:list={['relative', 'z-2']}
+    >
+      <Flex 
+        dt={{ dir: 'column', justify: 'center', align: 'center' }} 
+        class:list={['hero-wrap', 'fh']}
+      >
+        <Text el="h1" type="display-2xl" class:list={['hero-title', 'tr', 'light-900']}>
+          Exploring the <em>intersection</em><br> of creativity<br> & code
+        </Text>
+      </Flex>
+    </Cell>
+  </Grid>
+</section>
+
+
+{/* Styles */}
+<style lang="scss">
+  @use './Hero.scss';
+</style>

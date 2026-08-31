@@ -1,0 +1,24 @@
+@use 'vars' as v;
+
+.text {
+    width: v.space(lg);
+}
+
+.link {
+    padding: v.space(sm);
+    border-radius: v.radius(sm);
+}
+
+.line {
+    display: flex;
+    border-radius: v.radius(xs);
+}
+
+.vertical {
+    flex-direction: column;
+    width: v.space(lg);
+}
+
+.horizontal {
+    height: v.space(lg);
+}

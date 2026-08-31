@@ -1,0 +1,80 @@
+---
+import type { HTMLAttributes } from 'astro/types';
+import type { LayoutBreakpoint, LayoutConfig, SpacingValue } from './config';
+
+type CellBreakpoint = LayoutBreakpoint;
+
+// Utility types to build numeric unions from the columns config (1..N)
+type Enumerate<
+    Limit extends number,
+    Acc extends number[] = [],
+> = Acc['length'] extends Limit
+    ? Acc[number]
+    : Enumerate<Limit, [...Acc, Acc['length']]>;
+
+type OneTo<Limit extends number> = Exclude<Enumerate<Limit>, 0> | Limit;
+
+type ColumnValueFor<Key extends LayoutBreakpoint> = OneTo<LayoutConfig[Key]['columns']>;
+
+interface CellPlacement<Key extends LayoutBreakpoint> {
+    start?: ColumnValueFor<Key>;
+    span?: ColumnValueFor<Key>;
+
+    mt?: SpacingValue;
+    negMt?: SpacingValue;
+    mb?: SpacingValue;
+    negMb?: SpacingValue;
+    pt?: SpacingValue;
+    pb?: SpacingValue;
+}
+
+type Props = HTMLAttributes<'div'> & {
+    [K in CellBreakpoint]?: CellPlacement<K>;
+};
+
+const {
+    class: className,
+    dt, xl, lg, md, sm, xs, xxs,
+    ...rest
+} = Astro.props;
+
+const classes: string[] = ['cell'];
+const responsivePlacements: Array<[CellBreakpoint, CellPlacement<CellBreakpoint> | undefined]> = [
+    ['dt', dt], ['xl', xl], ['lg', lg],
+    ['md', md], ['sm', sm], ['xs', xs],
+    ['xxs', xxs],
+];
+
+if (className) classes.push(className as string);
+
+responsivePlacements.forEach(([breakpoint, placement]) => {
+    if (!placement) return;
+
+    const {
+        start, span,
+        mt, negMt, mb, negMb, pt, pb,
+    } = placement;
+    const prefix = breakpoint === 'dt' ? '' : `${breakpoint}:`;
+
+    const startClass = start ? `${prefix}start-${start}` : null;
+    const spanClass = span ? `${prefix}col-${span}` : null;
+
+    const mtClass = mt ? `${prefix}mt-${mt}` : null;
+    const negMtClass = negMt ? `${prefix}-mt-${negMt}` : null;
+    const mbClass = mb ? `${prefix}mb-${mb}` : null;
+    const negMbClass = negMb ? `${prefix}-mb-${negMb}` : null;
+    const ptClass = pt ? `${prefix}pt-${pt}` : null;
+    const pbClass = pb ? `${prefix}pb-${pb}` : null;
+
+    for (const c of [
+        startClass, spanClass,
+        mtClass, negMtClass, mbClass, negMbClass, ptClass, pbClass,
+    ]) {
+        if (c) classes.push(c);
+    }
+});
+---
+
+<div class={classes.join(' ') || undefined} {...rest}>
+    <slot />
+</div>

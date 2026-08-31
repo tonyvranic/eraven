@@ -1,0 +1,72 @@
+---
+import Flex from '../../../utils/Flex.astro';
+import Text from '../../../ui/text/Text.astro';
+
+/* Props */
+interface Props {
+  name: string;
+  isVertical?: boolean;
+}
+
+const { 
+  name,
+  isVertical = false
+} = Astro.props;
+
+
+/* Computed */
+
+---
+
+
+{/* Html */}
+<Flex 
+  dt={{ 
+    gap: 'md', 
+    align: 'center',
+    dir: isVertical ? 'column-reverse' : 'row',
+  }}
+  class={isVertical ? 'tc' : ''}
+>
+  <Text class={'text'}>
+    {name}
+  </Text>
+
+  <a
+    href="#"
+    aria-label={name}
+    title={name}
+    class:list={['link', 'bg-light-700']}
+    data-spacings-item
+  >
+    <div
+      class:list={[
+        'line',
+        'bg-primary-400',
+        isVertical ? 'vertical' : 'horizontal',
+        `gap-${name}`,
+      ]}
+    >
+      <div></div>
+      <div></div>
+    </div>
+  </a>
+</Flex>
+
+
+{/* Styles */}
+<style lang="scss">
+  @use './SpacingsItem.scss';
+</style>
+
+
+{/* Script */}
+<script>
+  import { animSmallItemButton } from '../../../../utils/anims/smallItemButton';
+
+  const items = document.querySelectorAll('[data-spacings-item]');
+
+  items.forEach((item) => {
+    animSmallItemButton(item);
+  });
+</script>

@@ -1,0 +1,89 @@
+---
+import Cell from '../../utils/Cell.astro';
+import Flex from '../../utils/Flex.astro';
+import Grid from '../../utils/Grid.astro';
+import { spacingValues } from '../../utils/config.ts';
+import SpacingsItem from './spacings-item/SpacingsItem.astro';
+
+/* Props */
+interface Props {
+  // Define your props here
+}
+
+const { 
+  /* Destructure your props here */
+} = Astro.props;
+
+
+/* Computed */
+
+---
+
+
+{/* Html */}
+<Grid class={'component'}>
+
+  {/* Left */}
+  <Cell dt={{ start: 1, span: 12 }}>
+    <Flex dt={{ gap: 'sm', dir: 'column', align: 'start' }}>
+      {spacingValues.map((spacing) => (
+        <SpacingsItem
+          name={spacing}
+          isVertical={false}
+        />
+      ))}
+    </Flex>
+  </Cell>
+
+  {/* Right */}
+  <Cell dt={{ start: 13, span: 12 }}>
+    <Flex dt={{ gap: 'sm', align: 'end', justify: 'end' }} class:list={['fh']}>
+      {spacingValues.map((spacing) => (
+        <SpacingsItem
+          name={spacing}
+          isVertical={true}
+        />
+      ))}
+    </Flex>
+  </Cell>
+</Grid>
+
+
+{/* Styles */}
+<style lang="scss">
+  @use './Spacings.scss';
+</style>
+
+
+{/* Script */}
+<script>
+  // Init
+  const items = document.querySelectorAll('[data-spacings-item]');
+
+
+  // Functions
+  function copySpaceNameToClipboard(spaceName: string) {
+    navigator.clipboard.writeText(spaceName)
+      .then(() => {
+        // Optionally, you can show a success message or provide feedback to the user
+        console.log(`Copied ${spaceName} to clipboard`);
+      })
+      .catch((err) => {
+        // Handle errors if the copy action fails
+        console.error('Failed to copy space: ', err);
+      });
+  }
+
+
+  // Event Listeners
+  items.forEach((item) => {
+    item.addEventListener('click', (e) => {
+      e.preventDefault();
+      const spaceName = item.getAttribute('title');
+
+      if (spaceName) {
+        copySpaceNameToClipboard(spaceName);
+      }
+    });
+  });
+</script>

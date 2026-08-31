@@ -1,0 +1,73 @@
+@use 'vars' as v;
+
+.hero {
+    min-height: calc(100vh - 96px);
+    min-height: calc(100svh - 96px);
+}
+
+@keyframes pattern-move {
+    0% {
+        background-position: 0 0;
+    }
+    100% {
+        background-position: 25% -100%;
+    }
+}
+
+.hero-bg-pattern {
+    background-size: 20%;
+
+    animation: pattern-move 20s linear infinite;
+}
+
+.hero-bg-pattern-mask {
+    mask-image: radial-gradient(circle, #000 0%, #0000 50%);
+}
+
+.hero-bg-pattern-overlay {
+    mask-image: radial-gradient(circle at 40% 50%, #000 0%, #0000 50%);
+}
+
+.hero-wrap-outer-abs {
+    $top-left-column: 7;
+    $top-right-column: 14;
+    $bottom-left-column: 5;
+    $bottom-right-column: 12;
+
+    $side-margin: 108px;
+    $column-gap: min(24px, 1.25vw);
+
+    clip-path: polygon(
+        /* Top left */
+        calc(
+            #{$side-margin}
+            + calc(100% - #{$side-margin} * 2) / 12 * #{$top-left-column - 1}
+            + #{$column-gap} * #{$top-left-column - 1} / 12
+        )
+        0,
+
+        /* Top right */
+        calc(
+            #{$side-margin}
+            + calc(100% - #{$side-margin} * 2) / 12 * #{$top-right-column - 1}
+            + #{$column-gap} * #{$top-right-column - 1} / 12
+        )
+        0,
+
+        /* Bottom right */
+        calc(
+            #{$side-margin}
+            + calc(100% - #{$side-margin} * 2) / 12 * #{$bottom-right-column - 1}
+            + #{$column-gap} * #{$bottom-right-column - 1} / 12
+        )
+        100%,
+
+        /* Bottom left */
+        calc(
+            #{$side-margin}
+            + calc(100% - #{$side-margin} * 2) / 12 * #{$bottom-left-column - 1}
+            + #{$column-gap} * #{$bottom-left-column - 1} / 12
+        )
+        100%,
+    )
+}

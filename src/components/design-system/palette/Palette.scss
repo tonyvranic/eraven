@@ -1,0 +1,28 @@
+@use 'vars' as v;
+
+$step-width: v.space(lg) * 1.25;
+
+.component {
+    
+}
+
+.step {
+    width: $step-width;
+    height: $step-width;
+    text-align: center;
+}
+
+.color-name {
+    display: flex;
+    align-items: center;
+    height: $step-width;
+}
+
+.right {
+    margin-top: - v.space(lg) * 0.75;
+}
+
+.disabled {
+    opacity: 0.5;
+    pointer-events: none;
+}

@@ -1,0 +1,67 @@
+---
+import Cell from "../../components/utils/Cell.astro";
+import Grid from "../../components/utils/Grid.astro";
+import Layout from "../../layouts/Layout.astro";
+import Text from "../../components/ui/text/Text.astro";
+import Palette from "../../components/design-system/palette/Palette.astro";
+import UIComponents from "../../components/design-system/ui-components/UIComponents.astro";
+import Icons from "../../components/design-system/icons/Icons.astro";
+import Spacings from "../../components/design-system/spacings/Spacings.astro";
+import Typography from "../../components/design-system/typography/Typography.astro";
+---
+
+
+{/* Html */}
+<Layout>
+  <div class:list={['page']}>
+    <Grid sm>
+      <Cell 
+        dt={{ start: 2, span: 22 }}
+        sm={{ start: 1, span: 12 }}
+      >
+        <Text el="h1" class:list={['mb-lg']}>Design System</Text>
+
+        <div class:list={['wrap-outer']}>
+          {/* Palette */}
+          <div class:list={['row', 'type-palette']}>
+            <Text el="h2" class:list={['mb-md']}>Palette</Text>
+            <Palette
+              colors={['Primary', 'Secondary', 'Light', 'Error', 'Success']}
+            />
+          </div>
+
+          {/* UI Components */}
+          <div class:list={['row']}>
+            <Text el="h2" class:list={['mb-md']}>UI</Text>
+            <UIComponents />
+          </div>
+
+          {/* Icons */}
+          <div class:list={['row']}>
+            <Text el="h2" class:list={['mb-md']}>Icons</Text>
+            <Icons />
+          </div>
+
+          {/* Spacings */}
+          <div class:list={['row']}>
+            <Text el="h2" class:list={['mb-md']}>Spacings</Text>
+            <Spacings />
+          </div>
+
+          {/* Typography */}
+          <div class:list={['row']}>
+            <Text el="h2" class:list={['mb-md']}>Typography</Text>
+            <Typography />
+          </div>
+
+        </div>
+      </Cell>
+    </Grid>
+  </div>
+</Layout>
+
+
+{/* Styles */}
+<style lang="scss">
+  @use './DesignSystem.scss';
+</style>

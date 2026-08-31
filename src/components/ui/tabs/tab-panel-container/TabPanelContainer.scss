@@ -1,0 +1,33 @@
+@use 'vars' as v;
+
+.component {
+    // Whitelabel - Base
+    --offset-top: #{v.space(md)};
+
+
+    // Styles - Base
+    margin-top: var(--offset-top);
+
+
+    &.type-default {
+        // Whitelabel - Default
+        --offset-top: #{v.space(md)};
+
+        --padding-vertical: calc(#{v.space(md)});
+        --padding-horizontal: calc(#{v.space(md)});
+
+        --surface-bg: #{v.color(light-850)};
+        --surface-color: #{v.color(light-0)};
+
+        --radius: #{v.radius(lg)};
+
+
+        // Styles - Default
+        padding: var(--padding-vertical) var(--padding-horizontal);
+
+        border-radius: var(--radius);
+
+        background-color: var(--surface-bg);
+        color: var(--surface-color);
+    }
+}

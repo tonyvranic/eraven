@@ -1,0 +1,62 @@
+---
+import Flex from '../../utils/Flex.astro';
+import Button from '../../ui/button/Button.astro';
+import TabsWrapper from '../../ui/tabs/tabs-wrapper/TabsWrapper.astro';
+import TabList from '../../ui/tabs/tab-list/TabList.astro';
+import Tab from '../../ui/tabs/tab/Tab.astro';
+import TabPanelContainer from '../../ui/tabs/tab-panel-container/TabPanelContainer.astro';
+import TabPanel from '../../ui/tabs/tab-panel/TabPanel.astro';
+
+/* Props */
+interface Props {
+  // Define your props here
+}
+
+const { 
+  /* Destructure your props here */
+} = Astro.props;
+
+/* Computed */
+
+---
+
+
+{/* Html */}
+<Flex dt={{ gap: 'md', align: 'center' }} class={'component'}>
+  {/* Button - Primary */}
+  <div class:list={['cell', 'rel']}>
+    <Button
+      name="Button text"
+      rightIcon="ChevronRight"
+    />
+  </div>
+
+  {/* Button - Secondary */}
+  <div class:list={['cell', 'rel']}>
+    <Button
+      name="Button text"
+      variant="secondary"
+      rightIcon="ChevronRight"
+    />
+  </div>
+
+  {/* Tabs */}
+  <div class:list={['cell', 'rel']}>
+    <TabsWrapper>
+      <TabList>
+        <Tab value="tab1" selected>Tab 1</Tab>
+        <Tab value="tab2">Tab 2</Tab>
+      </TabList>
+      <TabPanelContainer>
+        <TabPanel value="tab1" selected>This is tab 1 Lorem ipsum dolor sit amet</TabPanel>
+        <TabPanel value="tab2">This is tab 2</TabPanel>
+      </TabPanelContainer>
+    </TabsWrapper>
+  </div>
+</Flex>
+
+
+{/* Styles */}
+<style lang="scss">
+  @use './UIComponents.scss';
+</style>

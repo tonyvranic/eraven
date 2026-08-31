@@ -1,0 +1,51 @@
+---
+import type { SvgComponent } from 'astro/types';
+
+import type { Icons, IconSize, IconMap } from './Icon.types.ts';
+
+
+/* Props */
+interface Props {
+  name: Icons;
+  size?: IconSize;
+  class?: string;
+}
+
+const { 
+  name, size, class: className
+} = Astro.props;
+
+
+/* Computed */
+const iconModules 
+  = import.meta.glob<{
+    default: SvgComponent
+  }>('./icons/*.svg', { eager: true });
+
+const icons = Object.fromEntries(
+  Object.entries(iconModules).map(([path, mod]) => {
+    const name = path
+      .replace('./icons/', '')
+      .replace('.svg', '')
+      .replace(/-([a-z])/g, (_, c: string) => c.toUpperCase())
+      .replace(/^[a-z]/, c => c.toUpperCase());
+    return [name, mod.default];
+  })
+) as IconMap;
+
+const SvgIcon = icons[name];
+
+const iconSize = size ? `icon-${size}` : 'icon-24';
+---
+
+
+{/* Html */}
+<div class:list={['icon', iconSize, className]}>
+  <SvgIcon />
+</div>
+
+
+{/* Styles */}
+<style lang="scss">
+  @use './Icon.scss';
+</style>

@@ -1,0 +1,18 @@
+
+@use 'sass:meta';
+@use 'sass:math';
+
+// Strips units from numbers with units,
+// returns unitless numbers as-is,
+// and throws an error for non-numbers
+@function strip-unit($value) {
+    @if meta.type-of($value) != 'number' {
+        @error 'strip-unit($value) expects a number, got #{meta.type-of($value)}.';
+    }
+
+    @if math.is-unitless($value) {
+        @return $value;
+    }
+
+    @return math.div($value, ($value * 0 + 1));
+}

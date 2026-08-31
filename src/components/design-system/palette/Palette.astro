@@ -1,0 +1,115 @@
+---
+import Text from '../../ui/text/Text.astro';
+import Flex from '../../utils/Flex.astro';
+import { getStepCount, isStepValid, createSteps } from './Palette.helpers.ts';
+import { slugify } from '../../../utils/slugify.ts';
+import PaletteItem from './pallete-item/PaletteItem.astro';
+
+
+/* Props */
+interface Props {
+  colors?: string[];
+  step?: number;
+}
+
+const { 
+  colors,
+  step = 50
+} = Astro.props;
+
+
+/* Computed */
+const allSteps: number = getStepCount(step, isStepValid(step));
+const colorList: string[] = colors ?? [];
+const steps: number[] = createSteps(step, allSteps, isStepValid(step));
+---
+
+
+{/* Html */}
+<section class="component">
+  <div class:list={['wrap-outer', 'scroll-style-horiz', 'pb-md']}>
+    <Flex dt={{ gap: 'md', wrap: 'nowrap' }} class={'wrap pt-lg'}>
+      {/* Color names */}
+      <Flex dt={{ gap: 'md', dir: 'column' }} class={'left pt-md'}>
+        {colorList.map((color) => (
+          <Text class={'color-name'}>
+            {color}
+          </Text>
+        ))}
+      </Flex>
+
+      <div class:list={['right']}>
+        {/* Steps text */}
+        <Flex dt={{ gap: 'md', wrap: 'nowrap' }} class={'steps'}>
+          {steps.map((stepValue) => (
+            <div class:list={['step']}>
+              <Text class={'step'}>
+                {stepValue}
+              </Text>
+            </div>
+          ))}
+        </Flex>
+
+        {/* Color blocks */}
+        <Flex dt={{ gap: 'md', dir: 'column' }} class={'colors'}>
+          {colorList.map((color) => {
+            const colorSlug: string = slugify(color);
+
+            return (
+              <Flex dt={{ gap: 'md', wrap: 'nowrap'}} class={'color-row'}>
+                {steps.map((stepValue) => (
+                  <PaletteItem
+                    title={`${color} ${stepValue}`}
+                    className={`color-block bg-${colorSlug}-${stepValue}`}
+                  />
+                ))}
+              </Flex>
+            )
+          })}
+        </Flex>
+      </div>
+    </Flex>
+  </div>
+</section>
+
+
+{/* Styles */}
+<style lang="scss">
+  @use './Palette.scss';
+</style>
+
+
+{/* Script */}
+<script>
+  import { slugify } from "../../../utils/slugify";
+
+  // Init
+  const items = document.querySelectorAll('.color-block');
+
+
+  // Functions
+  function copyColorToClipboard(color: string): void {
+    navigator.clipboard.writeText(color)
+      .then(() => {
+        // Optionally, you can show a success message or provide feedback to the user
+        console.log(`Copied ${color} to clipboard`);
+      })
+      .catch((err: unknown) => {
+        // Handle errors if the copy action fails
+        console.error('Failed to copy color: ', err);
+      });
+  }
+
+
+  // Event Listeners
+  items.forEach((item) => {
+    item.addEventListener('click', (e) => {
+      e.preventDefault();
+      const color = item.getAttribute('title');
+
+      if (color) {
+        copyColorToClipboard(slugify(color));
+      }
+    });
+  });
+</script>

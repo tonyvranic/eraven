@@ -1,0 +1,54 @@
+---
+import Text from '../../ui/text/Text.astro';
+import Cell from '../../utils/Cell.astro';
+import Flex from '../../utils/Flex.astro';
+import Grid from '../../utils/Grid.astro';
+
+
+/* Computed */
+const logoAltText: string = 'An orange tape going from a blue cassette, through blue idle rollers towards a blue tape head, and then back to the cassette. The tape is forming wings. The tape head is connected to a blue satellite dish that is emitting 3 orange signal bars.';
+
+const navLinks = [
+  { href: '/recipes', label: 'Recipes' },
+  { href: '/blogs', label: 'Blogs' },
+];
+---
+
+
+{/* Html */}
+<header class="layout">
+  <Grid class:list={['fh']}>
+    <!-- Left -->
+    <Cell dt={{ start: 1, span: 3 }}>
+      <Flex dt={{ align: 'center' }} class:list={['logo-wrap', 'fh']}>
+        <a href="/" title="Home" aria-label="Home" class:list={['logo-link']}>
+          <img 
+            src="/logo.png"
+            class:list={['logo']}
+            alt={logoAltText}
+          />
+        </a>
+      </Flex>
+    </Cell>
+
+    <!-- Right -->
+    <Cell dt={{ start: 4, span: 9 }}>
+      <nav aria-label="Main navigation" class:list={['nav', 'fh']}>
+        <Flex el='ul' dt={{ gap: 'md', wrap: 'nowrap', justify: 'end', align: 'center' }} class:list={['nav-list', 'fh']}>
+          {navLinks.map((link) => (
+            <li>
+              <a href={link.href} class:list={['nav-link']}>
+                <Text type="label-md">{link.label}</Text>
+              </a>
+            </li>
+          ))}
+        </Flex>
+      </nav>
+    </Cell>
+  </Grid>
+</header>
+
+{/* Styles */}
+<style lang="scss">
+  @use './Header.scss';
+</style>

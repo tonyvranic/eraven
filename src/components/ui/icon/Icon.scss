@@ -1,0 +1,17 @@
+@use 'sass:list';
+
+// Icon sizing utilities
+$sizes: (16, 24);
+
+@each $size in $sizes {
+    .icon-#{$size} {
+        width: #{$size}px;
+        height: #{$size}px;
+
+        svg {
+            display: block;
+            width: 100%;
+            height: 100%;
+        }
+    }
+}

@@ -1,0 +1,206 @@
+@use "sass:map";
+@use 'sass:string';
+@use 'sass:color';
+@use 'sass:math';
+
+
+// Fonts
+// Base font size for rem calculations
+$base-font-size: 20px;
+
+$fonts: (
+    display: "'Anton', sans-serif",
+    heading: "'Anton', sans-serif",
+    body: "'Archivo Narrow', sans-serif",
+    label: "'Anton', sans-serif",
+);
+
+@function font($font) {
+    @return string.unquote(map.get($fonts, $font));
+}
+
+
+// Spacing config
+$spacing-step:  0.25rem * 1.2;
+$spacing-multiplier: 2;
+$spacing: (
+    0: 0,
+    2xs: $spacing-step * 0.5,
+    xs: $spacing-step,
+    sm: $spacing-step * math.pow($spacing-multiplier, 1),
+    md: $spacing-step * math.pow($spacing-multiplier, 2),
+    lg: $spacing-step * math.pow($spacing-multiplier, 3),
+    xl: $spacing-step * math.pow($spacing-multiplier, 4),
+    2xl: $spacing-step * math.pow($spacing-multiplier, 5),
+    3xl: $spacing-step * math.pow($spacing-multiplier, 6),
+);
+
+@function space($size) {
+    @return map.get($spacing, $size);
+}
+
+
+// Layout
+$layout: (
+    dt: ( width: 1920px, columns: 12, // Desktop
+        rowGap: space(md),
+        colGap: space(md),
+        padding: 108px,
+    ),
+    xl: ( width: 1536px, columns: 12, 
+        rowGap: space(md),
+        colGap: space(md),
+        padding: space(0)
+    ),
+    lg: ( width: 1280px, columns: 12, 
+        rowGap: space(md),
+        colGap: space(md),
+        padding: space(md)
+    ),
+    md: ( width: 1024px, columns: 12, 
+        rowGap: space(md),
+        colGap: space(md),
+        padding: space(md)
+    ),
+    sm: ( width: 800px, columns: 12, 
+        rowGap: space(sm),
+        colGap: space(sm),
+        padding: space(md)
+    ),
+    xs: ( width: 600px, columns: 12, 
+        rowGap: space(sm),
+        colGap: space(sm),
+        padding: space(md)
+    ),
+    xxs: ( width: 420px, columns: 12, 
+        rowGap: space(xs),
+        colGap: space(xs),
+        padding: space(md)
+    ),
+);
+
+@function width($breakpoint) {
+    @return map.get(map.get($layout, $breakpoint), width);
+}
+
+
+// Colors
+$color-light: #E5E2E1;
+$color-primary: #5086FE;
+$color-secondary: #FEC850;
+$color-error: color.change($color-primary, $hue: -10);
+$color-success: color.change($color-primary, $hue: 150);
+
+$base-colors: (
+    light: $color-light,
+    primary: $color-primary,
+    secondary: $color-secondary,
+    error: $color-error,
+    success: $color-success,
+);
+
+$colors: (
+    light-0: map.get($base-colors, light),
+    light-0-a0:  color.change(map.get($base-colors, light), $alpha: 0.0),
+    light-0-a10: color.change(map.get($base-colors, light), $alpha: 0.1),
+    light-100: #CFCAC9,
+    light-200: #B9B3B1,
+    light-300: #A29B99,
+    light-400: #8B8482,
+    light-500: #736E6C,
+    light-600: #5A5756,
+    light-700: #424140,
+    light-800: #2A2A2A,
+    light-850: color.adjust(map.get($base-colors, light), $lightness: -85%), // TODO - Delete
+    light-900: #131313,
+
+    primary-300: #6796FE,
+    primary-400: map.get($base-colors, primary),
+    primary-600: #3069E8,
+    primary-700: #2A3651,
+
+    secondary-400: map.get($base-colors, secondary),
+    secondary-600: #E8AE30,
+    secondary-700: #51442A,
+
+    error-100: color.adjust(map.get($base-colors, error), $lightness: 30%),
+    error-150: color.adjust(map.get($base-colors, error), $lightness: 25%),
+    error-400: map.get($base-colors, error),
+    error-600: color.adjust(map.get($base-colors, error), $lightness: -20%),
+
+    success-400: map.get($base-colors, success),
+);
+
+@function color($color) {
+    $value: map.get($colors, $color);
+    @if $value == null {
+        @return #FF0000;
+    }
+    @return $value;
+}
+
+$focus-outline: #{space(2xs)} solid #{color(primary-400)};
+
+
+/*
+ * Radius
+ * 
+ * Radius primarily signals softness vs rigidity.
+ * Sharp corners  → structured, serious, technical
+ * Soft corners   → friendly, modern, approachable
+ * Round corners  → playful, tactile, interactive
+ * 
+ * None - Sharp edges
+ * xs - Subtle UI elements
+ * sm - Small buttons
+ * md - Cards, buttons, inputs
+ * lg - Modals, panels
+ * xl - Marketing cards
+ * 2xl - Large containers, hero sections
+ * Round - Fully rounded, pills, circular elements
+*/
+$radius-offset: 0.125rem * 3;
+$radius-step: 0.125rem;
+
+$radius: (
+    none: 0,
+    2xs: $radius-offset * 0.5,
+    xs: $radius-offset,
+    sm: $radius-offset + $radius-step,
+    md: $radius-offset + $radius-step * 2,
+    lg: $radius-offset + $radius-step * 3,
+    xl: $radius-offset + $radius-step * 4,
+    2xl: $radius-offset + $radius-step * 5,
+    round: 9999px
+);
+
+@function radius($size) {
+    @return map.get($radius, $size);
+}
+
+
+/*
+ * Aspect Ratios
+ * 
+ * Aspect ratios are used to maintain consistent proportions for media and other elements.
+ * 
+ * Square - 1:1 ratio, ideal for profile pictures, icons, and thumbnails.
+ * Standard - 4:3 ratio, commonly used for images and videos, providing a balanced look.
+ * Photo - 3:2 ratio, often used in photography, offering a slightly wider frame than standard.
+ * Video - 16:9 ratio, the standard for widescreen video content, providing an immersive viewing experience.
+ * Hero - 21:9 ratio, often used for cinematic or wide-screen hero sections.
+ *
+ * Each component should define it's own ratio
+ * E.x. Blog card -> 16:9, Product card -> 1:1, Gallery card -> 3:2, etc.
+*/
+$aspect-ratios: (
+    square: '1 / 1',
+    standard: '4 / 3',
+    photo: '3 / 2',
+    video: '16 / 9',
+    hero: '21 / 9'
+);
+
+@function aspect($ratio) {
+    @return map.get($aspect-ratios, $ratio);
+}

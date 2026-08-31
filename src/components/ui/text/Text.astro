@@ -1,0 +1,36 @@
+---
+import type { HTMLAttributes } from 'astro/types';
+import type { TextElement, TypographyType } from './Text.types';
+
+
+/* Props */
+type Props = HTMLAttributes<'p'> & {
+  el?: TextElement;
+  type?: TypographyType;
+};
+
+const {
+  el: El = 'p',
+  type,
+  class: className,
+  ...rest
+} = Astro.props;
+
+
+/* Computed */
+const classes = [type ? `t-${type}` : null, className]
+  .filter(Boolean)
+  .join(' ') || undefined;
+---
+
+
+{/* Html */}
+<El class={classes} {...rest}>
+  <slot />
+</El>
+
+
+{/* Styles */}
+<style lang="scss">
+  @use './Text.scss';
+</style>

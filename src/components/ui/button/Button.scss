@@ -1,0 +1,160 @@
+@use 'vars' as v;
+@use 'timings' as t;
+@use 'typography' as typo;
+
+.component {
+    // Whitelabel - Base
+    --padding-vertical: calc(#{v.space(sm)} + #{v.space(xs)});
+    --padding-horizontal: calc(#{v.space(md)} + #{v.space(sm)});
+    --border-radius: #{v.radius(md)};
+
+    --surface-bg: #{v.color(primary-400)};
+    --surface-color: #{v.color(light-0)};
+
+    --border: #{v.space(2xs)} solid transparent;
+
+    --text-transform: uppercase;
+
+    --icon-gap: #{v.space(sm)};
+    --icon-size: '';
+
+    $text-role: body;
+    $text-size: md;
+
+
+    // Whitelabel - Hover
+    --hover-surface-bg: #{v.color(primary-450)};
+    --hover-surface-color: #{v.color(light-0)};
+    --hover-border-color: transparent;
+
+    // Whitelabel - Disabled
+    --disabled-opacity: 0.5;
+
+    // Whitelabel - Icon
+    --icon-only-padding: #{v.space(2xs)};
+    --icon-only-border-radius: var(--border-radius);
+
+    --icon-vertical-offset: 0px;
+
+    // Whitelabel - Variants
+    --secondary-surface-bg: #{v.color(light-800)};
+    --secondary-surface-color: #{v.color(light-0)};
+
+    --secondary-border: #{v.space(2xs)} solid #{v.color(light-500)};
+
+    --secondary-hover-surface-bg: #{v.color(light-700)};
+    --secondary-hover-surface-color: #{v.color(light-100)};
+    --secondary-hover-border-color: #{v.color(light-400)};
+
+
+    // Styles - Base
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    gap: var(--icon-gap);
+
+    padding: var(--padding-vertical) var(--padding-horizontal);;
+    border-radius: var(--border-radius);
+
+    background-color: var(--surface-bg);
+    color: var(--surface-color);
+
+    border: var(--border);
+
+
+    text-transform: var(--text-transform);
+
+    cursor: pointer;
+
+    @include typo.type($text-role, $text-size);
+
+    @include t.tx((
+        background-color, color, opacity, border-color
+    ), 1, t.$power-2-o);
+
+
+    // Styles - Hover
+    &:hover {
+        background-color: var(--hover-surface-bg);
+        color: var(--hover-surface-color);
+        border-color: var(--hover-border-color);
+
+
+        .right-icon svg {
+            transform: translateX(var(--icon-gap)) rotate(360deg);
+        }
+        &.icon-only {
+            .right-icon svg {
+                transform: rotate(360deg);
+            }
+        }
+    }
+
+    // Styles - Disabled
+    &:disabled, &[disabled], &.disabled {
+        opacity: var(--disabled-opacity);
+    }
+
+    // Styles - Icon Only
+    &.icon-only {
+        padding: var(--icon-only-padding);
+        border-radius: var(--icon-only-border-radius);
+    }
+
+    // Styles - Full Width
+    &.fw {
+        width: 100%;
+    }
+
+
+    // Styles - Variants
+    &.secondary {
+        background-color: var(--secondary-surface-bg);
+        color: var(--secondary-surface-color);
+        border: var(--secondary-border);
+
+        &:hover {
+            background-color: var(--secondary-hover-surface-bg);
+            color: var(--secondary-hover-surface-color);
+            border-color: var(--secondary-hover-border-color);
+        }
+    }
+
+
+    // Overrides
+    &.no-border {
+        border: none;
+    }
+    &:not(.icon-only):has(.left-icon) {
+        padding-left: calc(var(--padding-horizontal) - var(--icon-gap));
+    }
+    &:not(.icon-only):has(.right-icon) {
+        padding-right: calc(var(--padding-horizontal) - var(--icon-gap));
+    }
+
+
+    // Styles - Icon
+    .icon {
+        svg {
+            width: var(--icon-size);
+            // height: var(--icon-size);
+        }
+    }
+    &:not(.icon-only) {
+        .icon {
+            transform: translateY(var(--icon-vertical-offset));
+        }
+    }
+
+
+    // Styles - Left Icon
+    .left-icon {
+
+    }
+
+
+    // Styles - Right Icon
+    .right-icon svg {
+        @include t.tx((transform), 1.25, t.$power-2-o);
+    }
+}

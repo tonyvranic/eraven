@@ -1,0 +1,67 @@
+---
+import { iconRegistry } from '../../ui/icon/Icon.types';
+import Flex from '../../utils/Flex.astro';
+import IconsItem from './icons-item/IconsItem.astro';
+
+/* Props */
+interface Props {
+  // Define your props here
+}
+
+const { 
+  /* Destructure your props here */
+} = Astro.props;
+
+/* Computed */
+
+---
+
+
+{/* Html */}
+<Flex dt={{ gap: 'md' }} class={'component'}>
+  {iconRegistry.map((iconName) => (
+    <IconsItem
+      name={iconName}
+    />
+  ))}
+</Flex>
+
+
+{/* Styles */}
+<style lang="scss">
+  @use './Icons.scss';
+</style>
+
+
+{/* Script */}
+<script>
+  // Init
+  const items = document.querySelectorAll('[data-icons-item]');
+
+
+  // Functions
+  function copyIconNameToClipboard(iconName: string) {
+    navigator.clipboard.writeText(iconName)
+      .then(() => {
+        // Optionally, you can show a success message or provide feedback to the user
+        console.log(`Copied ${iconName} to clipboard`);
+      })
+      .catch((err) => {
+        // Handle errors if the copy action fails
+        console.error('Failed to copy icon: ', err);
+      });
+  }
+
+
+  // Event Listeners
+  items.forEach((item) => {
+    item.addEventListener('click', (e) => {
+      e.preventDefault();
+      const iconName = item.getAttribute('title');
+
+      if (iconName) {
+        copyIconNameToClipboard(iconName);
+      }
+    });
+  });
+</script>

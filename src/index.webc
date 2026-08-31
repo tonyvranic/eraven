@@ -1,6 +1,0 @@
----
-layout: 'base.webc'
-title: 'Home'
----
-
-<home-hero></home-hero>

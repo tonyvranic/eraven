@@ -1,0 +1,37 @@
+---
+/* Props */
+interface Props {
+  type?: 'default' | 'unstyled';
+  offsetTop?: boolean;
+}
+
+const { 
+  type = 'default',
+  offsetTop = false
+} = Astro.props;
+
+
+/* Computed */
+---
+
+
+{/* Html */}
+<div class:list={[
+  'component',
+  `type-${type}`,
+  offsetTop ? 'offset-top' : ''
+]}>
+  <slot />
+</div>
+
+
+{/* Styles */}
+<style lang="scss">
+  @use './TabPanelContainer.scss';
+</style>
+
+
+{/* Script */}
+<script>
+  
+</script>

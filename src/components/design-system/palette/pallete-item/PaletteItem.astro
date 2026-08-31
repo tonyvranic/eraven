@@ -1,0 +1,35 @@
+---
+/* Props */
+interface Props {
+  title: string;
+  className?: string;
+}
+
+const { title, className } = Astro.props;
+---
+
+
+{/* Html */}
+<a
+  href="#"
+  title={title}
+  class:list={['component', className]}
+  data-palette-item
+/>
+
+
+{/* Styles */}
+<style lang="scss">
+  @use './PaletteItem.scss';
+</style>
+
+{/* Script */}
+<script>
+  import { animSmallItemButton } from '../../../../utils/anims/smallItemButton';
+
+  const items = document.querySelectorAll('[data-palette-item]');
+
+  items.forEach((item) => {
+    animSmallItemButton(item);
+  });
+</script>

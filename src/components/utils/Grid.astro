@@ -1,0 +1,49 @@
+---
+import type { HTMLAttributes } from 'astro/types';
+import type { LayoutBreakpoint } from './config';
+
+type GridBreakpoint = Exclude<LayoutBreakpoint, 'dt'>;
+
+type Props = HTMLAttributes<'div'> & {
+    debug?: boolean;
+} & {
+    [K in GridBreakpoint]?: boolean;
+};
+
+const {
+    class: className,
+    debug,
+    xl, lg, md, sm, xs, xxs,
+    ...rest
+} = Astro.props;
+
+const debugColumnsCount = 12;
+
+const classes: string[] = ['grid-layout'];
+const breakpointClasses: Array<[GridBreakpoint, boolean | undefined]> = [
+    ['xl', xl],
+    ['lg', lg],
+    ['md', md],
+    ['sm', sm],
+    ['xs', xs],
+    ['xxs', xxs],
+];
+
+if (className) classes.push(className as string);
+if (debug) classes.push('grid-layout--debug');
+
+breakpointClasses.forEach(([key, enabled]) => {
+    if (enabled) classes.push(key);
+});
+---
+
+<div class={classes.join(' ') || undefined} {...rest}>
+    {debug && (
+        <div aria-hidden="true" class="grid-layout__debug">
+            {Array.from({ length: debugColumnsCount }, (_, i) => (
+                <div class="grid-layout__debug-column" />
+            ))}
+        </div>
+    )}
+    <slot />
+</div>

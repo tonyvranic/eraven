@@ -1,0 +1,17 @@
+@use 'vars' as v;
+
+.layout {
+    min-height: 96px;
+    background-color: v.color(light-900);
+}
+
+.logo-link {
+    display: block;
+    width: 80px;
+    height: 80px;
+}
+
+.logo {
+    width: 100%;
+    height: 100%;
+}

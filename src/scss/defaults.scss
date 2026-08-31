@@ -1,0 +1,117 @@
+@use 'vars' as v;
+@use 'mixins' as mix;
+@use 'typography' as typo;
+@use 'functions' as f;
+
+html {
+    font-size:  f.strip-unit(v.$base-font-size) + px;
+}
+
+body {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+
+    min-height: 100vh;
+    min-height: 100svh;
+
+    @include typo.type(body, md);
+
+    background-color: v.color(light-900);
+    color: v.color(light-0);
+
+    ::selection {
+        background: v.color(light-100);
+        color: v.color(primary-400);
+    }
+
+    overflow-y: scroll;
+
+    @include mix.scrollbar();
+}
+
+
+// Focus styles
+* {
+    outline-offset: v.space(2xs);
+
+    &:focus-visible {
+        outline: v.space(2xs) solid v.color(primary-400);
+    }
+
+    &.no-focus-outline {
+        outline: none;
+    }
+}
+
+
+
+main {
+    display: flex;
+    flex-wrap: wrap;
+    flex-grow: 1;
+}
+svg {
+    display: flex;
+    fill: currentColor;
+    stroke: currentColor;
+}
+
+section {
+    width: 100%;
+}
+
+b {
+    font-weight: 700;
+}
+i {
+    font-style: italic;
+}
+
+#modal-root {
+    position: fixed;
+    inset: 0;
+    z-index: 2;
+    overflow: hidden;
+
+    pointer-events: none;
+
+    & > * {
+        pointer-events: all;
+    }
+
+    @for $i from 1 through 10 {
+        & > *:nth-child(#{$i}) {
+            z-index: $i;
+        }
+    }
+}
+
+em {
+    color: v.color(primary-400);
+}
+
+h1, h2, h3, h4, h5, h6 {
+    color: v.color(light-100);
+}
+
+.em-style-secondary {
+    em {
+        color: v.color(secondary-400);
+    }
+}
+
+section {
+    position: relative;
+
+    &:not(.filled-bg) {
+        padding-bottom: v.space(2xl);
+    }
+    &.filled-bg {
+        margin-bottom: v.space(2xl);
+    }
+
+    &:not(:first-child) {
+        padding-top: v.space(2xl);
+    }
+}

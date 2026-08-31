@@ -1,0 +1,27 @@
+@use 'sass:color';
+@use 'vars' as v;
+
+.page {
+    padding-top: 50px;
+    padding-bottom: 50px;
+    flex: 1;
+}
+
+.wrap-outer {
+    display: flex;
+    flex-direction: column;
+    gap: 100px;
+}
+
+.row {
+    padding: 24px;
+    border-radius: #{v.radius(xl)};
+    background-color: color.adjust(v.color(light-800), $lightness: -3%);
+
+    &.type-palette {
+        background: linear-gradient(90deg, 
+            color.adjust(v.color(light-800), $lightness: 0%) 0%,
+            color.adjust(v.color(light-800), $lightness: 8%) 100%
+        );
+    }
+}

@@ -1,0 +1,271 @@
+@use "sass:map";
+@use 'sass:color';
+@use 'sass:math';
+
+@use 'vars' as v;
+@use 'functions' as f;
+
+
+// Vars
+$base: v.$base-font-size;
+$layout: v.$layout;
+$spacing: v.$spacing;
+
+
+// Extract breakpoints map just once
+$breakpoints: ();
+@each $bp, $data in $layout {
+    // Skip desktop — it's not a media query
+    @if $bp != dt {
+        $breakpoints: map.merge($breakpoints, ($bp: map.get($data, width)));
+    }
+}
+
+// Media mixin // Media mixin // Media mixin // Media mixin
+@mixin respond($bp) {
+    @media (max-width: map.get($breakpoints, $bp)) {
+        @content;
+    }
+}
+
+// Responsive column gap calculation
+// Expects units in pixels only
+@function responsiveColumnGap($width, $gap) {
+    $gap-value: f.strip-unit($gap);
+    $width-value: f.strip-unit($width);
+
+    $variable-gap: math.div($gap-value * 100, $width-value) + vw;
+
+    @return min(#{$gap + px}, $variable-gap);
+}
+
+
+// Desktop columns
+$dt-cols: map.get(map.get($layout, dt), columns);
+
+
+// Layout // Layout // Layout // Layout // Layout // Layout
+.grid-layout {
+    width: 100%;
+    display: grid;
+    position: relative;
+
+    $width: map.get(map.get($layout, dt), width);
+    $col-gap: map.get(map.get($layout, dt), colGap);
+    $row-gap: map.get(map.get($layout, dt), rowGap);
+    $padding: map.get(map.get($layout, dt), padding);
+
+    // Converting rem to px
+    $col-gap: f.strip-unit($col-gap) * f.strip-unit($base);
+
+    // Desktop base style
+    grid-template-columns: repeat(map.get(map.get($layout, dt), columns), 1fr);
+    column-gap: responsiveColumnGap($width, $col-gap);
+    row-gap: $row-gap;
+    max-width: map.get(map.get($layout, dt), width);
+    padding-left: $padding;
+    padding-right: $padding;
+    margin-left: auto;
+    margin-right: auto;
+
+    // Auto-generate responsive variations
+    @each $bp, $data in $layout {
+        @if $bp != dt {
+            &.#{$bp} {
+                @include respond($bp) {
+                    $width: map.get($data, width);
+                    $col-gap: map.get($data, colGap);
+                    $row-gap: map.get($data, rowGap);
+                    $padding: map.get($data, padding);
+
+                    // Converting rem to px
+                    $col-gap: f.strip-unit($col-gap) * f.strip-unit($base);
+
+                    grid-template-columns: repeat(map.get($data, columns), 1fr);
+                    column-gap: responsiveColumnGap($width, $col-gap);
+                    row-gap: $row-gap;
+                    padding-left: $padding;
+                    padding-right: $padding;
+                }
+            }
+        }
+    }
+}
+
+.grid-layout--debug {
+    > :not(.grid-layout__debug) {
+        position: relative;
+        z-index: 1;
+    }
+}
+
+.grid-layout__debug {
+    position: absolute;
+    inset: 0;
+    width: 100%;
+    height: 100%;
+    display: grid;
+    grid-template-columns: inherit;
+    column-gap: inherit;
+    row-gap: 0;
+    max-width: inherit;
+    padding-left: inherit;
+    padding-right: inherit;
+    margin-left: auto;
+    margin-right: auto;
+    pointer-events: none;
+    z-index: 0;
+}
+
+.grid-layout__debug-column {
+    min-height: 100%;
+    background-color: color.change(v.color(primary-400), $alpha: 0.2);
+}
+
+@for $i from 13 through $dt-cols {
+    .grid-layout.lg .grid-layout__debug-column:nth-child(#{$i}) {
+        @include respond(lg) {
+            display: none;
+        }
+    }
+
+    .grid-layout.md .grid-layout__debug-column:nth-child(#{$i}) {
+        @include respond(md) {
+            display: none;
+        }
+    }
+
+    .grid-layout.sm .grid-layout__debug-column:nth-child(#{$i}) {
+        @include respond(sm) {
+            display: none;
+        }
+    }
+
+    .grid-layout.xs .grid-layout__debug-column:nth-child(#{$i}) {
+        @include respond(xs) {
+            display: none;
+        }
+    }
+
+    .grid-layout.xxs .grid-layout__debug-column:nth-child(#{$i}) {
+        @include respond(xxs) {
+            display: none;
+        }
+    }
+}
+
+// Column span + offset // Column span + offset // Column span + offset
+// Normal cols
+
+@for $i from 1 through $dt-cols {
+    .col-#{$i} { grid-column-end: span #{$i}; }
+    .start-#{$i} { grid-column-start: #{$i}; }
+}
+
+// Responsive cols
+@each $bp, $data in $layout {
+    @if $bp != dt {
+        $cols: map.get($data, columns);
+
+        @for $i from 1 through $cols {
+            .#{$bp}\:col-#{$i} {
+                @include respond($bp) {
+                    grid-column-end: span #{$i};
+                }
+            }
+            .#{$bp}\:start-#{$i} {
+                @include respond($bp) {
+                    grid-column-start: #{$i};
+                }
+            }
+        }
+    }
+}
+
+// Spacings // Spacings // Spacings // Spacings // Spacings // Spacings
+// Normal spacing
+@each $key, $value in $spacing {
+    .mt-#{$key}      { margin-top: #{$value}; }
+    .-mt-#{$key}     { margin-top: -#{$value}; }
+    .mb-#{$key}      { margin-bottom: #{$value}; }
+    .-mb-#{$key}     { margin-bottom: -#{$value}; }
+    .pt-#{$key}      { padding-top: #{$value}; }
+    .pb-#{$key}      { padding-bottom: #{$value}; }
+    .gap-#{$key}     { gap: #{$value}; }
+    .col-gap-#{$key} { column-gap: #{$value}; }
+    .row-gap-#{$key} { row-gap: #{$value}; }
+}
+
+// Responsive spacing
+@each $bp, $size in $breakpoints {
+    @each $key, $value in $spacing {
+        .#{$bp}\:mt-#{$key}      { @include respond($bp) { margin-top: #{$value}; } }
+        .#{$bp}\:-mt-#{$key}     { @include respond($bp) { margin-top: -#{$value}; } }
+        .#{$bp}\:mb-#{$key}      { @include respond($bp) { margin-bottom: #{$value}; } }
+        .#{$bp}\:-mb-#{$key}     { @include respond($bp) { margin-bottom: -#{$value}; } }
+        .#{$bp}\:pt-#{$key}      { @include respond($bp) { padding-top: #{$value}; } }
+        .#{$bp}\:pb-#{$key}      { @include respond($bp) { padding-bottom: #{$value}; } }
+        .#{$bp}\:gap-#{$key}     { @include respond($bp) { gap: #{$value}; } }
+        .#{$bp}\:col-gap-#{$key} { @include respond($bp) { column-gap: #{$value}; } }
+        .#{$bp}\:row-gap-#{$key} { @include respond($bp) { row-gap: #{$value}; } }
+    }
+}
+
+// Display // Display // Display // Display // Display
+
+.show { display: block; }
+.hide { display: none; }
+
+.f { display: flex; }
+.f-w { flex-wrap: wrap; }
+.f-nw { flex-wrap: nowrap; }
+
+.fc { flex-direction: column; }
+.fcr { flex-direction: column-reverse; }
+.fr { flex-direction: row; }
+.frr { flex-direction: row-reverse; }
+
+.jsb { justify-content: space-between; }
+.jc { justify-content: center; }
+.js { justify-content: flex-start; }
+.je { justify-content: flex-end; }
+
+.as { align-items: flex-start; }
+.ae { align-items: flex-end; }
+.ac { align-items: center; }
+.ast { align-items: stretch; }
+
+// .acc { align-content: center; }
+
+.fg-1 { flex-grow: 1; }
+.fs-0 { flex-shrink: 0; }
+
+// Responsive auto-generation
+@each $bp, $size in $breakpoints {
+    .#{$bp}\:show { @include respond($bp) { display: block;} }
+    .#{$bp}\:hide { @include respond($bp) { display: none;} }
+
+
+    .#{$bp}\:f-w  { @include respond($bp) { flex-wrap: wrap;} }
+    .#{$bp}\:f-nw { @include respond($bp) { flex-wrap: nowrap;} }
+
+    .#{$bp}\:fc   { @include respond($bp) { flex-direction: column;} }
+    .#{$bp}\:fcr  { @include respond($bp) { flex-direction: column-reverse;} }
+    .#{$bp}\:fr   { @include respond($bp) { flex-direction: row;} }
+    .#{$bp}\:frr  { @include respond($bp) { flex-direction: row-reverse;} }
+
+    .#{$bp}\:jsb  { @include respond($bp) { justify-content: space-between;} }
+    .#{$bp}\:jc   { @include respond($bp) { justify-content: center;} }
+    .#{$bp}\:js   { @include respond($bp) { justify-content: flex-start;} }
+    .#{$bp}\:je   { @include respond($bp) { justify-content: flex-end;} }
+
+    .#{$bp}\:as   { @include respond($bp) { align-items: flex-start;} }
+    .#{$bp}\:ae   { @include respond($bp) { align-items: flex-end;} }
+    .#{$bp}\:ac   { @include respond($bp) { align-items: center;} }
+    .#{$bp}\:ast  { @include respond($bp) { align-items: stretch;} }
+
+    // .#{$bp}\:acc  { @include respond($bp) { align-content: center;} }
+
+    .#{$bp}\:fg-1 { @include respond($bp) { flex-grow: 1;} }
+    .#{$bp}\:fs-0 { @include respond($bp) { flex-shrink: 0;} }
+}

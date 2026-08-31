@@ -1,0 +1,6 @@
+@use 'vars' as v;
+
+.component {
+    padding: v.space(sm);
+    border-radius: v.radius(sm);
+}

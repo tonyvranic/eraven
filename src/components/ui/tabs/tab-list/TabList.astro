@@ -1,0 +1,120 @@
+---
+import Flex from '../../../utils/Flex.astro';
+
+/* Props */
+interface Props {
+  growParent?: boolean;
+  growChildren?: boolean;
+  noPadding?: boolean;
+}
+
+const { 
+  growParent = false,
+  growChildren = false,
+  noPadding = false
+} = Astro.props;
+
+
+/* Computed */
+---
+
+
+{/* Html */}
+<div class:list={[
+  'component',
+  growParent ? 'grow-parent' : '',
+  growChildren ? 'grow-children' : '',
+  noPadding ? 'no-padding' : '']}
+>
+  <Flex 
+    dt={{ gap: 'sm' }}
+    class:list={[
+      'tabs-container',
+      growChildren ? 'fw' : ''
+    ]}
+  >
+    <div
+      class:list={['indicator']}
+      data-tab-indicator
+    ></div>
+    <slot />
+  </Flex>
+</div>
+
+
+{/* Styles */}
+<style lang="scss">
+  @use './TabList.scss';
+</style>
+
+
+{/* Script */}
+<script>
+  import type { TabListIndicator } from "./TabList.types";
+  import type { TabSelectEvent } from "../tab/Tab.types";
+
+  import { queryFn } from "../../../../utils/queryFn";
+import { animTabIndicator } from "../../../../utils/anims/tabIndicator";
+
+  const indicatorEls = document.querySelectorAll('[data-tab-indicator]');
+
+  indicatorEls.forEach(indicatorEl => {
+    // Queries
+    const tabWrapper = queryFn(indicatorEl, '[data-tabs-wrapper]', { closest: true });
+    if (!tabWrapper) return;
+
+    const tabEls = queryFn(tabWrapper, '[data-tab]', { all: true });
+    if (!tabEls) return;
+
+
+    // Init
+    const indicator: TabListIndicator = {
+      left: 0,
+      width: 0,
+    }
+
+
+    // Logic
+    // Preselect by searching for a tab with the 'active' class
+    const activeTabEl = Array.from(tabEls).find(tabEl => tabEl.classList.contains('active'));
+    if (activeTabEl) {
+      calculateIndicator(activeTabEl as HTMLElement, indicator);
+      updateIndicatorPosition(indicatorEl as HTMLElement, indicator);
+    }
+
+
+    // Events
+    indicatorEl.addEventListener('tab-select', ((e: TabSelectEvent) => {
+      const value = e.detail.value;
+
+      // Find the clicked tab button
+      const clickedTabEl = Array.from(tabEls).find(tabEl => tabEl.getAttribute('data-value') === value);
+      if (!clickedTabEl) {
+        console.warn(`No tab button found with value: ${value}`);
+        return;
+      }
+
+      calculateIndicator(clickedTabEl as HTMLElement, indicator);
+      updateIndicatorPosition(indicatorEl as HTMLElement, indicator);
+    }) as EventListener);
+  });
+
+
+  // Functions
+  function calculateIndicator(
+    tabEl: HTMLElement,
+    indicator: TabListIndicator
+  ) {
+    const { offsetLeft, offsetWidth } = tabEl;
+
+    indicator.left = offsetLeft;
+    indicator.width = offsetWidth;
+  }
+
+  function updateIndicatorPosition(
+    indicatorEl: HTMLElement,
+    indicator: TabListIndicator
+  ) {
+    animTabIndicator(indicatorEl, indicator);
+  }
+</script>

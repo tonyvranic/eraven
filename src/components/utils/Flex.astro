@@ -1,0 +1,115 @@
+---
+import type { HTMLAttributes } from 'astro/types';
+import type { LayoutBreakpoint, SpacingValue } from './config';
+
+type FlexBreakpoint = LayoutBreakpoint;
+
+interface FlexSettings {
+    wrap?: 'wrap' | 'nowrap';
+    dir?: 'row' | 'row-reverse' | 'column' | 'column-reverse';
+    justify?: 'start' | 'end' | 'center' | 'between';
+    align?: 'start' | 'end' | 'center' | 'stretch';
+
+    gap?: SpacingValue;
+    colGap?: SpacingValue;
+    rowGap?: SpacingValue;
+
+    grow?: boolean;
+    shrink?: boolean;
+
+    mt?: SpacingValue;
+    negMt?: SpacingValue;
+    mb?: SpacingValue;
+    negMb?: SpacingValue;
+    pt?: SpacingValue;
+    pb?: SpacingValue;
+}
+
+type Props = HTMLAttributes<'div'> & {
+    el?: 'div' | 'section' | 'article' | 'header' | 'footer' | 'ul';
+} & {
+    [K in FlexBreakpoint]?: FlexSettings;
+};
+
+const {
+    el: El = 'div',
+    class: className,
+    dt, xl, lg, md, sm, xs, xxs,
+    ...rest
+} = Astro.props;
+
+const classes: string[] = ['f'];
+
+const responsiveSettings: Array<[FlexBreakpoint, FlexSettings | undefined]> = [
+    ['dt', dt], ['xl', xl], ['lg', lg],
+    ['md', md], ['sm', sm], ['xs', xs],
+    ['xxs', xxs],
+];
+
+if (className) classes.push(className as string);
+
+responsiveSettings.forEach(([breakpoint, settings]) => {
+    if (!settings) return;
+
+    const {
+        wrap, dir, justify, align,
+        gap, colGap, rowGap,
+        grow, shrink,
+        mt, negMt, mb, negMb, pt, pb,
+    } = settings;
+    const prefix = breakpoint === 'dt' ? '' : `${breakpoint}:`;
+
+    const wrapClass = wrap ? `${prefix}f-${wrap === 'wrap' ? 'w' : 'nw'}` : null;
+
+    let dirClass: string | null = null;
+    switch (dir) {
+        case 'column': dirClass = `${prefix}fc`; break;
+        case 'column-reverse': dirClass = `${prefix}fcr`; break;
+        case 'row': dirClass = `${prefix}fr`; break;
+        case 'row-reverse': dirClass = `${prefix}frr`; break;
+    }
+
+    let justifyClass: string | null = null;
+    switch (justify) {
+        case 'start': justifyClass = `${prefix}js`; break;
+        case 'end': justifyClass = `${prefix}je`; break;
+        case 'center': justifyClass = `${prefix}jc`; break;
+        case 'between': justifyClass = `${prefix}jsb`; break;
+    }
+
+    let alignClass: string | null = null;
+    switch (align) {
+        case 'start': alignClass = `${prefix}as`; break;
+        case 'end': alignClass = `${prefix}ae`; break;
+        case 'center': alignClass = `${prefix}ac`; break;
+        case 'stretch': alignClass = `${prefix}ast`; break;
+    }
+
+    const growClass = grow ? `${prefix}fg-1` : null;
+    const shrinkClass = shrink ? `${prefix}fs-0` : null;
+
+    const gapClass = gap ? `${prefix}gap-${gap}` : null;
+    const colGapClass = colGap ? `${prefix}col-gap-${colGap}` : null;
+    const rowGapClass = rowGap ? `${prefix}row-gap-${rowGap}` : null;
+
+    const mtClass = mt ? `${prefix}mt-${mt}` : null;
+    const negMtClass = negMt ? `${prefix}-mt-${negMt}` : null;
+    const mbClass = mb ? `${prefix}mb-${mb}` : null;
+    const negMbClass = negMb ? `${prefix}-mb-${negMb}` : null;
+    const ptClass = pt ? `${prefix}pt-${pt}` : null;
+    const pbClass = pb ? `${prefix}pb-${pb}` : null;
+
+    for (const c of [
+        wrapClass, dirClass, justifyClass, alignClass,
+        growClass, shrinkClass,
+        gapClass, colGapClass, rowGapClass,
+        mtClass, negMtClass, mbClass, negMbClass, ptClass, pbClass,
+    ]) {
+        if (c) classes.push(c);
+    }
+});
+---
+
+<El class={classes.join(' ') || undefined} {...rest}>
+    <slot />
+</El>
