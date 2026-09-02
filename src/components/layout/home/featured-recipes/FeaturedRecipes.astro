@@ -1,0 +1,131 @@
+---
+import { getCollection } from 'astro:content';
+
+import Text from '../../../ui/text/Text.astro';
+import Cell from '../../../utils/Cell.astro';
+import Grid from '../../../utils/Grid.astro';
+import RecipeListItem from '../../../utils/recipe-list-item/RecipeListItem.astro';
+
+/* Props */
+interface Props {
+  // Define your props here
+}
+
+const { 
+  /* Destructure your props here */
+} = Astro.props;
+
+
+/* Computed */
+const posts = (await getCollection('recipe'))
+  .sort((a, b) => b.data.dateCreated.getTime() - a.data.dateCreated.getTime())
+  .slice(0, 3);
+
+const post1 = posts[0];
+const post2 = posts[1];
+const post3 = posts[2];
+---
+
+
+{/* Html */}
+<section class:list={['featured-recipes']}>
+
+  <!-- Top -->
+  <div class:list={['top']}>
+    <Grid sm>
+      <Cell
+        dt={{ start: 3, span: 4 }}
+        sm={{ start: 1, span: 12 }}
+        class:list={['desc', 'ase']}
+      >
+        <!-- Desc -->
+        <Text el="p" type="body-lg" class:list={['tr']}>
+          Not every process begins with light or ends in code.
+          Some happen slowly, through heat, texture, instinct, and a little bit of improvisation.
+          <br><br>
+          <em>Cooking</em> is another form of exploration — following a recipe, breaking it apart, changing a variable, and seeing what happens. 
+        </Text>
+      </Cell>
+
+      <Cell
+        dt={{ start: 7, span: 6 }}
+        sm={{ start: 1, span: 12 }}
+      >
+        <!-- Title -->
+        <Text el="h2" type="display-2xl">
+          Beyond <br>
+          the <em>Screen</em>
+        </Text>
+      </Cell>
+    </Grid>
+  </div>
+
+  <!-- Bottom -->
+  <div class:list={['bottom', 'mt-xl']}>
+    <Grid sm>
+
+      { // Post #1
+        post1 && (
+          <Cell
+            dt={{ start: 1, span: 4 }}
+            sm={{ start: 1, span: 12 }}
+          >
+            <RecipeListItem
+              link={`/blog/${post1.id}`}
+              title={post1.data.title}
+              excerpt={post1.data.excerpt}
+              imageSrc={post1.data.thumbnail.src}
+              imageAlt={post1.data.thumbnail.alt}
+            />
+          </Cell>
+        )
+      }
+
+      { // Post #2
+        post2 && (
+          <Cell
+            dt={{ start: 5, span: 4 }}
+            sm={{ start: 1, span: 12 }}
+          >
+            <RecipeListItem
+              link={`/blog/${post2.id}`}
+              title={post2.data.title}
+              excerpt={post2.data.excerpt}
+              imageSrc={post2.data.thumbnail.src}
+              imageAlt={post2.data.thumbnail.alt}
+            />
+          </Cell>
+        )
+      }
+      
+      { // Post #3
+        post3 && (
+          <Cell
+            dt={{ start: 9, span: 4 }}
+            sm={{ start: 1, span: 12 }}
+          >
+            <RecipeListItem
+              link={`/blog/${post3.id}`}
+              title={post3.data.title}
+              excerpt={post3.data.excerpt}
+              imageSrc={post3.data.thumbnail.src}
+              imageAlt={post3.data.thumbnail.alt}
+            />
+          </Cell>
+        )
+      }
+    </Grid>
+  </div>
+</section>
+
+
+{/* Styles */}
+<style lang="scss">
+  @use './FeaturedRecipes.scss';
+</style>
+
+
+{/* Script */}
+<script>
+  
+</script>

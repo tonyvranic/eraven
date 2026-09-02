@@ -1,0 +1,16 @@
+@use 'vars' as v;
+@use 'timings' as t;
+
+
+.gallery-bento-desc {
+    padding-left: 52px;
+}
+
+.column {
+    &:first-child {
+        transform: translateY(calc(-1 * v.space('md')));
+    }
+    &:last-child {
+        transform: translateY(calc(1 * v.space('md')));
+    }
+}

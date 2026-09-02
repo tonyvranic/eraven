@@ -1,0 +1,17 @@
+{
+  "thumbnail": {
+    "src": "imgs/blog/music-is-the-answer/thumbnail.webp",
+    "alt": "Musical notes"
+  },
+  "heroImage": {
+    "src": "imgs/blog/music-is-the-answer/hero.webp",
+    "alt": "Musical notes"
+  },
+  "title": "Music is the answer",
+  "excerpt": "Happy? Sad? Longing? Immersed? Excited? Take a listen",
+  "category": "Art",
+  "tags": ["music"],
+  "dateCreated": "2026-09-02",
+  "lastEditDate": "2026-09-02",
+  "sections": []
+}

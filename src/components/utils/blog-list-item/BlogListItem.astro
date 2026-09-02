@@ -1,0 +1,78 @@
+---
+import Text from '../../ui/text/Text.astro';
+import Flex from '../Flex.astro';
+import MediaBorder from '../media-border/MediaBorder.astro';
+
+/* Props */
+interface Props {
+  link: string;
+  title: string;
+  excerpt: string;
+  imageSrc: string;
+  imageAlt: string;
+}
+
+const { 
+  link,
+  title,
+  excerpt,
+  imageSrc,
+  imageAlt
+} = Astro.props;
+
+
+/* Computed */
+---
+
+
+{/* Html */}
+<a href={link} class:list={['blog-list-item', 'secondary-600']}>
+  <MediaBorder
+    classes={['item-border', 'secondary-700']}
+  />
+  <Flex class:list={['inner', 'fw', 'rel']}>
+    {/* Background */}
+    <div class:list={['bg', 'media', 'abs-fw', 'z-1', 'slice-top-right']}>
+      <img
+        src={imageSrc}
+        alt={imageAlt}
+        width="488" height="626"
+      />
+      <div class:list={['bg-overlay', 'abs-fw', 'z-2', 'bg-secondary-600']}></div>
+    </div>
+
+    <div class:list={['content', 'rel', 'z-2', 'ase']}>
+      {/* Backdrop */}
+      <div class:list={['backdrop', 'abs-fw', 'z-1', 'slice-top-right']}>
+        <div class:list={['backdrop-color', 'abs-fw', 'z-1', 'bg-secondary-700']}></div>
+      </div>
+
+      {/* Content */}
+      <div class:list={['content-inner', 'rel', 'z-2']}>
+        <Text
+          el="h3"
+          type="display-lg"
+          set:html={title}
+          class:list={['title', 'secondary-600']}
+        />
+        <Text
+          type="body-lg"
+          set:html={excerpt}
+          class:list={['excerpt']}
+        />
+      </div>
+    </div>
+  </Flex>
+</a>
+
+
+{/* Styles */}
+<style lang="scss">
+  @use './BlogListItem.scss';
+</style>
+
+
+{/* Script */}
+<script>
+  
+</script>

@@ -1,24 +1,53 @@
 @use 'sass:list';
 
-$dur-base: 300ms;
+$dur-base: 400ms;
 
-$power-4-io: cubic-bezier(0.85, -0.1, 0.1, 1.05);
 $power-1-io: cubic-bezier(0.4, 0, 0.6, 1);
-$power-2-o: cubic-bezier(0.1, 0.2, 0.2, 1);
+$power-2-io: cubic-bezier(0.7, 0, 0.3, 1);
+$power-2-out: cubic-bezier(0.1, 0.2, 0.2, 1);
+$power-3-out: cubic-bezier(.09,.68,.26,.99);
+$power-4-io: cubic-bezier(0.85, -0.1, 0.1, 1.05);
 
 
+@function mul($multiplier) {
+    @if ($multiplier == 0) {
+        @return 0ms;
+    }
+    @return $dur-base * $multiplier;
+}
+
+// Transition Mixin
+// $props:  List of properties to transition (e.g. (opacity, transform))
+// $mul:    Multiplier for the base duration (e.g. 1.5 for 600ms if base is 400ms)
+// $ease:   Easing function for the transition (e.g. $power-2-out)
+// $delays: List of delays for each property.
+//          Expected as a multiplier that multiplies with $mul (e.g. (0.3, 0.15) for 120ms and 60ms if $mul is 1.5 and base is 400ms)
+//          If an item is missing, it defaults to 0. 
 @mixin tx(
     $props: (opacity, transform, visibility),
     $mul: 1,
-    $ease: $power-2-o,
+    $ease: $power-2-out,
+    $delays: (0)
 ) {
-    $duration: $dur-base * $mul;
+    $duration: mul($mul);
     $transitions: ();
 
     @each $property in $props {
+        $delay: 0ms;
+
+        // Check if a delay is provided for this property
+        $propsIndex: list.index($props, $property);
+        $delaysLength: list.length($delays);
+
+        @if $propsIndex != null and $propsIndex <= $delaysLength {
+            $delayMul: list.nth($delays, $propsIndex) * $mul;
+            $delay: mul($delayMul);
+        }
+
+
         $transitions: list.append(
             $transitions,
-            $property $duration $ease,
+            $property $duration $ease $delay,
             comma
         );
     }

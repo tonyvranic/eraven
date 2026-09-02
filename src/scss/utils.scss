@@ -1,9 +1,13 @@
 @use 'sass:map';
 @use 'sass:string';
+@use 'sass:list';
+@use 'sass:math';
 
 @use 'vars' as v;
 @use 'mixins' as mix;
 @use 'typography' as typo;
+@use 'timings' as t;
+
 
 // Containers // Containers // Containers // Containers
 .container-1920 {
@@ -118,39 +122,18 @@
     position: sticky;
 }
 
-.z--1 {
-    z-index: -1;
-}
+$indicies: (-1, 0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10);
 
-.z-1 {
-    z-index: 1;
-}
-.z-2 {
-    z-index: 2;
-}
-.z-3 {
-    z-index: 3;
-}
-.z-4 {
-    z-index: 4;
-}
-.z-5 {
-    z-index: 5;
-}
-.z-6 {
-    z-index: 6;
-}
-.z-7 {
-    z-index: 7;
-}
-.z-8 {
-    z-index: 8;
-}
-.z-9 {
-    z-index: 9;
-}
-.z-10 {
-    z-index: 10;
+@each $index in $indicies {
+    @if $index < 0 {
+        .-z-#{math.abs($index)} {
+            z-index: #{$index};
+        }
+    } @else {
+        .z-#{$index} {
+            z-index: #{$index};
+        }
+    }
 }
 
 
@@ -210,7 +193,10 @@ h6 {
 
 // Generate aspect ratio utility classes
 @each $name, $ratio in v.$aspect-ratios {
-    .aspect-#{$name} {
+    $split-name: string.split($name, ':');
+    $joined-name: #{list.nth($split-name, 1)}\:#{list.nth($split-name, 2)};
+
+    .aspect-#{$joined-name} {
         aspect-ratio: string.unquote($ratio);
     }
 }
@@ -362,6 +348,22 @@ h6 {
 }
 
 
+// Corner slicers
+.slice-top-right {
+    --size: 32px;
+
+    clip-path: polygon(
+        100% 0%,
+        calc(100% - var(--size)) 0%,
+        100% var(--size),
+
+        100% 100%,
+        0% 100%,
+        0% 0%
+    );
+}
+
+
 // Spacings // Spacings // Spacings // Spacings // Spacings
 .mlr-auto {
     margin-left: auto;
@@ -374,4 +376,81 @@ h6 {
 .mr-auto {
     margin-left: 0;
     margin-right: auto;
+}
+
+.-ml-4 {
+    margin-left: -4px;
+}
+
+
+// TODO - Create own component
+.column-media {
+    --hover-color: #{v.color(primary-400)};
+
+    padding: (v.space('md') + v.space('xs'));
+
+    &:not(:last-child) {
+        margin-bottom: v.space('md');
+    }
+
+    @include t.tx((color));
+
+    &:hover,
+    &:focus {
+        color: var(--hover-color);
+
+        .column-media-container {
+            transform: scale(0.95);
+            opacity: 1;
+
+            img {
+                filter: saturate(1);
+            }
+        }
+
+        .column-media-overlay {
+            transform: scaleY(0);
+            visibility: hidden;
+        }
+    }
+
+
+    &.type-vertical {
+        height: min(840px, 90vh);
+    }
+
+    &.hover-secondary-400 {
+        --hover-color: #{v.color(secondary-400)};
+    }
+}
+
+.column-media-container {
+    --border-size: 32px;
+
+    height: 100%;
+    opacity: 0.6;
+
+    clip-path: polygon(
+        0% 0%,
+        calc(100% - var(--border-size)) 0%,
+        100% var(--border-size),
+        100% 100%,
+        0% 100%
+    );
+
+    @include t.tx((transform, opacity));
+
+    img {
+        filter: saturate(0);
+
+        @include t.tx((filter));
+    }
+}
+
+.column-media-overlay {
+    transform-origin: top;
+
+    opacity: 0.3;
+
+    @include t.tx((transform, visibility), 1.2);
 }

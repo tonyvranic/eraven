@@ -1,0 +1,17 @@
+{
+  "thumbnail": {
+    "src": "imgs/blog/less-is-more/thumbnail.webp",
+    "alt": "Empty parking lot"
+  },
+  "heroImage": {
+    "src": "imgs/blog/less-is-more/hero.webp",
+    "alt": "Empty parking lot"
+  },
+  "title": "Less is more",
+  "excerpt": "We are cluttered with information from a day to day basis. It’s time to let everyone take a breath",
+  "category": "Philosophy",
+  "tags": ["minimalism"],
+  "dateCreated": "2026-09-01",
+  "lastEditDate": "2026-09-01",
+  "sections": []
+}

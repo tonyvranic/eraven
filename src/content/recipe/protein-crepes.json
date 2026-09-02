@@ -1,0 +1,17 @@
+{
+  "thumbnail": {
+    "src": "imgs/recipe/protein-crepes/thumbnail.webp",
+    "alt": "Stacked crepes on a plate"
+  },
+  "heroImage": {
+    "src": "imgs/recipe/protein-crepes/hero.webp",
+    "alt": "Stacked crepes on a plate"
+  },
+  "title": "Protein Crepes",
+  "excerpt": "Everybody loves some good and simple crepes. You can make them salty or sweet and they can go hand in hand with other salty or sweet fillings",
+  "category": "Snacks",
+  "tags": ["protein", "baking"],
+  "dateCreated": "2026-09-02",
+  "lastEditDate": "2026-09-02",
+  "sections": []
+}

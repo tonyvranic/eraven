@@ -1,0 +1,130 @@
+---
+import { getCollection } from 'astro:content';
+
+import Text from '../../../ui/text/Text.astro';
+import Cell from '../../../utils/Cell.astro';
+import Grid from '../../../utils/Grid.astro';
+import BlogListItem from '../../../utils/blog-list-item/BlogListItem.astro';
+
+/* Props */
+interface Props {
+  // Define your props here
+}
+
+const { 
+  /* Destructure your props here */
+} = Astro.props;
+
+
+/* Computed */
+const posts = (await getCollection('blog'))
+  .sort((a, b) => b.data.dateCreated.getTime() - a.data.dateCreated.getTime())
+  .slice(0, 3);
+
+const post1 = posts[0];
+const post2 = posts[1];
+const post3 = posts[2];
+---
+
+
+{/* Html */}
+<section class:list={['featured-blogs', 'secondary-styling']}>
+
+  <!-- Top -->
+  <div class:list={['top']}>
+    <Grid sm>
+      <Cell
+        dt={{ start: 1, span: 6 }}
+        sm={{ start: 1, span: 12 }}
+      >
+        <!-- Title -->
+        <Text el="h2" type="display-2xl" class:list={['tr']}>
+          The <br> <em>Process</em>
+        </Text>
+      </Cell>
+
+      <Cell
+        dt={{ start: 7, span: 6 }}
+        sm={{ start: 1, span: 12 }}
+        class:list={['desc', 'ase']}
+      >
+        <!-- Desc -->
+        <Text el="p" type="body-lg">
+          Beyond the final image, there is the investigation.
+          <br><br>
+          These <em>posts</em> document the intersections: the systems built, the theories tested, and the moments where code and creativity converge.
+          A deeper look into the work in progress
+        </Text>
+      </Cell>
+    </Grid>
+  </div>
+
+  <!-- Bottom -->
+  <div class:list={['bottom', 'mt-xl']}>
+    <Grid sm>
+
+      { // Post #1
+        post1 && (
+          <Cell
+            dt={{ start: 1, span: 4 }}
+            sm={{ start: 1, span: 12 }}
+          >
+            <BlogListItem
+              link={`/blog/${post1.id}`}
+              title={post1.data.title}
+              excerpt={post1.data.excerpt}
+              imageSrc={post1.data.thumbnail.src}
+              imageAlt={post1.data.thumbnail.alt}
+            />
+          </Cell>
+        )
+      }
+
+      { // Post #2
+        post2 && (
+          <Cell
+            dt={{ start: 5, span: 4 }}
+            sm={{ start: 1, span: 12 }}
+          >
+            <BlogListItem
+              link={`/blog/${post2.id}`}
+              title={post2.data.title}
+              excerpt={post2.data.excerpt}
+              imageSrc={post2.data.thumbnail.src}
+              imageAlt={post2.data.thumbnail.alt}
+            />
+          </Cell>
+        )
+      }
+      
+      { // Post #3
+        post3 && (
+          <Cell
+            dt={{ start: 9, span: 4 }}
+            sm={{ start: 1, span: 12 }}
+          >
+            <BlogListItem
+              link={`/blog/${post3.id}`}
+              title={post3.data.title}
+              excerpt={post3.data.excerpt}
+              imageSrc={post3.data.thumbnail.src}
+              imageAlt={post3.data.thumbnail.alt}
+            />
+          </Cell>
+        )
+      }
+    </Grid>
+  </div>
+</section>
+
+
+{/* Styles */}
+<style lang="scss">
+  @use './FeaturedBlogs.scss';
+</style>
+
+
+{/* Script */}
+<script>
+  
+</script>

@@ -1,0 +1,90 @@
+---
+import Text from '../../../ui/text/Text.astro';
+import Cell from '../../../utils/Cell.astro';
+import Grid from '../../../utils/Grid.astro';
+
+/* Props */
+interface Props {
+  quote: string;
+  author?: string;
+  accentColor?: 'primary' | 'secondary';
+}
+
+const { 
+  quote,
+  author = '',
+  accentColor = 'secondary'
+} = Astro.props;
+
+
+/* Computed */
+const accentColorClass = `bg-${accentColor}-400`;
+---
+
+
+{/* Html */}
+<section class:list={
+  [
+    'blockquote', 'filled-bg',
+    accentColorClass, 'light-900',
+    'tc', 'secondary-styling'
+  ]
+}>
+  <Grid xl sm xs>
+    <Cell
+      dt={{ start: 3, span: 8 }}
+      xl={{ start: 2, span: 10 }}
+      sm={{ start: 1, span: 12 }}
+      xs={{ start: 1, span: 12 }}
+      class:list={['ac', 'column']}
+    >
+      <!-- Quote icon -->
+      {author && (
+        <Text
+          class:list={['blockquote-quote-icon-text']}
+          type="display-xl"
+        >
+          “”
+        </Text>
+      )}
+
+      <!-- Quote text -->
+      <Text
+        el="h2"
+        class:list={['blockquote-quote-text', 'light-900']}
+        type="display-xl"
+      >
+        {quote}
+      </Text>
+
+      <!-- Author text -->
+      {author && (
+        <div 
+          class:list={[
+            'blockquote-author-text-separator',
+            'bg-light-900', 'mlr-auto'
+          ]}>
+
+        </div>
+        <Text
+          class:list={['blockquote-author-text']}
+          type="label-md"
+        >
+          {author}
+        </Text>
+      )}
+    </Cell>
+  </Grid>
+</section>
+
+
+{/* Styles */}
+<style lang="scss">
+  @use './Blockquote.scss';
+</style>
+
+
+{/* Script */}
+<script>
+  
+</script>

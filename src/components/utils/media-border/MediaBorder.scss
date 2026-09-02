@@ -1,0 +1,62 @@
+@use 'vars' as v;
+@use 'timings' as t;
+
+.media-border {
+    --border-color: currentColor;
+    --corner-size: 40px;
+    --border-width: 8px;
+}
+
+.border {
+    position: absolute;
+    background-color: var(--border-color);
+
+    @include t.tx((background-color));
+}
+
+.border-left {
+    height: 100%;
+    left: 0;
+    width: var(--border-width);
+}
+.border-bottom {
+    width: 100%;
+    bottom: 0;
+    height: var(--border-width);
+}
+.border-top {
+    width: calc(100% - var(--corner-size));
+    top: 0;
+    height: var(--border-width);
+}
+.border-right {
+    height: calc(100% - var(--corner-size));
+    right: 0;
+    bottom: 0;
+    width: var(--border-width);
+}
+
+.border-corner {
+    top: 0;
+    right: 0;
+    width: calc(var(--corner-size) + var(--border-width));
+    height: calc(var(--corner-size) + var(--border-width));
+
+    clip-path: polygon(
+        /* Top Left */
+        var(--border-width)
+        0%,
+
+        /* Top Right */
+        100%
+        calc(100% - var(--border-width)),
+
+        /* Bottom Right */
+        calc(100% - var(--border-width) * 0.5)
+        100%,
+
+        /* Bottom Left */
+        0%
+        calc(var(--border-width) * 0.5)
+    );
+}

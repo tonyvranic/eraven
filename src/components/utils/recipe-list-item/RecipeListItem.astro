@@ -1,0 +1,80 @@
+---
+import Text from '../../ui/text/Text.astro';
+import Flex from '../Flex.astro';
+import MediaBorder from '../media-border/MediaBorder.astro';
+
+/* Props */
+interface Props {
+  link: string;
+  title: string;
+  excerpt: string;
+  imageSrc: string;
+  imageAlt: string;
+}
+
+const { 
+  link,
+  title,
+  excerpt,
+  imageSrc,
+  imageAlt
+} = Astro.props;
+
+
+/* Computed */
+---
+
+
+{/* Html */}
+<a href={link} class:list={['recipe-list-item', 'primary-300']}>
+  <MediaBorder
+    classes={['item-border', 'primary-700']}
+  />
+  <Flex dt={{ dir: 'column', rowGap: 'md' }} class:list={['inner', 'fw', 'rel']}>
+    {/* Background */}
+    <div class:list={['bg-wrap', 'fg-1', 'rel']}>
+      <div class:list={['bg', 'media', 'abs-fw', 'z-1', 'slice-top-right']}>
+        <img
+          src={imageSrc}
+          alt={imageAlt}
+          width="488" height="325"
+        />
+        <div class:list={['bg-overlay', 'abs-fw', 'z-2', 'bg-primary-600']}></div>
+      </div>
+    </div>
+
+    <div class:list={['content', 'rel', 'z-2', 'ase']}>
+      {/* Backdrop */}
+      <div class:list={['backdrop', 'abs-fw', 'z-1', 'slice-top-right']}>
+        <div class:list={['backdrop-color', 'abs-fw', 'z-1', 'bg-primary-700']}></div>
+      </div>
+
+      {/* Content */}
+      <div class:list={['content-inner', 'rel', 'z-2']}>
+        <Text
+          el="h3"
+          type="display-lg"
+          set:html={title}
+          class:list={['title', 'primary-300']}
+        />
+        <Text
+          type="body-lg"
+          set:html={excerpt}
+          class:list={['excerpt']}
+        />
+      </div>
+    </div>
+  </Flex>
+</a>
+
+
+{/* Styles */}
+<style lang="scss">
+  @use './RecipeListItem.scss';
+</style>
+
+
+{/* Script */}
+<script>
+  
+</script>

@@ -1,0 +1,9 @@
+@use 'vars' as v;
+
+.component {
+    
+}
+
+.desc {
+    padding-right: calc(v.space(md));
+}

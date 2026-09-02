@@ -7,6 +7,11 @@ html {
     font-size:  f.strip-unit(v.$base-font-size) + px;
 }
 
+::selection {
+    background: v.color(light-100);
+    color: v.color(primary-400);
+}
+
 body {
     display: flex;
     flex-direction: column;
@@ -19,11 +24,6 @@ body {
 
     background-color: v.color(light-900);
     color: v.color(light-0);
-
-    ::selection {
-        background: v.color(light-100);
-        color: v.color(primary-400);
-    }
 
     overflow-y: scroll;
 
@@ -41,6 +41,23 @@ body {
 
     &.no-focus-outline {
         outline: none;
+    }
+}
+
+.secondary-styling {
+    * {
+        &:focus-visible {
+            outline: v.space(2xs) solid v.color(secondary-400);
+        }
+    }
+
+    ::selection {
+        background: v.color(light-700);
+        color: v.color(secondary-400);
+    }
+
+    em {
+        color: v.color(secondary-400);
     }
 }
 
@@ -104,14 +121,16 @@ h1, h2, h3, h4, h5, h6 {
 section {
     position: relative;
 
-    &:not(.filled-bg) {
-        padding-bottom: v.space(2xl);
-    }
     &.filled-bg {
-        margin-bottom: v.space(2xl);
+        margin-bottom: v.space(xl);
     }
 
     &:not(:first-child) {
-        padding-top: v.space(2xl);
+        padding-top: v.space(xl);
+        padding-bottom: v.space(xl);
+
+        &.filled-bg {
+            margin-top: v.space(xl);
+        }
     }
 }

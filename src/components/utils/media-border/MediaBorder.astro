@@ -1,0 +1,37 @@
+---
+/* Props */
+interface Props {
+  classes?: string[];
+}
+
+const { 
+  /* Destructure your props here */
+  classes,
+  ...rest
+} = Astro.props;
+
+
+/* Computed */
+---
+
+
+{/* Html */}
+<div class:list={['media-border', 'abs-fw', 'z-0', ...(classes ?? [])]} {...rest}>
+  <div class:list={['border-top', 'border']}></div>
+  <div class:list={['border-right', 'border']}></div>
+  <div class:list={['border-left', 'border']}></div>
+  <div class:list={['border-bottom', 'border']}></div>
+  <div class:list={['border-corner', 'border']}></div>
+</div>
+
+
+{/* Styles */}
+<style lang="scss">
+  @use './MediaBorder.scss';
+</style>
+
+
+{/* Script */}
+<script>
+  
+</script>

@@ -1,0 +1,25 @@
+@use 'vars' as v;
+
+.component {
+    
+}
+
+.blockquote-quote-icon-text {
+    margin-bottom: calc(-1 * v.space('md'));
+}
+
+.blockquote-author-text-separator {
+    margin-top: calc(v.space('md'));
+    margin-bottom: calc(v.space('sm'));
+
+    width: 72px;
+    height: 4px;
+
+    clip-path: polygon(
+        2px 0%,
+        100% 0%,
+
+        calc(100% - 2px) 100%,
+        0% 100%
+    )
+}

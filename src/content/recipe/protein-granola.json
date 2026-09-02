@@ -1,0 +1,17 @@
+{
+  "thumbnail": {
+    "src": "imgs/recipe/protein-granola/thumbnail.webp",
+    "alt": "Granola"
+  },
+  "heroImage": {
+    "src": "imgs/recipe/protein-granola/hero.webp",
+    "alt": "Granola"
+  },
+  "title": "Protein Granola",
+  "excerpt": "Did you know that granola could potentially be made into a healthy meal? Take a look and be your own judge",
+  "category": "Snacks",
+  "tags": ["protein", "baking"],
+  "dateCreated": "2026-09-01",
+  "lastEditDate": "2026-09-01",
+  "sections": []
+}

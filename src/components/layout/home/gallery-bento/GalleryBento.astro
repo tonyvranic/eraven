@@ -1,0 +1,133 @@
+---
+import Cell from "../../../utils/Cell.astro";
+import Flex from "../../../utils/Flex.astro";
+import Grid from "../../../utils/Grid.astro";
+import Text from "../../../ui/text/Text.astro";
+import MediaBorder from "../../../utils/media-border/MediaBorder.astro";
+---
+
+
+<section class:list={['gallery-bento']}>
+
+  <!-- Top -->
+  <div class:list={['gallery-bento-top', 'mb-xl']}>
+    <Grid sm>
+      <Cell
+        dt={{ start: 1, span: 7 }}
+        sm={{ start: 1, span: 12 }}
+      >
+        <Text el="h2" type="display-3xl" class:list={['tr']}>
+          Moments <br>
+          <em>in Light</em>
+        </Text>
+      </Cell>
+      <Cell
+        dt={{ start: 8, span: 5 }}
+        sm={{ start: 1, span: 12 }}
+        class:list={['ase']}
+      >
+        <Text el="p" type="body-lg" class:list={['gallery-bento-desc']}>
+          We capture moments that are inherently tied to human presence — to a glance, a movement, a shared breath.
+          But when the moment is lifted from it's context, and placed here in silence, who is truly left to feel it?
+          <br><br>
+          Are we honoring the past, <br>
+          or merely gazing into a beautiful, empty void?
+        </Text>
+      </Cell>
+    </Grid>
+  </div>
+
+  <!-- Bottom -->
+  <div class:list={['gallery-bento-bottom']}>
+    <Grid sm class:list={['ac']}>
+
+      <!-- Column 1 -->
+      <Cell
+        dt={{ start: 1, span: 4 }}
+        sm={{ start: 1, span: 12 }}
+        class:list={['column']}
+      >
+        <div 
+          class:list={['column-media', 'type-vertical', 'rel', 'primary-700']}
+          tabindex="0"
+        >
+          <MediaBorder />
+          <div class:list={['column-media-container', 'media', 'rel', 'z-1']}>
+            <img
+              src="/imgs/gallery-bento/bento-1.webp"
+              alt="Photo of a person holding a DSLR camera"
+              width="488" height="1088"
+            />
+            <div class:list={['column-media-overlay', 'abs-fw', 'z-2', 'no-events', 'bg-primary-600']}></div>
+          </div>
+        </div>
+      </Cell>
+
+      <!-- Column 2 -->
+      <Cell
+        dt={{ start: 5, span: 4 }}
+        sm={{ start: 1, span: 12 }}
+        class:list={['column']}
+      >
+        <div
+          class:list={['column-media', 'rel', 'primary-700']}
+          tabindex="0"
+        >
+          <MediaBorder />
+          <div class:list={['column-media-container', 'media', 'aspect-1:1', 'rel', 'z-1']}>
+            <img
+              src="/imgs/gallery-bento/bento-2.webp"
+              alt="Close up photo of a cat"
+              width="488" height="500"
+            />
+            <div class:list={['column-media-overlay', 'abs-fw', 'z-2', 'no-events', 'bg-primary-600']}></div>
+          </div>
+        </div>
+
+        <div 
+          class:list={['column-media', 'rel', 'primary-700']}
+          tabindex="0"
+        >
+          <MediaBorder />
+          <div class:list={['column-media-container', 'media', 'aspect-1:1', 'rel', 'z-1']}>
+            <img
+              src="/imgs/gallery-bento/bento-3.webp"
+              alt="Photo of an empty restaurant"
+              width="488" height="500"
+            />
+            <div class:list={['column-media-overlay', 'abs-fw', 'z-2', 'no-events', 'bg-primary-600']}></div>
+          </div>
+        </div>
+      </Cell>
+
+      <!-- Column 3 -->
+      <Cell
+        dt={{ start: 9, span: 4 }}
+        sm={{ start: 1, span: 12 }}
+        class:list={['column']}
+      >
+        <div
+          class:list={['column-media', 'type-vertical', 'rel', 'primary-700']}
+          tabindex="0"
+        >
+          <MediaBorder />
+          <div class:list={['column-media-container', 'media', 'rel', 'z-1']}>
+            <img
+              src="/imgs/gallery-bento/bento-4.webp"
+              alt="Photo of a park bench covered in autumn leaves"
+              width="488" height="1088"
+            />
+            <div class:list={['column-media-overlay', 'abs-fw', 'z-2', 'no-events', 'bg-primary-600']}></div>
+          </div>
+        </div>
+      </Cell>
+    </Grid>
+
+  </div>
+</section>
+
+
+{/* Styles */}
+<style lang="scss">
+  @use './GalleryBento.scss';
+</style>

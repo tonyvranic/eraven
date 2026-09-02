@@ -1,0 +1,17 @@
+{
+  "thumbnail": {
+    "src": "imgs/recipe/bread/thumbnail.webp",
+    "alt": "Loaf of bread"
+  },
+  "heroImage": {
+    "src": "imgs/recipe/bread/hero.webp",
+    "alt": "Loaf of bread"
+  },
+  "title": "Bread",
+  "excerpt": "The simplest bread recipe you’ll ever have encountered",
+  "category": "Main",
+  "tags": ["baking"],
+  "dateCreated": "2026-09-03",
+  "lastEditDate": "2026-09-03",
+  "sections": []
+}

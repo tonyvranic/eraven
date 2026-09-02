@@ -70,12 +70,12 @@ $layout: (
     xs: ( width: 600px, columns: 12, 
         rowGap: space(sm),
         colGap: space(sm),
-        padding: space(md)
+        padding: calc(space(md) / 2) + space(xs)
     ),
     xxs: ( width: 420px, columns: 12, 
         rowGap: space(xs),
         colGap: space(xs),
-        padding: space(md)
+        padding: calc(space(md) / 2) + space(xs)
     ),
 );
 
@@ -179,26 +179,17 @@ $radius: (
 }
 
 
-/*
- * Aspect Ratios
- * 
- * Aspect ratios are used to maintain consistent proportions for media and other elements.
- * 
- * Square - 1:1 ratio, ideal for profile pictures, icons, and thumbnails.
- * Standard - 4:3 ratio, commonly used for images and videos, providing a balanced look.
- * Photo - 3:2 ratio, often used in photography, offering a slightly wider frame than standard.
- * Video - 16:9 ratio, the standard for widescreen video content, providing an immersive viewing experience.
- * Hero - 21:9 ratio, often used for cinematic or wide-screen hero sections.
- *
- * Each component should define it's own ratio
- * E.x. Blog card -> 16:9, Product card -> 1:1, Gallery card -> 3:2, etc.
-*/
 $aspect-ratios: (
-    square: '1 / 1',
-    standard: '4 / 3',
-    photo: '3 / 2',
-    video: '16 / 9',
-    hero: '21 / 9'
+    '1:1': '1 / 1',
+    '4:3': '4 / 3',
+    '3:2': '3 / 2',
+    '16:9': '16 / 9',
+    '21:9': '21 / 9',
+
+    '3:4': '3 / 4',
+    '2:3': '2 / 3',
+    '9:16': '9 / 16',
+    '9:21': '9 / 21',
 );
 
 @function aspect($ratio) {

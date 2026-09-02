@@ -1,0 +1,6 @@
+@use 'vars' as v;
+
+
+.desc {
+    padding-left: calc(v.space(md));
+}

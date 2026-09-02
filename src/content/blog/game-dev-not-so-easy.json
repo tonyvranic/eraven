@@ -1,0 +1,17 @@
+{
+  "thumbnail": {
+    "src": "imgs/blog/game-dev-not-so-easy/thumbnail.webp",
+    "alt": "Two controllers"
+  },
+  "heroImage": {
+    "src": "imgs/blog/game-dev-not-so-easy/hero.webp",
+    "alt": "Two controllers"
+  },
+  "title": "Game dev. <br> Not so easy?",
+  "excerpt": "How hard is it really to be a game developer? Let’s take a look at all the hardships these people tend to go through",
+  "category": "Programming",
+  "tags": ["game development"],
+  "dateCreated": "2026-09-03",
+  "lastEditDate": "2026-09-03",
+  "sections": []
+}

@@ -1,0 +1,15 @@
+@use 'vars' as v;
+
+.component {
+    
+}
+
+
+.cell {
+    &:first-child {
+        margin-top: (v.space('md') + v.space('xs'));
+    }
+    &:last-child {
+        margin-bottom: (v.space('md') + v.space('xs'));
+    }
+}

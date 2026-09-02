@@ -1,0 +1,100 @@
+---
+import Text from '../../../ui/text/Text.astro';
+import Cell from '../../../utils/Cell.astro';
+import Grid from '../../../utils/Grid.astro';
+import MediaBorder from '../../../utils/media-border/MediaBorder.astro';
+
+/* Props */
+interface Props {
+
+}
+
+const { 
+  /* Destructure your props here */
+} = Astro.props;
+
+
+/* Computed */
+---
+
+
+{/* Html */}
+<section class:list={['text-two-media']}>
+  <Grid sm>
+    <!-- Left -->
+    <Cell 
+      dt={{start: 1, span: 5}}
+      sm={{start: 1, span: 12}}
+      class:list={['secondary-styling']}
+    >
+      <!-- Title -->
+      <Text el="h2" type="display-2xl" class:list={['mb-md', '-ml-4']}>
+        The logic of <em>Refraction</em>
+      </Text>
+
+      <!-- Desc -->
+      <Text type="body-lg">
+        Light, once captured, becomes a record.Code provides the structure to understand that record.
+        <br><br>
+        The visual moment is the beautiful, fleeting accident of reality; the digital process is the act of turning that accident into something permanent and conceptual.
+        <br><br>
+        This intersection is about exploration. It is about using code not merely to replicate the image, but to dissect it — to give form to memory, to test the boundaries of time, and to find the sotry hed within the light
+      </Text>
+    </Cell>
+
+    <!-- Right Media 1 -->
+    <Cell 
+      dt={{start: 7, span: 3}}
+      sm={{start: 1, span: 12}}
+    >
+      <div 
+        class:list={['column-media', 'aspect-2:3', 'rel', 'primary-700']}
+        tabindex="0"
+      >
+        <MediaBorder />
+        <div class:list={['column-media-container', 'media', 'rel', 'z-1']}>
+          <img
+            src="/imgs/text-two-media/text-two-media-1.webp"
+            alt="Light refracting off a prism from white to rainbow colors"
+            width="344" height="548"
+          />
+          <div class:list={['column-media-overlay', 'abs-fw', 'z-2', 'no-events', 'bg-primary-600']}></div>
+        </div>
+      </div>
+    </Cell>
+
+    <!-- Right Media 2 -->
+    <Cell 
+      dt={{start: 10, span: 3}}
+      sm={{start: 1, span: 12}}
+      class:list={['ase', 'secondary-styling']}
+    >
+      <div 
+        class:list={['column-media', 'aspect-4:3', 'rel', 'secondary-700', 'hover-secondary-400']}
+        tabindex="0"
+      >
+        <MediaBorder />
+        <div class:list={['column-media-container', 'media', 'rel', 'z-1']}>
+          <img
+            src="/imgs/text-two-media/text-two-media-2.webp"
+            alt="Computer screen displaying code"
+            width="344" height="208"
+          />
+          <div class:list={['column-media-overlay', 'abs-fw', 'z-2', 'no-events', 'bg-secondary-600']}></div>
+        </div>
+      </div>
+    </Cell>
+  </Grid>
+</section>
+
+
+{/* Styles */}
+<style lang="scss">
+  @use './TextTwoMedia.scss';
+</style>
+
+
+{/* Script */}
+<script>
+  
+</script>
