@@ -1,0 +1,21 @@
+@use 'vars' as v;
+
+.component {
+    
+}
+
+.music-shout-visual {
+    aspect-ratio: 432 / 617;
+    margin-right: max(-24px, -1.25vw);
+
+    overflow: visible;
+}
+
+.music-shout-link {
+    display: block;
+    top: 17.8%;
+    right: 0%;
+
+    width: 6%;
+    height: 15%;
+}

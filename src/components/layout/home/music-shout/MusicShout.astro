@@ -1,0 +1,77 @@
+---
+import Text from '../../../ui/text/Text.astro';
+import Cell from '../../../utils/Cell.astro';
+import Grid from '../../../utils/Grid.astro';
+
+/* Props */
+interface Props {
+  // Define your props here
+}
+
+const { 
+  /* Destructure your props here */
+} = Astro.props;
+
+
+/* Computed */
+---
+
+
+{/* Html */}
+<section class:list={['music-shout', 'secondary-styling']}>
+  <Grid sm class:list={['ac']}>
+
+    <!-- Left -->
+    <Cell
+      dt={{ start: 1, span: 4 }}
+      sm={{ start: 1, span: 12 }}
+    >
+      <Text el="h2" type="display-2xl" class:list={['mb-md']}>
+        In another <em>frequency</em>
+      </Text>
+
+      <Text type="body-lg">
+        When the camera is down and the screen goes dark, there is still sound.
+        <br><br>
+        <em>Music</em> is another way to paying attention — to patterns, atmospheres, tension, and the spaces between moments.
+        <br><br>
+        A different medium, the same curiosity
+      </Text>
+    </Cell>
+
+    <!-- Right -->
+    <Cell
+      dt={{ start: 8, span: 3 }}
+      sm={{ start: 1, span: 12 }}
+    >
+      <div class:list={['music-shout-visual', 'media', 'rel']}>
+        <img
+          src="/imgs/music-shout/music-shout-cassette-player.webp"
+          alt="Orange cassette tape player"
+          width="432" height="617"
+        />
+
+        <a
+          href="https://www.youtube.com/@tonyblox"
+          target="_blank"
+          title="To Electric Raven Youtube Channel"
+          aria-label="To Electric Raven Youtube Channel"
+          class:list={['music-shout-link', 'abs', 'z-5']}
+        ></a>
+      </div>
+    </Cell>
+
+  </Grid>
+</section>
+
+
+{/* Styles */}
+<style lang="scss">
+  @use './MusicShout.scss';
+</style>
+
+
+{/* Script */}
+<script>
+  
+</script>

@@ -1,6 +1,319 @@
+---
+import Icon from "../../ui/icon/Icon.astro";
+import Text from "../../ui/text/Text.astro";
+import Cell from "../../utils/Cell.astro";
+import Flex from "../../utils/Flex.astro";
+import Grid from "../../utils/Grid.astro";
+
+/* Computed */
+const logoAltText: string = 'a blue cassette with orange tape forming wings connected to a blue satellite dish.';
+
+const mainYtLink: string      = 'https://www.youtube.com/@tonyblox';
+const secondaryYtLink: string = 'https://www.youtube.com/@emskii346';
+const spotifyLink: string     = 'https://open.spotify.com/artist/0Pv26m3Nq3XT6o2YOS3Skw';
+const bandcampLink: string    = 'https://electricraven913.bandcamp.com/';
+const itchioLink: string      = 'https://electric-raven913.itch.io/';
+const mailLink: string        = 'mailto:info@eraven.rocks';
+const linkedinLink: string    = 'https://www.linkedin.com/in/antonio-vrani%C4%87-615069304/';
+
+const copyrightText: string = `&copy; ${new Date().getFullYear()} Electric Raven.`;
+---
 {/* Html */}
 <footer class="layout">
 
+  <Grid sm class:list={['ac', 'rel', 'z-2', 'no-e']}>
+
+    <!-- Left -->
+    <Cell
+      dt={{ start: 1, span: 6 }}
+      sm={{ start: 1, span: 12 }}
+    >
+      <a 
+        href="/"
+        title="Home"
+        aria-label="Home"
+        class:list={['media', 'logo-link', 'mb-sm', 'all-e']}
+      >
+        <img 
+          width="160" height="160"
+          src="/logo.png"
+          alt={logoAltText}
+        />
+      </a>
+
+      <Text type="body-lg" class:list={['all-e', 'inline-block']}>
+        From a <em tabindex="0" class:list={['spark']}>spark</em> of inspiration <br>
+        to a <em tabindex="0" class:list={['blaze']}>blaze</em> of creation
+      </Text>
+    </Cell>
+
+    <!-- Right -->
+    <Cell
+      dt={{ start: 7, span: 6 }}
+      sm={{ start: 1, span: 12 }}
+    >
+      <div class:list={['socials-wrap-outer', 'rel', 'ml-auto']}>
+        <div class:list={['socials-bg', 'bg-light-800', 'abs-fw', 'z-1']}></div>
+        <Flex
+          el="ul"
+          dt={{ gap: 'md', justify: 'center' }}
+          class:list={['socials', 'rel', 'z-2', 'all-e']}
+        >
+          <li>
+            <a
+              href={mainYtLink}
+              target="_blank" rel="noopener noreferrer"
+              title="Main Youtube Channel"
+              aria-label="Main Youtube Channel"
+            >
+              <div aria-hidden="true" class:list={['social-icon-hover', 'abs', 'z-2', 'primary-300']}>
+                <Icon name="SocialYoutube" size={32}></Icon>
+              </div>
+              <div class:list={['social-icon']}>
+                <Icon name="SocialYoutube" size={32}></Icon>
+              </div>
+            </a>
+          </li>
+          <li>
+            <a 
+              href={secondaryYtLink}
+              target="_blank" rel="noopener noreferrer"
+              title="Secondary Youtube Channel"
+              aria-label="Secondary Youtube Channel"
+            >
+              <div aria-hidden="true" class:list={['social-icon-hover', 'abs', 'z-2', 'secondary-400']}>
+                <Icon name="SocialYoutube" size={32}></Icon>
+              </div>
+              <div class:list={['social-icon']}>
+                <Icon name="SocialYoutube" size={32}></Icon>
+              </div>
+            </a>
+          </li>
+          <li>
+            <a 
+              href={spotifyLink}
+              target="_blank" rel="noopener noreferrer"
+              title="Spotify"
+              aria-label="Spotify"
+            >
+              <div aria-hidden="true" class:list={['social-icon-hover', 'abs', 'z-2', 'primary-300']}>
+                <Icon name="SocialSpotify" size={32}></Icon>
+              </div>
+              <div class:list={['social-icon']}>
+                <Icon name="SocialSpotify" size={32}></Icon>
+              </div>
+            </a>
+          </li>
+          <li>
+            <a 
+              href={bandcampLink}
+              target="_blank" rel="noopener noreferrer"
+              title="Bandcamp"
+              aria-label="Bandcamp"
+            >
+              <div aria-hidden="true" class:list={['social-icon-hover', 'abs', 'z-2', 'primary-300']}>
+                <Icon name="SocialBandcamp" size={32}></Icon>
+              </div>
+              <div class:list={['social-icon']}>
+                <Icon name="SocialBandcamp" size={32}></Icon>
+              </div>
+            </a>
+          </li>
+          <li>
+            <a 
+              href={itchioLink}
+              target="_blank" rel="noopener noreferrer"
+              title="Itchio"
+              aria-label="Itchio"
+            >
+              <div aria-hidden="true" class:list={['social-icon-hover', 'abs', 'z-2', 'primary-300']}>
+                <Icon name="SocialItchio" size={32}></Icon>
+              </div>
+              <div class:list={['social-icon']}>
+                <Icon name="SocialItchio" size={32}></Icon>
+              </div>
+            </a>
+          </li>
+          <li>
+            <a 
+              href={mailLink}
+              target="_blank" rel="noopener noreferrer"
+              title="Mail"
+              aria-label="Mail"
+            >
+              <div aria-hidden="true" class:list={['social-icon-hover', 'abs', 'z-2', 'primary-300']}>
+                <Icon name="SocialMail" size={32}></Icon>
+              </div>
+              <div class:list={['social-icon']}>
+                <Icon name="SocialMail" size={32}></Icon>
+              </div>
+            </a>
+          </li>
+          <li>
+            <a 
+              href={linkedinLink}
+              target="_blank" rel="noopener noreferrer"
+              title="Linkedin"
+              aria-label="Linkedin"
+            >
+              <div aria-hidden="true" class:list={['social-icon-hover', 'abs', 'z-2', 'primary-300']}>
+                <Icon name="SocialLinkedin" size={32}></Icon>
+              </div>
+              <div class:list={['social-icon']}>
+                <Icon name="SocialLinkedin" size={32}></Icon>
+              </div>
+            </a>
+          </li>
+
+          <!-- TODO: Implement copy link functionality -->
+          <li>
+            <a 
+              href="#"
+              title="Copy Link"
+              aria-label="Copy Link"
+            >
+            <div aria-hidden="true" class:list={['social-icon-hover', 'type-no-rotate', 'abs', 'z-2', 'primary-300']}>
+              <div class:list={['social-icon-inner']}>
+                <Icon name="SocialCopyLink" size={32}></Icon>
+              </div>
+            </div>
+            <div class:list={['social-icon', 'type-no-rotate']}>
+              <div class:list={['social-icon-inner']}>
+                <Icon name="SocialCopyLink" size={32}></Icon>
+              </div>
+            </div>
+            </a>
+          </li>
+        </Flex>
+      </div>
+    </Cell>
+  </Grid>
+
+  <!-- Footer bottom section -->
+  <Grid sm class:list={['copyright-wrap', 'rel', 'z-2', 'mt-xl', 'no-e']}>
+    <Cell
+      dt={{ start: 1, span: 12 }}
+      sm={{ start: 1, span: 12 }}
+    >
+      <Text
+        type="body-md"
+        set:html={copyrightText}
+        class:list={['light-300', 'all-e', 'inline-block']}
+      />
+    </Cell>
+  </Grid>
+
+  <!-- Background -->
+  <Grid sm
+    class:list={['background-grid', 'abs-fw', 'z-1', 'o-h']}
+  >
+    <Cell
+      dt={{ start: 1, span: 12 }}
+      sm={{ start: 1, span: 12 }}
+      class:list={['rel', 'z-2']}
+    >
+      <!-- Background deco titles -->
+      <div class:list={['background-deco-titles', 'abs-fw', 'z-1']}>
+        <div tabindex="0" class:list={['background-deco-title', 'abs', 'light-700', 'background-title-1']}>
+          <div class:list={['background-deco-title-inner', 'abs-c', 'no-e']}>
+            <div class:list={['background-deco-title-inner-hover', 'abs', 'z-2', 'primary-400']}>
+              <Text type="display-2xl" aria-hidden="true" el="span" class:list={['block']}>
+                Dream
+              </Text>
+            </div>
+            <Text type="display-2xl" el="span" class:list={['block']}>
+              Dream
+            </Text>
+          </div>
+        </div>
+        <div tabindex="0" class:list={['background-deco-title', 'abs', 'light-700', 'z-2', 'background-title-2']}>
+          <div class:list={['background-deco-title-inner', 'abs-c', 'no-e']}>
+            <div class:list={['background-deco-title-inner-hover', 'abs', 'z-2', 'primary-400']}>
+              <Text type="display-2xl" aria-hidden="true" el="span" class:list={['block']}>
+                Create
+              </Text>
+            </div>
+            <Text type="display-2xl" el="span" class:list={['block']}>
+              Create
+            </Text>
+          </div>
+        </div>
+        <div tabindex="0" class:list={['background-deco-title', 'abs', 'light-700', 'background-title-3']}>
+          <div class:list={['background-deco-title-inner', 'abs-c', 'no-e']}>
+            <div class:list={['background-deco-title-inner-hover', 'abs', 'z-2', 'primary-400']}>
+              <Text type="display-2xl" aria-hidden="true" el="span" class:list={['block']}>
+                Realize
+              </Text>
+            </div>
+            <Text type="display-2xl" el="span" class:list={['block']}>
+              Realize
+            </Text>
+          </div>
+        </div>
+      </div>
+    </Cell>
+
+    <!-- Bg Patterns -->
+    <!-- Star Pattern  -->
+    <div class:list={['hero-bg-patterns', 'abs', 'fw', 'aspect-1:1', 'z-1', 'pattern-1']}>
+      <!-- Main Pattern -->
+      <div 
+        class:list={['hero-bg-pattern', 'abs-fw', 'z-1']}
+        style={'background-image: url("/patterns/star-pattern.svg");'}
+      />
+
+      <!-- Hover Pattern -->
+      <div class:list={['hero-bg-pattern-mask', 'abs-fw', 'z-2']}>
+        <div 
+          class:list={['hero-bg-pattern', 'type-hover', 'fh']} 
+          style={'background-image: url("/patterns/star-pattern-hover.svg");'}
+        />
+      </div>
+
+      <!-- Overlay behind text, to make it more legible -->
+      <div class:list={['hero-bg-pattern-overlay', 'abs-fw', 'z-3', 'bg-light-900']} />
+    </div>
+
+    <!-- Cogwheel Pattern  -->
+    <div class:list={['hero-bg-patterns', 'abs', 'fw', 'aspect-1:1', 'z-1', 'pattern-2']}>
+      <!-- Main Pattern -->
+      <div 
+        class:list={['hero-bg-pattern', 'abs-fw', 'z-1']}
+        style={'background-image: url("/patterns/cogwheel-pattern.svg");'}
+      />
+
+      <!-- Hover Pattern -->
+      <div class:list={['hero-bg-pattern-mask', 'abs-fw', 'z-2']}>
+        <div 
+          class:list={['hero-bg-pattern', 'type-hover', 'fh']} 
+          style={'background-image: url("/patterns/cogwheel-pattern-hover.svg");'}
+        />
+      </div>
+
+      <!-- Overlay behind text, to make it more legible -->
+      <div class:list={['hero-bg-pattern-overlay', 'abs-fw', 'z-3', 'bg-light-900']} />
+    </div>
+
+    <!-- Spotlight Pattern  -->
+    <div class:list={['hero-bg-patterns', 'abs', 'fw', 'aspect-1:1', 'z-1', 'pattern-3']}>
+      <!-- Main Pattern -->
+      <div 
+        class:list={['hero-bg-pattern', 'abs-fw', 'z-1']}
+        style={'background-image: url("/patterns/spotlight-pattern.svg");'}
+      />
+
+      <!-- Hover Pattern -->
+      <div class:list={['hero-bg-pattern-mask', 'abs-fw', 'z-2']}>
+        <div 
+          class:list={['hero-bg-pattern', 'type-hover', 'fh']} 
+          style={'background-image: url("/patterns/spotlight-pattern-hover.svg");'}
+        />
+      </div>
+
+      <!-- Overlay behind text, to make it more legible -->
+      <div class:list={['hero-bg-pattern-overlay', 'abs-fw', 'z-3', 'bg-light-900']} />
+    </div>
+  </Grid>
 </footer>
 
 {/* Styles */}

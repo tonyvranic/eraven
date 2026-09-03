@@ -1,0 +1,21 @@
+@use 'vars' as v;
+
+.gamedev-shout-visual {
+    aspect-ratio: 408 / 617;
+
+    overflow: visible;
+
+    :focus-visible {
+        outline: v.space(2xs) solid v.color(primary-700);
+    }
+}
+
+.gamedev-shout-link {
+    display: block;
+    top: 48.4%;
+    left: 28.4%;
+
+    width: 7%;
+    aspect-ratio: 1/1;
+    height: auto;
+}

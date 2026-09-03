@@ -41,8 +41,9 @@ const accentColorClass = `bg-${accentColor}-400`;
       <!-- Quote icon -->
       {author && (
         <Text
-          class:list={['blockquote-quote-icon-text']}
+          class:list={['blockquote-quote-icon-text', 'block']}
           type="display-xl"
+          el="span"
         >
           “”
         </Text>

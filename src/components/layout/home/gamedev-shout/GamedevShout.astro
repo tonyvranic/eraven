@@ -1,0 +1,78 @@
+---
+import Text from '../../../ui/text/Text.astro';
+import Cell from '../../../utils/Cell.astro';
+import Grid from '../../../utils/Grid.astro';
+
+/* Props */
+interface Props {
+  // Define your props here
+}
+
+const { 
+  /* Destructure your props here */
+} = Astro.props;
+
+
+/* Computed */
+---
+
+
+{/* Html */}
+<section class:list={['gamedev-shout']}>
+  <Grid sm class:list={['ac']}>
+
+    <!-- Left -->
+    <Cell
+      dt={{ start: 2, span: 3 }}
+      sm={{ start: 1, span: 12 }}
+    >
+      <div class:list={['gamedev-shout-visual', 'media', 'rel']}>
+        <img
+          src="/imgs/gamedev-shout/handheld-console.webp"
+          alt="Handheld gaming console"
+          width="408" height="617"
+        />
+
+        <a
+          href="https://electric-raven913.itch.io/"
+          target="_blank"
+          title="To Electric Raven Itch.io"
+          aria-label="To Electric Raven Itch.io"
+          class:list={['gamedev-shout-link', 'abs', 'z-5']}
+        ></a>
+      </div>
+    </Cell>
+
+    <!-- Right -->
+    <Cell
+      dt={{ start: 7, span: 5 }}
+      sm={{ start: 1, span: 12 }}
+    >
+      <Text el="h2" type="display-2xl" class:list={['mb-md']}>
+        More than a 
+        <em> point of view</em>
+      </Text>
+
+      <Text type="body-lg">
+        To look at something is one thing.
+        <br><br>
+        To experience it, is another.
+        <br><br>
+        <em>Games</em> invite us to step beyond ourselves — to inhabit another role, see through another perspective, and, for a moment, experience a world that isn’t our own
+      </Text>
+    </Cell>
+
+  </Grid>
+</section>
+
+
+{/* Styles */}
+<style lang="scss">
+  @use './GamedevShout.scss';
+</style>
+
+
+{/* Script */}
+<script>
+  
+</script>

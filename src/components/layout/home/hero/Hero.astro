@@ -7,9 +7,9 @@ import Text from "../../../ui/text/Text.astro";
 
 
 {/* Html */}
-<section class:list={['hero', 'em-style-secondary', 'bg-primary-400', 'filled-bg']}>
+<section class:list={['hero', 'em-style-secondary', 'bg-primary-600', 'filled-bg']}>
   <!-- White Text -->
-  <div class:list={['hero-wrap-outer-abs', 'abs-fw', 'z-2', 'bg-light-900', 'no-events']} aria-hidden="true">
+  <div class:list={['hero-wrap-outer-abs', 'abs-fw', 'z-2', 'bg-light-900', 'no-e']} aria-hidden="true">
     <Grid sm class:list={['fh']}>
       <!-- Bg Patterns -->
       <div class:list={['hero-bg-patterns', 'abs-fw', 'z-1']}>
@@ -40,7 +40,7 @@ import Text from "../../../ui/text/Text.astro";
           dt={{ dir: 'column', justify: 'center', align: 'center' }} 
           class:list={['hero-wrap', 'fh', 'rel', 'z-2']}
         >
-          <Text el="h1" type="display-2xl" class:list={['hero-title', 'tr', 'light-100']}>
+          <Text el="span" type="display-2xl" class:list={['hero-title', 'tr', 'light-100', 'block']}>
             Exploring the <em>intersection</em><br> of creativity<br> & code
           </Text>
         </Flex>

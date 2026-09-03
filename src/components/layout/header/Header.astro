@@ -6,7 +6,7 @@ import Grid from '../../utils/Grid.astro';
 
 
 /* Computed */
-const logoAltText: string = 'An orange tape going from a blue cassette, through blue idle rollers towards a blue tape head, and then back to the cassette. The tape is forming wings. The tape head is connected to a blue satellite dish that is emitting 3 orange signal bars.';
+const logoAltText: string = 'a blue cassette with orange tape forming wings connected to a blue satellite dish.';
 
 const navLinks = [
   { href: '/recipes', label: 'Recipes' },
@@ -21,8 +21,9 @@ const navLinks = [
     <!-- Left -->
     <Cell dt={{ start: 1, span: 3 }}>
       <Flex dt={{ align: 'center' }} class:list={['logo-wrap', 'fh']}>
-        <a href="/" title="Home" aria-label="Home" class:list={['logo-link']}>
+        <a href="/" title="Home" aria-label="Home" class:list={['media', 'logo-link']}>
           <img 
+            width="160" height="160"
             src="/logo.png"
             class:list={['logo']}
             alt={logoAltText}
