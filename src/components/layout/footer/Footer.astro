@@ -4,6 +4,7 @@ import Text from "../../ui/text/Text.astro";
 import Cell from "../../utils/Cell.astro";
 import Flex from "../../utils/Flex.astro";
 import Grid from "../../utils/Grid.astro";
+import Image from "../../utils/Image.astro";
 
 /* Computed */
 const logoAltText: string = 'a blue cassette with orange tape forming wings connected to a blue satellite dish.';
@@ -34,16 +35,16 @@ const copyrightText: string = `&copy; ${new Date().getFullYear()} Electric Raven
         aria-label="Home"
         class:list={['media', 'logo-link', 'mb-sm', 'all-e']}
       >
-        <img 
-          width="160" height="160"
+        <Image
           src="/logo.png"
           alt={logoAltText}
+          width={160} height={160}
         />
       </a>
 
       <Text type="body-lg" class:list={['all-e', 'inline-block']}>
-        From a <em tabindex="0" class:list={['spark']}>spark</em> of inspiration <br>
-        to a <em tabindex="0" class:list={['blaze']}>blaze</em> of creation
+        From a <em class:list={['spark']}>spark</em> of inspiration <br>
+        to a <em class:list={['blaze']}>blaze</em> of creation
       </Text>
     </Cell>
 
@@ -214,7 +215,7 @@ const copyrightText: string = `&copy; ${new Date().getFullYear()} Electric Raven
     >
       <!-- Background deco titles -->
       <div class:list={['background-deco-titles', 'abs-fw', 'z-1']}>
-        <div tabindex="0" class:list={['background-deco-title', 'abs', 'light-700', 'background-title-1']}>
+        <div class:list={['background-deco-title', 'abs', 'light-700', 'background-title-1']}>
           <div class:list={['background-deco-title-inner', 'abs-c', 'no-e']}>
             <div class:list={['background-deco-title-inner-hover', 'abs', 'z-2', 'primary-400']}>
               <Text type="display-2xl" aria-hidden="true" el="span" class:list={['block']}>
@@ -226,7 +227,7 @@ const copyrightText: string = `&copy; ${new Date().getFullYear()} Electric Raven
             </Text>
           </div>
         </div>
-        <div tabindex="0" class:list={['background-deco-title', 'abs', 'light-700', 'z-2', 'background-title-2']}>
+        <div class:list={['background-deco-title', 'abs', 'light-700', 'z-2', 'background-title-2']}>
           <div class:list={['background-deco-title-inner', 'abs-c', 'no-e']}>
             <div class:list={['background-deco-title-inner-hover', 'abs', 'z-2', 'primary-400']}>
               <Text type="display-2xl" aria-hidden="true" el="span" class:list={['block']}>
@@ -238,7 +239,7 @@ const copyrightText: string = `&copy; ${new Date().getFullYear()} Electric Raven
             </Text>
           </div>
         </div>
-        <div tabindex="0" class:list={['background-deco-title', 'abs', 'light-700', 'background-title-3']}>
+        <div class:list={['background-deco-title', 'abs', 'light-700', 'background-title-3']}>
           <div class:list={['background-deco-title-inner', 'abs-c', 'no-e']}>
             <div class:list={['background-deco-title-inner-hover', 'abs', 'z-2', 'primary-400']}>
               <Text type="display-2xl" aria-hidden="true" el="span" class:list={['block']}>

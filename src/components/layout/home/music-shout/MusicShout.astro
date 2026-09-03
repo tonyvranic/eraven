@@ -2,6 +2,7 @@
 import Text from '../../../ui/text/Text.astro';
 import Cell from '../../../utils/Cell.astro';
 import Grid from '../../../utils/Grid.astro';
+import Image from '../../../utils/Image.astro';
 
 /* Props */
 interface Props {
@@ -45,10 +46,10 @@ const {
       sm={{ start: 1, span: 12 }}
     >
       <div class:list={['music-shout-visual', 'media', 'rel']}>
-        <img
+        <Image
           src="/imgs/music-shout/music-shout-cassette-player.webp"
           alt="Orange cassette tape player"
-          width="432" height="617"
+          width={432} height={617}
         />
 
         <a

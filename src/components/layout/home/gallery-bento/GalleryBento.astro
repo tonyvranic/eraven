@@ -4,6 +4,7 @@ import Flex from "../../../utils/Flex.astro";
 import Grid from "../../../utils/Grid.astro";
 import Text from "../../../ui/text/Text.astro";
 import MediaBorder from "../../../utils/media-border/MediaBorder.astro";
+import Image from "../../../utils/Image.astro";
 ---
 
 
@@ -47,16 +48,13 @@ import MediaBorder from "../../../utils/media-border/MediaBorder.astro";
         sm={{ start: 1, span: 12 }}
         class:list={['column']}
       >
-        <div 
-          class:list={['column-media', 'type-vertical', 'rel', 'primary-700']}
-          tabindex="0"
-        >
+        <div class:list={['column-media', 'type-vertical', 'rel', 'primary-700']}>
           <MediaBorder />
           <div class:list={['column-media-container', 'media', 'rel', 'z-1']}>
-            <img
+            <Image
               src="/imgs/gallery-bento/bento-1.webp"
               alt="Photo of a person holding a DSLR camera"
-              width="488" height="1088"
+              width={488} height={1088}
             />
             <div class:list={['column-media-overlay', 'abs-fw', 'z-2', 'no-e', 'bg-primary-600']}></div>
           </div>
@@ -69,31 +67,25 @@ import MediaBorder from "../../../utils/media-border/MediaBorder.astro";
         sm={{ start: 1, span: 12 }}
         class:list={['column']}
       >
-        <div
-          class:list={['column-media', 'rel', 'primary-700']}
-          tabindex="0"
-        >
+        <div class:list={['column-media', 'rel', 'primary-700']}>
           <MediaBorder />
           <div class:list={['column-media-container', 'media', 'aspect-1:1', 'rel', 'z-1']}>
-            <img
+            <Image
               src="/imgs/gallery-bento/bento-2.webp"
               alt="Close up photo of a cat"
-              width="488" height="500"
+              width={488} height={500}
             />
             <div class:list={['column-media-overlay', 'abs-fw', 'z-2', 'no-e', 'bg-primary-600']}></div>
           </div>
         </div>
 
-        <div 
-          class:list={['column-media', 'rel', 'primary-700']}
-          tabindex="0"
-        >
+        <div class:list={['column-media', 'rel', 'primary-700']}>
           <MediaBorder />
           <div class:list={['column-media-container', 'media', 'aspect-1:1', 'rel', 'z-1']}>
-            <img
+            <Image
               src="/imgs/gallery-bento/bento-3.webp"
               alt="Photo of an empty restaurant"
-              width="488" height="500"
+              width={488} height={500}
             />
             <div class:list={['column-media-overlay', 'abs-fw', 'z-2', 'no-e', 'bg-primary-600']}></div>
           </div>
@@ -106,16 +98,13 @@ import MediaBorder from "../../../utils/media-border/MediaBorder.astro";
         sm={{ start: 1, span: 12 }}
         class:list={['column']}
       >
-        <div
-          class:list={['column-media', 'type-vertical', 'rel', 'primary-700']}
-          tabindex="0"
-        >
+        <div class:list={['column-media', 'type-vertical', 'rel', 'primary-700']}>
           <MediaBorder />
           <div class:list={['column-media-container', 'media', 'rel', 'z-1']}>
-            <img
+            <Image
               src="/imgs/gallery-bento/bento-4.webp"
               alt="Photo of a park bench covered in autumn leaves"
-              width="488" height="1088"
+              width={488} height={1088}
             />
             <div class:list={['column-media-overlay', 'abs-fw', 'z-2', 'no-e', 'bg-primary-600']}></div>
           </div>

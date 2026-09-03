@@ -2,6 +2,7 @@
 import Text from '../../../ui/text/Text.astro';
 import Cell from '../../../utils/Cell.astro';
 import Grid from '../../../utils/Grid.astro';
+import Image from '../../../utils/Image.astro';
 
 /* Props */
 interface Props {
@@ -27,10 +28,10 @@ const {
       sm={{ start: 1, span: 12 }}
     >
       <div class:list={['gamedev-shout-visual', 'media', 'rel']}>
-        <img
+        <Image
           src="/imgs/gamedev-shout/handheld-console.webp"
           alt="Handheld gaming console"
-          width="408" height="617"
+          width={408} height={617}
         />
 
         <a

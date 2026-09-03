@@ -1,6 +1,7 @@
 ---
 import Text from '../../ui/text/Text.astro';
 import Flex from '../Flex.astro';
+import Image from '../Image.astro';
 import MediaBorder from '../media-border/MediaBorder.astro';
 
 /* Props */
@@ -33,10 +34,10 @@ const {
   <Flex class:list={['inner', 'fw', 'rel']}>
     {/* Background */}
     <div class:list={['bg', 'media', 'abs-fw', 'z-1', 'slice-top-right']}>
-      <img
+      <Image
         src={imageSrc}
         alt={imageAlt}
-        width="488" height="626"
+        width={488} height={626}
       />
       <div class:list={['bg-overlay', 'abs-fw', 'z-2', 'bg-secondary-600']}></div>
     </div>
