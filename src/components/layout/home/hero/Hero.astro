@@ -8,11 +8,16 @@ import Text from "../../../ui/text/Text.astro";
 
 {/* Html */}
 <section class:list={['hero', 'em-style-secondary', 'bg-primary-600', 'filled-bg']}>
+
   <!-- White Text -->
   <div class:list={['hero-wrap-outer-abs', 'abs-fw', 'z-2', 'bg-light-900', 'no-e']} aria-hidden="true">
-    <Grid sm class:list={['fh']}>
+    <div class:list={['hero-wrap-outer-abs-bg', 'bg-light-900', 'no-e', 'abs', 'z-1']}></div>
+    <Grid md sm xs xxs class:list={['fh', 'z-2']}>
+
+
       <!-- Bg Patterns -->
-      <div class:list={['hero-bg-patterns', 'abs-fw', 'z-1']}>
+      <!-- Intersection Pattern -->
+      <div class:list={['hero-bg-patterns', 'abs', 'fw', 'aspect-1:1', 'z-1', 'pattern-1']}>
         <!-- Main Pattern -->
         <div 
           class:list={['hero-bg-pattern', 'abs-fw', 'z-1']}
@@ -31,10 +36,14 @@ import Text from "../../../ui/text/Text.astro";
         <div class:list={['hero-bg-pattern-overlay', 'abs-fw', 'z-3', 'bg-light-900']} />
       </div>
 
+
       <!-- Text -->
       <Cell 
         dt={{ start: 1, span: 6 }}
-        sm={{ start: 1, span: 12 }}
+        md={{ start: 2, span: 6 }}
+        sm={{ start: 2, span: 7 }}
+        xs={{ start: 1, span: 10 }}
+        xxs={{ start: 1, span: 12 }}
       >
         <Flex 
           dt={{ dir: 'column', justify: 'center', align: 'center' }} 
@@ -49,10 +58,13 @@ import Text from "../../../ui/text/Text.astro";
   </div>
 
   <!-- Foreground -->
-  <Grid sm class:list={['hero-wrap-outer', 'fh',  'rel', 'z-1']}>
+  <Grid md sm xs xxs class:list={['hero-wrap-outer', 'fh',  'rel', 'z-1', 'no-e']}>
     <Cell 
       dt={{ start: 1, span: 6 }}
-      sm={{ start: 1, span: 12 }}
+      md={{ start: 2, span: 6 }}
+      sm={{ start: 2, span: 7 }}
+      xs={{ start: 1, span: 10 }}
+      xxs={{ start: 1, span: 12 }}
       class:list={['relative', 'z-2']}
     >
       <Flex 

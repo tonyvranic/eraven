@@ -3,10 +3,19 @@
 .layout {
     min-height: 96px;
     background-color: v.color(light-900);
+
+    @media only screen and (max-width: v.width(md)) {
+        min-height: 64px;
+    }
 }
 
 .logo-link {
     display: block;
     width: 80px;
     height: 80px;
+
+    @media only screen and (max-width: v.width(md)) {
+        width: 54px;
+        height: 54px;
+    }
 }
