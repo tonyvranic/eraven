@@ -1,31 +1,32 @@
 @use 'vars' as v;
+@use 'mixins' as mix;
 
 
 $cell-size: calc(100% / 12);
 $cell-gap: min(12px, 2vw);
 
 .title {
-    @media only screen and (max-width: 1880px) {
+    @include mix.respond(1880px) {
         margin-right: -8vw;
     }
 
-    @media only screen and (max-width: v.width(xs)) {
+    @include mix.respond(xs) {
         margin-right: 0;
         padding-right: calc($cell-size * 2 + $cell-gap);
     }
 
-    @media only screen and (max-width: v.width(xxs)) {
+    @include mix.respond(xxs) {
         padding-right: 0;
     }
 }
 
 .desc {
-    @media only screen and (max-width: v.width(xs)) {
+    @include mix.respond(xs) {
         text-align: right;
         padding-left: calc($cell-size * 2 + $cell-gap);
     }
 
-    @media only screen and (max-width: v.width(xxs)) {
+    @include mix.respond(xxs) {
         padding-left: 0;
     }
 }
@@ -36,7 +37,7 @@ $cell-gap: min(12px, 2vw);
 
     overflow: visible;
 
-    @media only screen and (max-width: v.width(xs)) {
+    @include mix.respond(xs) {
         margin-right: -5vw;
     }
 }

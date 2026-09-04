@@ -1,5 +1,8 @@
+@use 'sass:map';
+
 @use 'vars' as v;
 @use 'functions' as f;
+
 
 // Fluid type mixin using clamp() - Using rem units for rigidness
 @mixin fluid-type(
@@ -55,5 +58,17 @@
 
     @supports not selector(::-webkit-scrollbar) {
         scrollbar-color: var(--sb-thumb-color) var(--sb-track-color);
+    }
+}
+
+@mixin respond($bp, $feature: max-width) {
+    @if map.has-key(v.$layout, $bp) {
+        @media (#{$feature}: #{v.width($bp)}) {
+            @content;
+        }
+    } @else {
+        @media (#{$feature}: #{$bp}) {
+            @content;
+        }
     }
 }

@@ -423,7 +423,7 @@ h6 {
         --hover-color: #{v.color(secondary-400)};
     }
 
-    @media only screen and (max-width: v.width(xs)) {
+    @include mix.respond(xs) {
         padding: (v.space('sm') + v.space('xs'));
     }
 }

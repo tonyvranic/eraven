@@ -4,6 +4,7 @@
 
 @use 'vars' as v;
 @use 'functions' as f;
+@use 'mixins' as mix;
 
 
 // Vars
@@ -23,7 +24,7 @@ $breakpoints: ();
 
 // Media mixin // Media mixin // Media mixin // Media mixin
 @mixin respond($bp) {
-    @media (max-width: map.get($breakpoints, $bp)) {
+    @include mix.respond($bp) {
         @content;
     }
 }

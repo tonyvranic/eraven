@@ -1,24 +1,26 @@
 @use 'vars' as v;
+@use 'mixins' as mix;
+
 
 .component {
     
 }
 
 .text-two-media-title {
-    @media only screen and (max-width: 1880px) {
+    @include mix.respond(1880px) {
         margin-right: -8vw;
     }
-    @media only screen and (max-width: v.width(xxs)) {
+    @include mix.respond(xxs) {
         margin-right: 0;
     }
 }
 
 .desc {
-    @media only screen and (max-width: v.width(md)) {
+    @include mix.respond(md) {
         padding-left: v.space(md) + v.space(xs);
     }
 
-    @media only screen and (max-width: v.width(xxs)) {
+    @include mix.respond(xxs) {
         padding-left: 0;
     }
 }

@@ -1,5 +1,6 @@
 @use 'vars' as v;
 @use 'timings' as t;
+@use 'mixins' as mix;
 
 
 .blog-list-item {
@@ -10,7 +11,7 @@
 
     min-height: min(690px, 40vw);
 
-    @media only screen and (max-width: v.width(md)) {
+    @include mix.respond(md) {
         min-height: clamp(420px, 80vw, 520px);
     }
 
@@ -54,7 +55,7 @@
         }
     }
 
-    @media only screen and (max-width: v.width(xs)) {
+    @include mix.respond(xs) {
         padding: (v.space('sm') + v.space('xs'));
 
         &:hover {

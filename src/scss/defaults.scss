@@ -121,7 +121,7 @@ section {
     &.filled-bg {
         margin-bottom: min(v.space(xl), 6.8vw);
 
-        @media only screen and (max-width: v.width(md)) {
+        @include mix.respond(md) {
             margin-bottom: v.space(lg);
         }
     }
@@ -130,7 +130,7 @@ section {
         padding-top: min(v.space(xl), 6.8vw);
         padding-bottom: min(v.space(xl), 6.8vw);
 
-        @media only screen and (max-width: v.width(md)) {
+        @include mix.respond(md) {
             padding-top: v.space(lg);
             padding-bottom: v.space(lg);
         }
@@ -138,7 +138,7 @@ section {
         &.filled-bg {
             margin-top: min(v.space(xl), 6.8vw);
 
-            @media only screen and (max-width: v.width(md)) {
+            @include mix.respond(md) {
                 margin-top: v.space(lg);
             }
         }

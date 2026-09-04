@@ -1,5 +1,6 @@
 @use 'vars' as v;
 @use 'timings' as t;
+@use 'mixins' as mix;
 
 
 .recipe-list-item {
@@ -10,7 +11,7 @@
 
     min-height: min(690px, 44vw);
 
-    @media only screen and (max-width: v.width(md)) {
+    @include mix.respond(md) {
         min-height: clamp(440px, 82vw, 540px);
     }
 
@@ -54,7 +55,7 @@
         }
     }
 
-    @media only screen and (max-width: v.width(xs)) {
+    @include mix.respond(xs) {
         padding: (v.space('sm') + v.space('xs'));
 
         &:hover {
@@ -102,7 +103,7 @@
     padding: v.space('md') v.space('sm');
     min-height: 40%;
 
-    @media only screen and (max-width: 1880px) {
+    @include mix.respond(1880px) {
         min-height: 50%;
     }
 

@@ -5,24 +5,24 @@
 .desc {
     padding-right: calc(v.space(md));
     
-    @media only screen and (max-width: v.width(sm)) {
+    @include mix.respond(sm) {
         padding-right: 0;
         order: 2;
     }
 }
 
 .title {
-    @media only screen and (max-width: v.width(sm)) {
+    @include mix.respond(sm) {
         padding-left: v.space(md) + v.space(xs);
     }
 
-    @media only screen and (max-width: v.width(xxs)) {
+    @include mix.respond(xxs) {
         padding-left: 0;
     }
 }
 
 .items {
-    @media only screen and (max-width: v.width(md)) {
+    @include mix.respond(md) {
         padding-bottom: calc(v.space(md));
         display: flex;
         column-gap: calc(v.space(sm) + v.space(xs));
@@ -40,7 +40,7 @@
         }
     }
 
-    @media only screen and (max-width: v.width(sm)) {
+    @include mix.respond(sm) {
         & > * {
             &:last-child {
                 margin-right: calc(v.space(sm) * -1);
@@ -48,7 +48,7 @@
         }
     }
 
-    @media only screen and (max-width: v.width(xs)) {
+    @include mix.respond(xs) {
         column-gap: calc(v.space(md));
 
         & > * {

@@ -1,5 +1,7 @@
 @use 'vars' as v;
 @use 'timings' as t;
+@use 'mixins' as mix;
+
 
 .layout {
     position: relative;
@@ -8,11 +10,11 @@
     padding-bottom: v.space(lg);
     background-color: v.color(light-900);
 
-    @media only screen and (max-width: v.width(md)) {
+    @include mix.respond(md) {
         padding-top: v.space(lg);
         padding-bottom: v.space(md);
     }
-    @media only screen and (max-width: v.width(sm)) {
+    @include mix.respond(sm) {
         padding-top: v.space(md);
     }
 }
@@ -28,7 +30,7 @@
 }
 
 .copyright-wrap {
-    @media only screen and (max-width: v.width(xxs)) {
+    @include mix.respond(xxs) {
         text-align: right;
     }
 }
@@ -57,7 +59,7 @@
     padding-bottom: calc(v.space(sm) + v.space(xs));
     width: 120px;
 
-    @media only screen and (max-width: v.width(sm)) {
+    @include mix.respond(sm) {
         width: 230px;
     }
 }
@@ -231,13 +233,13 @@
     --pattern-2-center: 50% 50%;
     --pattern-3-center: 70% 40%;
 
-    @media only screen and (max-width: v.width(xl)) {
+    @include mix.respond(xl) {
         --pattern-1-center: 45% 60%;
         --pattern-2-center: 50% 50%;
         --pattern-3-center: 55% 35%;
     }
 
-    @media only screen and (max-width: v.width(xxs)) {
+    @include mix.respond(xxs) {
         width: auto;
         height: 100%;
     }
@@ -285,20 +287,20 @@
 
     animation: pattern-move-footer 20s linear infinite;
 
-    @media only screen and (max-width: v.width(xs)) {
+    @include mix.respond(xs) {
         background-size: 33.333333%;
     }
 }
 
 .background-title-1 {
-    @media only screen and (max-width: v.width(sm)) {
+    @include mix.respond(sm) {
         .background-deco-title-inner {
             transform: translate(-80%, 50%) rotate(-45deg);
         }
     }
 }
 .background-title-3 {
-    @media only screen and (max-width: v.width(sm)) {
+    @include mix.respond(sm) {
         .background-deco-title-inner {
             transform: translate(-20%, -150%) rotate(-45deg);
         }

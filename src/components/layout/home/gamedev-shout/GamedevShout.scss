@@ -1,10 +1,12 @@
 @use 'vars' as v;
+@use 'mixins' as mix;
+
 
 .title {
-    @media only screen and (max-width: 1880px) {
+    @include mix.respond(1880px) {
         margin-right: -8vw;
     }
-    @media only screen and (max-width: v.width(xs)) {
+    @include mix.respond(xs) {
         margin-right: 0;
 
         $cell-size: calc(100% / 12);
@@ -14,7 +16,7 @@
         text-align: right;
     }
 
-    @media only screen and (max-width: v.width(xxs)) {
+    @include mix.respond(xxs) {
         padding-left: 0;
     }
 }
@@ -40,12 +42,12 @@
 }
 
 .left {
-    @media only screen and (max-width: v.width(xs)) {
+    @include mix.respond(xs) {
         order: 2;
     }
 }
 .right {
-    @media only screen and (max-width: v.width(xs)) {
+    @include mix.respond(xs) {
         order: 1;
     }
 }
