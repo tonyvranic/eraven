@@ -4,6 +4,7 @@ import Grid from "../../../utils/Grid.astro";
 import Text from "../../../ui/text/Text.astro";
 import MediaBorder from "../../../utils/media-border/MediaBorder.astro";
 import Image from "../../../utils/Image.astro";
+import ColumnMedia from "../../../utils/column-media/ColumnMedia.astro";
 ---
 
 
@@ -55,18 +56,14 @@ import Image from "../../../utils/Image.astro";
         sm={{ start: 1, span: 12 }}
         class:list={['column']}
       >
-        <div class:list={['column-media', 'type-vertical', 'rel', 'primary-700']}>
-          <MediaBorder />
-          <div class:list={['column-media-container', 'media', 'rel', 'z-1']}>
-            <Image
-              src="/imgs/gallery-bento/bento-1.webp"
-              alt="Photo of a person holding a DSLR camera"
-              width={488} height={1088}
-              data-multiplier="4"
-            />
-            <div class:list={['column-media-overlay', 'abs-fw', 'z-2', 'no-e', 'bg-primary-600']}></div>
-          </div>
-        </div>
+        <ColumnMedia
+          imageSrc="/imgs/gallery-bento/bento-1.webp"
+          imageAlt="Person holding a DSLR camera"
+          imageWidth={488}
+          imageHeight={1088}
+          data-multiplier="4"
+          isVertical={true}
+        />
       </Cell>
 
       <!-- Column 2 -->
@@ -75,30 +72,22 @@ import Image from "../../../utils/Image.astro";
         sm={{ start: 1, span: 12 }}
         class:list={['column']}
       >
-        <div class:list={['column-media', 'rel', 'primary-700']}>
-          <MediaBorder />
-          <div class:list={['column-media-container', 'media', 'aspect-1:1', 'rel', 'z-1']}>
-            <Image
-              src="/imgs/gallery-bento/bento-2.webp"
-              alt="Close up photo of a cat"
-              width={488} height={500}
-              data-multiplier="2"
-            />
-            <div class:list={['column-media-overlay', 'abs-fw', 'z-2', 'no-e', 'bg-primary-600']}></div>
-          </div>
-        </div>
-
-        <div class:list={['column-media', 'rel', 'primary-700']}>
-          <MediaBorder />
-          <div class:list={['column-media-container', 'media', 'aspect-1:1', 'rel', 'z-1']}>
-            <Image
-              src="/imgs/gallery-bento/bento-3.webp"
-              alt="Photo of an empty restaurant"
-              width={488} height={500}
-            />
-            <div class:list={['column-media-overlay', 'abs-fw', 'z-2', 'no-e', 'bg-primary-600']}></div>
-          </div>
-        </div>
+        <ColumnMedia
+          imageSrc="/imgs/gallery-bento/bento-2.webp"
+          imageAlt="Close up photo of a cat"
+          imageWidth={488}
+          imageHeight={500}
+          data-multiplier="2"
+          class:list={['aspect-1:1']}
+        />
+        <ColumnMedia
+          imageSrc="/imgs/gallery-bento/bento-3.webp"
+          imageAlt="Empty restaurant"
+          imageWidth={488}
+          imageHeight={500}
+          data-multiplier="2"
+          class:list={['aspect-1:1']}
+        />
       </Cell>
 
       <!-- Column 3 -->
@@ -107,17 +96,14 @@ import Image from "../../../utils/Image.astro";
         sm={{ start: 1, span: 12 }}
         class:list={['column']}
       >
-        <div class:list={['column-media', 'type-vertical', 'rel', 'primary-700']}>
-          <MediaBorder />
-          <div class:list={['column-media-container', 'media', 'rel', 'z-1']}>
-            <Image
-              src="/imgs/gallery-bento/bento-4.webp"
-              alt="Photo of a park bench covered in autumn leaves"
-              width={488} height={1088}
-            />
-            <div class:list={['column-media-overlay', 'abs-fw', 'z-2', 'no-e', 'bg-primary-600']}></div>
-          </div>
-        </div>
+        <ColumnMedia
+          imageSrc="/imgs/gallery-bento/bento-4.webp"
+          imageAlt="Park bench covered in autumn leaves"
+          imageWidth={488}
+          imageHeight={1088}
+          data-multiplier="4"
+          isVertical={true}
+        />
       </Cell>
     </Grid>
 

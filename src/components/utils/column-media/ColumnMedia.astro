@@ -1,0 +1,62 @@
+---
+import Image from '../Image.astro';
+import MediaBorder from '../media-border/MediaBorder.astro';
+
+/* Props */
+interface Props {
+  isSecondary?: boolean;
+  isVertical?: boolean;
+
+  imageSrc: string;
+  imageAlt: string;
+  imageWidth: number;
+  imageHeight: number;
+  imageDataMultiplier?: number;
+}
+
+const { 
+  isSecondary,
+  isVertical,
+
+  imageSrc,
+  imageAlt,
+  imageWidth,
+  imageHeight,
+  imageDataMultiplier = 0,
+  ...rest
+} = Astro.props;
+
+
+/* Computed */
+const columnMediaThemeClasses = !isSecondary ? ['primary-700'] : ['secondary-700', 'hover-secondary-400'];
+const overlayThemeClasses = !isSecondary ? ['bg-primary-600'] : ['bg-secondary-600'];
+
+const isTypeVerticalClasses = isVertical ? ['type-vertical'] : [];
+---
+
+
+{/* Html */}
+<div class:list={['column-media', 'rel', ...isTypeVerticalClasses, ...columnMediaThemeClasses]} {...rest}>
+  <MediaBorder />
+  <div class:list={['column-media-container', 'media', 'rel', 'z-1']}>
+    <Image
+      src={imageSrc}
+      alt={imageAlt}
+      width={imageWidth} height={imageHeight}
+      data-multiplier={imageDataMultiplier}
+    />
+    <div class:list={['column-media-overlay', 'abs-fw', 'z-2', 'no-e', ...overlayThemeClasses]}></div>
+  </div>
+</div>
+
+
+{/* Styles */}
+<style lang="scss">
+  @use './ColumnMedia.scss';
+</style>
+
+
+{/* Script */}
+<script>
+  
+</script>

@@ -1,6 +1,7 @@
 @use 'vars' as v;
 @use 'timings' as t;
 @use 'mixins' as mix;
+@use '../../../utils/column-media/ColumnMedia.scss' as column-media;
 
 
 .gallery-bento-desc {
@@ -20,6 +21,10 @@
 }
 
 .column {
+    display: flex;
+    flex-direction: column;
+    gap: v.space('md');
+
     &:first-child {
         transform: translateY(calc(-1 * v.space('md')));
     }
@@ -27,10 +32,51 @@
         transform: translateY(calc(1 * v.space('md')));
     }
 
+
     @include mix.respond(sm) {
+        flex-shrink: 0;
+
         &:first-child,
         &:last-child {
+            width: clamp(240px, 70vw, 380px);
             transform: unset;
+        }
+
+        &:last-child {
+            margin-right: calc(v.space(md) * -1);
+        }
+
+        &:nth-child(2) {
+            & > * {
+                width: auto;
+                height: calc(#{column-media.$vertical-height} * 0.5 - v.space('md') * 0.5);
+
+                &:nth-child(1) {
+                    margin-right: calc(v.space('lg'));
+                }
+                &:nth-child(2) {
+                    margin-left: calc(v.space('lg'));
+                }
+            }
+        }
+    }
+
+    @include mix.respond(xs) {
+        &:last-child {
+            margin-right: 0;
+        }
+
+        &:nth-child(2) {
+            & > * {
+                height: calc(#{column-media.$vertical-height-xs} * 0.5 - v.space('md') * 0.5);
+
+                &:nth-child(1) {
+                    margin-right: calc(v.space('xl'));
+                }
+                &:nth-child(2) {
+                    margin-left: calc(v.space('xl'));
+                }
+            }
         }
     }
 }
@@ -39,36 +85,14 @@
     @include mix.respond(sm) {
         padding-bottom: calc(v.space(md));
         display: flex;
-        column-gap: calc(v.space(sm) + v.space(xs));
+        align-items: normal;
+        column-gap: calc(v.space(md) + v.space(xs));
 
         overflow-x: auto;
         @include mix.scrollbar();
-
-        & > * {
-            width: 380px;
-            flex-shrink: 0;
-
-            &:last-child {
-                margin-right: calc(v.space(md) * -1);
-            }
-        }
-    }
-
-    @include mix.respond(sm) {
-        & > * {
-            &:last-child {
-                margin-right: calc(v.space(sm) * -1);
-            }
-        }
     }
 
     @include mix.respond(xs) {
         column-gap: calc(v.space(md));
-
-        & > * {
-            &:last-child {
-                margin-right: 0;
-            }
-        }
     }
 }
