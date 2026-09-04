@@ -74,10 +74,6 @@ svg {
     stroke: currentColor;
 }
 
-section {
-    width: 100%;
-}
-
 b {
     font-weight: 700;
 }
@@ -120,17 +116,31 @@ h1, h2, h3, h4, h5, h6 {
 
 section {
     position: relative;
+    width: 100%;
 
     &.filled-bg {
-        margin-bottom: v.space(xl);
+        margin-bottom: min(v.space(xl), 6.8vw);
+
+        @media only screen and (max-width: v.width(md)) {
+            margin-bottom: v.space(lg);
+        }
     }
 
     &:not(:first-child) {
-        padding-top: v.space(xl);
-        padding-bottom: v.space(xl);
+        padding-top: min(v.space(xl), 6.8vw);
+        padding-bottom: min(v.space(xl), 6.8vw);
+
+        @media only screen and (max-width: v.width(md)) {
+            padding-top: v.space(lg);
+            padding-bottom: v.space(lg);
+        }
 
         &.filled-bg {
-            margin-top: v.space(xl);
+            margin-top: min(v.space(xl), 6.8vw);
+
+            @media only screen and (max-width: v.width(md)) {
+                margin-top: v.space(lg);
+            }
         }
     }
 }

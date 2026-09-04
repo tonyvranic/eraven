@@ -4,6 +4,10 @@
 
 .gallery-bento-desc {
     padding-left: 52px;
+
+    @media only screen and (max-width: v.width(md)) {
+        padding-left: v.space(md);
+    }
 }
 
 .column {
@@ -12,5 +16,29 @@
     }
     &:last-child {
         transform: translateY(calc(1 * v.space('md')));
+    }
+
+    @media only screen and (max-width: v.width(sm)) {
+        &:first-child,
+        &:last-child {
+            transform: unset;
+        }
+    }
+}
+
+.items {
+    @media only screen and (max-width: v.width(sm)) {
+        display: flex;
+        overflow-x: auto;
+        padding-bottom: calc(v.space(md));
+
+        & > * {
+            width: 380px;
+            flex-shrink: 0;
+
+            &:last-child {
+                margin-right: calc(v.space(md) * -1);
+            }
+        }
     }
 }

@@ -32,13 +32,15 @@ const post3 = posts[2];
 
   <!-- Top -->
   <div class:list={['top']}>
-    <Grid sm>
+    <Grid md sm>
+
+      <!-- Desc -->
       <Cell
         dt={{ start: 3, span: 4 }}
-        sm={{ start: 1, span: 12 }}
+        md={{ start: 1, span: 6 }}
+        sm={{ start: 3, span: 10 }}
         class:list={['desc', 'ase']}
       >
-        <!-- Desc -->
         <Text el="p" type="body-lg" class:list={['tr']}>
           Not every process begins with light or ends in code.
           Some happen slowly, through heat, texture, instinct, and a little bit of improvisation.
@@ -47,28 +49,29 @@ const post3 = posts[2];
         </Text>
       </Cell>
 
+      <!-- Title -->
       <Cell
         dt={{ start: 7, span: 6 }}
+        md={{ start: 7, span: 6 }}
         sm={{ start: 1, span: 12 }}
       >
-        <!-- Title -->
         <Text el="h2" type="display-2xl">
           Beyond <br>
           the <em>Screen</em>
         </Text>
       </Cell>
+
     </Grid>
   </div>
 
   <!-- Bottom -->
-  <div class:list={['bottom', 'mt-xl']}>
-    <Grid sm>
+  <div class:list={['bottom', 'mt-xl', 'md:mt-lg']}>
+    <Grid class={'items'}>
 
       { // Post #1
         post1 && (
           <Cell
             dt={{ start: 1, span: 4 }}
-            sm={{ start: 1, span: 12 }}
           >
             <RecipeListItem
               link={`/blog/${post1.id}`}
@@ -76,6 +79,7 @@ const post3 = posts[2];
               excerpt={post1.data.excerpt}
               imageSrc={post1.data.thumbnail.src}
               imageAlt={post1.data.thumbnail.alt}
+              imageMultiplier="4"
             />
           </Cell>
         )
@@ -85,7 +89,6 @@ const post3 = posts[2];
         post2 && (
           <Cell
             dt={{ start: 5, span: 4 }}
-            sm={{ start: 1, span: 12 }}
           >
             <RecipeListItem
               link={`/blog/${post2.id}`}
@@ -93,6 +96,7 @@ const post3 = posts[2];
               excerpt={post2.data.excerpt}
               imageSrc={post2.data.thumbnail.src}
               imageAlt={post2.data.thumbnail.alt}
+              imageMultiplier="2"
             />
           </Cell>
         )
@@ -102,7 +106,6 @@ const post3 = posts[2];
         post3 && (
           <Cell
             dt={{ start: 9, span: 4 }}
-            sm={{ start: 1, span: 12 }}
           >
             <RecipeListItem
               link={`/blog/${post3.id}`}

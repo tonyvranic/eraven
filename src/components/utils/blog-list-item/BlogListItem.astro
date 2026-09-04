@@ -11,6 +11,7 @@ interface Props {
   excerpt: string;
   imageSrc: string;
   imageAlt: string;
+  imageMultiplier?: string;
 }
 
 const { 
@@ -18,7 +19,8 @@ const {
   title,
   excerpt,
   imageSrc,
-  imageAlt
+  imageAlt,
+  imageMultiplier
 } = Astro.props;
 
 
@@ -38,6 +40,7 @@ const {
         src={imageSrc}
         alt={imageAlt}
         width={488} height={626}
+        data-multiplier={imageMultiplier || '0'}
       />
       <div class:list={['bg-overlay', 'abs-fw', 'z-2', 'bg-secondary-600']}></div>
     </div>

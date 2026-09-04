@@ -1,6 +1,36 @@
 @use 'vars' as v;
 
+.title {
+    @media only screen and (max-width: v.width(md)) {
+        padding-right: calc(v.space(md));
+    }
+
+    @media only screen and (max-width: v.width(sm)) {
+        padding-right: 0;
+    }
+}
 
 .desc {
     padding-left: calc(v.space(md));
+
+    @media only screen and (max-width: v.width(md)) {
+        padding-left: 0;
+    }
+}
+
+.items {
+    @media only screen and (max-width: v.width(md)) {
+        display: flex;
+        overflow-x: auto;
+        padding-bottom: calc(v.space(md));
+
+        & > * {
+            width: 380px;
+            flex-shrink: 0;
+
+            &:last-child {
+                margin-right: calc(v.space(md) * -1);
+            }
+        }
+    }
 }

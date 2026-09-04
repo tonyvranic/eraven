@@ -1,6 +1,21 @@
 @use 'vars' as v;
 
-.gamedev-shout-visual {
+.title {
+    @media only screen and (max-width: 1880px) {
+        margin-right: -8vw;
+    }
+    @media only screen and (max-width: v.width(xs)) {
+        margin-right: 0;
+
+        $cell-size: calc(100% / 12);
+        $cell-gap: min(12px, 2vw);
+        padding-left: calc($cell-size * 2 + $cell-gap);
+
+        text-align: right;
+    }
+}
+
+.visual {
     aspect-ratio: 408 / 617;
 
     overflow: visible;
@@ -10,7 +25,7 @@
     }
 }
 
-.gamedev-shout-link {
+.link {
     display: block;
     top: 48.4%;
     left: 28.4%;
@@ -18,4 +33,15 @@
     width: 7%;
     aspect-ratio: 1/1;
     height: auto;
+}
+
+.left {
+    @media only screen and (max-width: v.width(xs)) {
+        order: 2;
+    }
+}
+.right {
+    @media only screen and (max-width: v.width(xs)) {
+        order: 1;
+    }
 }

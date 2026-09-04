@@ -6,6 +6,7 @@ import Flex from "../../utils/Flex.astro";
 import Grid from "../../utils/Grid.astro";
 import Image from "../../utils/Image.astro";
 
+
 /* Computed */
 const logoAltText: string = 'a blue cassette with orange tape forming wings connected to a blue satellite dish.';
 
@@ -19,6 +20,8 @@ const linkedinLink: string    = 'https://www.linkedin.com/in/antonio-vrani%C4%87
 
 const copyrightText: string = `&copy; ${new Date().getFullYear()} Electric Raven.`;
 ---
+
+
 {/* Html */}
 <footer class="layout">
 
@@ -28,6 +31,7 @@ const copyrightText: string = `&copy; ${new Date().getFullYear()} Electric Raven
     <Cell
       dt={{ start: 1, span: 6 }}
       sm={{ start: 1, span: 12 }}
+      class:list={['sm:mb-xl', 'xxs:pb-md']}
     >
       <a 
         href="/"
@@ -191,7 +195,7 @@ const copyrightText: string = `&copy; ${new Date().getFullYear()} Electric Raven
   </Grid>
 
   <!-- Footer bottom section -->
-  <Grid sm class:list={['copyright-wrap', 'rel', 'z-2', 'mt-xl', 'no-e']}>
+  <Grid sm class:list={['copyright-wrap', 'rel', 'z-2', 'mt-xl', 'md:mt-lg', 'xs:mt-md', 'xxs:mt-xs', 'no-e']}>
     <Cell
       dt={{ start: 1, span: 12 }}
       sm={{ start: 1, span: 12 }}

@@ -7,7 +7,110 @@
     padding-top: v.space(xl);
     padding-bottom: v.space(lg);
     background-color: v.color(light-900);
+
+    @media only screen and (max-width: v.width(md)) {
+        padding-top: v.space(lg);
+        padding-bottom: v.space(md);
+    }
+    @media only screen and (max-width: v.width(sm)) {
+        padding-top: v.space(md);
+    }
 }
+
+.logo-link {
+    display: block;
+    width: 80px;
+    height: 80px;
+}
+
+.blaze {
+    color: v.color(secondary-400);
+}
+
+.copyright-wrap {
+    @media only screen and (max-width: v.width(xxs)) {
+        text-align: right;
+    }
+}
+
+
+// Socials
+.socials-bg {
+    --size: 60px;
+
+    clip-path: polygon(
+        100% 0%,
+        calc(100% - var(--size)) 0%,
+        100% var(--size),
+
+        100% 100%,
+
+        calc(0% + var(--size)) 100%,
+        0% calc(100% - var(--size)),
+        0% 100%,
+        0% 0%
+    );
+}
+
+.socials-wrap-outer {
+    padding-top: calc(v.space(sm) + v.space(xs));
+    padding-bottom: calc(v.space(sm) + v.space(xs));
+    width: 120px;
+
+    @media only screen and (max-width: v.width(sm)) {
+        width: 230px;
+    }
+}
+
+.socials {
+    padding-left: v.space(sm);
+    padding-right: v.space(sm);
+
+    a {
+        display: block;
+        color: v.color(light-100);
+
+        @include t.tx((transform));
+
+        &:hover {
+            transform: scale(1.2);
+
+            .social-icon-hover {
+                visibility: visible;
+                clip-path: polygon(
+                    0% 0%,
+                    100% 0%,
+                    100% 100%,
+                    0% 100%
+                );
+            }
+        }
+    }
+}
+.social-icon,
+.social-icon-hover {
+    transform: rotate(-45deg);
+    &.type-no-rotate {
+        .social-icon-inner {
+            transform: rotate(45deg);
+        }
+    }
+}
+
+.social-icon-hover {
+    // color: v.color(primary-300);
+
+    @include t.tx((visibility, clip-path));
+
+    visibility: hidden;
+    clip-path: polygon(
+        0% 0%,
+        100% 0%,
+        100% 0%,
+        0% 0%
+    )
+}
+
 
 // Background
 .background-grid {
@@ -20,10 +123,12 @@
     @include t.tx((mask-position), 2);
 
     &:has(.background-title-1:hover, .background-title-1:focus) {
-        mask-position: -400px;
+        // mask-position: -400px;
+        mask-position: calc(min(400px, 33vw) * -1);
     }
     &:has(.background-title-3:hover, .background-title-3:focus) {
-        mask-position: 400px;
+        // mask-position: 400px;
+        mask-position: calc(min(400px, 33vw) * 1);
     }
     &:has(.background-title-2:hover, .background-title-2:focus) {
         mask-position: 0px;
@@ -56,7 +161,7 @@
 }
 
 .background-deco-title {
-    width: 500px;
+    width: min(500px, 30vw);
     top: 0px;
     bottom: 0px;
     left: 50%;
@@ -122,31 +227,46 @@
     );
     visibility: hidden;
 
+    --pattern-1-center: 35% 55%;
+    --pattern-2-center: 50% 50%;
+    --pattern-3-center: 70% 40%;
+
+    @media only screen and (max-width: v.width(xl)) {
+        --pattern-1-center: 45% 60%;
+        --pattern-2-center: 50% 50%;
+        --pattern-3-center: 55% 35%;
+    }
+
+    @media only screen and (max-width: v.width(xxs)) {
+        width: auto;
+        height: 100%;
+    }
+
     &.pattern-1 {
         .hero-bg-pattern-mask {
-            mask-image: radial-gradient(circle at 35% 55%, #000 0%, #0000 40%);
+            mask-image: radial-gradient(circle at var(--pattern-1-center), #000 0%, #0000 40%);
         }
 
         .hero-bg-pattern-overlay {
-            mask-image: radial-gradient(circle at 35% 55%, #000 0%, #0000 25%);
+            mask-image: radial-gradient(circle at var(--pattern-1-center), #000 0%, #0000 25%);
         }
     }
     &.pattern-2 {
         .hero-bg-pattern-mask {
-            mask-image: radial-gradient(circle at 50% 50%, #000 0%, #0000 40%);
+            mask-image: radial-gradient(circle at var(--pattern-2-center), #000 0%, #0000 40%);
         }
 
         .hero-bg-pattern-overlay {
-            mask-image: radial-gradient(circle at 50% 50%, #000 0%, #0000 25%);
+            mask-image: radial-gradient(circle at var(--pattern-2-center), #000 0%, #0000 25%);
         }
     }
     &.pattern-3 {
         .hero-bg-pattern-mask {
-            mask-image: radial-gradient(circle at 70% 40%, #000 0%, #0000 40%);
+            mask-image: radial-gradient(circle at var(--pattern-3-center), #000 0%, #0000 40%);
         }
 
         .hero-bg-pattern-overlay {
-            mask-image: radial-gradient(circle at 70% 40%, #000 0%, #0000 25%);
+            mask-image: radial-gradient(circle at var(--pattern-3-center), #000 0%, #0000 25%);
         }
     }
 }
@@ -164,89 +284,23 @@
     background-size: 20%;
 
     animation: pattern-move-footer 20s linear infinite;
-}
 
-
-.logo-link {
-    display: block;
-    width: 80px;
-    height: 80px;
-}
-
-.blaze {
-    color: v.color(secondary-400);
-}
-
-
-// Socials
-.socials-bg {
-    --size: 60px;
-
-    clip-path: polygon(
-        100% 0%,
-        calc(100% - var(--size)) 0%,
-        100% var(--size),
-
-        100% 100%,
-
-        calc(0% + var(--size)) 100%,
-        0% calc(100% - var(--size)),
-        0% 100%,
-        0% 0%
-    );
-}
-
-.socials-wrap-outer {
-    padding-top: calc(v.space(sm) + v.space(xs));
-    padding-bottom: calc(v.space(sm) + v.space(xs));
-    width: 120px;
-}
-
-.socials {
-    padding-left: v.space(sm);
-    padding-right: v.space(sm);
-
-    a {
-        display: block;
-        color: v.color(light-100);
-
-        @include t.tx((transform));
-
-        &:hover {
-            transform: scale(1.2);
-
-            .social-icon-hover {
-                visibility: visible;
-                clip-path: polygon(
-                    0% 0%,
-                    100% 0%,
-                    100% 100%,
-                    0% 100%
-                );
-            }
-        }
-    }
-}
-.social-icon,
-.social-icon-hover {
-    transform: rotate(-45deg);
-    &.type-no-rotate {
-        .social-icon-inner {
-            transform: rotate(45deg);
-        }
+    @media only screen and (max-width: v.width(xs)) {
+        background-size: 33.333333%;
     }
 }
 
-.social-icon-hover {
-    // color: v.color(primary-300);
-
-    @include t.tx((visibility, clip-path));
-
-    visibility: hidden;
-    clip-path: polygon(
-        0% 0%,
-        100% 0%,
-        100% 0%,
-        0% 0%
-    )
+.background-title-1 {
+    @media only screen and (max-width: v.width(sm)) {
+        .background-deco-title-inner {
+            transform: translate(-80%, 50%) rotate(-45deg);
+        }
+    }
+}
+.background-title-3 {
+    @media only screen and (max-width: v.width(sm)) {
+        .background-deco-title-inner {
+            transform: translate(-20%, -150%) rotate(-45deg);
+        }
+    }
 }

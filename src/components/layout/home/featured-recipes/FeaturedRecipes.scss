@@ -6,4 +6,23 @@
 
 .desc {
     padding-right: calc(v.space(md));
+    
+    @media only screen and (max-width: v.width(sm)) {
+        order: 2;
+    }
+}
+
+.items {
+    display: flex;
+    overflow-x: auto;
+    padding-bottom: calc(v.space(md));
+
+    & > * {
+        width: 380px;
+        flex-shrink: 0;
+
+        &:last-child {
+            margin-right: calc(v.space(md) * -1);
+        }
+    }
 }

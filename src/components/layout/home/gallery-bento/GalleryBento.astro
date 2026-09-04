@@ -11,20 +11,24 @@ import Image from "../../../utils/Image.astro";
 <section class:list={['gallery-bento']}>
 
   <!-- Top -->
-  <div class:list={['gallery-bento-top', 'mb-xl']}>
+  <div class:list={['gallery-bento-top', 'mb-xl', 'md:mb-lg']}>
     <Grid sm>
+
+      <!-- Title -->
       <Cell
         dt={{ start: 1, span: 7 }}
-        sm={{ start: 1, span: 12 }}
+        sm={{ start: 7, span: 6 }}
       >
         <Text el="h2" type="display-3xl" class:list={['tr']}>
           Moments <br>
           <em>in Light</em>
         </Text>
       </Cell>
+
+      <!-- Description -->
       <Cell
         dt={{ start: 8, span: 5 }}
-        sm={{ start: 1, span: 12 }}
+        sm={{ start: 1, span: 9 }}
         class:list={['ase']}
       >
         <Text el="p" type="body-lg" class:list={['gallery-bento-desc']}>
@@ -35,12 +39,13 @@ import Image from "../../../utils/Image.astro";
           or merely gazing into a beautiful, empty void?
         </Text>
       </Cell>
+
     </Grid>
   </div>
 
   <!-- Bottom -->
   <div class:list={['gallery-bento-bottom']}>
-    <Grid sm class:list={['ac']}>
+    <Grid sm class={'items'} class:list={['ac']}>
 
       <!-- Column 1 -->
       <Cell
@@ -55,6 +60,7 @@ import Image from "../../../utils/Image.astro";
               src="/imgs/gallery-bento/bento-1.webp"
               alt="Photo of a person holding a DSLR camera"
               width={488} height={1088}
+              data-multiplier="4"
             />
             <div class:list={['column-media-overlay', 'abs-fw', 'z-2', 'no-e', 'bg-primary-600']}></div>
           </div>
@@ -74,6 +80,7 @@ import Image from "../../../utils/Image.astro";
               src="/imgs/gallery-bento/bento-2.webp"
               alt="Close up photo of a cat"
               width={488} height={500}
+              data-multiplier="2"
             />
             <div class:list={['column-media-overlay', 'abs-fw', 'z-2', 'no-e', 'bg-primary-600']}></div>
           </div>

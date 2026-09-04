@@ -45,8 +45,15 @@ placeholderSvg = `data:image/svg+xml,${encodeURIComponent(placeholderSvg)}`;
 
 {/* Script */}
 <script>
+  // Config
+  const defaultOffset           = 400;  // data-offset
+  const defaultMultiplierOffset = 200;  // data-multiplier-offset
+  const defaultMmultiplier      = 0;    // data-multiplier
+
+
   // Queries
   const imgEls = document.querySelectorAll<HTMLImageElement>('[data-image]');
+
 
   // Main
   if (!('IntersectionObserver' in window)) {
@@ -67,11 +74,7 @@ placeholderSvg = `data:image/svg+xml,${encodeURIComponent(placeholderSvg)}`;
         entries.forEach(entry => {
           if (!entry.isIntersecting) return;
 
-          const imgEl = entry.target as HTMLImageElement;
-          const src = imgEl.dataset.src;
-          if (src) imgEl.src = src;
-
-          obs.unobserve(imgEl);
+          ImageEnteredIntersection(entry, obs);
         });
       }, { rootMargin });
 
@@ -81,7 +84,11 @@ placeholderSvg = `data:image/svg+xml,${encodeURIComponent(placeholderSvg)}`;
 
   function AddImagesToGroups(groups: Map<string, HTMLImageElement[]>) {
     imgEls.forEach(imgEl => {
-      const rootMargin = imgEl.dataset.offset || '200px';
+      const baseMargin       = imgEl.dataset.offset           ? parseInt(imgEl.dataset.offset)           : defaultOffset;
+      const multiplierOffset = imgEl.dataset.multiplierOffset ? parseInt(imgEl.dataset.multiplierOffset) : defaultMultiplierOffset;
+      const multiplier       = imgEl.dataset.multiplier       ? parseInt(imgEl.dataset.multiplier)       : defaultMmultiplier;
+
+      const rootMargin = `${baseMargin + multiplier * multiplierOffset}px`;
       const group = groups.get(rootMargin) ?? [];
       group.push(imgEl);
       groups.set(rootMargin, group);
@@ -90,6 +97,14 @@ placeholderSvg = `data:image/svg+xml,${encodeURIComponent(placeholderSvg)}`;
 
 
   // Helpers
+  function ImageEnteredIntersection(entry: IntersectionObserverEntry, obs: IntersectionObserver) {
+    const imgEl = entry.target as HTMLImageElement;
+    const src = imgEl.dataset.src;
+    if (src) imgEl.src = src;
+
+    obs.unobserve(imgEl);
+  }
+
   function InstantlyLoadImages() {
     imgEls.forEach(imgEl => {
       const src = imgEl.dataset.src;

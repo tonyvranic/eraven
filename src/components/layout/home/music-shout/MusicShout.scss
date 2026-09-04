@@ -4,14 +4,28 @@
     
 }
 
-.music-shout-visual {
+.title {
+    @media only screen and (max-width: 1880px) {
+        margin-right: -8vw;
+    }
+
+    @media only screen and (max-width: v.width(xs)) {
+        margin-right: 0;
+    }
+}
+
+.visual {
     aspect-ratio: 432 / 617;
     margin-right: max(-24px, -1.25vw);
 
     overflow: visible;
+
+    @media only screen and (max-width: v.width(xs)) {
+        margin-right: -5vw;
+    }
 }
 
-.music-shout-link {
+.link {
     display: block;
     top: 17.8%;
     right: 0%;

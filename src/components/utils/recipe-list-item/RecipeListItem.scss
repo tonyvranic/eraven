@@ -8,7 +8,11 @@
 
     padding: calc((v.space('md') + v.space('xs')));
 
-    min-height: 690px;
+    min-height: min(690px, 44vw);
+
+    @media only screen and (max-width: v.width(md)) {
+        min-height: 540px;
+    }
 
     @include t.tx((color));
 
@@ -79,6 +83,10 @@
     padding: v.space('md') v.space('sm');
     min-height: 40%;
 
+    @media only screen and (max-width: 1880px) {
+        min-height: 50%;
+    }
+
     @include t.tx((transform));
 }
 
@@ -91,6 +99,8 @@
 }
 
 .title {
+    padding-right: v.space('sm');
+
     @include t.tx((color));
 }
 

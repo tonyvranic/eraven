@@ -45,37 +45,37 @@ $layout: (
     dt: ( width: 1920px, columns: 12, // Desktop
         rowGap: space(md),
         colGap: space(md),
-        padding: 108px,
+        padding: min(100px, 5vw),
     ),
     xl: ( width: 1536px, columns: 12, 
         rowGap: space(md),
         colGap: space(md),
-        padding: space(0)
+        padding: min(100px, 5vw),
     ),
     lg: ( width: 1280px, columns: 12, 
         rowGap: space(md),
         colGap: space(md),
-        padding: space(md)
+        padding: min(100px, 5vw),
     ),
     md: ( width: 1024px, columns: 12, 
         rowGap: space(md),
         colGap: space(md),
-        padding: space(md)
+        padding: min(100px, 5vw),
     ),
     sm: ( width: 800px, columns: 12, 
         rowGap: space(sm),
         colGap: space(sm),
-        padding: space(md)
+        padding: min(100px, 5vw),
     ),
     xs: ( width: 600px, columns: 12, 
         rowGap: space(sm),
         colGap: space(sm),
-        padding: calc(space(md) / 2) + space(xs)
+        padding: min(100px, 5vw),
     ),
     xxs: ( width: 420px, columns: 12, 
         rowGap: space(xs),
         colGap: space(xs),
-        padding: calc(space(md) / 2) + space(xs)
+        padding: min(100px, 5vw),
     ),
 );
 

@@ -5,7 +5,7 @@
 @mixin fluid-type(
     $min-size, $max-size,
     $min-screen: 400,
-    $max-screen: 1600
+    $max-screen: 1920
 ) {
     $base: f.strip-unit(v.$base-font-size);
     $slope: calc((
