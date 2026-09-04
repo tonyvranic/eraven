@@ -60,3 +60,23 @@
         calc(var(--border-width) * 0.5)
     );
 }
+
+
+// Backdrop border
+.backdrop-border {
+    transform: translate(calc(var(--border-width) - 1px), calc(var(--border-width) - 1px));
+}
+
+.border-bottom-left-triangle {
+    bottom: 0;
+    left: calc(var(--border-width) * -1);
+    width: calc(var(--border-width) + 1px);
+    height: var(--border-width);
+
+    clip-path: polygon(
+        0% 0%,
+        100% 0%,
+        100% 100%,
+        0% 0%
+    );
+}

@@ -1,11 +1,13 @@
 ---
 /* Props */
 interface Props {
+  backdropBorder?: boolean;
   classes?: string[];
 }
 
 const { 
   /* Destructure your props here */
+  backdropBorder,
   classes,
   ...rest
 } = Astro.props;
@@ -22,6 +24,13 @@ const {
   <div class:list={['border-left', 'border']}></div>
   <div class:list={['border-bottom', 'border']}></div>
   <div class:list={['border-corner', 'border']}></div>
+
+  {backdropBorder && <div class:list={['backdrop-border', 'abs-fw']}>
+    <div class:list={['border-right', 'border']}></div>
+    <div class:list={['border-bottom', 'border']}></div>
+    <div class:list={['border-corner', 'border']}></div>
+    <div class:list={['border-bottom-left-triangle', 'border']}></div>
+  </div>}
 </div>
 
 

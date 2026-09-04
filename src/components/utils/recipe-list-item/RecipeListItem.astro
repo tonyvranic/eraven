@@ -31,9 +31,14 @@ const {
 {/* Html */}
 <a href={link} class:list={['recipe-list-item', 'primary-300']}>
   <MediaBorder
+    backdropBorder
     classes={['item-border', 'primary-700']}
   />
-  <Flex dt={{ dir: 'column', rowGap: 'md' }} class:list={['inner', 'fw', 'rel']}>
+  <Flex 
+    dt={{ dir: 'column', rowGap: 'md' }}
+    xs={{ dir: 'column', rowGap: 'sm' }}
+    class:list={['inner', 'fw', 'rel']}
+  >
     {/* Background */}
     <div class:list={['bg-wrap', 'fg-1', 'rel']}>
       <div class:list={['bg', 'media', 'abs-fw', 'z-1', 'slice-top-right']}>

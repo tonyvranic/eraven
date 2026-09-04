@@ -32,13 +32,14 @@ const post3 = posts[2];
 
   <!-- Top -->
   <div class:list={['top']}>
-    <Grid md sm>
+    <Grid md sm xxs>
 
       <!-- Desc -->
       <Cell
         dt={{ start: 3, span: 4 }}
         md={{ start: 1, span: 6 }}
-        sm={{ start: 3, span: 10 }}
+        sm={{ start: 4, span: 9 }}
+        xxs={{ start: 1, span: 12 }}
         class:list={['desc', 'ase']}
       >
         <Text el="p" type="body-lg" class:list={['tr']}>
@@ -54,6 +55,8 @@ const post3 = posts[2];
         dt={{ start: 7, span: 6 }}
         md={{ start: 7, span: 6 }}
         sm={{ start: 1, span: 12 }}
+        xxs={{ start: 1, span: 12 }}
+        class:list={['title', 'sm:mb-sm']}
       >
         <Text el="h2" type="display-2xl">
           Beyond <br>

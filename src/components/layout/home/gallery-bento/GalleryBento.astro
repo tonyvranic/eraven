@@ -12,12 +12,14 @@ import Image from "../../../utils/Image.astro";
 
   <!-- Top -->
   <div class:list={['gallery-bento-top', 'mb-xl', 'md:mb-lg']}>
-    <Grid sm>
+    <Grid sm xxs>
 
       <!-- Title -->
       <Cell
         dt={{ start: 1, span: 7 }}
-        sm={{ start: 7, span: 6 }}
+        sm={{ start: 3, span: 10 }}
+        xxs={{ start: 1, span: 12 }}
+        class:list={['sm:mb-sm']}
       >
         <Text el="h2" type="display-3xl" class:list={['tr']}>
           Moments <br>
@@ -29,6 +31,7 @@ import Image from "../../../utils/Image.astro";
       <Cell
         dt={{ start: 8, span: 5 }}
         sm={{ start: 1, span: 9 }}
+        xxs={{ start: 1, span: 11 }}
         class:list={['ase']}
       >
         <Text el="p" type="body-lg" class:list={['gallery-bento-desc']}>

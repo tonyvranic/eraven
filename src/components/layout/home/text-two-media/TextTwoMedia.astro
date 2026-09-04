@@ -21,11 +21,12 @@ const {
 
 {/* Html */}
 <section class:list={['text-two-media']}>
-  <Grid sm>
+  <Grid sm xxs>
     <!-- Left -->
     <Cell 
       dt={{start: 1, span: 5}}
       sm={{start: 1, span: 9}}
+      xxs={{start: 1, span: 11}}
       class:list={['secondary-styling', 'sm:mb-lg']}
     >
       <!-- Title -->
@@ -34,12 +35,12 @@ const {
       </Text>
 
       <!-- Desc -->
-      <Text type="body-lg">
+      <Text type="body-lg" class:list={['desc']}>
         Light, once captured, becomes a record.Code provides the structure to understand that record.
         <br><br>
         The visual moment is the beautiful, fleeting accident of reality; the digital process is the act of turning that accident into something permanent and conceptual.
         <br><br>
-        This intersection is about exploration. It is about using code not merely to replicate the image, but to dissect it — to give form to memory, to test the boundaries of time, and to find the sotry hed within the light
+        This intersection is about exploration. It is about using code not merely to replicate the image, but to dissect it — to give form to memory, to test the boundaries of time, and to find the story hidden within the light
       </Text>
     </Cell>
 
@@ -47,6 +48,7 @@ const {
     <Cell 
       dt={{start: 7, span: 3}}
       sm={{start: 1, span: 6}}
+      xxs={{start: 1, span: 6}}
     >
       <div class:list={['column-media', 'aspect-2:3', 'rel', 'primary-700']}>
         <MediaBorder />
@@ -65,6 +67,7 @@ const {
     <Cell 
       dt={{start: 10, span: 3}}
       sm={{start: 7, span: 6}}
+      xxs={{start: 7, span: 6}}
       class:list={['ase', 'secondary-styling']}
     >
       <div class:list={['column-media', 'aspect-4:3', 'rel', 'secondary-700', 'hover-secondary-400']}>

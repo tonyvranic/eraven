@@ -1,4 +1,5 @@
 @use 'vars' as v;
+@use 'mixins' as mix;
 
 .title {
     @media only screen and (max-width: v.width(md)) {
@@ -14,22 +15,47 @@
     padding-left: calc(v.space(md));
 
     @media only screen and (max-width: v.width(md)) {
+        padding-left: v.space(md) + v.space(xs);
+    }
+
+    @media only screen and (max-width: v.width(xxs)) {
         padding-left: 0;
     }
 }
 
 .items {
     @media only screen and (max-width: v.width(md)) {
-        display: flex;
-        overflow-x: auto;
         padding-bottom: calc(v.space(md));
+        display: flex;
+        column-gap: calc(v.space(sm) + v.space(xs));
+
+        overflow-x: auto;
+        @include mix.scrollbar();
 
         & > * {
-            width: 380px;
+            width: clamp(260px, 65vw, 380px);
             flex-shrink: 0;
 
             &:last-child {
                 margin-right: calc(v.space(md) * -1);
+            }
+        }
+    }
+
+    @media only screen and (max-width: v.width(sm)) {
+        & > * {
+            &:last-child {
+                margin-right: calc(v.space(sm) * -1);
+            }
+        }
+    }
+
+    @media only screen and (max-width: v.width(xs)) {
+        column-gap: calc(v.space(md));
+
+        & > * {
+            &:last-child {
+                margin-right: 0;
             }
         }
     }

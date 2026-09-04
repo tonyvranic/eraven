@@ -8,6 +8,19 @@
     @media only screen and (max-width: 1880px) {
         margin-right: -8vw;
     }
+    @media only screen and (max-width: v.width(xxs)) {
+        margin-right: 0;
+    }
+}
+
+.desc {
+    @media only screen and (max-width: v.width(md)) {
+        padding-left: v.space(md) + v.space(xs);
+    }
+
+    @media only screen and (max-width: v.width(xxs)) {
+        padding-left: 0;
+    }
 }
 
 .cell {

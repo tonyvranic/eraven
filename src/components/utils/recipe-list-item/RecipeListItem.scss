@@ -11,7 +11,7 @@
     min-height: min(690px, 44vw);
 
     @media only screen and (max-width: v.width(md)) {
-        min-height: 540px;
+        min-height: clamp(440px, 82vw, 540px);
     }
 
     @include t.tx((color));
@@ -51,6 +51,25 @@
 
         .content {
             transform: translateY(calc(v.space('md') + v.space('xs')));
+        }
+    }
+
+    @media only screen and (max-width: v.width(xs)) {
+        padding: (v.space('sm') + v.space('xs'));
+
+        &:hover {
+            .bg {
+                transform: translateY(calc(v.space('xs'))) scale(0.95);
+            }
+
+            .backdrop {
+                transform: translateX(calc(((v.space('sm') + v.space('xs')) * -1)));
+                width: calc(100% + calc((v.space('sm') + v.space('xs')) * 2));
+            }
+
+            .content {
+                transform: translateY(calc(v.space('sm') + v.space('xs')));
+            }
         }
     }
 }
