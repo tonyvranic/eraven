@@ -1,10 +1,10 @@
 {
   "thumbnail": {
-    "src": "imgs/blog/less-is-more/thumbnail.webp",
+    "src": "/imgs/blog/less-is-more/thumbnail.webp",
     "alt": "Empty parking lot"
   },
   "heroImage": {
-    "src": "imgs/blog/less-is-more/hero.webp",
+    "src": "/imgs/blog/less-is-more/hero.webp",
     "alt": "Empty parking lot"
   },
   "title": "Less is more",

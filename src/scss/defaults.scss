@@ -104,6 +104,26 @@ em {
     color: v.color(primary-400);
 }
 
+.noscript-image {
+    display: none;
+}
+
+body:has(.noscript) {
+    .noscript-image {
+        display: block;
+        content: var(--src);
+
+        & + .image {
+            display: none;
+        }
+    }
+
+    .bg-image {
+        --bg-image: var(--data-bg-src);
+    }
+}
+
+
 h1, h2, h3, h4, h5, h6 {
     color: v.color(light-100);
 }

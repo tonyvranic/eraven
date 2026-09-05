@@ -1,6 +1,7 @@
 ---
 import Icon from "../../ui/icon/Icon.astro";
 import Text from "../../ui/text/Text.astro";
+import BgImage from "../../utils/BgImage.astro";
 import Cell from "../../utils/Cell.astro";
 import Flex from "../../utils/Flex.astro";
 import Grid from "../../utils/Grid.astro";
@@ -263,16 +264,20 @@ const copyrightText: string = `&copy; ${new Date().getFullYear()} Electric Raven
     {/* Star Pattern  */}
     <div class:list={['hero-bg-patterns', 'abs', 'fw', 'aspect-1:1', 'z-1', 'pattern-1']}>
       {/* Main Pattern */}
-      <div 
+      <BgImage
+        src="/patterns/star-pattern.svg"
+        data-offset="800"
+        data-multiplier="20"
         class:list={['hero-bg-pattern', 'abs-fw', 'z-1']}
-        style={'background-image: url("/patterns/star-pattern.svg");'}
       />
 
       {/* Hover Pattern */}
       <div class:list={['hero-bg-pattern-mask', 'abs-fw', 'z-2']}>
-        <div 
-          class:list={['hero-bg-pattern', 'type-hover', 'fh']} 
-          style={'background-image: url("/patterns/star-pattern-hover.svg");'}
+        <BgImage
+          src="/patterns/star-pattern-hover.svg"
+          data-offset="800"
+          data-multiplier="20"
+          class:list={['hero-bg-pattern', 'type-hover', 'fh']}
         />
       </div>
 
@@ -284,16 +289,20 @@ const copyrightText: string = `&copy; ${new Date().getFullYear()} Electric Raven
     {/* Cogwheel Pattern  */}
     <div class:list={['hero-bg-patterns', 'abs', 'fw', 'aspect-1:1', 'z-1', 'pattern-2']}>
       {/* Main Pattern */}
-      <div 
+      <BgImage
+        src="/patterns/cogwheel-pattern.svg"
+        data-offset="800"
+        data-multiplier="20"
         class:list={['hero-bg-pattern', 'abs-fw', 'z-1']}
-        style={'background-image: url("/patterns/cogwheel-pattern.svg");'}
       />
 
       {/* Hover Pattern */}
       <div class:list={['hero-bg-pattern-mask', 'abs-fw', 'z-2']}>
-        <div 
-          class:list={['hero-bg-pattern', 'type-hover', 'fh']} 
-          style={'background-image: url("/patterns/cogwheel-pattern-hover.svg");'}
+        <BgImage
+          src="/patterns/cogwheel-pattern-hover.svg"
+          data-offset="800"
+          data-multiplier="20"
+          class:list={['hero-bg-pattern', 'type-hover', 'fh']}
         />
       </div>
 
@@ -305,16 +314,20 @@ const copyrightText: string = `&copy; ${new Date().getFullYear()} Electric Raven
     {/* Spotlight Pattern  */}
     <div class:list={['hero-bg-patterns', 'abs', 'fw', 'aspect-1:1', 'z-1', 'pattern-3']}>
       {/* Main Pattern */}
-      <div 
+      <BgImage
+        src="/patterns/spotlight-pattern.svg"
+        data-offset="800"
+        data-multiplier="20"
         class:list={['hero-bg-pattern', 'abs-fw', 'z-1']}
-        style={'background-image: url("/patterns/spotlight-pattern.svg");'}
       />
 
       {/* Hover Pattern */}
       <div class:list={['hero-bg-pattern-mask', 'abs-fw', 'z-2']}>
-        <div 
-          class:list={['hero-bg-pattern', 'type-hover', 'fh']} 
-          style={'background-image: url("/patterns/spotlight-pattern-hover.svg");'}
+        <BgImage
+          src="/patterns/spotlight-pattern-hover.svg"
+          data-offset="800"
+          data-multiplier="20"
+          class:list={['hero-bg-pattern', 'type-hover', 'fh']}
         />
       </div>
 

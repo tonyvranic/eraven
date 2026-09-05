@@ -1,10 +1,10 @@
 {
   "thumbnail": {
-    "src": "imgs/recipe/bread/thumbnail.webp",
+    "src": "/imgs/recipe/bread/thumbnail.webp",
     "alt": "Loaf of bread"
   },
   "heroImage": {
-    "src": "imgs/recipe/bread/hero.webp",
+    "src": "/imgs/recipe/bread/hero.webp",
     "alt": "Loaf of bread"
   },
   "title": "Bread",

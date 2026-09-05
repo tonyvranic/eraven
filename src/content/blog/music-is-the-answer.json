@@ -1,10 +1,10 @@
 {
   "thumbnail": {
-    "src": "imgs/blog/music-is-the-answer/thumbnail.webp",
+    "src": "/imgs/blog/music-is-the-answer/thumbnail.webp",
     "alt": "Musical notes"
   },
   "heroImage": {
-    "src": "imgs/blog/music-is-the-answer/hero.webp",
+    "src": "/imgs/blog/music-is-the-answer/hero.webp",
     "alt": "Musical notes"
   },
   "title": "Music is the answer",

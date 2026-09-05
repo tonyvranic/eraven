@@ -1,10 +1,10 @@
 {
   "thumbnail": {
-    "src": "imgs/recipe/protein-crepes/thumbnail.webp",
+    "src": "/imgs/recipe/protein-crepes/thumbnail.webp",
     "alt": "Stacked crepes on a plate"
   },
   "heroImage": {
-    "src": "imgs/recipe/protein-crepes/hero.webp",
+    "src": "/imgs/recipe/protein-crepes/hero.webp",
     "alt": "Stacked crepes on a plate"
   },
   "title": "Protein Crepes",

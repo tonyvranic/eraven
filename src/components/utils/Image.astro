@@ -5,11 +5,15 @@ interface Props {
   alt: string;
   width: number;
   height: number;
+
   offset?: string;
+  multiplierOffset?: string;
+  multiplier?: string;
+
   class?: string;
 }
 
-const { src, alt, width, height, class: className, offset } = Astro.props;
+const { src, alt, width, height, class: className, offset, multiplierOffset, multiplier } = Astro.props;
 
 /* Computed */
 let placeholderSvg = `<svg width="${width}" height="${height}" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 ${width} ${height}"></svg>`;
@@ -18,18 +22,27 @@ placeholderSvg = `data:image/svg+xml,${encodeURIComponent(placeholderSvg)}`;
 
 
 {/* Html */}
+{/* Noscript fallback */}
+<div 
+  class:list={['image', 'noscript-image', className]}
+  style={`--src: url(${src})`}
+></div>
+
+{/* Normal lazy loaded html */}
 <img
+  width={width} height={height}
   class:list={['image', className]}
+  data-image
   data-offset={offset}
+  data-multiplier-offset={multiplierOffset}
+  data-multiplier={multiplier}
   src={placeholderSvg}
   data-src={src}
-  data-image
   alt={alt}
-  width={width}
-  height={height}
   decoding="async"
 />
 
+{/*
 <noscript>
   <img
     class:list={['image', className]}
@@ -41,74 +54,18 @@ placeholderSvg = `data:image/svg+xml,${encodeURIComponent(placeholderSvg)}`;
     decoding="async"
   />
 </noscript>
+ */}
 
 
 {/* Script */}
 <script>
-  // Config
-  const defaultOffset           = 400;  // data-offset
-  const defaultMultiplierOffset = 200;  // data-multiplier-offset
-  const defaultMmultiplier      = 0;    // data-multiplier
+  import { lazyObserve } from '../../utils/lazyObserve';
 
-
-  // Queries
-  const imgEls = document.querySelectorAll<HTMLImageElement>('[data-image]');
-
-
-  // Main
-  if (!('IntersectionObserver' in window)) {
-    InstantlyLoadImages();
-  } else {
-    // Each distinct rootMargin needs its own observer instance
-    const groups = new Map<string, HTMLImageElement[]>();
-
-    AddImagesToGroups(groups);
-    IterateThroughGroups(groups);
-  }
-
-
-  // Functions
-  function IterateThroughGroups(groups: Map<string, HTMLImageElement[]>) {
-    groups.forEach((group, rootMargin) => {
-      const observer = new IntersectionObserver((entries, obs) => {
-        entries.forEach(entry => {
-          if (!entry.isIntersecting) return;
-
-          ImageEnteredIntersection(entry, obs);
-        });
-      }, { rootMargin, scrollMargin: rootMargin });
-
-      group.forEach(imgEl => observer.observe(imgEl));
-    });
-  }
-
-  function AddImagesToGroups(groups: Map<string, HTMLImageElement[]>) {
-    imgEls.forEach(imgEl => {
-      const baseMargin       = imgEl.dataset.offset           ? parseInt(imgEl.dataset.offset)           : defaultOffset;
-      const multiplierOffset = imgEl.dataset.multiplierOffset ? parseInt(imgEl.dataset.multiplierOffset) : defaultMultiplierOffset;
-      const multiplier       = imgEl.dataset.multiplier       ? parseInt(imgEl.dataset.multiplier)       : defaultMmultiplier;
-
-      const rootMargin = `${baseMargin + multiplier * multiplierOffset}px`;
-      const group = groups.get(rootMargin) ?? [];
-      group.push(imgEl);
-      groups.set(rootMargin, group);
-    });
-  }
-
-
-  // Helpers
-  function ImageEnteredIntersection(entry: IntersectionObserverEntry, obs: IntersectionObserver) {
-    const imgEl = entry.target as HTMLImageElement;
-    const src = imgEl.dataset.src;
-    if (src) imgEl.src = src;
-
-    obs.unobserve(imgEl);
-  }
-
-  function InstantlyLoadImages() {
-    imgEls.forEach(imgEl => {
+  lazyObserve<HTMLImageElement>({
+    selector: '[data-image]',
+    onIntersect: imgEl => {
       const src = imgEl.dataset.src;
       if (src) imgEl.src = src;
-    });
-  }
+    },
+  });
 </script>

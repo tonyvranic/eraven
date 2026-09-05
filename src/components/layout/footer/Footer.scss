@@ -100,9 +100,7 @@
 }
 
 .social-icon-hover {
-    // color: v.color(primary-300);
-
-    @include t.tx((visibility, clip-path));
+    @include t.tx((clip-path, visibility));
 
     visibility: hidden;
     clip-path: polygon(
@@ -125,11 +123,9 @@
     @include t.tx((mask-position), 2);
 
     &:has(.background-title-1:hover, .background-title-1:focus) {
-        // mask-position: -400px;
         mask-position: calc(min(400px, 33vw) * -1);
     }
     &:has(.background-title-3:hover, .background-title-3:focus) {
-        // mask-position: 400px;
         mask-position: calc(min(400px, 33vw) * 1);
     }
     &:has(.background-title-2:hover, .background-title-2:focus) {
@@ -210,7 +206,7 @@
         50% 100%
     );
 
-    @include t.tx((visibility, clip-path));
+    @include t.tx((clip-path, visibility));
 }
 
 .hero-bg-patterns {
@@ -218,7 +214,7 @@
     left: 50%;
     transform: translate(-50%, -50%) rotate(35deg);
 
-    @include t.tx((clip-path, visibility), 1);
+    // @include t.tx((clip-path, visibility), 1);
 
     clip-path: polygon(
         0% 50%,
@@ -283,6 +279,7 @@
 }
 
 .hero-bg-pattern {
+    background-image: var(--bg-image);
     background-size: 20%;
 
     animation: pattern-move-footer 20s linear infinite;

@@ -1,10 +1,10 @@
 {
   "thumbnail": {
-    "src": "imgs/recipe/protein-granola/thumbnail.webp",
+    "src": "/imgs/recipe/protein-granola/thumbnail.webp",
     "alt": "Granola"
   },
   "heroImage": {
-    "src": "imgs/recipe/protein-granola/hero.webp",
+    "src": "/imgs/recipe/protein-granola/hero.webp",
     "alt": "Granola"
   },
   "title": "Protein Granola",

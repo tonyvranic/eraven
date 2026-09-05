@@ -1,0 +1,44 @@
+---
+/* Props */
+interface Props {
+  src: string;
+
+  offset?: string;
+  multiplierOffset?: string;
+  multiplier?: string;
+
+  class?: string;
+}
+
+const { src, class: className, offset, multiplierOffset, multiplier, ...rest } = Astro.props;
+
+
+/* Computed */
+---
+
+
+{/* Html */}
+<div
+  class:list={['bg-image', className]}
+  data-bg-image
+  data-offset={offset}
+  data-multiplier-offset={multiplierOffset}
+  data-multiplier={multiplier}
+  data-src=" "
+  style={`--data-bg-src: url("${src}")`}
+  {...rest}
+></div>
+
+
+{/* Script */}
+<script>
+  import { lazyObserve } from '../../utils/lazyObserve';
+
+  lazyObserve<HTMLImageElement>({
+    selector: '[data-bg-image]',
+    onIntersect: el => {
+      const src = el.dataset.src;
+      if (src) el.style.setProperty('--bg-image', `var(--data-bg-src)`);
+    },
+  });
+</script>

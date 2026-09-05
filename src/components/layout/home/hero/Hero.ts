@@ -7,6 +7,7 @@ export default function Init() {
   homeHeroSections.forEach(section => {
     // Config
     const intervalDuration = 8;
+    const firstTimerDuration = 5;
     const quotes: HomeHeroQuote[] = [
       {
         text: 'Exploring the <em>intersection</em><br> of creativity<br> & code',
@@ -73,15 +74,27 @@ export default function Init() {
       currentQuoteIndex = nextQuoteIndex;
     }
   
+
+    /**
+     * Interval will get registered after the initial settimeout
+     */
     function registerInterval(
       titleWrapEls: NodeListOf<HTMLElement>,
       titleEls: NodeListOf<HTMLElement>,
       patternBgEl: HTMLElement,
       patternHoverBgEl: HTMLElement
     ) {
-      setInterval(() => {
+      const timerDuration = firstTimerDuration * 1000;
+      const intervalDurationMs = intervalDuration * 1000;
+
+      setTimeout(() => {
         swapQuote(titleWrapEls, titleEls, patternBgEl, patternHoverBgEl);
-      }, intervalDuration * 1000);
+
+        setInterval(() => {
+          swapQuote(titleWrapEls, titleEls, patternBgEl, patternHoverBgEl);
+        }, intervalDurationMs);
+      }, timerDuration);
+
     }
   
   

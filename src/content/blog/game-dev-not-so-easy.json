@@ -1,10 +1,10 @@
 {
   "thumbnail": {
-    "src": "imgs/blog/game-dev-not-so-easy/thumbnail.webp",
+    "src": "/imgs/blog/game-dev-not-so-easy/thumbnail.webp",
     "alt": "Two controllers"
   },
   "heroImage": {
-    "src": "imgs/blog/game-dev-not-so-easy/hero.webp",
+    "src": "/imgs/blog/game-dev-not-so-easy/hero.webp",
     "alt": "Two controllers"
   },
   "title": "Game dev. <br> Not so easy?",

@@ -11,7 +11,12 @@ interface Props {
   imageAlt: string;
   imageWidth: number;
   imageHeight: number;
-  imageDataMultiplier?: number;
+
+  imageDataOffset?: string;
+  imageDataMultiplierOffset?: string;
+  imageDataMultiplier?: string;
+
+  classes?: string[];
 }
 
 const { 
@@ -22,7 +27,12 @@ const {
   imageAlt,
   imageWidth,
   imageHeight,
-  imageDataMultiplier = 0,
+
+  imageDataOffset,
+  imageDataMultiplierOffset,
+  imageDataMultiplier,
+
+  classes: classes = [],
   ...rest
 } = Astro.props;
 
@@ -36,13 +46,16 @@ const isTypeVerticalClasses = isVertical ? ['type-vertical'] : [];
 
 
 {/* Html */}
-<div class:list={['column-media', 'rel', ...isTypeVerticalClasses, ...columnMediaThemeClasses]} {...rest}>
+<div class:list={['column-media', 'rel', ...isTypeVerticalClasses, ...columnMediaThemeClasses, ...classes]} {...rest}>
   <MediaBorder />
   <div class:list={['column-media-container', 'media', 'rel', 'z-1']}>
     <Image
       src={imageSrc}
       alt={imageAlt}
       width={imageWidth} height={imageHeight}
+
+      data-offset={imageDataOffset}
+      data-multiplier-offset={imageDataMultiplierOffset}
       data-multiplier={imageDataMultiplier}
     />
     <div class:list={['column-media-overlay', 'abs-fw', 'z-2', 'no-e', ...overlayThemeClasses]}></div>
