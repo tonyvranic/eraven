@@ -1,5 +1,6 @@
 @use 'vars' as v;
 @use 'mixins' as mix;
+@use 'timings' as t;
 
 
 .hero {
@@ -43,6 +44,20 @@
     background-size: 16%;
 
     animation: pattern-move 35s linear infinite;
+
+    @include t.tx((opacity), 1.33, t.$power-2-io);
+
+    &.type-hover {
+        transition-delay: t.mul(0.25);
+        transition-duration: t.mul(2.5);
+    }
+
+    &.hide-pattern {
+        transition-duration: t.mul(1.33);
+        transition-delay: 0s;
+        opacity: 0;
+    }
+
 
     @include mix.respond(xs) {
         animation-duration: 20s;
@@ -165,6 +180,25 @@
 
 
 .hero-wrap {
+    transform-origin: right;
+
+    &.hide-title {
+        transition-duration: t.mul(2);
+        transition-timing-function: t.$power-4-io;
+        transform: translate(30%, -100%);
+    }
+
+    &.type-bg {
+        transform-origin: left;
+
+        &.hide-title {
+            transform: translate(-30%, 100%);
+        }
+    }
+
+    @include t.tx((transform), 1.8, t.$power-3-out);
+
+
     @include mix.respond(1880px) {
         margin-left: -8vw;
     }

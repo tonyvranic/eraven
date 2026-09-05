@@ -7,7 +7,10 @@ import Text from "../../../ui/text/Text.astro";
 
 
 {/* Html */}
-<section class:list={['hero', 'em-style-secondary', 'bg-primary-600', 'filled-bg']}>
+<section 
+  class:list={['hero', 'em-style-secondary', 'bg-primary-600', 'filled-bg']}
+  data-home-hero-section
+>
 
   {/* White Text */}
   <div class:list={['hero-wrap-outer-abs', 'abs-fw', 'z-2', 'bg-light-900', 'no-e']} aria-hidden="true">
@@ -47,9 +50,9 @@ import Text from "../../../ui/text/Text.astro";
       >
         <Flex 
           dt={{ dir: 'column', justify: 'center', align: 'center' }} 
-          class:list={['hero-wrap', 'fh', 'rel', 'z-2']}
+          class:list={['hero-wrap', 'type-bg', 'fh', 'rel', 'z-2']}
         >
-          <Text el="span" type="display-2xl" class:list={['hero-title', 'tr', 'light-100', 'block']}>
+          <Text el="span" type="display-2xl" class:list={['hero-title', 'tr', 'light-100', 'block', 'fw']}>
             Exploring the <em>intersection</em><br> of creativity<br> & code
           </Text>
         </Flex>
@@ -71,7 +74,7 @@ import Text from "../../../ui/text/Text.astro";
         dt={{ dir: 'column', justify: 'center', align: 'center' }} 
         class:list={['hero-wrap', 'fh']}
       >
-        <Text el="h1" type="display-2xl" class:list={['hero-title', 'tr', 'light-900']}>
+        <Text el="h1" type="display-2xl" class:list={['hero-title', 'tr', 'light-900', 'fw']}>
           Exploring the <em>intersection</em><br> of creativity<br> & code
         </Text>
       </Flex>
@@ -84,3 +87,10 @@ import Text from "../../../ui/text/Text.astro";
 <style lang="scss">
   @use './Hero.scss';
 </style>
+
+{/* Script */}
+<script>
+  import Init from './Hero.ts';
+
+  Init();
+</script>
