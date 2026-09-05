@@ -25,7 +25,7 @@
         }
 
         .bg {
-            transform: scale(0.95);
+            transform: scale(0.952);
             opacity: 1;
 
             img {
@@ -76,6 +76,7 @@
 }
 
 .bg {
+    height: calc(100% - 140px);
     opacity: 0.6;
 
     @include t.tx((transform, opacity));
@@ -99,6 +100,20 @@
     padding: v.space('md') v.space('sm');
 
     @include t.tx((transform));
+
+    @include mix.respond(lg) {
+        min-height: 240px;
+    }
+    @include mix.respond(md) {
+        min-height: 200px;
+    }
+    @include mix.respond(xs) {
+        min-height: 180px;
+    }
+
+    @include mix.respond(xxs) {
+        padding: calc(v.space('sm') + v.space('xs')) v.space('sm');
+    }
 }
 
 .backdrop {
@@ -111,8 +126,4 @@
 
 .title {
     @include t.tx((color));
-}
-
-.excerpt {
-    padding-top: v.space('sm');
 }

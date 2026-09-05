@@ -40,7 +40,7 @@ const {
       <Image
         src={imageSrc}
         alt={imageAlt}
-        width={488} height={626}
+        width={500} height={490}
         data-multiplier={imageMultiplier || '0'}
       />
       <div class:list={['bg-overlay', 'abs-fw', 'z-2', 'bg-secondary-600']}></div>
@@ -60,10 +60,12 @@ const {
           set:html={title}
           class:list={['title', 'secondary-600']}
         />
+
+        <!-- Excerpt -->
         <Text
           type="body-lg"
           set:html={excerpt}
-          class:list={['excerpt']}
+          class:list={['pt-sm', 'xxs:pt-xs']}
         />
       </div>
     </div>
