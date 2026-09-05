@@ -9,22 +9,22 @@ import Text from "../../../ui/text/Text.astro";
 {/* Html */}
 <section class:list={['hero', 'em-style-secondary', 'bg-primary-600', 'filled-bg']}>
 
-  <!-- White Text -->
+  {/* White Text */}
   <div class:list={['hero-wrap-outer-abs', 'abs-fw', 'z-2', 'bg-light-900', 'no-e']} aria-hidden="true">
     <div class:list={['hero-wrap-outer-abs-bg', 'bg-light-900', 'no-e', 'abs', 'z-1']}></div>
     <Grid md sm xs xxs class:list={['fh', 'z-2']}>
 
 
-      <!-- Bg Patterns -->
-      <!-- Intersection Pattern -->
+      {/* Bg Patterns */}
+      {/* Intersection Pattern */}
       <div class:list={['hero-bg-patterns', 'abs', 'fw', 'aspect-1:1', 'z-1', 'pattern-1']}>
-        <!-- Main Pattern -->
+        {/* Main Pattern */}
         <div 
           class:list={['hero-bg-pattern', 'abs-fw', 'z-1']}
           style={'background-image: url("/patterns/intersection-pattern.svg");'}
         />
 
-        <!-- Hover Pattern -->
+        {/* Hover Pattern */}
         <div class:list={['hero-bg-pattern-mask', 'abs-fw', 'z-2']}>
           <div 
             class:list={['hero-bg-pattern', 'type-hover', 'fh']} 
@@ -32,12 +32,12 @@ import Text from "../../../ui/text/Text.astro";
           />
         </div>
 
-        <!-- Overlay behind text, to make it more legible -->
+        {/* Overlay behind text, to make it more legible */}
         <div class:list={['hero-bg-pattern-overlay', 'abs-fw', 'z-3', 'bg-light-900']} />
       </div>
 
 
-      <!-- Text -->
+      {/* Text */}
       <Cell 
         dt={{ start: 1, span: 6 }}
         md={{ start: 2, span: 6 }}
@@ -57,7 +57,7 @@ import Text from "../../../ui/text/Text.astro";
     </Grid>
   </div>
 
-  <!-- Foreground -->
+  {/* Foreground */}
   <Grid md sm xs xxs class:list={['hero-wrap-outer', 'fh',  'rel', 'z-1']}>
     <Cell 
       dt={{ start: 1, span: 6 }}

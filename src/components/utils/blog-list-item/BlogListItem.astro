@@ -46,7 +46,10 @@ const {
       <div class:list={['bg-overlay', 'abs-fw', 'z-2', 'bg-secondary-600']}></div>
     </div>
 
-    <div class:list={['content', 'rel', 'z-2', 'ase']}>
+    <div 
+      class:list={['content', 'rel', 'z-2', 'ase']}
+      data-equal="content"
+    >
       {/* Backdrop */}
       <div class:list={['backdrop', 'abs-fw', 'z-1', 'slice-top-right']}>
         <div class:list={['backdrop-color', 'abs-fw', 'z-1', 'bg-secondary-700']}></div>
@@ -61,7 +64,7 @@ const {
           class:list={['title', 'secondary-600']}
         />
 
-        <!-- Excerpt -->
+        {/* Excerpt */}
         <Text
           type="body-lg"
           set:html={excerpt}
@@ -81,5 +84,5 @@ const {
 
 {/* Script */}
 <script>
-  
+
 </script>

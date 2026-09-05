@@ -76,7 +76,7 @@ placeholderSvg = `data:image/svg+xml,${encodeURIComponent(placeholderSvg)}`;
 
           ImageEnteredIntersection(entry, obs);
         });
-      }, { rootMargin });
+      }, { rootMargin, scrollMargin: rootMargin });
 
       group.forEach(imgEl => observer.observe(imgEl));
     });

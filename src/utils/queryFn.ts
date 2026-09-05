@@ -3,21 +3,21 @@ export function queryFn(
   root: Element,
   selector: string,
   options: { all: true }
-): NodeListOf<Element> | null;
+): NodeListOf<HTMLElement> | null;
 
 // All
 export function queryFn(
   root: Element,
   selector: string,
   options?: { all?: false }
-): Element | null;
+): HTMLElement | null;
 
 // Closest
 export function queryFn(
   root: Element,
   selector: string,
   options: { all?: false, closest: true }
-): Element | null;
+): HTMLElement | null;
 
 
 export function queryFn(

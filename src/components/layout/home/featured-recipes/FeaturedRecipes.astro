@@ -28,13 +28,16 @@ const post3 = posts[2];
 
 
 {/* Html */}
-<section class:list={['featured-recipes']}>
+<section 
+  class:list={['featured-recipes']}
+  data-featured-recipe-section
+>
 
-  <!-- Top -->
+  {/* Top */}
   <div class:list={['top']}>
     <Grid md sm xxs>
 
-      <!-- Desc -->
+      {/* Desc */}
       <Cell
         dt={{ start: 3, span: 4 }}
         md={{ start: 1, span: 6 }}
@@ -50,7 +53,7 @@ const post3 = posts[2];
         </Text>
       </Cell>
 
-      <!-- Title -->
+      {/* Title */}
       <Cell
         dt={{ start: 7, span: 6 }}
         md={{ start: 7, span: 6 }}
@@ -67,7 +70,7 @@ const post3 = posts[2];
     </Grid>
   </div>
 
-  <!-- Bottom -->
+  {/* Bottom */}
   <div class:list={['bottom', 'mt-xl', 'md:mt-lg']}>
     <Grid class={'items'}>
 
@@ -77,7 +80,7 @@ const post3 = posts[2];
             dt={{ start: 1, span: 4 }}
           >
             <RecipeListItem
-              link={`/blog/${post1.id}`}
+              link={`/recipe/${post1.id}`}
               title={post1.data.title}
               excerpt={post1.data.excerpt}
               imageSrc={post1.data.thumbnail.src}
@@ -94,7 +97,7 @@ const post3 = posts[2];
             dt={{ start: 5, span: 4 }}
           >
             <RecipeListItem
-              link={`/blog/${post2.id}`}
+              link={`/recipe/${post2.id}`}
               title={post2.data.title}
               excerpt={post2.data.excerpt}
               imageSrc={post2.data.thumbnail.src}
@@ -111,7 +114,7 @@ const post3 = posts[2];
             dt={{ start: 9, span: 4 }}
           >
             <RecipeListItem
-              link={`/blog/${post3.id}`}
+              link={`/recipe/${post3.id}`}
               title={post3.data.title}
               excerpt={post3.data.excerpt}
               imageSrc={post3.data.thumbnail.src}
@@ -133,5 +136,44 @@ const post3 = posts[2];
 
 {/* Script */}
 <script>
-  
+  import { queryFn } from "../../../../utils/queryFn";
+  import { debounce } from "../../../../utils/pipes";
+
+  const featuredRecipeSections = document.querySelectorAll('[data-featured-recipe-section]');
+
+  featuredRecipeSections.forEach(section => {
+    // Config
+    // const mql = window.matchMedia('(max-width: 0px)');
+
+
+    // Queries
+    const contentEls = queryFn(section, '[data-equal="content"]', { all: true });
+    if (!contentEls) return;
+
+
+    // Main
+    calculateEqualHeights(contentEls);
+
+
+    // Events
+    window.addEventListener('resize', debounce(() => {
+      calculateEqualHeights(contentEls);
+    }));
+
+
+    // Functions
+    function calculateEqualHeights(contentEls: NodeListOf<HTMLElement>) {
+      let maxHeight = 0;
+
+      contentEls.forEach(el => {
+        el.style.minHeight = 'auto';
+        if (el.offsetHeight > maxHeight) {
+          maxHeight = el.offsetHeight;
+        }
+      });
+      contentEls.forEach(el => {
+        el.style.minHeight = `${maxHeight}px`;
+      });
+    }
+  });
 </script>

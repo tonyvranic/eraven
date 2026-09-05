@@ -38,7 +38,7 @@ const accentColorClass = `bg-${accentColor}-400`;
       xs={{ start: 1, span: 12 }}
       class:list={['ac', 'column']}
     >
-      <!-- Quote icon -->
+      {/* Quote icon */}
       {author && (
         <Text
           class:list={['blockquote-quote-icon-text', 'block']}
@@ -49,7 +49,7 @@ const accentColorClass = `bg-${accentColor}-400`;
         </Text>
       )}
 
-      <!-- Quote text -->
+      {/* Quote text */}
       <Text
         el="h2"
         class:list={['blockquote-quote-text', 'light-900']}
@@ -58,7 +58,7 @@ const accentColorClass = `bg-${accentColor}-400`;
         {quote}
       </Text>
 
-      <!-- Author text -->
+      {/* Author text */}
       {author && (
         <div 
           class:list={[

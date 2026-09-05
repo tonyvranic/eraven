@@ -58,7 +58,7 @@
 
     @include t.tx((
         background-color, color, opacity, border-color
-    ), 1, t.$power-2-o);
+    ), 1, t.$power-2-out);
 
 
     // Styles - Hover
