@@ -25,90 +25,221 @@
     height: 80px;
 }
 
-.blaze {
-    color: v.color(secondary-400);
+// <em> hovers
+.spark {
+    position: relative;
+
+    // TODO - Do JS
+    &:not(.type-js):hover span {
+        animation: spark-animation 0.25s linear forwards;
+    }
+
+    span {
+        --spark-left-start: -50%;
+        --spark-top-start: -50%;
+
+        /* The end gets added onto the start, so this is an offset */
+        --spark-left-end: -200%;
+        --spark-top-end: -250%;
+
+        display: block;
+        position: absolute;
+        width: v.space(sm);
+
+        top: 50%;
+        left: 50%;
+
+        opacity: 0;
+        transform: translate(
+            var(--spark-left-start),
+            var(--spark-top-start)
+        );
+
+        aspect-ratio: v.aspect('1:1');
+
+        background-color: v.color(primary-400);
+
+        pointer-events: none;
+        z-index: 2;
+
+        &:nth-child(2) {
+            --spark-left-start: -50%;
+            --spark-top-start: -50%;
+
+            --spark-left-end: -150%;
+            --spark-top-end: 150%;
+
+            animation-duration: 0.2s;
+            animation-delay: 0.08s;
+        }
+
+        &:nth-child(3) {
+            --spark-left-start: -50%;
+            --spark-top-start: -50%;
+
+            --spark-left-end: 300%;
+            --spark-top-end: -50%;
+
+            animation-duration: 0.3s;
+        }
+
+        &:nth-child(4) {
+            --spark-left-start: -50%;
+            --spark-top-start: -50%;
+
+            --spark-left-end: 150%;
+            --spark-top-end: -250%;
+
+            animation-delay: 0.05s;
+        }
+    }
 }
+
+@keyframes spark-animation {
+    0% {
+        opacity: 0;
+        transform: translate(var(--spark-left-start), var(--spark-top-start));
+    }
+    25% {
+        opacity: 1;
+        transform: translate(
+            calc(var(--spark-left-start) + var(--spark-left-end) * 0.25),
+            calc(var(--spark-top-start) + var(--spark-top-end) * 0.25)
+        );
+    }
+    40% {
+        opacity: 0.5;
+        transform: translate(
+            calc(var(--spark-left-start) + var(--spark-left-end) * 0.50),
+            calc(var(--spark-top-start) + var(--spark-top-end) * 0.50)
+        );
+    }
+    70% {
+        opacity: 0.75;
+        transform: translate(
+            calc(var(--spark-left-start) + var(--spark-left-end) * 0.75),
+            calc(var(--spark-top-start) + var(--spark-top-end) * 0.75)
+        );
+    }
+    100% {
+        opacity: 0;
+        transform: translate(
+            calc(var(--spark-left-start) + var(--spark-left-end) * 1),
+            calc(var(--spark-top-start) + var(--spark-top-end) * 1)
+        );
+    }
+}
+
+.blaze {
+    position: relative;
+    color: v.color(secondary-400);
+
+    // TODO - Do JS
+    &:not(.type-js):hover span {
+        animation: blaze-animation 1s linear forwards;
+    }
+
+    span {
+        --blaze-left-start: -50%;
+        --blaze-top-start: 50%;
+
+        /* The end gets added onto the start, so this is an offset */
+        --blaze-left-end: -50%;
+        --blaze-top-end: -500%;
+
+        display: block;
+        position: absolute;
+        width: v.space(sm);
+
+        top: 50%;
+        left: 50%;
+
+        opacity: 0;
+        transform: translate(
+            var(--blaze-left-start),
+            var(--blaze-top-start)
+        );
+
+        aspect-ratio: v.aspect('1:1');
+
+        background-color: v.color(secondary-400);
+
+        pointer-events: none;
+        z-index: 2;
+
+        &:nth-child(2) {
+            --blaze-left-start: -50%;
+            --blaze-top-start: 50%;
+
+            --blaze-left-end: 150%;
+            --blaze-top-end: -400%;
+
+            animation-duration: 0.2s;
+            animation-delay: 0.2s;
+        }
+
+        &:nth-child(3) {
+            --blaze-left-start: -50%;
+            --blaze-top-start: 50%;
+
+            --blaze-left-end: 50%;
+            --blaze-top-end: -350%;
+
+            animation-duration: 0.3s;
+        }
+
+        &:nth-child(4) {
+            --blaze-left-start: -50%;
+            --blaze-top-start: 50%;
+
+            --blaze-left-end: -200%;
+            --blaze-top-end: -600%;
+
+            animation-delay: 0.1s;
+        }
+    }
+}
+
+@keyframes blaze-animation {
+    0% {
+        opacity: 0;
+        transform: translate(var(--blaze-left-start), var(--blaze-top-start));
+    }
+    20% {
+        opacity: 1;
+        transform: translate(
+            calc(var(--blaze-left-start) + var(--blaze-left-end) * 0.25),
+            calc(var(--blaze-top-start) + var(--blaze-top-end) * 0.25)
+        );
+    }
+    45% {
+        opacity: 0.8;
+        transform: translate(
+            calc(var(--blaze-left-start) + var(--blaze-left-end) * 0.50),
+            calc(var(--blaze-top-start) + var(--blaze-top-end) * 0.50)
+        );
+    }
+    75% {
+        opacity: 0.9;
+        transform: translate(
+            calc(var(--blaze-left-start) + var(--blaze-left-end) * 0.75),
+            calc(var(--blaze-top-start) + var(--blaze-top-end) * 0.75)
+        );
+    }
+    100% {
+        opacity: 0;
+        transform: translate(
+            calc(var(--blaze-left-start) + var(--blaze-left-end) * 1),
+            calc(var(--blaze-top-start) + var(--blaze-top-end) * 1)
+        );
+    }
+}
+
 
 .copyright-wrap {
     @include mix.respond(xxs) {
         text-align: right;
     }
-}
-
-
-// Socials
-.socials-bg {
-    --size: 60px;
-
-    clip-path: polygon(
-        100% 0%,
-        calc(100% - var(--size)) 0%,
-        100% var(--size),
-
-        100% 100%,
-
-        calc(0% + var(--size)) 100%,
-        0% calc(100% - var(--size)),
-        0% 100%,
-        0% 0%
-    );
-}
-
-.socials-wrap-outer {
-    padding-top: calc(v.space(sm) + v.space(xs));
-    padding-bottom: calc(v.space(sm) + v.space(xs));
-    width: 120px;
-
-    @include mix.respond(sm) {
-        width: 230px;
-    }
-}
-
-.socials {
-    padding-left: v.space(sm);
-    padding-right: v.space(sm);
-
-    a {
-        display: block;
-        color: v.color(light-100);
-
-        @include t.tx((transform));
-
-        &:hover {
-            transform: scale(1.2);
-
-            .social-icon-hover {
-                visibility: visible;
-                clip-path: polygon(
-                    0% 0%,
-                    100% 0%,
-                    100% 100%,
-                    0% 100%
-                );
-            }
-        }
-    }
-}
-.social-icon,
-.social-icon-hover {
-    transform: rotate(-45deg);
-    &.type-no-rotate {
-        .social-icon-inner {
-            transform: rotate(45deg);
-        }
-    }
-}
-
-.social-icon-hover {
-    @include t.tx((clip-path, visibility));
-
-    visibility: hidden;
-    clip-path: polygon(
-        0% 0%,
-        100% 0%,
-        100% 0%,
-        0% 0%
-    )
 }
 
 
@@ -135,15 +266,16 @@
     &:has(.background-title-1:hover, .background-title-1:focus) .pattern-1,
     &:has(.background-title-2:hover, .background-title-2:focus) .pattern-2,
     &:has(.background-title-3:hover, .background-title-3:focus) .pattern-3 {
-        transition-duration: t.mul(2);
-
+        opacity: 1;
         visibility: visible;
-        clip-path: polygon(
-            0% 0%,
-            100% 0%,
-            100% 100%,
-            0% 100%
-        );
+
+        .hero-bg-pattern-mask {
+            transition-delay: t.mul(0.25);
+            transition-duration: t.mul(3);
+
+            opacity: 1;
+            visibility: visible;
+        }
     }
 
     &:has(
@@ -214,15 +346,9 @@
     left: 50%;
     transform: translate(-50%, -50%) rotate(35deg);
 
-    // @include t.tx((clip-path, visibility), 1);
+    @include t.tx((opacity, visibility), 1.33, t.$power-2-out);
 
-    clip-path: polygon(
-        0% 50%,
-        100% 50%,
-
-        100% 50%,
-        0% 50%
-    );
+    opacity: 0;
     visibility: hidden;
 
     --pattern-1-center: 35% 55%;
@@ -242,7 +368,7 @@
 
     &.pattern-1 {
         .hero-bg-pattern-mask {
-            mask-image: radial-gradient(circle at var(--pattern-1-center), #000 0%, #0000 40%);
+            mask-image: radial-gradient(circle at var(--pattern-1-center), #000 0%, #0000 28%);
         }
 
         .hero-bg-pattern-overlay {
@@ -251,7 +377,7 @@
     }
     &.pattern-2 {
         .hero-bg-pattern-mask {
-            mask-image: radial-gradient(circle at var(--pattern-2-center), #000 0%, #0000 40%);
+            mask-image: radial-gradient(circle at var(--pattern-2-center), #000 0%, #0000 28%);
         }
 
         .hero-bg-pattern-overlay {
@@ -260,7 +386,7 @@
     }
     &.pattern-3 {
         .hero-bg-pattern-mask {
-            mask-image: radial-gradient(circle at var(--pattern-3-center), #000 0%, #0000 40%);
+            mask-image: radial-gradient(circle at var(--pattern-3-center), #000 0%, #0000 28%);
         }
 
         .hero-bg-pattern-overlay {
@@ -288,6 +414,14 @@
         background-size: 33.333333%;
     }
 }
+
+.hero-bg-pattern-mask {
+    @include t.tx((opacity, visibility), 1.33, t.$power-1-io);
+
+    opacity: 0;
+    visibility: hidden;
+}
+
 
 .background-title-1 {
     @include mix.respond(sm) {

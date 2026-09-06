@@ -1,0 +1,78 @@
+@use 'vars' as v;
+@use 'timings' as t;
+@use 'mixins' as mix;
+
+
+.socials-bg {
+    --size: 60px;
+
+    clip-path: polygon(
+        100% 0%,
+        calc(100% - var(--size)) 0%,
+        100% var(--size),
+
+        100% 100%,
+
+        calc(0% + var(--size)) 100%,
+        0% calc(100% - var(--size)),
+        0% 100%,
+        0% 0%
+    );
+}
+
+.socials-wrap-outer {
+    padding-top: calc(v.space(sm) + v.space(xs));
+    padding-bottom: calc(v.space(sm) + v.space(xs));
+    width: 120px;
+
+    @include mix.respond(sm) {
+        width: 230px;
+    }
+}
+
+.socials {
+    padding-left: v.space(sm);
+    padding-right: v.space(sm);
+
+    a {
+        display: block;
+        color: v.color(light-100);
+
+        @include t.tx((transform));
+
+        &:hover {
+            transform: scale(1.2);
+
+            .social-icon-hover {
+                visibility: visible;
+                clip-path: polygon(
+                    0% 0%,
+                    100% 0%,
+                    100% 100%,
+                    0% 100%
+                );
+            }
+        }
+    }
+}
+.social-icon,
+.social-icon-hover {
+    transform: rotate(-45deg);
+    &.type-no-rotate {
+        .social-icon-inner {
+            transform: rotate(45deg);
+        }
+    }
+}
+
+.social-icon-hover {
+    @include t.tx((clip-path, visibility));
+
+    visibility: hidden;
+    clip-path: polygon(
+        0% 0%,
+        100% 0%,
+        100% 0%,
+        0% 0%
+    )
+}

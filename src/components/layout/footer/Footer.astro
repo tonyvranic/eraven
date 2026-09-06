@@ -6,18 +6,11 @@ import Cell from "../../utils/Cell.astro";
 import Flex from "../../utils/Flex.astro";
 import Grid from "../../utils/Grid.astro";
 import Image from "../../utils/Image.astro";
+import Social from "./social/Social.astro";
 
 
 /* Computed */
 const logoAltText: string = 'a blue cassette with orange tape forming wings connected to a blue satellite dish.';
-
-const mainYtLink: string      = 'https://www.youtube.com/@tonyblox';
-const secondaryYtLink: string = 'https://www.youtube.com/@emskii346';
-const spotifyLink: string     = 'https://open.spotify.com/artist/0Pv26m3Nq3XT6o2YOS3Skw';
-const bandcampLink: string    = 'https://electricraven913.bandcamp.com/';
-const itchioLink: string      = 'https://electric-raven913.itch.io/';
-const mailLink: string        = 'mailto:info@eraven.rocks';
-const linkedinLink: string    = 'https://www.linkedin.com/in/antonio-vrani%C4%87-615069304/';
 
 const copyrightText: string = `&copy; ${new Date().getFullYear()} Electric Raven.`;
 ---
@@ -48,8 +41,20 @@ const copyrightText: string = `&copy; ${new Date().getFullYear()} Electric Raven
       </a>
 
       <Text type="body-lg" class:list={['all-e', 'inline-block']}>
-        From a <em class:list={['spark']}>spark</em> of inspiration <br>
-        to a <em class:list={['blaze']}>blaze</em> of creation
+        From a <em class:list={['spark']}>
+          spark
+          <span></span>
+          <span></span>
+          <span></span>
+          <span></span>
+        </em> of inspiration <br>
+        to a <em class:list={['blaze']}>
+          blaze
+          <span></span>
+          <span></span>
+          <span></span>
+          <span></span>
+        </em> of creation
       </Text>
     </Cell>
 
@@ -58,140 +63,7 @@ const copyrightText: string = `&copy; ${new Date().getFullYear()} Electric Raven
       dt={{ start: 7, span: 6 }}
       sm={{ start: 1, span: 12 }}
     >
-      <div class:list={['socials-wrap-outer', 'rel', 'ml-auto']}>
-        <div class:list={['socials-bg', 'bg-light-800', 'abs-fw', 'z-1']}></div>
-        <Flex
-          el="ul"
-          dt={{ gap: 'md', justify: 'center' }}
-          class:list={['socials', 'rel', 'z-2', 'all-e']}
-        >
-          <li>
-            <a
-              href={mainYtLink}
-              target="_blank" rel="noopener noreferrer"
-              title="Main Youtube Channel"
-              aria-label="Main Youtube Channel"
-            >
-              <div aria-hidden="true" class:list={['social-icon-hover', 'abs', 'z-2', 'primary-300']}>
-                <Icon name="SocialYoutube" size={32}></Icon>
-              </div>
-              <div class:list={['social-icon']}>
-                <Icon name="SocialYoutube" size={32}></Icon>
-              </div>
-            </a>
-          </li>
-          <li>
-            <a 
-              href={secondaryYtLink}
-              target="_blank" rel="noopener noreferrer"
-              title="Secondary Youtube Channel"
-              aria-label="Secondary Youtube Channel"
-            >
-              <div aria-hidden="true" class:list={['social-icon-hover', 'abs', 'z-2', 'secondary-400']}>
-                <Icon name="SocialYoutube" size={32}></Icon>
-              </div>
-              <div class:list={['social-icon']}>
-                <Icon name="SocialYoutube" size={32}></Icon>
-              </div>
-            </a>
-          </li>
-          <li>
-            <a 
-              href={spotifyLink}
-              target="_blank" rel="noopener noreferrer"
-              title="Spotify"
-              aria-label="Spotify"
-            >
-              <div aria-hidden="true" class:list={['social-icon-hover', 'abs', 'z-2', 'primary-300']}>
-                <Icon name="SocialSpotify" size={32}></Icon>
-              </div>
-              <div class:list={['social-icon']}>
-                <Icon name="SocialSpotify" size={32}></Icon>
-              </div>
-            </a>
-          </li>
-          <li>
-            <a 
-              href={bandcampLink}
-              target="_blank" rel="noopener noreferrer"
-              title="Bandcamp"
-              aria-label="Bandcamp"
-            >
-              <div aria-hidden="true" class:list={['social-icon-hover', 'abs', 'z-2', 'primary-300']}>
-                <Icon name="SocialBandcamp" size={32}></Icon>
-              </div>
-              <div class:list={['social-icon']}>
-                <Icon name="SocialBandcamp" size={32}></Icon>
-              </div>
-            </a>
-          </li>
-          <li>
-            <a 
-              href={itchioLink}
-              target="_blank" rel="noopener noreferrer"
-              title="Itchio"
-              aria-label="Itchio"
-            >
-              <div aria-hidden="true" class:list={['social-icon-hover', 'abs', 'z-2', 'primary-300']}>
-                <Icon name="SocialItchio" size={32}></Icon>
-              </div>
-              <div class:list={['social-icon']}>
-                <Icon name="SocialItchio" size={32}></Icon>
-              </div>
-            </a>
-          </li>
-          <li>
-            <a 
-              href={mailLink}
-              target="_blank" rel="noopener noreferrer"
-              title="Mail"
-              aria-label="Mail"
-            >
-              <div aria-hidden="true" class:list={['social-icon-hover', 'abs', 'z-2', 'primary-300']}>
-                <Icon name="SocialMail" size={32}></Icon>
-              </div>
-              <div class:list={['social-icon']}>
-                <Icon name="SocialMail" size={32}></Icon>
-              </div>
-            </a>
-          </li>
-          <li>
-            <a 
-              href={linkedinLink}
-              target="_blank" rel="noopener noreferrer"
-              title="Linkedin"
-              aria-label="Linkedin"
-            >
-              <div aria-hidden="true" class:list={['social-icon-hover', 'abs', 'z-2', 'primary-300']}>
-                <Icon name="SocialLinkedin" size={32}></Icon>
-              </div>
-              <div class:list={['social-icon']}>
-                <Icon name="SocialLinkedin" size={32}></Icon>
-              </div>
-            </a>
-          </li>
-
-          {/* TODO: Implement copy link functionality */}
-          <li>
-            <a 
-              href="#"
-              title="Copy Link"
-              aria-label="Copy Link"
-            >
-            <div aria-hidden="true" class:list={['social-icon-hover', 'type-no-rotate', 'abs', 'z-2', 'primary-300']}>
-              <div class:list={['social-icon-inner']}>
-                <Icon name="SocialCopyLink" size={32}></Icon>
-              </div>
-            </div>
-            <div class:list={['social-icon', 'type-no-rotate']}>
-              <div class:list={['social-icon-inner']}>
-                <Icon name="SocialCopyLink" size={32}></Icon>
-              </div>
-            </div>
-            </a>
-          </li>
-        </Flex>
-      </div>
+      <Social />
     </Cell>
   </Grid>
 

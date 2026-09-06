@@ -193,5 +193,5 @@ $aspect-ratios: (
 );
 
 @function aspect($ratio) {
-    @return map.get($aspect-ratios, $ratio);
+    @return string.unquote(map.get($aspect-ratios, $ratio));
 }
