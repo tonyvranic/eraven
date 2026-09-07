@@ -1,0 +1,109 @@
+---
+import Text from '../../ui/text/Text.astro';
+import Cell from '../Cell.astro';
+import Grid from '../Grid.astro';
+
+/* Props */
+interface Props {
+  bannerSrc: string;
+  bannerAlt: string;
+  title: string;
+  subtitle: string;
+  dateCreated: string;
+  dateUpdated: string;
+
+  theme: 'secondary' | 'primary';
+}
+
+const { 
+  bannerSrc,
+  bannerAlt,
+  title,
+  subtitle,
+  dateCreated,
+  dateUpdated,
+
+  theme,
+} = Astro.props;
+
+
+/* Computed */
+const firstWordInTitle = title.split(' ')[0];
+const restOfTitle = title.split(' ').slice(1).join(' ');
+
+const heroTitleColorClass = theme === 'secondary' ? 'secondary-400' : 'primary-400';
+const overlayColorClass   = theme === 'secondary' ? 'bg-secondary-400' : 'bg-primary-400';
+
+const showDateUpdated = dateCreated !== dateUpdated;
+---
+
+
+{/* Html */}
+<section class:list={['subpage-hero', 'rel', 'o-h']}>
+  {/* Background */}
+  <Grid sm class:list={['bg', 'z-1', 'fh']}>
+    <Cell
+      dt={{ start: 5, span: 8 }}
+      sm={{ start: 1, span: 12 }}
+      class:list={['fh']}
+    >
+      <div class:list={['bg-image-wrap', 'media', 'fh']}>
+        <div class:list={['bg-image', 'fh', 'rel']}>
+          <div class:list={['bg-image-inner', 'fh']}>
+            <img
+              width="1280" height="850"
+              src={bannerSrc}
+              alt={bannerAlt}
+            />
+            <div class:list={['overlay', 'abs-fw', 'no-e', 'z-2', overlayColorClass]}></div>
+            <div class:list={['overlay-darken', 'abs-fw', 'no-e', 'z-3']}></div>
+          </div>
+        </div>
+      </div>
+    </Cell>
+  </Grid>
+
+  {/* Content */}
+  <Grid sm class:list={['content-wrap', 'z-2', 'ac']}>
+    <Cell
+      dt={{ start: 1, span: 6 }}
+      sm={{ start: 1, span: 12 }}
+    >
+      <Text el='h1' set:html={title} aria-hidden class:list={['visually-hidden']} />
+
+      <div class:list={['content']}>
+
+        {/* Title */}
+        <div class:list={['title', 'tr', heroTitleColorClass]}>
+
+          {/* First Word */}
+          <Text el="span" type="display-2xl" class:list={['first-title-word']}>
+            {firstWordInTitle}
+
+            {/* Date */}
+            <Text el="span" type="label-md" class:list={['date', 'abs', 'pl-4', 'light-0']}>
+              {dateCreated} {showDateUpdated ? `\u00a0 — (Edit: ${dateUpdated})` : ''}
+            </Text>
+          </Text>
+
+          {/* Rest of Title */}
+          <Text el="span" type="display-2xl" set:html={restOfTitle} />
+        </div>
+
+        {/* Subtitle */}
+        <Text 
+          el="p" type="body-lg"
+          class:list={['subtitle', 'tr', 'pt-sm']}
+        >
+          {subtitle}
+        </Text>
+      </div>
+    </Cell>
+  </Grid>
+</section>
+
+
+{/* Styles */}
+<style lang="scss">
+  @use './SubpageHero.scss';
+</style>

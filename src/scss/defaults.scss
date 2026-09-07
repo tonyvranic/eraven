@@ -28,6 +28,14 @@ body {
     overflow-y: scroll;
 
     @include mix.scrollbar();
+
+
+    // Header
+    --header-height: 96px;
+
+    @include mix.respond(md) {
+        --header-height: 64px;
+    }
 }
 
 
@@ -125,7 +133,9 @@ body:has(.noscript) {
 
 
 h1, h2, h3, h4, h5, h6 {
-    color: v.color(light-100);
+    --heading-color: #{v.color(light-100)};
+
+    color: var(--heading-color);
 }
 
 .em-style-secondary {

@@ -1,0 +1,38 @@
+---
+import { getCollection } from 'astro:content';
+import Layout from '../../layouts/Layout.astro';
+import SubpageHero from '../../components/utils/subpage-hero/SubpageHero.astro';
+import TextImage from '../../components/subpages/text-image/TextImage.astro';
+
+/* Computed */
+export async function getStaticPaths() {
+  const posts = await getCollection('blog');
+  return posts.map((post) => ({
+    params: { slug: post.id },
+    props: { post },
+  }));
+}
+
+const { post } = Astro.props;
+const data = post.data;
+
+// Convert from Date to 'DD.MM.YYYY.'
+const dateCreated = new Date(data.dateCreated).toLocaleDateString('hr-HR').split(' ').join('');
+const dateUpdated = new Date(data.lastEditDate).toLocaleDateString('hr-HR').split(' ').join('');
+---
+
+
+{/* Html */}
+<Layout classes={['blog', 'secondary-styling']}>
+  <SubpageHero
+    bannerSrc={data.heroImage.src}
+    bannerAlt={data.heroImage.alt}
+    title={data.title}
+    subtitle={data.excerpt}
+    dateCreated={dateCreated}
+    dateUpdated={dateUpdated}
+    theme="secondary"
+  />
+
+  <TextImage />
+</Layout>

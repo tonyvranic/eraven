@@ -56,8 +56,16 @@ $dt-cols: map.get(map.get($layout, dt), columns);
     $row-gap: map.get(map.get($layout, dt), rowGap);
     $padding: map.get(map.get($layout, dt), padding);
 
+
     // Converting rem to px
     $col-gap: f.strip-unit($col-gap) * f.strip-unit($base);
+
+
+    --grid-width: #{$width};
+    --grid-col-gap: #{$col-gap}px;
+    --grid-row-gap: #{$row-gap};
+    --grid-padding: #{$padding};
+    --grid-cell-width: calc((var(--grid-width) - var(--grid-padding) * 2) / #{$dt-cols} - var(--grid-col-gap));
 
     // Desktop base style
     grid-template-columns: repeat(map.get(map.get($layout, dt), columns), 1fr);
@@ -81,6 +89,12 @@ $dt-cols: map.get(map.get($layout, dt), columns);
 
                     // Converting rem to px
                     $col-gap: f.strip-unit($col-gap) * f.strip-unit($base);
+
+                    --grid-width: #{$width};
+                    --grid-col-gap: #{$col-gap}px;
+                    --grid-row-gap: #{$row-gap};
+                    --grid-padding: #{$padding};
+                    --grid-cell-width: calc((var(--grid-width) - var(--grid-padding) * 2) / #{$dt-cols} - var(--grid-col-gap));
 
                     grid-template-columns: repeat(map.get($data, columns), 1fr);
                     column-gap: responsiveColumnGap($width, $col-gap);

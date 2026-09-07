@@ -1,0 +1,30 @@
+@use 'vars' as v;
+
+.component {
+    
+}
+
+
+// Line
+.content-line-wrap-outer {
+    width: v.space(xs);
+    margin-right: calc(v.space(md));
+}
+
+.content-line-wrap {
+    position: relative;
+    height: 200%;
+    
+    clip-path: polygon(0 0, 100% 0, 100% 100%, 0 100%);
+}
+
+.content-line {
+    position: sticky;
+    top: 50%;
+    height: 50%;
+
+    transform: translateY(-100%);
+}
+
+
+// Subpage Media

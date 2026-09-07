@@ -1,0 +1,73 @@
+---
+import Text from '../../ui/text/Text.astro';
+import Cell from '../../utils/Cell.astro';
+import Flex from '../../utils/Flex.astro';
+import Grid from '../../utils/Grid.astro';
+
+/* Props */
+interface Props {
+  theme?: 'secondary' | 'primary';
+}
+
+const { 
+  theme = 'secondary'
+} = Astro.props;
+
+
+/* Computed */
+const titleColorClass = theme === 'secondary' ? 'secondary-400' : 'primary-400';
+---
+
+
+{/* Html */}
+<section class:list={['text-image']}>
+  <Grid>
+    <Cell
+      dt={{ start: 1, span: 5 }}
+    >
+      <div class:list={['content-wrap-outer']}>
+        {/* Title */}
+        <Text el="h2" type="display-2xl" class:list={['-ml-4', titleColorClass]}>
+          Less as an Intentional choice
+        </Text>
+      </div>
+
+      <Flex
+        dt={{ wrap: 'nowrap' }}
+        class:list={['content-wrap', 'mt-md']}
+      >
+        <div class:list={['content-line-wrap-outer', 'fs-0', 'bg-secondary-700']}>
+          <div class:list={['content-line-wrap']}>
+            <div class:list={['content-line', 'bg-secondary-400']}></div>
+          </div>
+        </div>
+
+        <div class:list={['content']}>
+          <p>
+            Less does not mean having less to say.
+            <br><br>
+            It means being more deliberate about what deserves to be heard.
+            <br><br>
+            Every element we add — to a design, an image, a piece of writing, or even our daily lives — asks something from the person experienceing it; their attention, their time, their energy.
+            <br><br>
+            None of those things are infinite.
+            <br><br>
+            Sometimes, removing something does not take away from the experience. Sometimes, it allows everything that remains to matter a little more.
+          </p>
+        </div>
+      </Flex>
+    </Cell>
+  </Grid>
+</section>
+
+
+{/* Styles */}
+<style lang="scss">
+  @use './TextImage.scss';
+</style>
+
+
+{/* Script */}
+<script>
+  
+</script>
