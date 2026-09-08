@@ -86,6 +86,7 @@ const sectionSchema = z.discriminatedUnion('type', [
     type: z.literal('blockquote'),
     content: z.string(),
     author: z.string().optional(),
+    isLarge: z.boolean().optional(),
   }),
   z.object({
     type: z.literal('musicPlayer'),

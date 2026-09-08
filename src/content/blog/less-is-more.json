@@ -38,7 +38,8 @@
     },
     {
       "type": "blockquote",
-      "content": "When everything is asking to be noticed, choosing what to leave out becomes just as important as choosing what to include"
+      "content": "When everything is asking to be noticed, choosing what to leave out becomes just as important as choosing what to include",
+      "isLarge": true
     },
     {
       "type": "textImage",

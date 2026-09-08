@@ -41,7 +41,7 @@ const titleColorClass = theme === 'secondary' ? 'secondary-400' : 'primary-400';
           class:list={['-mr-4', titleColorClass]}
           set:html={'A closing thought'}
         />
-  
+
         {/* Reading Line */}
         <Flex 
           dt={{ justify: 'end', mt: 'md', grow: true }}
@@ -60,7 +60,7 @@ const titleColorClass = theme === 'secondary' ? 'secondary-400' : 'primary-400';
       dt={{ start: 8, span: 5 }}
     >
       {/* Hidden Spacer */}
-      <Text type="display-3xl" aria-hidden set:html={'&nbsp;'} />
+      <Text el="span" type="display-3xl" aria-hidden set:html={'&nbsp;'} />
 
       {content && (
         <div 

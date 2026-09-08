@@ -61,8 +61,8 @@ $dt-cols: map.get(map.get($layout, dt), columns);
     $col-gap: f.strip-unit($col-gap) * f.strip-unit($base);
 
 
-    --grid-width: #{$width};
-    --grid-col-gap: #{$col-gap}px;
+    --grid-width: min(#{$width}, 100vw);
+    --grid-col-gap: #{responsiveColumnGap($width, $col-gap)};
     --grid-row-gap: #{$row-gap};
     --grid-padding: #{$padding};
     --grid-cell-width: calc((var(--grid-width) - var(--grid-padding) * 2) / #{$dt-cols} - var(--grid-col-gap));
@@ -90,8 +90,8 @@ $dt-cols: map.get(map.get($layout, dt), columns);
                     // Converting rem to px
                     $col-gap: f.strip-unit($col-gap) * f.strip-unit($base);
 
-                    --grid-width: #{$width};
-                    --grid-col-gap: #{$col-gap}px;
+                    --grid-width: min(#{$width}, 100vw);
+                    --grid-col-gap: #{responsiveColumnGap($width, $col-gap)};
                     --grid-row-gap: #{$row-gap};
                     --grid-padding: #{$padding};
                     --grid-cell-width: calc((var(--grid-width) - var(--grid-padding) * 2) / #{$dt-cols} - var(--grid-col-gap));

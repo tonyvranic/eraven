@@ -54,8 +54,6 @@ export function lazyObserve<
         entries.forEach(entry => {
           if (!entry.isIntersecting) return;
 
-          console.log('Element intersected:', entry.target);
-
           onIntersect(entry.target as T);
           obs.unobserve(entry.target);
         });
@@ -75,8 +73,6 @@ export function lazyObserve<
       const group = groups.get(rootMargin) ?? [];
       group.push(el);
       groups.set(rootMargin, group);
-
-      console.log(`Added element to group with rootMargin: ${rootMargin}`, el);
     });
   }
 }

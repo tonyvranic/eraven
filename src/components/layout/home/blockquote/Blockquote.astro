@@ -1,4 +1,6 @@
 ---
+import type { CellProps } from '../../../utils/Cell.astro';
+
 import Text from '../../../ui/text/Text.astro';
 import Cell from '../../../utils/Cell.astro';
 import Grid from '../../../utils/Grid.astro';
@@ -8,17 +10,34 @@ interface Props {
   theme: 'secondary' | 'primary';
   content: string;
   author?: string;
+  isLarge?: boolean;
 }
 
 const { 
   theme,
   content,
   author = '',
+  isLarge = false,
 } = Astro.props;
 
 
 /* Computed */
 const accentColorClass = theme == 'secondary' ? 'bg-secondary-400' : 'bg-primary-400';
+const cellSizes: CellProps = !isLarge
+  ? {
+      dt: { start: 3, span: 8 },
+      xl: { start: 2, span: 10 },
+      lg: { start: 2, span: 10 },
+      sm: { start: 1, span: 12 },
+      xs: { start: 1, span: 12 },
+    }
+  : {
+      dt: { start: 2, span: 10 },
+      xl: { start: 2, span: 10 },
+      lg: { start: 1, span: 12 },
+      sm: { start: 1, span: 12 },
+      xs: { start: 1, span: 12 },
+    };
 ---
 
 
@@ -30,12 +49,9 @@ const accentColorClass = theme == 'secondary' ? 'bg-secondary-400' : 'bg-primary
     'tc', 'secondary-styling'
   ]
 }>
-  <Grid xl sm xs>
+  <Grid xl lg sm xs>
     <Cell
-      dt={{ start: 3, span: 8 }}
-      xl={{ start: 2, span: 10 }}
-      sm={{ start: 1, span: 12 }}
-      xs={{ start: 1, span: 12 }}
+      {...cellSizes}
       class:list={['ac', 'column']}
     >
       {/* Quote icon */}

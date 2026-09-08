@@ -1,1 +1,6 @@
 @use 'vars' as v;
+
+
+.content {
+    padding-right: calc(var(--grid-cell-width) + var(--grid-col-gap));
+}

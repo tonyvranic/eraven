@@ -10,7 +10,6 @@ import LineWithContent from '../../utils/lineWithContent/LineWithContent.astro';
 interface Props {
   theme?: 'secondary' | 'primary';
   title?: string;
-  intro?: string;
   contents?: string[];
   inverted?: boolean;
 }
@@ -18,7 +17,6 @@ interface Props {
 const { 
   theme = 'secondary',
   title,
-  intro,
   contents,
   inverted,
 } = Astro.props;
@@ -30,35 +28,19 @@ const titleColorClass = theme === 'secondary' ? 'secondary-400' : 'primary-400';
 
 
 {/* Html */}
-<section class:list={['abstract-text']}>
+<section class:list={['abstract-text-2']}>
 
   {/* Top */}
   <Grid>
-
-    {/* Left */}
     <Cell
       dt={{ start: 3, span: 5 }}
-      class:list={['intro', 'ase', 'tr']}
-    >
-      {/* Intro */}
-      {intro && (
-        <Text 
-          el="span"
-          type="body-lg"
-          set:html={intro}
-        />
-      )}
-    </Cell>
-
-    {/* Right */}
-    <Cell
-      dt={{ start: 8, span: 5 }}
+      class:list={['title-wrap', 'tr']}
     >
       {/* Title */}
       {title && (
         <Text 
           el="h2" type="display-2xl"
-          class:list={['-ml-4', titleColorClass]}
+          class:list={['-mr-4', titleColorClass]}
           set:html={title}
         />
       )}
@@ -80,7 +62,7 @@ const titleColorClass = theme === 'secondary' ? 'secondary-400' : 'primary-400';
         return (
           <Grid class:list={['left', 'tr', ...firstClasses]}>
             <Cell
-              dt={{ start: 3, span: 5 }}
+              dt={{ start: 1, span: 4 }}
             >
               <LineWithContent
                 theme={theme}
@@ -94,7 +76,7 @@ const titleColorClass = theme === 'secondary' ? 'secondary-400' : 'primary-400';
         return (
           <Grid class:list={['right', ...firstClasses]}>
             <Cell
-              dt={{ start: 8, span: 5 }}
+              dt={{ start: 5, span: 5 }}
             >
               <LineWithContent
                 theme={theme}
@@ -112,5 +94,5 @@ const titleColorClass = theme === 'secondary' ? 'secondary-400' : 'primary-400';
 
 {/* Styles */}
 <style lang="scss">
-  @use './AbstractText.scss';
+  @use './AbstractText2.scss';
 </style>

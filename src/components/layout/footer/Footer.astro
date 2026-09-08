@@ -33,11 +33,13 @@ const copyrightText: string = `&copy; ${new Date().getFullYear()} Electric Raven
         aria-label="Home"
         class:list={['media', 'logo-link', 'mb-sm', 'all-e']}
       >
-        <Image
-          src="/logo.png"
-          alt={logoAltText}
-          width={160} height={160}
-        />
+        <div class="rel-fw">
+          <Image
+            src="/logo.png"
+            alt={logoAltText}
+            width={160} height={160}
+          />
+        </div>
       </a>
 
       <Text type="body-lg" class:list={['all-e', 'inline-block']}>

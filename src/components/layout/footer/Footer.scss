@@ -23,7 +23,22 @@
     display: block;
     width: 80px;
     height: 80px;
+
+    perspective: 360px;
+
+    &:hover {
+        & > * {
+            transform: scale(1.1) rotateY(360deg);
+        }
+    }
+
+    & > * {
+        display: block;
+
+        @include t.tx((transform), 1.85);
+    }
 }
+
 
 // <em> hovers
 .spark {

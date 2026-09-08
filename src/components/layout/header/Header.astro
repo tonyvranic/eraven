@@ -39,7 +39,18 @@ const navLinks = [
           {navLinks.map((link) => (
             <li>
               <a href={link.href} class:list={['nav-link']}>
-                <Text type="label-md">{link.label}</Text>
+                <Text 
+                  el="span" type="label-md"
+                  class:list={['nav-link-text']}
+                >
+                  {link.label}
+                </Text>
+                <Text 
+                  el="span" type="label-md" aria-hidden
+                  class:list={['nav-link-text-hover', 'primary-300']}
+                >
+                    {link.label}
+                </Text>
               </a>
             </li>
           ))}

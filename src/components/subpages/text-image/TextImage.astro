@@ -33,7 +33,7 @@ const titleColorClass = theme === 'secondary' ? 'secondary-400' : 'primary-400';
 
     {/* Left */}
     <Cell
-      dt={{ start: 1, span: 5 }}
+      dt={{ start: 1, span: 6 }}
     >
       {/* Title */}
       {title && (
@@ -46,11 +46,12 @@ const titleColorClass = theme === 'secondary' ? 'secondary-400' : 'primary-400';
 
       {/* Content */}
       {content && (
-        <LineWithContent
-          theme={theme}
-          content={content}
-          classes={['mt-md']}
-        />
+        <div class:list={['content', 'mt-md']}>
+          <LineWithContent
+            theme={theme}
+            content={content}
+          />
+        </div>
       )}
     </Cell>
 

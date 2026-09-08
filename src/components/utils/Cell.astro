@@ -32,6 +32,8 @@ type Props = HTMLAttributes<'div'> & {
     [K in CellBreakpoint]?: CellPlacement<K>;
 };
 
+export type CellProps = Props;
+
 const {
     class: className,
     dt, xl, lg, md, sm, xs, xxs,

@@ -2,11 +2,22 @@
 @use 'vars' as v;
 
 
+.subpage-hero {
+    perspective: 1000px;
+}
+
+
 // Background
 .bg {
+    --parallax-y: 0px;
+    --parallax-scale: 1;
+    --parallax-rotate: 0deg;
+    --opacity: 1;
+
     position: absolute;
     left: 50%;
-    transform: translateX(-50%);
+    transform: translate(-50%, var(--parallax-y)) scale(var(--parallax-scale)) rotateX(var(--parallax-rotate));
+    opacity: var(--opacity);
 }
 
 .bg-image-wrap {

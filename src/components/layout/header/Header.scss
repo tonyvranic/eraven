@@ -1,5 +1,6 @@
 @use 'vars' as v;
 @use 'mixins' as mix;
+@use 'timings' as t;
 
 
 .layout {
@@ -16,4 +17,110 @@
         width: 54px;
         height: 54px;
     }
+
+    perspective: 360px;
+
+    &:hover {
+        img {
+            transform: scale(1.1) rotateY(360deg);
+        }
+    }
+
+    img {
+        display: block;
+
+        @include t.tx((transform), 1.85);
+    }
+}
+
+
+.nav-link {
+    display: block;
+    position: relative;
+
+    & > * {
+        display: block;
+
+        @include t.tx((clip-path, visibility), 1.4, t.$power-3-out);
+    }
+
+
+    &:hover {
+        .nav-link-text {
+            clip-path: polygon(
+                /* Top Left */
+                50% 150%,
+
+                /* Top Right */
+                150% 50%,
+
+                /* Bottom Right */
+                150% 50%,
+
+                /* Bottom Left */
+                50% 150%,
+            );
+            visibility: hidden;
+        }
+
+        .nav-link-text-hover {
+            // Clip path at 45deg
+            clip-path: polygon(
+                /* Top Left */
+                -50% 50%,
+
+                /* Top Right */
+                50% -50%,
+
+                /* Bottom Right */
+                150% 50%,
+
+                /* Bottom Left */
+                50% 150%,
+            );
+            visibility: visible;
+        }
+    }
+}
+
+.nav-link-text-hover {
+    position: absolute;
+
+    top: 0;
+    left: 0;
+
+    z-index: 2;
+
+    // Clip path at 45deg
+    clip-path: polygon(
+        /* Top Left */
+        -50% 50%,
+
+        /* Top Right */
+        50% -50%,
+
+        /* Bottom Right */
+        50% -50%,
+
+        /* Bottom Left */
+        -50% 50%,
+    );
+    visibility: hidden;
+}
+
+.nav-link-text {
+    clip-path: polygon(
+        /* Top Left */
+        -50% 50%,
+
+        /* Top Right */
+        50% -50%,
+
+        /* Bottom Right */
+        150% 50%,
+
+        /* Bottom Left */
+        50% 150%,
+    );
+    visibility: visible;
 }

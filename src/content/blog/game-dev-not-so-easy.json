@@ -25,14 +25,16 @@
       "image": {
         "src": "/imgs/blog/game-dev-not-so-easy/image-with-text-1.webp",
         "alt": "Top down abstract maze"
-      }
+      },
+      "content": "<p>You start the morning as a programmer.<br><br>You clock in some time for developing a new feature.<br>Afterwards you end up spending a few hours fighting with a bug that makes absolutely no sense.<br><br>Then you’re a level designer.<br><br>You move some walls around because the level just doesn’t <em>feel</em> right</p>"
     },
     {
       "type": "abstractText",
       "title": "Expressing creativity",
-      "intro": "<p>Then you’re an artist</p>",
+      "intro": "<span>Then you’re an artist</span>",
       "contents": [
-        "<p>You need a texture.<br>You need an icon.<br>You need an animation.<br>Suddenly you’re learning how to draw.<br><br><br>Then you’re a musician.<br><br>The game needs a soundtrack.<br>And sound effects.<br>And footsteps.<br>And that very specific sound a wooden door makes when it opens.<br><br>Now you’re a foley artist"
+        "<p>You need a texture.<br>You need an icon.<br>You need an animation.<br>Suddenly you’re learning how to draw.<br><br><br>Then you’re a musician.<br><br>The game needs a soundtrack.<br>And sound effects.<br>And footsteps.<br>And that very specific sound a wooden door makes when it opens.<br><br>Now you’re a foley artist",
+        "<p>Lorem ipsum dolor sit amet, consectetur adipiscing elit.<br><br>Vestibulum vehicula ex eu gravida fermentum.<br><br>Curabitur non nulla sit amet nisl tempus convallis quis ac lectus.<br><br>Donec sollicitudin molestie malesuada.</p>"
       ]
     },
     {
@@ -45,19 +47,29 @@
     },
     {
       "type": "blockquote",
-      "content": "The difficult part isn’t that any one of these jobs is impossible.<br>It’s that they’re all different"
+      "content": "The difficult part isn’t that any one of these jobs is impossible.<br>It’s that they’re all different",
+      "isLarge": true
+    },
+    {
+      "type": "textImage",
+      "title": "Obligations",
+      "content": "<p>Programming asks you to think logically.<br><br>Art asks you to think visually.<br><br>Music asks you to think emotionally.<br><br>Design asks you to think about how someone else will experience what you’ve created.<br><br>Marketing asks you to convince that same person to care enough to try it.<br><br>Switching between these mindsets can be <em>exhausing</em></p>",
+      "image": {
+        "src": "/imgs/blog/game-dev-not-so-easy/text-image-1.webp",
+        "alt": "Top hats behind a glass window"
+      }
     },
     {
       "type": "abstractText",
       "title": "Mix and Match",
-      "intro": "<p>But that's also what makes making games so fascinating</p>",
+      "intro": "<span>But that's also what makes making games so fascinating</span>",
       "contents": [
         "<p>A game is rarely just one discipline.<br><br>It's where all of them collide.<br><br>Code creates the possibility.<br>Art gives it form.<br>Sound gives it atmosphere.<br>Design gives it purpose.<br><br>And the player brings the final piece: their experience</p>"
       ]
     },
     {
       "type": "closing",
-      "content": "<p>So, how hard is it to be a game developer?<br><br>Pretty hard.<br><br>Especially when you're doing it alone.<br><br>But maybe that's also the appeal.<br><br>You get to build the world, solve the problems, make the mistakes, learn entirely new disciplines, and eventually watch someone else step into something that started as an idea in your head.<br><br>It's a ridiculous amount of work.<br><br>It's occasionally frustrating.<br><br>It's sometimes completely overwhelming.<br><br><br>But then the game runs.<br><br>And for a moment, all those hats disappear.<br><br>There's just a world on the screen.<br><br>And you made it</p>"
+      "content": "<p>So, how hard is it to be a game developer?<br><br>Pretty hard.<br><br>Especially when you're doing it alone.<br><br>But maybe that's also the appeal.<br><br>You get to build the world, solve the problems, make the mistakes, learn entirely new disciplines, and eventually watch someone else step into something that started as an idea in your head.<br><br>It's a ridiculous amount of work.<br><br>It's occasionally frustrating.<br><br>It's sometimes completely overwhelming.<br><br><br>But then the game runs.<br><br>And for a moment, all those hats disappear.<br><br>There's just a world on the screen.<br><br>And <em>you made it</em></p>"
     }
   ]
 }

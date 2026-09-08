@@ -39,9 +39,9 @@ const showDateUpdated = dateCreated !== dateUpdated;
 
 
 {/* Html */}
-<section class:list={['subpage-hero', 'rel', 'o-h']}>
+<section class:list={['subpage-hero', 'rel', 'z-0']} data-subpage-hero-section>
   {/* Background */}
-  <Grid sm class:list={['bg', 'z-1', 'fh']}>
+  <Grid sm class:list={['bg', 'z-1', 'fh', 'o-h', 'parallax-bg']}>
     <Cell
       dt={{ start: 5, span: 8 }}
       sm={{ start: 1, span: 12 }}
@@ -107,3 +107,69 @@ const showDateUpdated = dateCreated !== dateUpdated;
 <style lang="scss">
   @use './SubpageHero.scss';
 </style>
+
+
+{/* Script */}
+<script>
+  import { queryFn } from "../../../utils/queryFn";
+
+  const sections = document.querySelectorAll<HTMLElement>('[data-subpage-hero-section]');
+
+  sections.forEach(section => {
+    const bgEl = queryFn(section, '.parallax-bg');
+    if (!bgEl) return;
+
+
+    // Config
+    // How far the bg should travel over the full height of the hero
+    const parallaxDistancePx = 360;
+    const scaleDecrAmount = 0.1;
+    const rotateDeg = -25;
+    const opacityDecrAmount = 0.8;
+
+
+    // State
+    let ticking = false;
+
+
+    // Computed - Stale
+    const headerHeight = document.querySelector<HTMLElement>('header')?.offsetHeight || 0;
+
+
+    // Main
+    update();
+
+
+    // Events
+    window.addEventListener('scroll', onScroll, { passive: true });
+
+
+    // Functions
+    function update() {
+      const rect = section.getBoundingClientRect();
+
+      // Dont update if the section is not in the viewport
+      if ((Math.abs(rect.top)) > (window.innerHeight + parallaxDistancePx * 0.5)) {
+        ticking = false;
+        return;
+      }
+
+      // 0 = hero top at viewport top, 1 = hero has fully scrolled past
+      const top = -rect.top + headerHeight;
+      const height = (rect.height + parallaxDistancePx)
+      const progress = Math.min(Math.max(top / height, 0), 1);
+
+      bgEl!.style.setProperty('--parallax-y', `${progress * parallaxDistancePx}px`);
+      bgEl!.style.setProperty('--parallax-scale', `${1 - (progress * scaleDecrAmount)}`);
+      bgEl!.style.setProperty('--parallax-rotate', `${progress * rotateDeg}deg`);
+      bgEl!.style.setProperty('--opacity', `${1 - (progress * opacityDecrAmount)}`);
+      ticking = false;
+    }
+
+    function onScroll() {
+      if (ticking) return;
+      ticking = true;
+      requestAnimationFrame(update);
+    }
+  });
+</script>
