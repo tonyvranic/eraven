@@ -59,9 +59,39 @@ const recipeDetailSchema = z.object({
 // TODO
 const sectionSchema = z.discriminatedUnion('type', [
   z.object({
+    type: z.literal('textImage'),
+    title: z.string().optional(),
+    content: z.string().optional(),
+    image: imageSchema.optional(),
+  }),
+  z.object({
+    type: z.literal('imageWithText'),
+    image: imageSchema.optional(),
+    title: z.string().optional(),
+    content: z.string().optional(),
+  }),
+  z.object({
+    type: z.literal('abstractText'),
+    title: z.string().optional(),
+    intro: z.string().optional(),
+    contents: z.array(z.string()).optional(),
+  }),
+  z.object({
+    type: z.literal('abstractText2'),
+    title: z.string().optional(),
+    intro: z.string().optional(),
+    contents: z.array(z.string()).optional(),
+  }),
+  z.object({
     type: z.literal('blockquote'),
-    quote: z.string(),
+    content: z.string(),
     author: z.string().optional(),
+  }),
+  z.object({
+    type: z.literal('musicPlayer'),
+    title: z.string().optional(),
+    content: z.string().optional(),
+    audioSrc: z.string().optional(),
   }),
   z.object({
     type: z.literal('closing'),

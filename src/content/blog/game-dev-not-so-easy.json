@@ -13,5 +13,51 @@
   "tags": ["game development"],
   "dateCreated": "2026-09-03",
   "lastEditDate": "2026-09-03",
-  "sections": []
+  "sections": [
+    {
+      "type": "textImage",
+      "title": "Making a game sounds simple enough",
+      "content": "<p>You have an idea. You write some code. You make a game.<br><br>Except, of course, that’ not really how it works.<br><br>When you’re part of a larger team, the work can be divided.<br>Programmers can focus on programming.<br>Artists can focus on art.<br>Designers can focus on design.<br>Someone else can worry about marketing, budgets, sound, schedules, and everything in between.<br><br>Then there’s the solo developer.<br><br>One person. One <em>idea</em>. All the hats.</p>"
+    },
+    {
+      "type": "imageWithText",
+      "title": "Following logic",
+      "image": {
+        "src": "/imgs/blog/game-dev-not-so-easy/image-with-text-1.webp",
+        "alt": "Top down abstract maze"
+      }
+    },
+    {
+      "type": "abstractText",
+      "title": "Expressing creativity",
+      "intro": "<p>Then you’re an artist</p>",
+      "contents": [
+        "<p>You need a texture.<br>You need an icon.<br>You need an animation.<br>Suddenly you’re learning how to draw.<br><br><br>Then you’re a musician.<br><br>The game needs a soundtrack.<br>And sound effects.<br>And footsteps.<br>And that very specific sound a wooden door makes when it opens.<br><br>Now you’re a foley artist"
+      ]
+    },
+    {
+      "type": "abstractText2",
+      "title": "It doesn’t stop there",
+      "contents": [
+        "<p>You’re the UI designer.<br><br>The writer.<br><br>The producer.<br><br>The tester.<br><br>The project manager.<br><br>The community manager.</p>",
+        "<p>The person answering emails.<br><br>The person managing accounts.<br><br>The person setting up the store page.<br><br>The person taking screenshots.<br><br>The person making the trailer.<br><br>The person wondering why nobody has downloaded the game.<br><br><br>There is always another hat.<br><br>And somehow, you have to learn how to wear all of them</p>"
+      ]
+    },
+    {
+      "type": "blockquote",
+      "content": "The difficult part isn’t that any one of these jobs is impossible.<br>It’s that they’re all different"
+    },
+    {
+      "type": "abstractText",
+      "title": "Mix and Match",
+      "intro": "<p>But that's also what makes making games so fascinating</p>",
+      "contents": [
+        "<p>A game is rarely just one discipline.<br><br>It's where all of them collide.<br><br>Code creates the possibility.<br>Art gives it form.<br>Sound gives it atmosphere.<br>Design gives it purpose.<br><br>And the player brings the final piece: their experience</p>"
+      ]
+    },
+    {
+      "type": "closing",
+      "content": "<p>So, how hard is it to be a game developer?<br><br>Pretty hard.<br><br>Especially when you're doing it alone.<br><br>But maybe that's also the appeal.<br><br>You get to build the world, solve the problems, make the mistakes, learn entirely new disciplines, and eventually watch someone else step into something that started as an idea in your head.<br><br>It's a ridiculous amount of work.<br><br>It's occasionally frustrating.<br><br>It's sometimes completely overwhelming.<br><br><br>But then the game runs.<br><br>And for a moment, all those hats disappear.<br><br>There's just a world on the screen.<br><br>And you made it</p>"
+    }
+  ]
 }

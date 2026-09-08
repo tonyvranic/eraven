@@ -10,8 +10,8 @@ import LineWithContent from '../../utils/lineWithContent/LineWithContent.astro';
 interface Props {
   theme?: 'secondary' | 'primary';
   title?: string;
-  content?: string;
   image?: ContentImage;
+  content?: string;
 }
 
 const { 
@@ -28,55 +28,60 @@ const titleColorClass = theme === 'secondary' ? 'secondary-400' : 'primary-400';
 
 
 {/* Html */}
-<section class:list={['text-image']}>
-  <Grid class:list={['ac']}>
+<section class:list={['image-with-text']}>
 
-    {/* Left */}
+  {/* Top */}
+  <Grid>
     <Cell
-      dt={{ start: 1, span: 5 }}
+      dt={{ start: 2, span: 5 }}
     >
       {/* Title */}
       {title && (
         <Text 
           el="h2" type="display-2xl"
-          class:list={['-ml-4', titleColorClass]}
+          class:list={['-mr-4', 'tr', titleColorClass]}
           set:html={title}
         />
       )}
+    </Cell>
+  </Grid>
 
-      {/* Content */}
-      {content && (
-        <LineWithContent
-          theme={theme}
-          content={content}
-          classes={['mt-md']}
+
+  {/* Bottom */}
+  <Grid class:list={['ac', 'mt-lg']}>
+
+    {/* Left */}
+    <Cell
+      dt={{ start: 2, span: 5 }}
+    >
+      {image && (
+        <SubpageMedia
+          theme={theme} inverted
+          width={840} height={560}
+          src={image.src} alt={image.alt}
         />
       )}
     </Cell>
 
     {/* Right */}
     <Cell
-      dt={{ start: 7, span: 6 }}
+      dt={{ start: 8, span: 5 }}
     >
-      {image && (
-        <SubpageMedia
+      {/* Content */}
+      {content && (
+        <LineWithContent
           theme={theme}
-          width={840} height={560}
-          src={image.src} alt={image.alt}
+          content={content}
         />
       )}
     </Cell>
+
   </Grid>
+
 </section>
 
 
 {/* Styles */}
 <style lang="scss">
-  @use './TextImage.scss';
+  @use './ImageWithText.scss';
 </style>
-
-
-{/* Script */}
-<script>
-  
-</script>

@@ -1,0 +1,32 @@
+---
+/* Props */
+interface Props {
+  theme: 'secondary' | 'primary';
+  classes?: string[];
+}
+
+const { 
+  theme,
+  classes,
+  ...rest
+} = Astro.props;
+
+
+/* Computed */
+const lineBgClass = theme === 'secondary' ? 'bg-secondary-700' : 'bg-primary-700';
+const lineFgClass = theme === 'secondary' ? 'bg-secondary-400' : 'bg-primary-400';
+---
+
+
+{/* Html */}
+<div class:list={['subpage-line', 'fs-0', lineBgClass, ...(classes ?? [])]} {...rest}>
+  <div class:list={['wrap']}>
+    <div class:list={['line', lineFgClass]}></div>
+  </div>
+</div>
+
+
+{/* Styles */}
+<style lang="scss">
+  @use './SubpageLine.scss';
+</style>

@@ -1,0 +1,28 @@
+@use 'vars' as v;
+
+.subpage-line {
+    --line-space-right: 0;
+    --line-space-left: 0;
+    --line-min-height: 0px;
+
+    width: v.space(xs);
+
+    margin-right: var(--line-space-right);
+    margin-left: var(--line-space-left);
+    min-height: var(--line-min-height);
+}
+
+.wrap {
+    position: relative;
+    height: 200%;
+    
+    clip-path: polygon(0 0, 100% 0, 100% 100%, 0 100%);
+}
+
+.line {
+    position: sticky;
+    top: 50%;
+    height: 50%;
+
+    transform: translateY(-100%);
+}

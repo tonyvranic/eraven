@@ -1,0 +1,115 @@
+---
+import Text from '../../ui/text/Text.astro';
+import Cell from '../../utils/Cell.astro';
+import Grid from '../../utils/Grid.astro';
+import SubpageMedia from '../../utils/subpage-media/SubpageMedia.astro';
+import type { ContentImage } from '../../utils/Image.astro';
+import LineWithContent from '../../utils/lineWithContent/LineWithContent.astro';
+
+/* Props */
+interface Props {
+  theme?: 'secondary' | 'primary';
+  title?: string;
+  intro?: string;
+  contents?: string[];
+  inverted?: boolean;
+}
+
+const { 
+  theme = 'secondary',
+  title,
+  intro,
+  contents,
+  inverted,
+} = Astro.props;
+
+
+/* Computed */
+const titleColorClass = theme === 'secondary' ? 'secondary-400' : 'primary-400';
+---
+
+
+{/* Html */}
+<section class:list={['abstract-text']}>
+
+  {/* Top */}
+  <Grid>
+
+    {/* Left */}
+    <Cell
+      dt={{ start: 3, span: 5 }}
+      class:list={['intro', 'ase', 'tr']}
+    >
+      {/* Intro */}
+      {intro && (
+        <Text 
+          type="body-lg"
+          set:html={intro}
+        />
+      )}
+    </Cell>
+
+    {/* Right */}
+    <Cell
+      dt={{ start: 8, span: 5 }}
+    >
+      {/* Title */}
+      {title && (
+        <Text 
+          el="h2" type="display-2xl"
+          class:list={['-ml-4', titleColorClass]}
+          set:html={title}
+        />
+      )}
+    </Cell>
+  </Grid>
+
+
+  {/* Bottom */}
+  {/* Content */}
+  {contents && contents.length > 0 && (
+    contents.map((content, index) => {
+      const isFirst = index === 0;
+      const isAlternate = index % 2 !== 0;
+
+      const firstClasses = isFirst ? ['mt-xl'] : [];
+
+      {/* Content */}
+      if (!isAlternate && !inverted) {
+        return (
+          <Grid class:list={['left', 'tr', ...firstClasses]}>
+            <Cell
+              dt={{ start: 3, span: 5 }}
+            >
+              <LineWithContent
+                theme={theme}
+                content={content}
+                inverted
+              />
+            </Cell>
+          </Grid>
+        );
+      } else {
+        return (
+          <Grid class:list={['right', ...firstClasses]}>
+            <Cell
+              dt={{ start: 8, span: 5 }}
+            >
+              <LineWithContent
+                theme={theme}
+                content={content}
+              />
+            </Cell>
+          </Grid>
+        );
+      }
+    })
+  )}
+
+</section>
+
+
+{/* Styles */}
+<style lang="scss">
+  @use './AbstractText.scss';
+</style>

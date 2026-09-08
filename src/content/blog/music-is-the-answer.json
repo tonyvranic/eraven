@@ -13,5 +13,34 @@
   "tags": ["music"],
   "dateCreated": "2026-09-02",
   "lastEditDate": "2026-09-02",
-  "sections": []
+  "sections": [
+    {
+      "type": "musicPlayer",
+      "title": "There is something strange about music",
+      "content": "<p>You can hear a song in a language you don’t understand and still feel something. You can hear a melody you’ve never encoutered before and somehow recognize the emotion within it.<br><br>No explanation required.<br><br>Music doesn’t always tell us what to feel.It gives us a place to feel it.<br></p>",
+      "audioSrc": "/audio/music-is-the-answer.mp3"
+    },
+    {
+      "type": "abstractText",
+      "title": "The nostalgia of a song",
+      "intro": "<p>A song can make you <br>remember someone you’ve forgotten you remembered.</p>",
+      "contents": [
+        "<p>A few notes can bring you back to a particular room, a particular summer, a particular version of yourself.<br><br>Sometimes you don’t even know why.<br><br>And perhaps that’s what makes music so universal. It doesn’t need to describe an experience for us to recognize it.</p>",
+        "<p>Longing sounds like longing.<br><br>Joy sounds like joy.<br><br>Grief, excitement, loneliness, anticipation — somehow, we understand.</p>"
+      ]
+    },
+    {
+      "type": "textImage",
+      "title": "Feeling the music",
+      "content": "<p>We spend so much of our lives trying to put feelings into words.<br><br>Music gives us another option.<br><br>It can say something without defining it. It can hold two contradictory feelings at once. It can be sad without making us sad, or nostalgic for something we've never experienced.<br><br>Perhaps that's why we return to the same songs.<br><br>Not because they have changed.<br><br>Because we have.<br><br>The song stays the same.<br>We don't.</p>",
+      "image": {
+        "src": "/imgs/blog/music-is-the-answer/text-image-1.webp",
+        "alt": "Hand playing a note on a piano"
+      }
+    },
+    {
+      "type": "closing",
+      "content": "<p>And maybe that's all music needs to do.<br><br>Not solve anything.<br><br>Not explain anything.<br><br>Just be there when we need it.<br><br><br>Happy? Sad? Longing? Immersed? Excited?<br><br>Take a listen.</p>"
+    }
+  ]
 }

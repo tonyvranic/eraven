@@ -5,20 +5,20 @@ import Grid from '../../../utils/Grid.astro';
 
 /* Props */
 interface Props {
-  quote: string;
+  theme: 'secondary' | 'primary';
+  content: string;
   author?: string;
-  accentColor?: 'primary' | 'secondary';
 }
 
 const { 
-  quote,
+  theme,
+  content,
   author = '',
-  accentColor = 'secondary'
 } = Astro.props;
 
 
 /* Computed */
-const accentColorClass = `bg-${accentColor}-400`;
+const accentColorClass = theme == 'secondary' ? 'bg-secondary-400' : 'bg-primary-400';
 ---
 
 
@@ -51,12 +51,10 @@ const accentColorClass = `bg-${accentColor}-400`;
 
       {/* Quote text */}
       <Text
-        el="h2"
+        el="h2" type="display-xl" 
         class:list={['blockquote-quote-text', 'light-900']}
-        type="display-xl"
-      >
-        {quote}
-      </Text>
+        set:html={content}
+      />
 
       {/* Author text */}
       {author && (

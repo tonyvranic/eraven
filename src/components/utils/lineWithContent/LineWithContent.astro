@@ -1,0 +1,44 @@
+---
+import Flex from '../Flex.astro';
+import SubpageLine from '../subpage-line/SubpageLine.astro';
+
+/* Props */
+interface Props {
+  theme: 'secondary' | 'primary';
+  content: string;
+  inverted?: boolean;
+  classes?: string[];
+}
+
+const { 
+  theme,
+  content,
+  inverted = false,
+  classes = [],
+} = Astro.props;
+
+
+/* Computed */
+---
+
+
+{/* Html */}
+<Flex
+  dt={{ wrap: 'nowrap', gap: 'md', dir: inverted ? 'row-reverse' : 'row' }}
+  class:list={['content-wrap', ...classes]}
+>
+  <SubpageLine
+    theme={theme}
+  />
+
+  <div 
+    set:html={content}
+    class:list={['user-content']}
+  />
+</Flex>
+
+
+{/* Styles */}
+<style lang="scss">
+  @use './LineWithContent.scss';
+</style>

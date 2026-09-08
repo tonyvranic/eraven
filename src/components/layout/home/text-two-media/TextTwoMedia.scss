@@ -2,10 +2,6 @@
 @use 'mixins' as mix;
 
 
-.component {
-    
-}
-
 .text-two-media-title {
     @include mix.respond(1880px) {
         margin-right: -8vw;

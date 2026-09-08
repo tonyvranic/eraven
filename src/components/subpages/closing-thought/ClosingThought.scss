@@ -1,0 +1,10 @@
+@use 'vars' as v;
+
+
+.user-content {
+    margin-left: v.space(lg);
+}
+
+.reading-line-wrap {
+    min-height: 256px;
+}

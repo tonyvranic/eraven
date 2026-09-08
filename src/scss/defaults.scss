@@ -20,7 +20,7 @@ body {
     min-height: 100vh;
     min-height: 100svh;
 
-    @include typo.type(body, md);
+    @include typo.type(body, lg);
 
     background-color: v.color(light-900);
     color: v.color(light-0);
@@ -53,19 +53,21 @@ body {
 }
 
 .secondary-styling {
-    * {
-        &:focus-visible {
-            outline: v.space(2xs) solid v.color(secondary-400);
+    main {
+        * {
+            &:focus-visible {
+                outline: v.space(2xs) solid v.color(secondary-400);
+            }
         }
-    }
-
-    ::selection {
-        background: v.color(light-700);
-        color: v.color(secondary-400);
-    }
-
-    em {
-        color: v.color(secondary-400);
+    
+        ::selection {
+            background: v.color(light-700);
+            color: v.color(secondary-400);
+        }
+    
+        em {
+            color: v.color(secondary-400);
+        }
     }
 }
 

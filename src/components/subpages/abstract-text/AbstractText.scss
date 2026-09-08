@@ -1,0 +1,12 @@
+@use 'vars' as v;
+
+
+.intro {
+    padding-right: v.space(lg);
+}
+
+.left {
+    & > * {
+        margin-right: calc(var(--grid-col-gap) * -1);
+    }
+}

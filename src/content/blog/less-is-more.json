@@ -13,5 +13,45 @@
   "tags": ["minimalism"],
   "dateCreated": "2026-09-01",
   "lastEditDate": "2026-09-01",
-  "sections": []
+  "sections": [
+    {
+      "type": "textImage",
+      "title": "Noise",
+      "content": "<p>Every day begins with information.<br><br>Before we have even had the chance to fully wake up, there are messages waiting to be answered, headlines waiting to be read, notifications competing for attention, and an endless stream of new content asking to be seen.<br><br>We have become remarkably efficient at consuming information. We scroll, skim, switch, respond, and move on — often without giving ourselves enough time to ask what, if anything, is worth holding onto</p>"
+    },
+    {
+      "type": "imageWithText",
+      "title": "Craving for simplicity",
+      "content": "<p>Parhaps that is why we often find ourselves looking back.<br><br>We talk about simpler times as though they existed somewhere just behind us — a time with fewer distractions, fewer choices, and perhaps fewer things demanding our attention.<br><br>But maybe it isn’t the past that we miss.<br><br>Maybe what we are really searching for is the feeling of having space.<br><br>Space to think.<br>Space to be bored.<br>Space to experience something without immediately being presented with the next thing</p>",
+      "image": {
+        "src": "/imgs/blog/less-is-more/image-with-text-1.webp",
+        "alt": "Empty room in an unfinished building"
+      }
+    },
+    {
+      "type": "abstractText",
+      "title": "The value of absence",
+      "intro": "<p>We often think of emptiness as something that needs to be filled.<br><br> But absence can be meaningful</p>",
+      "contents": [
+        "<p>A photograph needs space around it’s subject.<br>Music neds silence between it’s notes.<br>A pause in a conversation can say more than the words surrounding it.<br><br>Perhaps the same is true for our attention</p>"
+      ]
+    },
+    {
+      "type": "blockquote",
+      "content": "When everything is asking to be noticed, choosing what to leave out becomes just as important as choosing what to include"
+    },
+    {
+      "type": "textImage",
+      "title": "Less as an Intentional choice",
+      "content": "<p>Less does not mean having less to say.<br><br>It means being more deliberate about what deserves to be heard.<br><br>Every element we add — to a design, an image, a piece of writing, or even our daily lives — asks something from the person experienceing it; their attention, their time, their energy.<br><br>None of those things are infinite.<br><br>Sometimes, removing something does not take away from the experience. Sometimes, it allows everything that remains to matter a little more.</p>",
+      "image": {
+        "src": "/imgs/blog/less-is-more/text-image-1.webp",
+        "alt": "Empty dock with a vast sea and sunset sky"
+      }
+    },
+    {
+      "type": "closing",
+      "content": "<p>Perhaps less is more not because we want less from life.<br>But because we want more room to experience it.<br><br>More room to notice.<br><br>More room to think.<br><br>More room for silence.<br><br>And, occasionally, more room to simply... <em>Be</em></p>"
+    }
+  ]
 }

@@ -3,6 +3,10 @@ import { getCollection } from 'astro:content';
 import Layout from '../../layouts/Layout.astro';
 import SubpageHero from '../../components/utils/subpage-hero/SubpageHero.astro';
 import TextImage from '../../components/subpages/text-image/TextImage.astro';
+import Blockquote from '../../components/layout/home/blockquote/Blockquote.astro';
+import ImageWithText from '../../components/subpages/image-with-text/ImageWithText.astro';
+import AbstractText from '../../components/subpages/abstract-text/AbstractText.astro';
+import ClosingThought from '../../components/subpages/closing-thought/ClosingThought.astro';
 
 /* Computed */
 export async function getStaticPaths() {
@@ -34,5 +38,15 @@ const dateUpdated = new Date(data.lastEditDate).toLocaleDateString('hr-HR').spli
     theme="secondary"
   />
 
-  <TextImage />
+  {
+    data.sections.map((section) => {
+      switch (section.type) {
+        case 'textImage': return (<TextImage theme="secondary" {...section} />);
+        case 'imageWithText': return (<ImageWithText theme="secondary" {...section} />);
+        case 'abstractText': return (<AbstractText theme="secondary" {...section} />);
+        case 'closing': return (<ClosingThought theme="secondary" {...section} />);
+        case 'blockquote': return (<Blockquote theme="secondary" {...section} />);
+      }
+    })
+  }
 </Layout>

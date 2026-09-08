@@ -1,0 +1,52 @@
+---
+import Image from '../Image.astro';
+
+
+
+/* Props */
+interface Props {
+  theme: 'secondary' | 'primary';
+  inverted?: boolean;
+
+  src: string;
+  alt: string;
+  width: number;
+  height: number;
+
+  offset?: string;
+  multiplierOffset?: string;
+  multiplier?: string;
+
+  classes?: string[];
+}
+
+const { theme, inverted, src, alt, width, height, classes, offset, multiplierOffset, multiplier } = Astro.props;
+
+
+/* Computed */
+const invertedClass = inverted ? 'inverted' : '';
+const overtlayColorClass = theme === 'secondary' ? 'bg-secondary-400' : 'bg-primary-400';
+---
+
+
+{/* Html */}
+<div class:list={['subpage-media', 'media', 'aspect-3:2', invertedClass]}>
+  <Image
+    width={width} height={height}
+    src={src}
+    alt={alt}
+
+    offset={offset}
+    multiplier-offset={multiplierOffset}
+    multiplier={multiplier}
+
+    class:list={['media', ...(classes ?? [])]}
+  />
+  <div class:list={['overlay', overtlayColorClass, 'abs-fw', 'z-2', 'no-e']}></div>
+</div>
+
+
+{/* Styles */}
+<style lang="scss">
+  @use './SubpageMedia.scss';
+</style>

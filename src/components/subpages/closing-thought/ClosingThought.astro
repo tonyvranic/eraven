@@ -1,0 +1,79 @@
+---
+import Text from '../../ui/text/Text.astro';
+import Cell from '../../utils/Cell.astro';
+import Grid from '../../utils/Grid.astro';
+import SubpageMedia from '../../utils/subpage-media/SubpageMedia.astro';
+import type { ContentImage } from '../../utils/Image.astro';
+import LineWithContent from '../../utils/lineWithContent/LineWithContent.astro';
+import SubpageLine from '../../utils/subpage-line/SubpageLine.astro';
+import Flex from '../../utils/Flex.astro';
+
+/* Props */
+interface Props {
+  theme?: 'secondary' | 'primary';
+  content?: string;
+}
+
+const { 
+  theme = 'secondary',
+  content,
+} = Astro.props;
+
+
+/* Computed */
+const titleColorClass = theme === 'secondary' ? 'secondary-400' : 'primary-400';
+---
+
+
+{/* Html */}
+<section class:list={['closing-thought']}>
+  <Grid>
+
+    {/* Left */}
+    <Cell
+      dt={{ start: 1, span: 7 }}
+      class:list={['tr']}
+    >
+      <Flex dt={{ dir: 'column' }} class:list={['fw', 'fh']}>
+        {/* Title */}
+        <Text 
+          el="h2" type="display-3xl"
+          class:list={['-mr-4', titleColorClass]}
+          set:html={'A closing thought'}
+        />
+  
+        {/* Reading Line */}
+        <Flex 
+          dt={{ justify: 'end', mt: 'md', grow: true }}
+          class:list={['reading-line-wrap']}
+        >
+          <SubpageLine
+            theme={theme}
+            classes={['reading-line', 'ml-auto']}
+          />
+        </Flex>
+      </Flex>
+    </Cell>
+
+    {/* Right */}
+    <Cell
+      dt={{ start: 8, span: 5 }}
+    >
+      {/* Hidden Spacer */}
+      <Text type="display-3xl" aria-hidden set:html={'&nbsp;'} />
+
+      {content && (
+        <div 
+          set:html={content}
+          class:list={['user-content']}
+        />
+      )}
+    </Cell>
+  </Grid>
+</section>
+
+
+{/* Styles */}
+<style lang="scss">
+  @use './ClosingThought.scss';
+</style>
