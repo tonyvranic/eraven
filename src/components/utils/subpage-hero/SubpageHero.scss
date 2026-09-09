@@ -1,5 +1,6 @@
 @use 'sass:color';
 @use 'vars' as v;
+@use 'mixins' as mix;
 
 
 .subpage-hero {
@@ -24,19 +25,33 @@
     overflow: visible;
     height: calc(100vh - var(--header-height));
 
+    --top-left: calc(var(--grid-cell-width) * 2 + var(--grid-col-gap) * 2);
+    --top-right: calc(100% + var(--grid-cell-width) + var(--grid-col-gap));
+    --bottom-right: calc(100% - var(--grid-cell-width) - var(--grid-col-gap));
+    --bottom-left: 0%;
+
     clip-path: polygon(
         /* Top Left */
-        calc(var(--grid-cell-width) * 2 + var(--grid-col-gap) * 2) 0%,
+        var(--top-left) 0%,
 
         /* Top Right */
-        calc(100% + var(--grid-padding) + var(--grid-col-gap)) 0%,
+        var(--top-right) 0%,
 
         /* Bottom Right */
-        calc(100% - var(--grid-cell-width)) 100%,
+        var(--bottom-right) 100%,
 
         /* Bottom Left */
-        0% 100%
+        var(--bottom-left) 100%
     );
+
+    @include mix.respond(md) {
+        --top-right: calc(100% + var(--grid-cell-width) * 2 + var(--grid-col-gap) * 2);
+        --bottom-right: calc(100%);
+    }
+    @include mix.respond(sm) {
+        --top-right: calc(100% + var(--grid-cell-width) * 1 + var(--grid-col-gap) * 1);
+        --bottom-right: calc(100% + var(--grid-cell-width) * 1 + var(--grid-col-gap) * 1);
+    }
 }
 
 .bg-image {
@@ -48,16 +63,30 @@
 }
 
 .overlay-darken {
+    --darken-color: #{color.change(v.color(light-900), $alpha: 40%)};
+    --darken-start: 20%;
+
     background: linear-gradient(90deg + 15deg,
-        color.change(v.color(light-900), $alpha: 40%) 20%,
+        var(--darken-color) var(--darken-start),
         color.change(v.color(light-0), $alpha: 0%) 100%,
     );
+
+    @include mix.respond(sm) {
+        --darken-color: #{color.change(v.color(light-900), $alpha: 60%)};
+        --darken-start: 40%;
+    }
 }
 
 
 // Content
 .content-wrap {
     min-height: calc(100vh - var(--header-height));
+}
+
+.title {
+    @include mix.respond(xs) {
+        text-align: left;
+    }
 }
 
 .first-title-word {
@@ -73,6 +102,12 @@
     top: calc(0px - v.space(xs) * 0.5);
     left: 0;
     transform: translateY(-100%);
+
+    @include mix.respond(xs) {
+        left: unset;
+        right: 0;
+        padding-right: v.space(sm);
+    }
 }
 
 .subtitle {
@@ -80,4 +115,18 @@
         var(--grid-cell-width) * 2 +
         var(--grid-col-gap) * 2
     );
+
+    @include mix.respond(md) {
+        padding-left: calc(
+            var(--grid-cell-width) * 1 +
+            var(--grid-col-gap) * 1
+        );
+    }
+
+    @include mix.respond(sm) {
+        padding-left: 0;
+    }
+    @include mix.respond(xs) {
+        text-align: left;
+    }
 }

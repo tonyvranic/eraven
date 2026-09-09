@@ -16,9 +16,9 @@
   "sections": [
     {
       "type": "musicPlayer",
-      "title": "There is something strange about music",
-      "content": "<p>You can hear a song in a language you don’t understand and still feel something. You can hear a melody you’ve never encoutered before and somehow recognize the emotion within it.<br><br>No explanation required.<br><br>Music doesn’t always tell us what to feel.It gives us a place to feel it.<br></p>",
-      "audioSrc": "/audio/music-is-the-answer.mp3"
+      "title": "Something is strange about music",
+      "content": "<p>You can hear a song in a language you don’t understand and still feel something. You can hear a melody you’ve never encoutered before and somehow recognize the emotion within it.<br><br>No explanation required.<br><br>Music doesn’t always tell us what to feel.<br>It gives us a place to feel it.<br></p>",
+      "audioSrc": "/audio/music-is-the-answer-1.mp3"
     },
     {
       "type": "abstractText",

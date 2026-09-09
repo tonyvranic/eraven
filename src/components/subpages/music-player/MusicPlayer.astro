@@ -1,0 +1,167 @@
+---
+import Text from '../../ui/text/Text.astro';
+import Cell from '../../utils/Cell.astro';
+import Grid from '../../utils/Grid.astro';
+import SubpageMedia from '../../utils/subpage-media/SubpageMedia.astro';
+import type { ContentImage } from '../../utils/Image.astro';
+import LineWithContent from '../../utils/lineWithContent/LineWithContent.astro';
+import { Image } from 'astro:assets';
+
+/* Props */
+interface Props {
+  theme?: 'secondary' | 'primary';
+  title?: string;
+  content?: string;
+  audioSrc: string;
+}
+
+const { 
+  theme = 'secondary',
+  title,
+  content,
+  audioSrc,
+} = Astro.props;
+
+
+/* Computed */
+const titleColorClass = theme === 'secondary' ? 'secondary-400' : 'primary-400';
+---
+
+
+{/* Html */}
+<section class:list={['music-player']} data-music-player-section>
+  <Grid sm class:list={['ac']}>
+
+    {/* Left */}
+    <Cell
+      dt={{ start: 1, span: 7 }}
+      sm={{ start: 1, span: 7 }}
+    >
+      {/* Title */}
+      {title && (
+        <Text 
+          el="h2" type="display-2xl"
+          class:list={['-ml-4', titleColorClass]}
+          set:html={title}
+        />
+      )}
+
+      {/* Content */}
+      {content && (
+        <div class:list={['content', 'mt-md']}>
+          <LineWithContent
+            theme={theme}
+            content={content}
+          />
+        </div>
+      )}
+    </Cell>
+
+    {/* Right */}
+    <Cell
+      dt={{ start: 9, span: 3 }}
+      sm={{ start: 8, span: 5 }}
+    >
+      <div class:list={['audio-player', 'rel']}>
+
+        {/* Audio Status */}
+        <p data-audio-status class:list={['audio-status']} aria-live="polite" role="status"></p>
+
+        <div class:list={['visual', 'media', 'rel']}>
+          <Image
+            src="/imgs/music-player/music-player-1.webp"
+            alt="Orange cassette tape player"
+            width={432} height={617}
+          />
+
+          <audio data-audio loop src={audioSrc}></audio>
+
+          <button 
+            data-play-button
+            class:list={['audio-player-button', 'abs', 'z-2']}
+            aria-label="Play audio"
+          ></button>
+
+          <button 
+            data-stop-button
+            class:list={['audio-stop-button', 'abs', 'z-2']}
+            aria-label="Stop audio"
+          ></button>
+        </div>
+      </div>
+    </Cell>
+  </Grid>
+</section>
+
+
+{/* Styles */}
+<style lang="scss">
+  @use './MusicPlayer.scss';
+</style>
+
+
+{/* Script */}
+<script>
+  import { queryFn } from "../../../utils/queryFn";
+
+  const musicPlayerSections = document.querySelectorAll('[data-music-player-section]');
+
+  musicPlayerSections.forEach(section => {
+    // Queries
+    const audioPlayerButtonEl = queryFn(section, '[data-play-button]');
+    const audioStopButtonEl = queryFn(section, '[data-stop-button]');
+    const audioStatusEl = queryFn(section, '[data-audio-status]');
+    const audioEl = queryFn(section, '[data-audio]');
+    if (!audioPlayerButtonEl || !audioStopButtonEl || !audioStatusEl || !audioEl) return;
+
+
+    // State
+    let isPlaying = false;
+
+
+    // Events
+    audioPlayerButtonEl.addEventListener('click', () => {
+      if (isPlaying) return;
+      isPlaying = true;
+
+      PlayAudio();
+    });
+
+    audioStopButtonEl.addEventListener('click', () => {
+      if (!isPlaying) return;
+      isPlaying = false;
+
+      StopAudio();
+    });
+
+    // audioEl.addEventListener('ended', () => {
+    //   StopAudio();
+    //   isPlaying = false;
+    // });
+
+
+    // Functions
+    function PlayAudio() {
+      audioPlayerButtonEl?.setAttribute('disabled', 'true');
+      audioPlayerButtonEl?.setAttribute('aria-disabled', 'true');
+      
+      audioStopButtonEl?.removeAttribute('disabled');
+      audioStopButtonEl?.setAttribute('aria-disabled', 'false');
+      
+      (audioEl as HTMLAudioElement).play();
+      if (audioStatusEl) audioStatusEl.textContent = 'Playing';
+    }
+
+    function StopAudio() {
+      audioStopButtonEl?.setAttribute('disabled', 'true');
+      audioStopButtonEl?.setAttribute('aria-disabled', 'true');
+
+      audioPlayerButtonEl?.removeAttribute('disabled');
+      audioPlayerButtonEl?.setAttribute('aria-disabled', 'false');
+
+      (audioEl as HTMLAudioElement).pause();
+      (audioEl as HTMLAudioElement).currentTime = 0;
+      if (audioStatusEl) audioStatusEl.textContent = 'Stopped';
+    }
+  });
+</script>

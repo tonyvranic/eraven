@@ -1,6 +1,13 @@
 @use 'vars' as v;
+@use 'mixins' as mix;
 
 
 .content {
     padding-right: calc(var(--grid-cell-width) + var(--grid-col-gap));
+}
+
+.media {
+    @include mix.respond(sm) {
+        margin-left: calc((var(--grid-cell-width) + var(--grid-col-gap)) * -1 + v.space(sm));
+    }
 }

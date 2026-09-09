@@ -1,0 +1,50 @@
+@use 'vars' as v;
+@use 'mixins' as mix;
+
+
+.content {
+    padding-right: calc(var(--grid-cell-width) * 2 + var(--grid-col-gap) * 2);
+}
+
+.visual {
+    aspect-ratio: 432 / 617;
+    margin-right: calc(var(--grid-col-gap) * -1);
+
+    overflow: visible;
+}
+
+.audio-player {
+    @include mix.respond(sm) {
+        margin-left: v.space(sm);
+    }
+}
+
+.audio-player-button {
+    display: block;
+    top: 17.8%;
+    right: 0%;
+
+    width: 6%;
+    height: 15%;
+}
+
+.audio-stop-button {
+    display: block;
+    top: 38.8%;
+    right: 0%;
+
+    width: 6%;
+    height: 24%;
+}
+
+.audio-status {
+    position: absolute;
+    width: 1px;
+    height: 1px;
+    padding: 0;
+    margin: -1px;
+    overflow: hidden;
+    clip: rect(0, 0, 0, 0);
+    white-space: nowrap;
+    border: 0;
+}

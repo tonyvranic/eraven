@@ -29,11 +29,12 @@ const titleColorClass = theme === 'secondary' ? 'secondary-400' : 'primary-400';
 
 {/* Html */}
 <section class:list={['text-image']}>
-  <Grid class:list={['ac']}>
+  <Grid lg class:list={['ac']}>
 
     {/* Left */}
     <Cell
       dt={{ start: 1, span: 6 }}
+      lg={{ start: 1, span: 7 }}
     >
       {/* Title */}
       {title && (
@@ -58,13 +59,16 @@ const titleColorClass = theme === 'secondary' ? 'secondary-400' : 'primary-400';
     {/* Right */}
     <Cell
       dt={{ start: 7, span: 6 }}
+      lg={{ start: 8, span: 5 }}
     >
       {image && (
-        <SubpageMedia
-          theme={theme}
-          width={840} height={560}
-          src={image.src} alt={image.alt}
-        />
+        <div class:list={['media']}>
+          <SubpageMedia
+            theme={theme}
+            width={840} height={560}
+            src={image.src} alt={image.alt}
+          />
+        </div>
       )}
     </Cell>
   </Grid>

@@ -92,7 +92,7 @@ const sectionSchema = z.discriminatedUnion('type', [
     type: z.literal('musicPlayer'),
     title: z.string().optional(),
     content: z.string().optional(),
-    audioSrc: z.string().optional(),
+    audioSrc: z.string(),
   }),
   z.object({
     type: z.literal('closing'),

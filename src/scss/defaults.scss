@@ -52,22 +52,21 @@ body {
     }
 }
 
-.secondary-styling {
-    main {
-        * {
-            &:focus-visible {
-                outline: v.space(2xs) solid v.color(secondary-400);
-            }
+.secondary-styling:not(body),
+body.secondary-styling main {
+    * {
+        &:focus-visible {
+            outline: v.space(2xs) solid v.color(secondary-400);
         }
-    
-        ::selection {
-            background: v.color(light-700);
-            color: v.color(secondary-400);
-        }
-    
-        em {
-            color: v.color(secondary-400);
-        }
+    }
+
+    ::selection {
+        background: v.color(light-700);
+        color: v.color(secondary-400);
+    }
+
+    em {
+        color: v.color(secondary-400);
     }
 }
 
@@ -89,6 +88,14 @@ b {
 }
 i {
     font-style: italic;
+}
+
+button {
+    cursor: pointer;
+    border: none;
+    background: none;
+    padding: 0;
+    margin: 0;
 }
 
 #modal-root {

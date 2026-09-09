@@ -1,8 +1,17 @@
 @use 'vars' as v;
+@use 'mixins' as mix;
 
 
 .user-content {
     margin-left: v.space(lg);
+
+    @include mix.respond(lg) {
+        margin-left: v.space(sm);
+    }
+
+    @include mix.respond(sm) {
+        margin-left: 0;
+    }
 }
 
 .reading-line-wrap {

@@ -33,13 +33,9 @@ $cell-gap: min(12px, 2vw);
 
 .visual {
     aspect-ratio: 432 / 617;
-    margin-right: max(-24px, -1.25vw);
+    margin-right: calc(var(--grid-col-gap) * -1);
 
     overflow: visible;
-
-    @include mix.respond(xs) {
-        margin-right: -5vw;
-    }
 }
 
 .link {

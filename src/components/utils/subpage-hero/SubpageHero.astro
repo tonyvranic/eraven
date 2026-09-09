@@ -41,10 +41,11 @@ const showDateUpdated = dateCreated !== dateUpdated;
 {/* Html */}
 <section class:list={['subpage-hero', 'rel', 'z-0']} data-subpage-hero-section>
   {/* Background */}
-  <Grid sm class:list={['bg', 'z-1', 'fh', 'o-h', 'parallax-bg']}>
+  <Grid md xs class:list={['bg', 'z-1', 'fh', 'o-h', 'parallax-bg']}>
     <Cell
       dt={{ start: 5, span: 8 }}
-      sm={{ start: 1, span: 12 }}
+      md={{ start: 6, span: 7 }}
+      xs={{ start: 5, span: 8 }}
       class:list={['fh']}
     >
       <div class:list={['bg-image-wrap', 'media', 'fh']}>
@@ -64,10 +65,11 @@ const showDateUpdated = dateCreated !== dateUpdated;
   </Grid>
 
   {/* Content */}
-  <Grid sm class:list={['content-wrap', 'z-2', 'ac']}>
+  <Grid sm xs class:list={['content-wrap', 'z-2', 'ac']}>
     <Cell
       dt={{ start: 1, span: 6 }}
-      sm={{ start: 1, span: 12 }}
+      sm={{ start: 1, span: 7 }}
+      xs={{ start: 1, span: 8 }}
     >
       <Text el='h1' set:html={title} aria-hidden class:list={['visually-hidden']} />
 
@@ -122,7 +124,7 @@ const showDateUpdated = dateCreated !== dateUpdated;
 
     // Config
     // How far the bg should travel over the full height of the hero
-    const parallaxDistancePx = 360;
+    const parallaxDistancePx = 560;
     const scaleDecrAmount = 0.1;
     const rotateDeg = -25;
     const opacityDecrAmount = 0.8;

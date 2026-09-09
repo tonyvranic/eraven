@@ -1,1 +1,9 @@
 @use 'vars' as v;
+@use 'mixins' as mix;
+
+
+.media {
+    @include mix.respond(sm) {
+        padding-right: v.space(sm);
+    }
+}

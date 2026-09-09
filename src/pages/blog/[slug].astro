@@ -8,6 +8,7 @@ import ImageWithText from '../../components/subpages/image-with-text/ImageWithTe
 import AbstractText from '../../components/subpages/abstract-text/AbstractText.astro';
 import ClosingThought from '../../components/subpages/closing-thought/ClosingThought.astro';
 import AbstractText2 from '../../components/subpages/abstract-text-2/AbstractText2.astro';
+import MusicPlayer from '../../components/subpages/music-player/MusicPlayer.astro';
 
 /* Computed */
 export async function getStaticPaths() {
@@ -46,8 +47,9 @@ const dateUpdated = new Date(data.lastEditDate).toLocaleDateString('hr-HR').spli
         case 'imageWithText': return (<ImageWithText theme="secondary" {...section} />);
         case 'abstractText': return (<AbstractText theme="secondary" {...section} />);
         case 'abstractText2': return (<AbstractText2 theme="secondary" {...section} />);
-        case 'closing': return (<ClosingThought theme="secondary" {...section} />);
         case 'blockquote': return (<Blockquote theme="secondary" {...section} />);
+        case 'musicPlayer': return (<MusicPlayer theme="secondary" {...section} />);
+        case 'closing': return (<ClosingThought theme="secondary" {...section} />);
       }
     })
   }
