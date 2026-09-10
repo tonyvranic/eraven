@@ -13,5 +13,82 @@
   "tags": ["protein", "baking"],
   "dateCreated": "2026-09-02",
   "lastEditDate": "2026-09-02",
-  "sections": []
+  "sections": [
+    {
+      "type": "recipeDetail",
+      "time": "60m",
+      "complexity": "1/5",
+      "steps": [
+        [
+          {
+            "type": "text",
+            "content": "<p>Mix up all the dry ingredients and mix up all the wet ingredients separately.<br>Combine by pouring the liquid mix into the dry one and mixing it up yet again. Let the mix rest for around half an hour</p>"
+          }
+        ],
+        [
+          {
+            "type": "text",
+            "content": "<p>Fry the crepes like you normally would</p>"
+          }
+        ]
+      ],
+      "servings": {
+        "servingsCount": 12,
+        "perServingWeight": 67,
+        "totalWeight": 808
+      },
+      "ingredients": [
+        {
+          "title": "Dry",
+          "items": [
+            "100g vital wheat gluten",
+            "50g flour",
+            "2.5g salt",
+            "2g lysine",
+            "5g starch"
+          ]
+        },
+        {
+          "title": "Wet",
+          "items": [
+            "250ml milk",
+            "250ml liquid whey",
+            "5ml olive oil",
+            "2 eggs"
+          ]
+        }
+      ],
+      "nutrients": {
+        "calories": 76,
+        "carbs": 5.9,
+        "fats": 1.5,
+        "protein": 9.2,
+        "sugars": 2.1,
+        "saturatedFats": 0.3,
+        "fibers": 0.1,
+        "salts": 0.3
+      }
+    },
+    {
+      "type": "faq",
+      "items": [
+        {
+          "title": "They stick.<br>Even to non-stick pans",
+          "content": "<p>Even with a non-stick pan, these stick because of the high protein content.<br><br>Gently pry up one edge with a fork, then slide a spatula underneath and flip it.<br>Once flipped, it releases easily and doesn’t sticky any more</p>"
+        },
+        {
+          "title": "You don’t \"need\" the lysine",
+          "content": "<p>Wheat gluten (VWG) isn’t a complete protein, so I add lysine to make the recipe nutritionally more self-contained. If you’re already getting enough lysine from other foods in your diet, you can leave it out</p>"
+        },
+        {
+          "title": "Expect a little chew",
+          "content": "<p>These aren’t going to have the delicate texture of traditional crepes.<br><br>The high protein content makes them noticeably chewier and a little more substantial.<br><br>That’s the trade-off</p>"
+        },
+        {
+          "title": "Fats and size may vary",
+          "content": "<p>This recipe uese low fat milk (made with low fat milk powder) and homemade liquid whey.<br><br>This recipe also uses eggs that are EU - M sized (around 60g per egg).<br><br>The serving size is measured for a 25cm crepe pan</p>"
+        }
+      ]
+    }
+  ]
 }

@@ -17,14 +17,21 @@ const accordionItemSchema = z.object({
 });
 
 // Recipe Detail
+const servingsSchema = z.object({
+  servingsCount: z.number(),
+  perServingWeight: z.number(),
+  totalWeight: z.number(),
+});
+
 const nutrientsSchema = z.object({
-  calories: z.string(),
-  carbs: z.string(),
-  fats: z.string(),
-  protein: z.string(),
-  sugars: z.string(),
-  saturatedFats: z.string(),
-  fibers: z.string(),
+  calories: z.number(),
+  carbs: z.number(),
+  fats: z.number(),
+  protein: z.number(),
+  sugars: z.number(),
+  saturatedFats: z.number(),
+  fibers: z.number(),
+  salts: z.number(),
 });
 
 const ingredientCategorySchema = z.object({
@@ -43,17 +50,25 @@ const recipeStepContentSchema = z.discriminatedUnion('type', [
   }),
 ]);
 
-const recipeStepSchema = z.object({
-  content: z.array(recipeStepContentSchema),
-});
+const recipeStepSchema = z.array(
+  recipeStepContentSchema
+);
 
 const recipeDetailSchema = z.object({
   time: z.string(),
   complexity: z.string(),
-  nutrients: nutrientsSchema,
-  ingredients: z.array(ingredientCategorySchema),
   stepsTitle: z.string().optional(),
   steps: z.array(recipeStepSchema),
+  servings: servingsSchema,
+  ingredients: z.array(ingredientCategorySchema),
+  nutrients: nutrientsSchema,
+});
+
+
+// FAQ
+const faqItemSchema = z.object({
+  title: z.string(),
+  content: z.string(),
 });
 
 // TODO
@@ -106,7 +121,13 @@ const sectionSchema = z.discriminatedUnion('type', [
   }),
   z.object({
     type: z.literal('recipeDetail'),
-    detail: recipeDetailSchema,
+    recipeDetailSchema,
+  }),
+  z.object({
+    type: z.literal('faq'),
+    title: z.string().optional(),
+    content: z.string().optional(),
+    items: z.array(faqItemSchema),
   }),
 ]);
 

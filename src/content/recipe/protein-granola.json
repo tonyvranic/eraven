@@ -13,5 +13,82 @@
   "tags": ["protein", "baking"],
   "dateCreated": "2026-09-01",
   "lastEditDate": "2026-09-01",
-  "sections": []
+  "sections": [
+    {
+      "type": "recipeDetail",
+      "time": "50m",
+      "complexity": "2/5",
+      "steps": [
+        [
+          {
+            "type": "text",
+            "content": "<p>Mix up all the dry ingredients and mix up all the wet ingredients separately.<br>Combine by pouring the liquid mix into the dry one and mixing it up yet again</p>"
+          }
+        ],
+        [
+          {
+            "type": "text",
+            "content": "<p>Heat up the oven at 165°C and spread out the batter into bar moulds</p>"
+          }
+        ],
+        [
+          {
+            "type": "text",
+            "content": "<p>Bake for 18 minutes</p>"
+          }
+        ]
+      ],
+      "servings": {
+        "servingsCount": 8,
+        "perServingWeight": 75,
+        "totalWeight": 600
+      },
+      "ingredients": [
+        {
+          "title": "Dry",
+          "items": [
+            "240g oats",
+            "57g protein powder",
+            "37.5g cooking chocolate (6 pcs)",
+            "23g erythritol"
+          ]
+        },
+        {
+          "title": "Wet",
+          "items": [
+            "80g peanut butter",
+            "34g honey",
+            "128.5g egg whites"
+          ]
+        }
+      ],
+      "nutrients": {
+        "calories": 240,
+        "carbs": 24,
+        "fats": 8.4,
+        "protein": 15,
+        "sugars": 10,
+        "saturatedFats": 1.9,
+        "fibers": 4.4,
+        "salts": 0.3
+      }
+    },
+    {
+      "type": "faq",
+      "items": [
+        {
+          "title": "Bars or granola?",
+          "content": "<p>This recipe works both as bars or loose granola.<br><br>For granola, you spread it out on a baking sheet as flat as you’re able to, and you flip them mid-bake once.<br><br>After they cooled down for a bit, you can break them apart and store them however you like</p>"
+        },
+        {
+          "title": "You \"may\" use less fat",
+          "content": "<p>Yes.</p><br><p>I've personally tried using:</p><ul><li>57g peanut butter</li><li>143g egg whites</li><li>69g protein powder</li></ul><p>These numbers kept the size the same.<br>Even though this did work, the bars/granola tasted noticably more dry</p>"
+        },
+        {
+          "title": "Where did this come from?",
+          "content": "<p>This recipe started as an adaptation of a recipe from The <a href=\"https://youtu.be/YUwV2s2lggk\" target=\"_blank\">Protein Chef</a>.<br><br>I changed the ratios and ingredients to make it higher in protein and a bit less in fat.<br>I didn’t like the original racipe’s nutrient numbers</p>"
+        }
+      ]
+    }
+  ]
 }

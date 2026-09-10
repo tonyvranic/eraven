@@ -25,10 +25,15 @@
     overflow: visible;
     height: calc(100vh - var(--header-height));
 
-    --top-left: calc(var(--grid-cell-width) * 2 + var(--grid-col-gap) * 2);
-    --top-right: calc(100% + var(--grid-cell-width) + var(--grid-col-gap));
-    --bottom-right: calc(100% - var(--grid-cell-width) - var(--grid-col-gap));
-    --bottom-left: 0%;
+    --top-left-col-offset: 2;
+    --top-right-col-offset: 1;
+    --bottom-right-col-offset: 1;
+    --bottom-left-col-offset: 0;
+
+    --top-left: calc(var(--grid-cell-width) * var(--top-left-col-offset) + var(--grid-col-gap) * var(--top-left-col-offset));
+    --top-right: calc(100% + var(--grid-cell-width) * var(--top-right-col-offset) + var(--grid-col-gap) * var(--top-right-col-offset));
+    --bottom-right: calc(100% - var(--grid-cell-width) * var(--bottom-right-col-offset) - var(--grid-col-gap) * var(--bottom-right-col-offset));
+    --bottom-left: calc(var(--grid-cell-width) * var(--bottom-left-col-offset) + var(--grid-col-gap) * var(--bottom-left-col-offset));
 
     clip-path: polygon(
         /* Top Left */
@@ -45,16 +50,17 @@
     );
 
     @include mix.respond(md) {
-        --top-right: calc(100% + var(--grid-cell-width) * 2 + var(--grid-col-gap) * 2);
-        --bottom-right: calc(100%);
+        --top-right-col-offset: 2;
+        --bottom-right-col-offset: 0;
     }
     @include mix.respond(sm) {
-        --top-right: calc(100% + var(--grid-cell-width) * 1 + var(--grid-col-gap) * 1);
-        --bottom-right: calc(100% + var(--grid-cell-width) * 1 + var(--grid-col-gap) * 1);
+        --top-left-col-offset: 3;
+        --top-right-col-offset: 1;
+        --bottom-right-col-offset: -1;
     }
 
     @include mix.respond(xxs) {
-        --top-left: calc(var(--grid-cell-width) * 5 + var(--grid-col-gap) * 5);
+        --top-left-col-offset: 5;
     }
 }
 
@@ -104,9 +110,12 @@
     position: relative;
     display: inline-block;
 
-    &:after {
-        content: '\00a0';
+    &:not(.single-word) {
+        &:after {
+            content: '\00a0';
+        }
     }
+
 }
 
 .date {
@@ -140,4 +149,28 @@
     @include mix.respond(xs) {
         text-align: left;
     }
+}
+
+
+// Tag
+.tags {
+    @include mix.respond(xs) {
+        padding-left: v.space(sm);
+    }
+}
+
+.tag {
+    display: table;
+    line-height: 1;
+    padding: v.space(xs) v.space(sm);
+
+    --top-left: #{v.space(xs)};
+    --bottom-right: calc(100% - #{v.space(xs)});
+
+    clip-path: polygon(
+        var(--top-left) 0%,
+        100% 0%,
+        var(--bottom-right) 100%,
+        0% 100%
+    )
 }

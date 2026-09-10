@@ -12,7 +12,7 @@ import MusicPlayer from '../../components/subpages/music-player/MusicPlayer.astr
 
 /* Computed */
 export async function getStaticPaths() {
-  const posts = await getCollection('blog');
+  const posts = await getCollection('recipe');
   return posts.map((post) => ({
     params: { slug: post.id },
     props: { post },
@@ -29,7 +29,7 @@ const dateUpdated = new Date(data.lastEditDate).toLocaleDateString('hr-HR').spli
 
 
 {/* Html */}
-<Layout classes={['blog', 'secondary-styling']}>
+<Layout classes={['recipe']}>
   <SubpageHero
     bannerSrc={data.heroImage.src}
     bannerAlt={data.heroImage.alt}
@@ -38,19 +38,19 @@ const dateUpdated = new Date(data.lastEditDate).toLocaleDateString('hr-HR').spli
     dateCreated={dateCreated}
     dateUpdated={dateUpdated}
     tags={data.tags}
-    theme="secondary"
+    theme="primary"
   />
 
   {
     data.sections.map((section) => {
       switch (section.type) {
-        case 'textImage': return (<TextImage theme="secondary" {...section} />);
-        case 'imageWithText': return (<ImageWithText theme="secondary" {...section} />);
-        case 'abstractText': return (<AbstractText theme="secondary" {...section} />);
-        case 'abstractText2': return (<AbstractText2 theme="secondary" {...section} />);
-        case 'blockquote': return (<Blockquote theme="secondary" {...section} />);
-        case 'musicPlayer': return (<MusicPlayer theme="secondary" {...section} />);
-        case 'closing': return (<ClosingThought theme="secondary" {...section} />);
+        case 'textImage': return (<TextImage theme="primary" {...section} />);
+        case 'imageWithText': return (<ImageWithText theme="primary" {...section} />);
+        case 'abstractText': return (<AbstractText theme="primary" {...section} />);
+        case 'abstractText2': return (<AbstractText2 theme="primary" {...section} />);
+        case 'blockquote': return (<Blockquote theme="primary" {...section} />);
+        case 'musicPlayer': return (<MusicPlayer theme="primary" {...section} />);
+        case 'closing': return (<ClosingThought theme="primary" {...section} />);
       }
     })
   }

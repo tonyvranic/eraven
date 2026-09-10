@@ -1,6 +1,7 @@
 ---
 import Text from '../../ui/text/Text.astro';
 import Cell from '../Cell.astro';
+import Flex from '../Flex.astro';
 import Grid from '../Grid.astro';
 
 /* Props */
@@ -11,6 +12,7 @@ interface Props {
   subtitle: string;
   dateCreated: string;
   dateUpdated: string;
+  tags?: string[];
 
   theme: 'secondary' | 'primary';
 }
@@ -22,6 +24,7 @@ const {
   subtitle,
   dateCreated,
   dateUpdated,
+  tags,
 
   theme,
 } = Astro.props;
@@ -33,19 +36,23 @@ const restOfTitle = title.split(' ').slice(1).join(' ');
 
 const heroTitleColorClass = theme === 'secondary' ? 'secondary-400' : 'primary-400';
 const overlayColorClass   = theme === 'secondary' ? 'bg-secondary-400' : 'bg-primary-400';
+const tagColorClass = theme === 'secondary' ? 'secondary-400' : 'primary-300';
+const tagBgColorClass = theme === 'secondary' ? 'bg-secondary-700' : 'bg-primary-700';
 
 const showDateUpdated = dateCreated !== dateUpdated;
+const isSingleWordTitle = title.split(' ').length === 1;
+const singleWordTitleClass = isSingleWordTitle ? 'single-word' : '';
 ---
 
 
 {/* Html */}
 <section class:list={['subpage-hero', 'rel', 'z-0']} data-subpage-hero-section>
   {/* Background */}
-  <Grid md xs xxs class:list={['bg', 'z-1', 'fh', 'o-h', 'parallax-bg']}>
+  <Grid md sm xxs class:list={['bg', 'z-1', 'fh', 'o-h', 'parallax-bg']}>
     <Cell
       dt={{ start: 5, span: 8 }}
       md={{ start: 6, span: 7 }}
-      xs={{ start: 5, span: 8 }}
+      sm={{ start: 5, span: 8 }}
       xxs={{ start: 4, span: 9 }}
       class:list={['fh']}
     >
@@ -81,7 +88,10 @@ const showDateUpdated = dateCreated !== dateUpdated;
         <div class:list={['title', 'tr', heroTitleColorClass]}>
 
           {/* First Word */}
-          <Text el="span" type="display-2xl" class:list={['first-title-word']}>
+          <Text 
+            el="span" type="display-2xl"
+            class:list={['first-title-word', singleWordTitleClass]}
+          >
             {firstWordInTitle}
 
             {/* Date */}
@@ -91,16 +101,36 @@ const showDateUpdated = dateCreated !== dateUpdated;
           </Text>
 
           {/* Rest of Title */}
-          <Text el="span" type="display-2xl" set:html={restOfTitle} />
+          {restOfTitle && (
+            <Text el="span" type="display-2xl" set:html={restOfTitle} />
+          )}
         </div>
 
         {/* Subtitle */}
         <Text 
           el="p" type="body-lg"
-          class:list={['subtitle', 'tr', 'pt-sm']}
+          class:list={['subtitle', 'tr', 'pt-md', 'lg:pt-sm', 'xxs:pt-xs']}
         >
           {subtitle}
         </Text>
+
+        {/* Tags */}
+        {tags && tags.length > 0 && (
+          <Flex
+            dt={{ gap: 'xs', justify: 'end', mt: 'sm' }}
+            xs={{ justify: 'start' }}
+            class:list={['tags']}
+          >
+            {tags.map(tag => (
+              <Text 
+                el="span" type="label-md"
+                class:list={['tag', tagColorClass, tagBgColorClass]}
+              >
+                {tag}
+              </Text>
+            ))}
+          </Flex>
+        )}
       </div>
     </Cell>
   </Grid>
