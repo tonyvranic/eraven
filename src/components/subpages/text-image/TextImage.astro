@@ -29,13 +29,14 @@ const titleColorClass = theme === 'secondary' ? 'secondary-400' : 'primary-400';
 
 {/* Html */}
 <section class:list={['text-image']}>
-  <Grid lg xs class:list={['ac']}>
+  <Grid lg xs xxs class:list={['ac']}>
 
     {/* Left */}
     <Cell
       dt={{ start: 1, span: 6 }}
       lg={{ start: 1, span: 7 }}
       xs={{ start: 1, span: 9 }}
+      xxs={{ start: 1, span: 11 }}
     >
       {/* Title */}
       {title && (
@@ -62,6 +63,7 @@ const titleColorClass = theme === 'secondary' ? 'secondary-400' : 'primary-400';
       dt={{ start: 7, span: 6 }}
       lg={{ start: 8, span: 5 }}
       xs={{ start: 2, span: 10 }}
+      xxs={{ start: 1, span: 12 }}
     >
       {image && (
         <div class:list={['media', 'xs:mt-md']}>

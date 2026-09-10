@@ -7,7 +7,7 @@
     display: flex;
     position: relative;
 
-    padding: calc((v.space('md') + v.space('xs')));
+    padding: calc((v.space(md) + v.space(xs)));
 
     min-height: min(690px, 40vw);
 
@@ -39,8 +39,8 @@
         }
 
         .backdrop {
-            transform: translateX(calc(((v.space('md') + v.space('xs')) * -1)));
-            width: calc(100% + calc((v.space('md') + v.space('xs')) * 2));
+            transform: translateX(calc(((v.space(md) + v.space(xs)) * -1)));
+            width: calc(100% + calc((v.space(md) + v.space(xs)) * 2));
         }
 
         .media-border {
@@ -51,21 +51,21 @@
         }
 
         .content {
-            transform: translateY(calc(v.space('md') + v.space('xs')));
+            transform: translateY(calc(v.space(md) + v.space(xs)));
         }
     }
 
     @include mix.respond(xs) {
-        padding: (v.space('sm') + v.space('xs'));
+        padding: (v.space(sm) + v.space(xs));
 
         &:hover {
             .backdrop {
-                transform: translateX(calc(((v.space('sm') + v.space('xs')) * -1)));
-                width: calc(100% + calc((v.space('sm') + v.space('xs')) * 2));
+                transform: translateX(calc(((v.space(sm) + v.space(xs)) * -1)));
+                width: calc(100% + calc((v.space(sm) + v.space(xs)) * 2));
             }
 
             .content {
-                transform: translateY(calc(v.space('sm') + v.space('xs')));
+                transform: translateY(calc(v.space(sm) + v.space(xs)));
             }
         }
     }
@@ -97,7 +97,7 @@
 }
 
 .content {
-    padding: v.space('md') v.space('sm');
+    padding: v.space(md) v.space(sm);
 
     @include t.tx((transform));
 
@@ -112,7 +112,7 @@
     }
 
     @include mix.respond(xxs) {
-        padding: calc(v.space('sm') + v.space('xs')) v.space('sm');
+        padding: calc(v.space(sm) + v.space(xs)) v.space(sm);
     }
 }
 

@@ -9,6 +9,10 @@
         margin-left: calc((var(--grid-col-gap) + v.space(xs)));
         padding-right: 0;
     }
+
+    @include mix.respond(xxs) {
+        margin-left: 0;
+    }
 }
 
 .media {

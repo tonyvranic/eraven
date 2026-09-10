@@ -1,13 +1,18 @@
 @use 'vars' as v;
+@use 'mixins' as mix;
 
 
 .blockquote-quote-icon-text {
-    margin-bottom: calc(-1 * v.space('md'));
+    margin-bottom: calc(-1 * v.space(md));
+
+    @include mix.respond(xxs) {
+        margin-bottom: calc(-1 * v.space(sm));
+    }
 }
 
 .blockquote-author-text-separator {
-    margin-top: calc(v.space('md'));
-    margin-bottom: calc(v.space('sm'));
+    margin-top: calc(v.space(md));
+    margin-bottom: calc(v.space(sm));
 
     width: 72px;
     height: 4px;

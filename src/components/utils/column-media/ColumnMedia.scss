@@ -10,7 +10,7 @@ $vertical-height-xs: min(440px, 80vh);
 .column-media {
     --hover-color: #{v.color(primary-400)};
 
-    padding: (v.space('md') + v.space('xs'));
+    padding: (v.space(md) + v.space(xs));
 
     @include t.tx((color));
 
@@ -51,7 +51,7 @@ $vertical-height-xs: min(440px, 80vh);
 
     // Responsive
     @include mix.respond(xs) {
-        padding: (v.space('sm') + v.space('xs'));
+        padding: (v.space(sm) + v.space(xs));
     }
 }
 

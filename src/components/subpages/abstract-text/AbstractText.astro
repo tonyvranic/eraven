@@ -33,7 +33,7 @@ const titleColorClass = theme === 'secondary' ? 'secondary-400' : 'primary-400';
 <section class:list={['abstract-text']}>
 
   {/* Top */}
-  <Grid md sm xs>
+  <Grid md sm xs xxs>
 
     {/* Left */}
     <Cell
@@ -41,6 +41,7 @@ const titleColorClass = theme === 'secondary' ? 'secondary-400' : 'primary-400';
       md={{ start: 2, span: 5 }}
       sm={{ start: 1, span: 6 }}
       xs={{ start: 5, span: 7 }}
+      xxs={{ start: 2, span: 11 }}
       class:list={['intro', 'ase', 'tr']}
     >
       {/* Intro */}
@@ -59,13 +60,14 @@ const titleColorClass = theme === 'secondary' ? 'secondary-400' : 'primary-400';
       md={{ start: 7, span: 6 }}
       sm={{ start: 7, span: 6 }}
       xs={{ start: 1, span: 7 }}
+      xxs={{ start: 1, span: 11 }}
       class:list={['title']}
     >
       {/* Title */}
       {title && (
         <Text 
           el="h2" type="display-2xl"
-          class:list={['-ml-4', titleColorClass]}
+          class:list={['-ml-4', 'xxs:mb-xs' ,titleColorClass]}
           set:html={title}
         />
       )}
@@ -86,11 +88,12 @@ const titleColorClass = theme === 'secondary' ? 'secondary-400' : 'primary-400';
       {/* Content */}
       if (!isAlternate && !inverted) {
         return (
-          <Grid md xs class:list={['left', 'tr', ...firstClasses, ...lastClasses]}>
+          <Grid md xs xxs class:list={['left', 'tr', ...firstClasses, ...lastClasses]}>
             <Cell
               dt={{ start: 3, span: 5 }}
               md={{ start: 1, span: 6 }}
               xs={{ start: 2, span: 10 }}
+              xxs={{ start: 1, span: 12 }}
             >
               <LineWithContent
                 theme={theme}
@@ -102,11 +105,12 @@ const titleColorClass = theme === 'secondary' ? 'secondary-400' : 'primary-400';
         );
       } else {
         return (
-          <Grid md xs class:list={['right', ...firstClasses, ...lastClasses]}>
+          <Grid md xs xxs class:list={['right', ...firstClasses, ...lastClasses]}>
             <Cell
               dt={{ start: 8, span: 5 }}
               md={{ start: 7, span: 6 }}
               xs={{ start: 1, span: 10 }}
+              xxs={{ start: 1, span: 12 }}
             >
               <LineWithContent
                 theme={theme}

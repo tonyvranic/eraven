@@ -380,13 +380,77 @@ h6 {
 
 .-ml-4 {
     margin-left: -4px;
+
+    @include mix.respond(lg) {
+        margin-left: -3px;
+    }
+
+    @include mix.respond(md) {
+        margin-left: -2px;
+    }
+
+    @include mix.respond(xs) {
+        margin-left: -1px;
+    }
+
+    @include mix.respond(xxs) {
+        margin-left: -2px;
+    }
 }
 .-mr-4 {
     margin-right: -4px;
+
+    @include mix.respond(lg) {
+        margin-right: -3px;
+    }
+
+    @include mix.respond(md) {
+        margin-right: -2px;
+    }
+
+    @include mix.respond(xs) {
+        margin-right: -1px;
+    }
+
+    @include mix.respond(xxs) {
+        margin-right: -2px;
+    }
 }
 .pl-4 {
     padding-left: 4px;
+
+    @include mix.respond(lg) {
+        padding-left: 3px;
+    }
+
+    @include mix.respond(md) {
+        padding-left: 2px;
+    }
+
+    @include mix.respond(xs) {
+        padding-left: 1px;
+    }
+
+    @include mix.respond(xxs) {
+        padding-left: 2px;
+    }
 }
 .pr-4 {
     padding-right: 4px;
+
+    @include mix.respond(lg) {
+        padding-right: 3px;
+    }
+
+    @include mix.respond(md) {
+        padding-right: 2px;
+    }
+
+    @include mix.respond(xs) {
+        padding-right: 1px;
+    }
+
+    @include mix.respond(xxs) {
+        padding-right: 2px;
+    }
 }

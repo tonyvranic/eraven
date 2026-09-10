@@ -27,13 +27,14 @@ const titleColorClass = theme === 'secondary' ? 'secondary-400' : 'primary-400';
 
 {/* Html */}
 <section class:list={['closing-thought']}>
-  <Grid md xs>
+  <Grid md xs xxs>
 
     {/* Left */}
     <Cell
       dt={{ start: 1, span: 7 }}
       md={{ start: 1, span: 6 }}
       xs={{ start: 2, span: 10, mb: 'sm' }}
+      xxs={{ start: 1, span: 11 }}
       class:list={['tr']}
     >
       <Flex dt={{ dir: 'column' }} class:list={['fw', 'fh']}>
@@ -62,6 +63,7 @@ const titleColorClass = theme === 'secondary' ? 'secondary-400' : 'primary-400';
       dt={{ start: 8, span: 5 }}
       md={{ start: 7, span: 6 }}
       xs={{ start: 1, span: 10 }}
+      xxs={{ start: 1, span: 12 }}
     >
       {/* Hidden Spacer */}
       <Text 

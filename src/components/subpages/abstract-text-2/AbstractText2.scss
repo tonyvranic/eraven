@@ -4,6 +4,10 @@
 
 .title-wrap {
     margin-right: calc((var(--grid-col-gap) + v.space(xs)) * -1);
+
+    @include mix.respond(xs) {
+        margin-right: 0;
+    }
 }
 
 .left {

@@ -7,7 +7,7 @@
     display: flex;
     position: relative;
 
-    padding: calc((v.space('md') + v.space('xs')));
+    padding: calc((v.space(md) + v.space(xs)));
 
     min-height: min(690px, 44vw);
 
@@ -25,7 +25,7 @@
         }
 
         .bg {
-            transform: translateY(calc(v.space('sm'))) scale(0.95);
+            transform: translateY(calc(v.space(sm))) scale(0.95);
             opacity: 1;
 
             img {
@@ -39,8 +39,8 @@
         }
 
         .backdrop {
-            transform: translateX(calc(((v.space('md') + v.space('xs')) * -1)));
-            width: calc(100% + calc((v.space('md') + v.space('xs')) * 2));
+            transform: translateX(calc(((v.space(md) + v.space(xs)) * -1)));
+            width: calc(100% + calc((v.space(md) + v.space(xs)) * 2));
         }
 
         .media-border {
@@ -51,25 +51,25 @@
         }
 
         .content {
-            transform: translateY(calc(v.space('md') + v.space('xs')));
+            transform: translateY(calc(v.space(md) + v.space(xs)));
         }
     }
 
     @include mix.respond(xs) {
-        padding: (v.space('sm') + v.space('xs'));
+        padding: (v.space(sm) + v.space(xs));
 
         &:hover {
             .bg {
-                transform: translateY(calc(v.space('xs'))) scale(0.95);
+                transform: translateY(calc(v.space(xs))) scale(0.95);
             }
 
             .backdrop {
-                transform: translateX(calc(((v.space('sm') + v.space('xs')) * -1)));
-                width: calc(100% + calc((v.space('sm') + v.space('xs')) * 2));
+                transform: translateX(calc(((v.space(sm) + v.space(xs)) * -1)));
+                width: calc(100% + calc((v.space(sm) + v.space(xs)) * 2));
             }
 
             .content {
-                transform: translateY(calc(v.space('sm') + v.space('xs')));
+                transform: translateY(calc(v.space(sm) + v.space(xs)));
             }
         }
     }
@@ -100,7 +100,7 @@
 }
 
 .content {
-    padding: v.space('md') v.space('sm');
+    padding: v.space(md) v.space(sm);
     min-height: 40%;
 
     @include mix.respond(1880px) {
@@ -119,11 +119,11 @@
 }
 
 .title {
-    padding-right: v.space('sm');
+    padding-right: v.space(sm);
 
     @include t.tx((color));
 }
 
 .excerpt {
-    padding-top: v.space('sm');
+    padding-top: v.space(sm);
 }

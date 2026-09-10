@@ -23,7 +23,7 @@
 
 .items {
     @include mix.respond(md) {
-        padding-bottom: calc(v.space(md));
+        padding-bottom: calc(v.space(xs) + v.space(2xs) * 0.2);
         display: flex;
         column-gap: calc(v.space(sm) + v.space(xs));
 

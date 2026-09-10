@@ -4,6 +4,10 @@
 
 .content {
     padding-right: calc(var(--grid-cell-width) * 2 + var(--grid-col-gap) * 2);
+
+    @include mix.respond(xs) {
+        padding-right: 0;
+    }
 }
 
 .visual {
@@ -16,6 +20,10 @@
 .audio-player {
     @include mix.respond(sm) {
         margin-left: v.space(sm);
+    }
+
+    @include mix.respond(xs) {
+        margin-left: 0;
     }
 }
 

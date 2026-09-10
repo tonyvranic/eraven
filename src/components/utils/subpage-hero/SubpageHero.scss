@@ -52,6 +52,10 @@
         --top-right: calc(100% + var(--grid-cell-width) * 1 + var(--grid-col-gap) * 1);
         --bottom-right: calc(100% + var(--grid-cell-width) * 1 + var(--grid-col-gap) * 1);
     }
+
+    @include mix.respond(xxs) {
+        --top-left: calc(var(--grid-cell-width) * 5 + var(--grid-col-gap) * 5);
+    }
 }
 
 .bg-image {
@@ -65,15 +69,22 @@
 .overlay-darken {
     --darken-color: #{color.change(v.color(light-900), $alpha: 40%)};
     --darken-start: 20%;
+    --darken-end: 100%;
 
     background: linear-gradient(90deg + 15deg,
         var(--darken-color) var(--darken-start),
-        color.change(v.color(light-0), $alpha: 0%) 100%,
+        color.change(v.color(light-0), $alpha: 0%) var(--darken-end),
     );
 
     @include mix.respond(sm) {
         --darken-color: #{color.change(v.color(light-900), $alpha: 60%)};
         --darken-start: 40%;
+    }
+
+    @include mix.respond(xxs) {
+        --darken-color: #{color.change(v.color(light-900), $alpha: 70%)};
+        --darken-start: 30%;
+        --darken-end: 140%;
     }
 }
 

@@ -31,11 +31,12 @@ const titleColorClass = theme === 'secondary' ? 'secondary-400' : 'primary-400';
 <section class:list={['abstract-text-2']}>
 
   {/* Top */}
-  <Grid md xs>
+  <Grid md xs xxs>
     <Cell
       dt={{ start: 3, span: 5 }}
       md={{ start: 1, span: 6 }}
       xs={{ start: 5, span: 7 }}
+      xxs={{ start: 2, span: 11 }}
       class:list={['title-wrap', 'tr']}
     >
       {/* Title */}
@@ -63,11 +64,12 @@ const titleColorClass = theme === 'secondary' ? 'secondary-400' : 'primary-400';
       {/* Content */}
       if (!isAlternate && !inverted) {
         return (
-          <Grid md xs class:list={['left', 'tr', ...firstClasses, ...lastClasses]}>
+          <Grid md xs xxs class:list={['left', 'tr', ...firstClasses, ...lastClasses]}>
             <Cell
               dt={{ start: 1, span: 4 }}
               md={{ start: 1, span: 5 }}
               xs={{ start: 2, span: 10 }}
+              xxs={{ start: 1, span: 12 }}
             >
               <LineWithContent
                 theme={theme}
@@ -79,11 +81,12 @@ const titleColorClass = theme === 'secondary' ? 'secondary-400' : 'primary-400';
         );
       } else {
         return (
-          <Grid md xs class:list={['right', ...firstClasses, ...lastClasses]}>
+          <Grid md xs xxs class:list={['right', ...firstClasses, ...lastClasses]}>
             <Cell
               dt={{ start: 5, span: 5 }}
               md={{ start: 6, span: 6 }}
               xs={{ start: 1, span: 10 }}
+              xxs={{ start: 1, span: 12 }}
             >
               <LineWithContent
                 theme={theme}

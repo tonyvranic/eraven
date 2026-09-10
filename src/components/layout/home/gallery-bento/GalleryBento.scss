@@ -23,13 +23,13 @@
 .column {
     display: flex;
     flex-direction: column;
-    gap: v.space('md');
+    gap: v.space(md);
 
     &:first-child {
-        transform: translateY(calc(-1 * v.space('md')));
+        transform: translateY(calc(-1 * v.space(md)));
     }
     &:last-child {
-        transform: translateY(calc(1 * v.space('md')));
+        transform: translateY(calc(1 * v.space(md)));
     }
 
 
@@ -49,13 +49,13 @@
         &:nth-child(2) {
             & > * {
                 width: auto;
-                height: calc(#{column-media.$vertical-height} * 0.5 - v.space('md') * 0.5);
+                height: calc(#{column-media.$vertical-height} * 0.5 - v.space(md) * 0.5);
 
                 &:nth-child(1) {
-                    margin-right: calc(v.space('lg'));
+                    margin-right: calc(v.space(lg));
                 }
                 &:nth-child(2) {
-                    margin-left: calc(v.space('lg'));
+                    margin-left: calc(v.space(lg));
                 }
             }
         }
@@ -68,13 +68,13 @@
 
         &:nth-child(2) {
             & > * {
-                height: calc(#{column-media.$vertical-height-xs} * 0.5 - v.space('md') * 0.5);
+                height: calc(#{column-media.$vertical-height-xs} * 0.5 - v.space(md) * 0.5);
 
                 &:nth-child(1) {
-                    margin-right: calc(v.space('xl'));
+                    margin-right: calc(v.space(xl));
                 }
                 &:nth-child(2) {
-                    margin-left: calc(v.space('xl'));
+                    margin-left: calc(v.space(xl));
                 }
             }
         }
@@ -83,7 +83,6 @@
 
 .items {
     @include mix.respond(sm) {
-        padding-bottom: calc(v.space(md));
         display: flex;
         align-items: normal;
         column-gap: calc(v.space(md) + v.space(xs));
