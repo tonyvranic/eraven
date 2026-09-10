@@ -4,10 +4,19 @@
 
 .content {
     padding-right: calc(var(--grid-cell-width) + var(--grid-col-gap));
+
+    @include mix.respond(xs) {
+        margin-left: calc((var(--grid-col-gap) + v.space(xs)));
+        padding-right: 0;
+    }
 }
 
 .media {
     @include mix.respond(sm) {
         margin-left: calc((var(--grid-cell-width) + var(--grid-col-gap)) * -1 + v.space(sm));
+    }
+
+    @include mix.respond(xs) {
+        margin-left: 0;
     }
 }

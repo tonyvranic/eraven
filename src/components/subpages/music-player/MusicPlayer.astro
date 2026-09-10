@@ -30,12 +30,13 @@ const titleColorClass = theme === 'secondary' ? 'secondary-400' : 'primary-400';
 
 {/* Html */}
 <section class:list={['music-player']} data-music-player-section>
-  <Grid sm class:list={['ac']}>
+  <Grid sm xs class:list={['ac']}>
 
     {/* Left */}
     <Cell
       dt={{ start: 1, span: 7 }}
       sm={{ start: 1, span: 7 }}
+      xs={{ start: 1, span: 12 }}
     >
       {/* Title */}
       {title && (
@@ -61,6 +62,7 @@ const titleColorClass = theme === 'secondary' ? 'secondary-400' : 'primary-400';
     <Cell
       dt={{ start: 9, span: 3 }}
       sm={{ start: 8, span: 5 }}
+      xs={{ start: 6, span: 6, mt: 'md' }}
     >
       <div class:list={['audio-player', 'rel']}>
 

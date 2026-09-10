@@ -11,7 +11,7 @@ import Flex from '../../utils/Flex.astro';
 /* Props */
 interface Props {
   theme?: 'secondary' | 'primary';
-  content?: string;
+  content: string;
 }
 
 const { 
@@ -27,12 +27,13 @@ const titleColorClass = theme === 'secondary' ? 'secondary-400' : 'primary-400';
 
 {/* Html */}
 <section class:list={['closing-thought']}>
-  <Grid md>
+  <Grid md xs>
 
     {/* Left */}
     <Cell
       dt={{ start: 1, span: 7 }}
       md={{ start: 1, span: 6 }}
+      xs={{ start: 2, span: 10, mb: 'sm' }}
       class:list={['tr']}
     >
       <Flex dt={{ dir: 'column' }} class:list={['fw', 'fh']}>
@@ -60,16 +61,25 @@ const titleColorClass = theme === 'secondary' ? 'secondary-400' : 'primary-400';
     <Cell
       dt={{ start: 8, span: 5 }}
       md={{ start: 7, span: 6 }}
+      xs={{ start: 1, span: 10 }}
     >
       {/* Hidden Spacer */}
-      <Text el="span" type="display-3xl" aria-hidden set:html={'&nbsp;'} />
+      <Text 
+        el="span" type="display-3xl"
+        aria-hidden set:html={'&nbsp;'}
+        class:list={'hidden-spacer'}
+      />
 
-      {content && (
+      <Flex dt={{ wrap: 'nowrap', gap: 'sm' }}>
+        <SubpageLine
+          theme={theme}
+          classes={['reading-line-mobile', 'none']}
+        />
         <div 
           set:html={content}
           class:list={['user-content']}
         />
-      )}
+      </Flex>
     </Cell>
   </Grid>
 </section>

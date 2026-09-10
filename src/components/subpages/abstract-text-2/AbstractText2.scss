@@ -1,4 +1,5 @@
 @use 'vars' as v;
+@use 'mixins' as mix;
 
 
 .title-wrap {
@@ -8,5 +9,15 @@
 .left {
     & > * {
         margin-right: calc((var(--grid-col-gap) + v.space(xs)) * -1);
+
+        @include mix.respond(xs) {
+            margin-right: 0;
+        }
+    }
+}
+
+.last:not(.first) {
+    @include mix.respond(xs) {
+        margin-top: v.space(lg);
     }
 }

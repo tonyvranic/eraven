@@ -6,4 +6,8 @@
     @include mix.respond(sm) {
         padding-right: v.space(sm);
     }
+
+    @include mix.respond(sm) {
+        padding-right: 0;
+    }
 }

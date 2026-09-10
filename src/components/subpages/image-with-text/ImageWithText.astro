@@ -50,13 +50,14 @@ const titleColorClass = theme === 'secondary' ? 'secondary-400' : 'primary-400';
 
 
   {/* Bottom */}
-  <Grid md sm class:list={['ac', 'mt-lg']}>
+  <Grid md sm xs class:list={['ac', 'mt-lg', 'xs:mt-md']}>
 
     {/* Left */}
     <Cell
       dt={{ start: 2, span: 5 }}
       md={{ start: 1, span: 5 }}
       sm={{ start: 1, span: 6 }}
+      xs={{ start: 1, span: 8, mb: 'sm' }}
     >
       {image && (
         <div class:list={['media']}>
@@ -73,6 +74,8 @@ const titleColorClass = theme === 'secondary' ? 'secondary-400' : 'primary-400';
     <Cell
       dt={{ start: 8, span: 5 }}
       md={{ start: 7, span: 6 }}
+      sm={{ start: 7, span: 6 }}
+      xs={{ start: 1, span: 11 }}
     >
       {/* Content */}
       {content && (

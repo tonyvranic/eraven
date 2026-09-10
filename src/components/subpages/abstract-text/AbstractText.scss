@@ -8,10 +8,26 @@
     @include mix.respond(sm) {
         padding-right: v.space(md);
     }
+
+    @include mix.respond(xs) {
+        order: 2;
+        padding-right: 0;
+        margin-right: calc((var(--grid-col-gap) + v.space(xs)) * -1);
+    }
 }
 
 .left {
     & > * {
         margin-right: calc((var(--grid-col-gap) + v.space(xs)) * -1);
+
+        @include mix.respond(xs) {
+            margin-right: 0;
+        }
+    }
+}
+
+.last:not(.first) {
+    @include mix.respond(xs) {
+        margin-top: v.space(lg);
     }
 }

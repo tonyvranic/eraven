@@ -16,4 +16,20 @@
 
 .reading-line-wrap {
     min-height: 256px;
+
+    @include mix.respond(xs) {
+        display: none;
+    }
+}
+
+.hidden-spacer {
+    @include mix.respond(xs) {
+        display: none;
+    }
+}
+
+.reading-line-mobile {
+    @include mix.respond(xs) {
+        display: block;
+    }
 }
