@@ -13,5 +13,124 @@
   "tags": ["baking"],
   "dateCreated": "2026-09-03",
   "lastEditDate": "2026-09-03",
-  "sections": []
+  "sections": [
+    {
+      "type": "recipeDetail",
+      "time": "4h",
+      "complexity": "2/5",
+      "steps": [
+        [
+          {
+            "type": "text",
+            "content": "<p>Mix up all the dry ingredients and add the water</p>"
+          }
+        ],
+        [
+          {
+            "type": "text",
+            "content": "<p>Knead using a stand mixer for around 8 minutes.<br>Scrape sides occasionally</p>"
+          }
+        ],
+        [
+          {
+            "type": "text",
+            "content": "<p>Let the dough rest inside of a sealed bowl for at least 45min in a warm place</p>"
+          }
+        ],
+        [
+          {
+            "type": "text",
+            "content": "<p>De-flate the dough and fold from sides to center once or twice.<br>Roll it up and let it rest in a sealed bowl in a warm place for another 45min</p>"
+          }
+        ],
+        [
+          {
+            "type": "text",
+            "content": "<p>De-flate yet again, fold from sides to center once and shape the dough.<br>Transfer it into an oiled up baking pan and cover it.<br><br>Leave it in a warm place until the size doubled (cca 1h)</p>"
+          }
+        ],
+        [
+          {
+            "type": "text",
+            "content": "<p>Bake at 180°C for 35min or until color changed to a golden one</p>"
+          }
+        ],
+        [
+          {
+            "type": "text",
+            "content": "<p>After baking, keep the bread covered in a blanket for around 2h. However, feel free to slice and eat it right away</p>"
+          }
+        ]
+      ],
+      "servings": {
+        "servingsCount": 4,
+        "perServingWeight": 200,
+        "totalWeight": 800
+      },
+      "ingredients": [
+        {
+          "title": "Dry",
+          "items": [
+            "438g AP flour",
+            "3g instant yeast",
+            "9.1g salt",
+            "44g sugar"
+          ]
+        },
+        {
+          "title": "Wet",
+          "items": [
+            "307g Water"
+          ]
+        }
+      ],
+      "nutrients": {
+        "calories": 422,
+        "carbs": 90.9,
+        "fats": 1.5,
+        "protein": 10.9,
+        "sugars": 13.7,
+        "saturatedFats": 0.2,
+        "fibers": 3,
+        "salts": 2.3
+      }
+    },
+    {
+      "type": "accordion",
+      "items": [
+        {
+          "title": "Temperature and time",
+          "content": "<p>Warming your ingredients gets fermentation started sooner.<br>Using cold water can leave you waiting for no good reason.<br><br>Don't use hot water either.<br>Everything should feel comfortably lukewarm to warm when you touch it — never hot.<br><br>If it feels too hot for your finger, it's too hot for the yeast</p>"
+        },
+        {
+          "title": "Salt sensitivity",
+          "content": "<p>Even a difference of around 0.2g was noticable in the final taste.<br><br>Don’t treat salt as a rough estimate</p>"
+        },
+        {
+          "title": "Instant yeast is enough",
+          "content": "<p>There is really no reason to make this more complicated than it needs to be.<br>Instant yeast foes straight into the dry mix and works just fine.<br><br>Both fresh yeast and active cry yeast don’t give a better result — they just add another step</p>"
+        },
+        {
+          "title": "Folding and shaping matter",
+          "content": "<p>Shaping isn’t just about making the loaf look nice.<br><br>When you fold and shape the dough, you’re creating tension in it’s surface. That tension gives the dough something to push against as it expands during proofing, helping it rise into a nicely formed load instead of spreading out</p>"
+        },
+        {
+          "title": "Don't obsess over proofing",
+          "content": "<p>Your dough might not rise as much as you’d hoped. It might even go a little too far.<br><br>Bake it anyway.<br><br>The result might be denser/flatter/collapsed, but it will still be bread.<br>And, more importantly, it will still taste pretty good.</p>"
+        },
+        {
+          "title": "Baking time is not a constant",
+          "content": "<p>The time listed in a recipe is a guideline, not a law.<br><br>The size and shape of the loaf, the pan you’re using, your oven, the temperature of the dough, and how far it was proofed can all change the baking time.<br><br>Your loaf is not my loaf, so expect some variation.<br><br>If you have a thermometer — The center needs to reach around 88°C</p>"
+        },
+        {
+          "title": "About loaf pans",
+          "content": "<p>I had particularly bad results with an aluminum loaf pan. Mine seemed to heat up way too slowly and I never got results I liked.<br><br>Maybe it was just that particular pan, but I much prefer non-stick steel for bread</p>"
+        },
+        {
+          "title": "And finally...",
+          "content": "<p>There are a lot of variables here.<br><br>Bread can be surprisingly sensitive to small changes. And sometimes you’ll do everything right and still end up with something a little different than you expected.<br><br>Don’t let that put you off.<br><br>I was terrible at baking bread when I started. I eventually had to read an entire book just to understand what I was actually doing.<br><br><br>You don't need perfect bread.<br><br>You just need to bake the next one.</p>"
+        }
+      ]
+    }
+  ]
 }

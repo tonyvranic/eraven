@@ -4,10 +4,12 @@ import type { TextElement, TypographyType } from './Text.types';
 
 
 /* Props */
-type Props = HTMLAttributes<'p'> & {
-  el?: TextElement;
-  type?: TypographyType;
-};
+type Props = {
+  [El in TextElement]: HTMLAttributes<El> & { 
+    el?: El; 
+    type?: TypographyType 
+  };
+}[TextElement];
 
 const {
   el: El = 'p',

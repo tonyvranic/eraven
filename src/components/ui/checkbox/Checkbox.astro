@@ -1,0 +1,40 @@
+---
+import { slugify } from '../../../utils/slugify';
+import Flex from '../../utils/Flex.astro';
+import Text from '../text/Text.astro';
+
+/* Props */
+interface Props {
+  name: string;
+}
+
+const { 
+  name,
+} = Astro.props;
+
+
+/* Computed */
+const slugifiedName = slugify(name);
+---
+
+
+{/* Html */}
+<Flex 
+  dt={{ inline: true, gap: 'xs' }}
+  class:list={['checkbox']}
+>
+  <input type="checkbox" id={slugifiedName} name={name} />
+  <Text el="label" for={slugifiedName}>{name}</Text>
+</Flex>
+
+
+{/* Styles */}
+<style lang="scss">
+  @use './Checkbox.scss';
+</style>
+
+
+{/* Script */}
+<script>
+  
+</script>

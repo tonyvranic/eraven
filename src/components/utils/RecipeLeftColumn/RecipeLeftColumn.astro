@@ -1,0 +1,57 @@
+---
+import type { IngredientCategory, Nutrients, Servings } from './RecipeLeftColumn.types';
+import Flex from '../Flex.astro';
+import RecipeLeftColumnTop from './RecipeLeftColumnTop/RecipeLeftColumnTop.astro';
+import RecipeLeftColumnBottom from './RecipeLeftColumnBottom/RecipeLeftColumnBottom.astro';
+
+
+/* Props */
+interface Props {
+  time: string;
+  complexity: string;
+  servings: Servings;
+  nutrients: Nutrients;
+  ingredientCategories: IngredientCategory[];
+}
+
+const { 
+  time,
+  complexity,
+  servings,
+  nutrients,
+  ingredientCategories
+} = Astro.props;
+
+
+/* Computed */
+---
+
+
+{/* Html */}
+<Flex
+  dt={{ dir: 'column', gap: 'md' }}
+  class:list={['recipe-left-column', 'sticky']}
+>
+  <RecipeLeftColumnTop
+    time={time}
+    complexity={complexity}
+    class:list={['item-left', 'slice-top-right']}
+  />
+
+  <RecipeLeftColumnBottom
+    ingredientCategories={ingredientCategories}
+    class:list={['item-left', 'slice-top-right']}
+  />
+</Flex>
+
+
+{/* Styles */}
+<style lang="scss">
+  @use './RecipeLeftColumn.scss';
+</style>
+
+
+{/* Script */}
+<script>
+  
+</script>

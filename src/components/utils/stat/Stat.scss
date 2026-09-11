@@ -1,0 +1,9 @@
+@use 'vars' as v;
+
+.stat {
+    width: calc(50% - var(--flex-gap) * 0.5);
+}
+
+span {
+    display: block;
+}

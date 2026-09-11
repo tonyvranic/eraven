@@ -5,6 +5,7 @@ import type { LayoutBreakpoint, SpacingValue } from './config';
 type FlexBreakpoint = LayoutBreakpoint;
 
 interface FlexSettings {
+    inline?: boolean;
     wrap?: 'wrap' | 'nowrap';
     dir?: 'row' | 'row-reverse' | 'column' | 'column-reverse';
     justify?: 'start' | 'end' | 'center' | 'between';
@@ -52,6 +53,7 @@ responsiveSettings.forEach(([breakpoint, settings]) => {
     if (!settings) return;
 
     const {
+        inline,
         wrap, dir, justify, align,
         gap, colGap, rowGap,
         grow, shrink,
@@ -85,6 +87,7 @@ responsiveSettings.forEach(([breakpoint, settings]) => {
         case 'stretch': alignClass = `${prefix}ast`; break;
     }
 
+    const inlineClass = inline ? `${prefix}i-f` : null;
     const growClass = grow ? `${prefix}fg-1` : null;
     const shrinkClass = shrink ? `${prefix}fs-0` : null;
 
@@ -100,6 +103,7 @@ responsiveSettings.forEach(([breakpoint, settings]) => {
     const pbClass = pb ? `${prefix}pb-${pb}` : null;
 
     for (const c of [
+        inlineClass,
         wrapClass, dirClass, justifyClass, alignClass,
         growClass, shrinkClass,
         gapClass, colGapClass, rowGapClass,

@@ -1,0 +1,62 @@
+---
+import Checkbox from '../../../ui/checkbox/Checkbox.astro';
+import Text from '../../../ui/text/Text.astro';
+import Flex from '../../Flex.astro';
+import type { IngredientCategory } from '../RecipeLeftColumn.types';
+
+
+/* Props */
+interface Props {
+  ingredientCategories: IngredientCategory[];
+}
+
+const { 
+  ingredientCategories,
+  ...rest
+} = Astro.props;
+
+
+/* Computed */
+---
+
+
+{/* Html */}
+<Flex
+  dt={{ dir: 'column', gap: 'md' }}
+  class:list={['recipe-left-column-bottom']}
+  {...rest}
+>
+  <Text el="h2" class:list={['visually-hidden']}>Ingredients</Text>
+
+  {ingredientCategories.map(category => {
+    const categoryTitle = category.title;
+    const items = category.items;
+
+    return (
+      <div class="ingredient-category">
+        <Text 
+          el="h3" type="display-md"
+          class:list={['light-200', 'mb-sm']}
+        >
+          {categoryTitle}
+        </Text>
+
+        <Flex
+          el="ul"
+          dt={{ dir: 'column', gap: 'xs' }}
+        >
+          {items.map(item => (
+            <li><Checkbox name={item} /></li>
+          ))}
+        </Flex>
+      </div>
+    )
+
+  })}
+</Flex>
+
+
+{/* Styles */}
+<style lang="scss">
+  @use './RecipeLeftColumnBottom.scss';
+</style>

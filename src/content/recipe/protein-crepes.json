@@ -70,7 +70,7 @@
       }
     },
     {
-      "type": "faq",
+      "type": "accordion",
       "items": [
         {
           "title": "They stick.<br>Even to non-stick pans",

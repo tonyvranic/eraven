@@ -119,6 +119,7 @@
     position: fixed;
 }
 .sticky {
+    top: v.space(md);
     position: sticky;
 }
 
@@ -319,13 +320,12 @@ h6 {
     }
 }
 
-.slidedown-1 {
+.dd {
     display: grid;
     grid-template-rows: 0fr;
 
     visibility: hidden;
-    transition: grid-template-rows 800ms,
-                visibility 800ms;
+    @include t.tx((grid-template-rows, visibility), 2);
 
     &.active {
         grid-template-rows: 1fr;
@@ -333,19 +333,19 @@ h6 {
     }
 }
 
-.slideside-1 {
-    display: grid;
-    grid-template-columns: 0fr;
+// .slideside-1 {
+//     display: grid;
+//     grid-template-columns: 0fr;
 
-    visibility: hidden;
-    transition: grid-template-columns 1200ms,
-                visibility 1200ms;
+//     visibility: hidden;
+//     transition: grid-template-columns 1200ms,
+//                 visibility 1200ms;
 
-    &.active {
-        grid-template-columns: 1fr;
-        visibility: visible;
-    }
-}
+//     &.active {
+//         grid-template-columns: 1fr;
+//         visibility: visible;
+//     }
+// }
 
 
 // Corner slicers

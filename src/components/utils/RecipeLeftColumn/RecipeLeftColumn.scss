@@ -1,0 +1,8 @@
+@use 'vars' as v;
+
+.item-left {
+    padding: v.space(md);
+    max-width: 408px;
+
+    background-color: v.color(light-800);
+}

@@ -1,0 +1,45 @@
+---
+import Flex from '../../Flex.astro';
+import Stat from '../../stat/Stat.astro';
+
+
+/* Props */
+interface Props {
+  time: string;
+  complexity: string;
+}
+
+const { 
+  time,
+  complexity,
+  ...rest
+} = Astro.props;
+
+
+/* Computed */
+---
+
+
+{/* Html */}
+<Flex
+  dt={{ gap: 'md' }}
+  class:list={['recipe-left-column-top']}
+  {...rest}
+>
+  <Stat
+    label='Time'
+    value={time}
+    type="large"
+  />
+  <Stat
+    label='Complexity'
+    value={complexity}
+    type="large"
+  />
+</Flex>
+
+
+{/* Styles */}
+<style lang="scss">
+  @use './RecipeLeftColumnTop.scss';
+</style>

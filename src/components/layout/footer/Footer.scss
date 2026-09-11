@@ -366,14 +366,27 @@
     opacity: 0;
     visibility: hidden;
 
+    // Can't be 1 property, HTML Validator is making a fuss...
     --pattern-1-center: 35% 55%;
+    --pattern-1-center-x: 35%;
+    --pattern-1-center-y: 55%;
     --pattern-2-center: 50% 50%;
+    --pattern-2-center-x: 50%;
+    --pattern-2-center-y: 50%;
     --pattern-3-center: 70% 40%;
+    --pattern-3-center-x: 70%;
+    --pattern-3-center-y: 40%;
 
     @include mix.respond(xl) {
         --pattern-1-center: 45% 60%;
+        --pattern-1-center-x: 45%;
+        --pattern-1-center-y: 60%;
         --pattern-2-center: 50% 50%;
+        --pattern-2-center-x: 50%;
+        --pattern-2-center-y: 50%;
         --pattern-3-center: 55% 35%;
+        --pattern-3-center-x: 55%;
+        --pattern-3-center-y: 35%;
     }
 
     @include mix.respond(xxs) {
@@ -383,29 +396,29 @@
 
     &.pattern-1 {
         .hero-bg-pattern-mask {
-            mask-image: radial-gradient(circle at var(--pattern-1-center), #000 0%, #0000 28%);
+            mask-image: radial-gradient(circle at var(--pattern-1-center-x) var(--pattern-1-center-y), #000 0%, #0000 28%);
         }
 
         .hero-bg-pattern-overlay {
-            mask-image: radial-gradient(circle at var(--pattern-1-center), #000 0%, #0000 25%);
+            mask-image: radial-gradient(circle at var(--pattern-1-center-x) var(--pattern-1-center-y), #000 0%, #0000 25%);
         }
     }
     &.pattern-2 {
         .hero-bg-pattern-mask {
-            mask-image: radial-gradient(circle at var(--pattern-2-center), #000 0%, #0000 28%);
+            mask-image: radial-gradient(circle at var(--pattern-2-center-x) var(--pattern-2-center-y), #000 0%, #0000 28%);
         }
 
         .hero-bg-pattern-overlay {
-            mask-image: radial-gradient(circle at var(--pattern-2-center), #000 0%, #0000 25%);
+            mask-image: radial-gradient(circle at var(--pattern-2-center-x) var(--pattern-2-center-y), #000 0%, #0000 25%);
         }
     }
     &.pattern-3 {
         .hero-bg-pattern-mask {
-            mask-image: radial-gradient(circle at var(--pattern-3-center), #000 0%, #0000 28%);
+            mask-image: radial-gradient(circle at var(--pattern-3-center-x) var(--pattern-3-center-y), #000 0%, #0000 28%);
         }
 
         .hero-bg-pattern-overlay {
-            mask-image: radial-gradient(circle at var(--pattern-3-center), #000 0%, #0000 25%);
+            mask-image: radial-gradient(circle at var(--pattern-3-center-x) var(--pattern-3-center-y), #000 0%, #0000 25%);
         }
     }
 }

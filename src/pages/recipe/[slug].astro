@@ -9,6 +9,7 @@ import AbstractText from '../../components/subpages/abstract-text/AbstractText.a
 import ClosingThought from '../../components/subpages/closing-thought/ClosingThought.astro';
 import AbstractText2 from '../../components/subpages/abstract-text-2/AbstractText2.astro';
 import MusicPlayer from '../../components/subpages/music-player/MusicPlayer.astro';
+import RecipeDetail from '../../components/subpages/recipe-detail/RecipeDetail.astro';
 
 /* Computed */
 export async function getStaticPaths() {
@@ -50,6 +51,7 @@ const dateUpdated = new Date(data.lastEditDate).toLocaleDateString('hr-HR').spli
         case 'abstractText2': return (<AbstractText2 theme="primary" {...section} />);
         case 'blockquote': return (<Blockquote theme="primary" {...section} />);
         case 'musicPlayer': return (<MusicPlayer theme="primary" {...section} />);
+        case 'recipeDetail': return (<RecipeDetail theme="primary" {...section} />);
         case 'closing': return (<ClosingThought theme="primary" {...section} />);
       }
     })

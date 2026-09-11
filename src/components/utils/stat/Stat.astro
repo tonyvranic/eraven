@@ -1,0 +1,40 @@
+---
+import Text from '../../ui/text/Text.astro';
+import type { TypographyType } from '../../ui/text/Text.types';
+
+/* Props */
+interface Props {
+  label: string;
+  value: string;
+  numberValue?: number;
+  type?: 'small' | 'large';
+}
+
+const { 
+  label,
+  value,
+  numberValue,
+  type = 'small',
+} = Astro.props;
+
+
+/* Computed */
+const valueType: TypographyType = type === 'small' ? 'display-md' : 'display-lg';
+---
+
+
+{/* Html */}
+<div class:list={['stat']}>
+  <Text el="span" type="label-md" class:list={['primary-300', 'mb-sm']}>
+    {label}
+  </Text>
+  <Text el="span" type={valueType} class:list={['light-0']}>
+    {value}
+  </Text>
+</div>
+
+
+{/* Styles */}
+<style lang="scss">
+  @use './Stat.scss';
+</style>

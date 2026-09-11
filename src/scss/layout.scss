@@ -206,7 +206,7 @@ $dt-cols: map.get(map.get($layout, dt), columns);
     .-mb-#{$key}     { margin-bottom: -#{$value}; }
     .pt-#{$key}      { padding-top: #{$value}; }
     .pb-#{$key}      { padding-bottom: #{$value}; }
-    .gap-#{$key}     { gap: #{$value}; }
+    .gap-#{$key}     { gap: #{$value}; --flex-gap: #{$value}; }
     .col-gap-#{$key} { column-gap: #{$value}; }
     .row-gap-#{$key} { row-gap: #{$value}; }
 }
@@ -220,7 +220,7 @@ $dt-cols: map.get(map.get($layout, dt), columns);
         .#{$bp}\:-mb-#{$key}     { @include respond($bp) { margin-bottom: -#{$value}; } }
         .#{$bp}\:pt-#{$key}      { @include respond($bp) { padding-top: #{$value}; } }
         .#{$bp}\:pb-#{$key}      { @include respond($bp) { padding-bottom: #{$value}; } }
-        .#{$bp}\:gap-#{$key}     { @include respond($bp) { gap: #{$value}; } }
+        .#{$bp}\:gap-#{$key}     { @include respond($bp) { gap: #{$value}; --flex-gap: #{$value}; } }
         .#{$bp}\:col-gap-#{$key} { @include respond($bp) { column-gap: #{$value}; } }
         .#{$bp}\:row-gap-#{$key} { @include respond($bp) { row-gap: #{$value}; } }
     }
@@ -232,6 +232,7 @@ $dt-cols: map.get(map.get($layout, dt), columns);
 .hide { display: none; }
 
 .f { display: flex; }
+.i-f { display: inline-flex; }
 .f-w { flex-wrap: wrap; }
 .f-nw { flex-wrap: nowrap; }
 
@@ -261,6 +262,8 @@ $dt-cols: map.get(map.get($layout, dt), columns);
     .#{$bp}\:hide { @include respond($bp) { display: none;} }
 
 
+    .#{$bp}\:f   { @include respond($bp) { display: flex;} }
+    .#{$bp}\:i-f { @include respond($bp) { display: inline-flex;} }
     .#{$bp}\:f-w  { @include respond($bp) { flex-wrap: wrap;} }
     .#{$bp}\:f-nw { @include respond($bp) { flex-wrap: nowrap;} }
 

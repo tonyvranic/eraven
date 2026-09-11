@@ -1,0 +1,66 @@
+---
+import type { RecipeStep } from './Step.types';
+
+import { numberMap } from '../../ui/icon/Icon.types';
+import Text from '../../ui/text/Text.astro';
+import Flex from '../Flex.astro';
+import Icon from '../../ui/icon/Icon.astro';
+
+/* Props */
+interface Props {
+  number: number;
+  step: RecipeStep[];
+}
+
+const { 
+  number,
+  step,
+} = Astro.props;
+
+
+/* Computed */
+const number0 = numberMap[Math.floor(number / 10) % 10];
+const number1 = numberMap[number % 10];
+---
+
+
+{/* Html */}
+<Flex
+  dt={{ gap: 'md', wrap: "nowrap" }}
+  class:list={['step', 'rel']}
+>
+  <Text el="h3" class:list={['visually-hidden']}>Step {number}</Text>
+
+  {/* Left */}
+  <Flex 
+    dt={{ shrink: true }}
+    class:list={['step-left']}
+  >
+    <Icon name={number0} class:list={['number', 'primary-700']} />
+    <Icon name={number1} class:list={['number', 'primary-700']} />
+  </Flex>
+
+  {/* Right */}
+  <div class:list={['step-right', 'asc']}>
+    {step.map((s, index) => {
+      switch(s.type) {
+        case 'text':
+          return <div set:html={s.content} class:list={['step-block', 'user-content']}></div>
+        case 'image':
+          return <Text type="display-2xl" class:list={['error']}>TODO</Text>
+      }
+    })}
+  </div>
+</Flex>
+
+
+{/* Styles */}
+<style lang="scss">
+  @use './Step.scss';
+</style>
+
+
+{/* Script */}
+<script>
+  
+</script>

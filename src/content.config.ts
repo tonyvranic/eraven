@@ -35,7 +35,7 @@ const nutrientsSchema = z.object({
 });
 
 const ingredientCategorySchema = z.object({
-  title: z.string().optional(),
+  title: z.string(),
   items: z.array(z.string()),
 });
 
@@ -65,13 +65,6 @@ const recipeDetailSchema = z.object({
 });
 
 
-// FAQ
-const faqItemSchema = z.object({
-  title: z.string(),
-  content: z.string(),
-});
-
-// TODO
 const sectionSchema = z.discriminatedUnion('type', [
   z.object({
     type: z.literal('textImage'),
@@ -115,19 +108,13 @@ const sectionSchema = z.discriminatedUnion('type', [
   }),
   z.object({
     type: z.literal('accordion'),
-    title: z.string(),
-    content: z.string(),
+    title: z.string().optional(),
+    content: z.string().optional(),
     items: z.array(accordionItemSchema),
   }),
   z.object({
     type: z.literal('recipeDetail'),
-    recipeDetailSchema,
-  }),
-  z.object({
-    type: z.literal('faq'),
-    title: z.string().optional(),
-    content: z.string().optional(),
-    items: z.array(faqItemSchema),
+    ...recipeDetailSchema.shape,
   }),
 ]);
 

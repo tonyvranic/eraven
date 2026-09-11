@@ -1,0 +1,95 @@
+---
+import type { IngredientCategory, Nutrients, Servings } from '../../utils/RecipeLeftColumn/RecipeLeftColumn.types';
+import type { RecipeSteps} from './RecipeDetail.types';
+
+import Text from '../../ui/text/Text.astro';
+import Cell from '../../utils/Cell.astro';
+import Flex from '../../utils/Flex.astro';
+import Grid from '../../utils/Grid.astro';
+import Step from '../../utils/step/Step.astro';
+import RecipeLeftColumn from '../../utils/RecipeLeftColumn/RecipeLeftColumn.astro';
+
+/* Props */
+interface Props {
+  time: string;
+  complexity: string;
+  stepsTitle?: string;
+  steps: RecipeSteps;
+  servings: Servings;
+  ingredients: IngredientCategory[];
+  nutrients: Nutrients;
+  theme: 'primary' | 'secondary';
+}
+
+const { 
+  time,
+  complexity,
+  stepsTitle,
+  steps,
+  servings,
+  ingredients,
+  nutrients,
+  theme,
+} = Astro.props;
+
+
+/* Computed */
+const stepsHeading = stepsTitle ?? 'Instructions';
+---
+
+
+{/* Html */}
+<section class:list={['recipe-detail']}>
+  <Grid>
+
+    {/* Left */}
+    <Cell
+      dt={{ start: 1, span: 4 }}
+      class:list={['left']}
+    >
+      <RecipeLeftColumn
+        time={time}
+        complexity={complexity}
+        servings={servings}
+        nutrients={nutrients}
+        ingredientCategories={ingredients}
+      />
+    </Cell>
+
+
+    {/* Right */}
+    <Cell
+      dt={{ start: 5, span: 6}}
+    >
+      <Text 
+        el="h2" type="display-xl"
+        class:list={['light-200', 'mb-xl']}
+      >
+        {stepsHeading}
+      </Text>
+
+      <Flex
+        dt={{ dir: 'column', gap: 'xl' }}
+      >
+        {steps.map((stepGroup, index) => (
+          <Step
+            number={index + 1}
+            step={stepGroup}
+          />
+        ))}
+      </Flex>
+    </Cell>
+  </Grid>
+</section>
+
+
+{/* Styles */}
+<style lang="scss">
+  @use './RecipeDetail.scss';
+</style>
+
+
+{/* Script */}
+<script>
+  
+</script>

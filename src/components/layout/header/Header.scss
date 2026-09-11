@@ -38,6 +38,8 @@
     display: block;
     position: relative;
 
+    @include t.tx((transform));
+
     & > * {
         display: block;
 
@@ -46,6 +48,8 @@
 
 
     &:hover {
+        transform: scale(1.15);
+
         .nav-link-text {
             clip-path: polygon(
                 /* Top Left */
