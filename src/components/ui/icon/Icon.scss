@@ -1,7 +1,7 @@
 @use 'sass:list';
 
 // Icon sizing utilities
-$sizes: (16, 24);
+$sizes: (16, 24, 32, 48);
 
 @each $size in $sizes {
     .icon-#{$size} {

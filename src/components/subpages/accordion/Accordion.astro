@@ -1,0 +1,79 @@
+---
+import Text from '../../ui/text/Text.astro';
+import AccordioItem from '../../utils/accordion-item/AccordioItem.astro';
+import Cell from '../../utils/Cell.astro';
+import Flex from '../../utils/Flex.astro';
+import Grid from '../../utils/Grid.astro';
+
+/* Props */
+interface Props {
+  title?: string;
+  content?: string;
+  items: Array<{ title: string; content: string }>;
+  theme: 'primary' | 'secondary';
+}
+
+const { 
+  title,
+  content,
+  items = [],
+  theme
+} = Astro.props;
+
+
+/* Computed */
+const computedTitle = title ?? 'A few<br><em>notes</em>';
+---
+
+
+{/* Html */}
+<section class:list={['accordion']}> 
+  <Grid>
+
+    {/* Left */}
+    <Cell
+      dt={{ start: 1, span: 5 }}
+    >
+
+      {/* Title */}
+      <Text set:html={computedTitle} el="h2" />
+
+      {/* Content */}
+      {content && (
+        <div 
+          set:html={content}
+          class:list={['user-content', 'mt-lg']}
+        />
+      )}
+
+    </Cell>
+
+    {/* Right - Content */}
+    <Cell
+      dt={{ start: 6, span: 7 }}
+    >
+      <Flex
+        dt={{ dir: 'column', gap: 'lg' }}
+      >
+        {items.map(item => (
+          <AccordioItem
+            title={item.title}
+            content={item.content}
+          />
+        ))}
+      </Flex>
+    </Cell>
+  </Grid>
+</section>
+
+
+{/* Styles */}
+<style lang="scss">
+  @use './Accordion.scss';
+</style>
+
+
+{/* Script */}
+<script>
+  
+</script>

@@ -10,6 +10,7 @@ import ClosingThought from '../../components/subpages/closing-thought/ClosingTho
 import AbstractText2 from '../../components/subpages/abstract-text-2/AbstractText2.astro';
 import MusicPlayer from '../../components/subpages/music-player/MusicPlayer.astro';
 import RecipeDetail from '../../components/subpages/recipe-detail/RecipeDetail.astro';
+import Accordion from '../../components/subpages/accordion/Accordion.astro';
 
 /* Computed */
 export async function getStaticPaths() {
@@ -52,6 +53,7 @@ const dateUpdated = new Date(data.lastEditDate).toLocaleDateString('hr-HR').spli
         case 'blockquote': return (<Blockquote theme="secondary" {...section} />);
         case 'musicPlayer': return (<MusicPlayer theme="secondary" {...section} />);
         case 'recipeDetail': return (<RecipeDetail theme="secondary" {...section} />);
+        case 'accordion': return (<Accordion theme="primary" {...section} />);
         case 'closing': return (<ClosingThought theme="secondary" {...section} />);
       }
     })

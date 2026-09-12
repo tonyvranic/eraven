@@ -19,11 +19,11 @@ const {
 
 {/* Html */}
 <div class:list={['media-border', 'abs-fw', 'z-0', ...(classes ?? [])]} {...rest}>
-  <div class:list={['border-top', 'border']}></div>
-  <div class:list={['border-right', 'border']}></div>
-  <div class:list={['border-left', 'border']}></div>
-  <div class:list={['border-bottom', 'border']}></div>
-  <div class:list={['border-corner', 'border']}></div>
+  <div class:list={['border-top', 'border', 'orig']}></div>
+  <div class:list={['border-right', 'border', 'orig']}></div>
+  <div class:list={['border-left', 'border', 'orig']}></div>
+  <div class:list={['border-bottom', 'border', 'orig']}></div>
+  <div class:list={['border-corner', 'border', 'orig']}></div>
 
   {backdropBorder && <div class:list={['backdrop-border', 'abs-fw']}>
     <div class:list={['border-right', 'border']}></div>

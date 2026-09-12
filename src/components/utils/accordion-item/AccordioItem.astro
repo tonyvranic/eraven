@@ -1,0 +1,84 @@
+---
+import { slugify } from '../../../utils/slugify';
+import Icon from '../../ui/icon/Icon.astro';
+import Text from '../../ui/text/Text.astro';
+import Flex from '../Flex.astro';
+import MediaBorder from '../media-border/MediaBorder.astro';
+
+/* Props */
+interface Props {
+  title: string;
+  content: string;
+}
+
+const { 
+  title,
+  content,
+} = Astro.props;
+
+
+/* Computed */
+const slugifiedTitle = slugify(title);
+---
+
+
+{/* Html */}
+<div class:list={['accordion-item', 'rel']}> 
+
+  {/* Input */}
+  <input 
+    type="checkbox" id={slugifiedTitle} 
+    class:list={['input', 'visually-hidden']}
+  >
+
+  {/* Label (Top) */}
+  <label 
+    for={slugifiedTitle}
+    class:list={['label', 'light-700', 'rel']}
+  >
+    <MediaBorder backdropBorder />
+
+    <Flex
+      dt={{ gap: 'md', wrap: 'nowrap', justify: 'between', align: 'center' }}
+    >
+
+      {/* Title */}
+      <Text
+        set:html={title}
+        el="h3" type="display-lg"
+        class:list={['title', 'light-500']}
+      />
+
+      {/* Icon */}
+      <div class:list={['icon', 'fs-0', 'light-500']}>
+        <Icon
+          name="SaltShaker"
+          size={48}
+        />
+      </div>
+
+    </Flex>
+  </label>
+
+  {/* Content */}
+  <div class:list={['dd']}>
+    <div class:list={['o-h']}>
+      <div 
+        set:html={content}
+        class:list={['user-content']}
+      />
+    </div>
+  </div>
+</div>
+
+
+{/* Styles */}
+<style lang="scss">
+  @use './AccordioItem.scss';
+</style>
+
+
+{/* Script */}
+<script>
+  
+</script>

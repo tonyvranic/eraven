@@ -20,13 +20,14 @@ const {
 
 /* Computed */
 const valueType: TypographyType = type === 'small' ? 'display-md' : 'display-lg';
+const labelSpacingClasses = type === 'small' ? ['mb-xs'] : ['mb-sm'];
 ---
 
 
 {/* Html */}
 <div class:list={['stat', ...classes]}>
   {label && (
-    <Text el="span" type="label-md" class:list={['primary-300', 'mb-sm']}>
+    <Text el="span" type="label-md" class:list={['primary-300', ...labelSpacingClasses]}>
       {label}
     </Text>
   )}

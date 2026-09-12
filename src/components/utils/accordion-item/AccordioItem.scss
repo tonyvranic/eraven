@@ -1,0 +1,80 @@
+@use 'vars' as v;
+@use 'timings' as t;
+
+$border-width: calc(v.space(xs) + v.space(2xs) * 0.3);
+
+.label {
+    display: block;
+    padding: v.space(md);
+    padding-right: v.space(lg);
+
+    cursor: pointer;
+
+    @include t.tx((color));
+
+    margin-right: $border-width;
+
+    :global(.backdrop-border .border-bottom) {
+        @include t.tx((visibility), 0);
+        transition-delay: t.mul(1.4);
+        visibility: visible;
+    }
+
+    :global(.border-right.orig) {
+        transform-origin: right;
+        @include t.tx((transform), 1.4);
+    }
+}
+
+.icon {
+    @include t.tx((transform, color));
+}
+
+.title {
+    @include t.tx((color));
+}
+
+.dd {
+    border: 8px solid v.color(light-700);
+    border-top: none;
+
+    margin-left: $border-width;
+
+    @include t.tx((
+        grid-template-rows, visibility, border-color
+    ), 1.4);
+}
+
+.input {
+    &:checked + label {
+        color: v.color(primary-400);
+
+        .icon {
+            transform: translateX(v.space(xs)) rotate(-180deg);
+            color: v.color(primary-400);
+        }
+
+        .title {
+            color: v.color(primary-400);
+        }
+
+        :global(.backdrop-border .border-bottom) {
+            transition-delay: 0s;
+            visibility: hidden;
+        }
+
+        :global(.border-right.orig) {
+            transform: scaleX(0);
+        }
+    }
+
+    &:checked ~ .dd {
+        grid-template-rows: 1fr;
+        visibility: visible;
+        border-color: v.color(primary-400);
+    }
+}
+
+.user-content {
+    padding: v.space(md) calc(v.space(sm) + v.space(xs));
+}
