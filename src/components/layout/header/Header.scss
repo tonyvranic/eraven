@@ -3,7 +3,7 @@
 @use 'timings' as t;
 
 
-.layout {
+.header {
     min-height: var(--header-height);
     background-color: v.color(light-900);
 }

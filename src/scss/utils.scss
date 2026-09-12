@@ -304,20 +304,6 @@ h6 {
     opacity: 0;
 }
 
-.has-svg {
-    svg {
-        width: 100%;
-        height: 100%;
-        display: block;
-    }
-}
-
-.has-stroke {
-    svg {
-        stroke: currentColor;
-    }
-}
-
 .dd {
     display: grid;
     grid-template-rows: 0fr;
@@ -330,20 +316,6 @@ h6 {
         visibility: visible;
     }
 }
-
-// .slideside-1 {
-//     display: grid;
-//     grid-template-columns: 0fr;
-
-//     visibility: hidden;
-//     transition: grid-template-columns 1200ms,
-//                 visibility 1200ms;
-
-//     &.active {
-//         grid-template-columns: 1fr;
-//         visibility: visible;
-//     }
-// }
 
 
 // Corner slicers

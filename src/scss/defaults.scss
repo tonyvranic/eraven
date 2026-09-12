@@ -2,6 +2,8 @@
 @use 'mixins' as mix;
 @use 'typography' as typo;
 @use 'functions' as f;
+@use 'timings' as t;
+
 
 html {
     font-size:  f.strip-unit(v.$base-font-size) + px;
@@ -188,3 +190,35 @@ section {
         }
     }
 }
+
+
+// Page Transitions
+// @view-transition {
+//     navigation: auto;
+// }
+
+// ::view-transition-old(root),
+// ::view-transition-new(root) {
+//     // Prevent the UA's default cross-fade blending from fighting the wipe
+//     mix-blend-mode: normal;
+//     animation: none;
+// }
+
+// ::view-transition-old(root) {
+//     z-index: 1;
+// }
+
+// ::view-transition-new(root) {
+//     z-index: 2;
+//     animation: clip-wipe t.mul(1.4) t.$power-2-out forwards;
+// }
+
+// // Diagonal reveal, degenerate sliver -> full box, echoing .slice-top-right's angled cut
+// @keyframes clip-wipe {
+//     from {
+//         clip-path: polygon(0% 0%, -20% 0%, -40% 100%, 0% 100%);
+//     }
+//     to {
+//         clip-path: polygon(0% 0%, 120% 0%, 100% 100%, 0% 100%);
+//     }
+// }

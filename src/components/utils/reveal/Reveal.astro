@@ -1,0 +1,111 @@
+---
+/* Props */
+interface Props {
+  // Define your props here
+}
+
+const { 
+  /* Destructure your props here */
+} = Astro.props;
+
+
+/* Computed */
+---
+
+
+{/* Html */}
+<div 
+  id="reveal"
+  aria-hidden inert
+  style="position:fixed; top: 0; left: 0; bottom: 0; right: 0; z-index: 20; background-color: #131313"
+> 
+  <img 
+    width="360" height="360"
+    src="/reveal-logo.webp" alt="Reveal Logo"
+    class:list={['abs-c']}
+  />
+</div>
+
+
+{/* Styles */}
+<style lang="scss">
+  @use './Reveal.scss';
+</style>
+
+
+{/* Script */}
+<script>
+  // There will always be just one component instance
+  // Config
+  const revealIdName = 'reveal';
+  const fragmentName = '#reveal';
+  const showRevealClassName = 'show-reveal';
+  const timeBeforeRedirectMs = 800;
+
+
+  // Queries
+  const revealElement = document.getElementById(revealIdName);
+  const siteLinks = document.querySelectorAll('a');
+
+
+  // Main
+  removeFragmentFromUrlAfterDelay();
+  addFragmentToLinks(siteLinks, fragmentName);
+
+
+  // Events
+  siteLinks.forEach(link => {
+    link.addEventListener('click', (e) => {
+      e.preventDefault();
+
+      if (isLinkedToCurrentPage(link)) {
+        return;
+      }
+
+      // Show the reveal element
+      revealElement?.classList.add(showRevealClassName);
+
+      // Redirect after a delay
+      setTimeout(() => {
+        window.location.href = link.href;
+      }, timeBeforeRedirectMs);
+    });
+  });
+
+
+  // Functions
+  function isLinkedToCurrentPage(link: HTMLAnchorElement): boolean {
+    let currentPageUrl = window.location.href;
+
+    // Remove the fragment from the link href before comparison
+    currentPageUrl = currentPageUrl.split('#')[0];
+    const linkUrl = link.href.split('#')[0];
+
+    return linkUrl === currentPageUrl;
+  }
+
+  function addFragmentToLinks(
+    links: NodeListOf<HTMLAnchorElement>,
+    fragment: string
+  ) {
+    links.forEach(link => {
+      // Check if link is internal
+      if (!link.href.startsWith(window.location.origin)) {
+        return;
+      }
+
+      // Check if the link is empty
+      if (link.href.includes('#')) {
+        return;
+      }
+
+      link.href += fragment;
+    });
+  }
+
+  function removeFragmentFromUrlAfterDelay() {
+    setTimeout(() => {
+      window.history.replaceState(null, '', window.location.href.split('#')[0]);
+    }, timeBeforeRedirectMs);
+  }
+</script>

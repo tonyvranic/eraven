@@ -3,6 +3,7 @@ import Text from '../../ui/text/Text.astro';
 import Cell from '../../utils/Cell.astro';
 import Flex from '../../utils/Flex.astro';
 import Grid from '../../utils/Grid.astro';
+import Reveal from '../../utils/reveal/Reveal.astro';
 
 
 /* Computed */
@@ -16,7 +17,9 @@ const navLinks = [
 
 
 {/* Html */}
-<header class="layout">
+<header class="header">
+  <Reveal />
+
   <Grid class:list={['fh']}>
     {/* Left */}
     <Cell dt={{ start: 1, span: 3 }}>

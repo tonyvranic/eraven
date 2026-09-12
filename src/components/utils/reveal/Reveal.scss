@@ -1,0 +1,104 @@
+@use 'vars' as v;
+@use 'timings' as t;
+
+
+@keyframes reveal-hide {
+    from {
+        clip-path: polygon(-20% 0%, 140% 0%, 120% 100%, -40% 100%);
+        visibility: visible;
+    }
+    to {
+        clip-path: polygon(140% 0%, 140% 0%, 120% 100%, 120% 100%);
+        visibility: hidden;
+    }
+}
+@keyframes reveal-show {
+    from {
+        clip-path: polygon(-20% 0%, -20% 0%, -40% 100%, -40% 100%);
+        visibility: hidden;
+    }
+    to {
+        clip-path: polygon(-20% 0%, 140% 0%, 120% 100%, -40% 100%);
+        visibility: visible;
+    }
+}
+
+@keyframes reveal-img-hide {
+    from {
+        transform: translate(-50%, -50%) scale(1) rotateY(0deg);
+    }
+    to {
+        transform: translate(-50%, -50%) scale(0.8) rotateY(360deg);
+    }
+}
+@keyframes reveal-img-show {
+    from {
+        transform: translate(-50%, -50%) scale(0.8) rotateY(0deg);
+    }
+    to {
+        transform: translate(-50%, -50%) scale(1) rotateY(360deg);
+    }
+}
+
+@keyframes not-target {
+    from {
+        opacity: 1;
+    }
+    to {
+        opacity: 0;
+    }
+}
+
+@keyframes not-target-img {
+    from {
+        transform: translate(-50%, -50%) scale(1) rotateY(-360deg);
+    }
+    to {
+        transform: translate(-50%, -50%) scale(0.75) rotateY(0deg);
+    }
+}
+
+#reveal {
+    pointer-events: none;
+    perspective: 360px;
+
+    &:target {
+        opacity: 1;
+        visibility: visible;
+
+        animation: reveal-hide t.mul(1.4) t.$power-2-out forwards;
+
+        img {
+            animation: reveal-img-hide t.mul(2.4) t.$power-2-out forwards;
+        }
+    }
+
+    // This gets run even if the element is in fact targeted,
+    // So we need to delay it a bit
+    &:not(:target) {
+        animation: not-target t.mul(0.7) t.$power-1-in forwards t.mul(1.4);
+        // animation: reveal-hide t.mul(1) t.$power-2-io forwards;
+
+        img {
+            animation: not-target-img t.mul(1.8) t.$power-2-io forwards;
+        }
+    }
+
+    &.show-reveal {
+        transition: none;
+        opacity: 1;
+        visibility: visible;
+
+        animation: reveal-show t.mul(1.4) t.$power-2-out forwards;
+
+        img {
+            animation: reveal-img-show t.mul(1.4) t.$power-2-out forwards;
+        }
+    }
+}
+
+img {
+    display: block;
+    width: 360px;
+    height: 360px;
+}
