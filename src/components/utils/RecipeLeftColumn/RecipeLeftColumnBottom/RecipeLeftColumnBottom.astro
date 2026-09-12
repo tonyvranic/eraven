@@ -26,7 +26,7 @@ const {
   class:list={['recipe-left-column-bottom']}
   {...rest}
 >
-  <Text el="h2" class:list={['visually-hidden']}>Ingredients</Text>
+  <Text el="h2" class:list={['hidden-title', 'abs']}>Ingredients</Text>
 
   {ingredientCategories.map(category => {
     const categoryTitle = category.title;

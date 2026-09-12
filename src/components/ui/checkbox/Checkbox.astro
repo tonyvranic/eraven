@@ -1,6 +1,7 @@
 ---
 import { slugify } from '../../../utils/slugify';
 import Flex from '../../utils/Flex.astro';
+import Icon from '../icon/Icon.astro';
 import Text from '../text/Text.astro';
 
 /* Props */
@@ -19,22 +20,41 @@ const slugifiedName = slugify(name);
 
 
 {/* Html */}
-<Flex 
-  dt={{ inline: true, gap: 'xs' }}
-  class:list={['checkbox']}
->
-  <input type="checkbox" id={slugifiedName} name={name} />
-  <Text el="label" for={slugifiedName}>{name}</Text>
-</Flex>
+<input type="checkbox" id={slugifiedName} name={name} />
+<Text el="label" for={slugifiedName}>
+  <Flex dt={{ inline: true, gap: 'sm', align: 'center' }}> 
+
+    <div class:list={['checkbox-visual', 'rel']}>
+      <Icon
+        name="CheckboxUnchecked"
+        [size]={32}
+        class:list={['checkbox-icon','light-600']}
+      />
+      <Icon
+        name="CheckboxChecked"
+        [size]={32}
+        class:list={['checkbox-icon', 'abs-fw', 'primary-400']}
+      />
+    </div>
+
+    <div class:list={['checkbox-text-wrap', 'rel']}>
+      <Text 
+        set:html={name}
+        el="span" type="body-lg"
+        aria-hidden
+        class:list={['checkbox-text-hover', 'light-0', 'abs', 'z-2']}
+      />
+      <Text 
+        set:html={name}
+        el="span" type="body-lg"
+        class:list={['checkbox-text', 'light-200']}
+      />
+    </div>
+  </Flex>
+</Text>
 
 
 {/* Styles */}
 <style lang="scss">
   @use './Checkbox.scss';
 </style>
-
-
-{/* Script */}
-<script>
-  
-</script>

@@ -1,5 +1,159 @@
 @use 'vars' as v;
+@use 'timings' as t;
 
-.checkbox {
+
+input[type="checkbox"] {
+    position: absolute;
+    width: 0px;
+    height: 0px;
+    overflow: hidden;
+    opacity: 0;
+
+    &:focus-visible + label {
+        outline: v.space(2xs) solid v.color(primary-400);
+    }
+
+    &:checked + label {
+        .checkbox-visual {
+            :global(.checkbox-icon) {
+                &:nth-child(1) {
+                    clip-path: polygon(
+                        /* Top Left */
+                        50% 150%,
+
+                        /* Top Right */
+                        150% 50%,
+
+                        /* Bottom Right */
+                        150% 50%,
+
+                        /* Bottom Left */
+                        50% 150%,
+                    );
+                    visibility: hidden;
+                }
+                &:nth-child(2) {
+                    // Clip path at 45deg
+                    clip-path: polygon(
+                        /* Top Left */
+                        -50% 50%,
+
+                        /* Top Right */
+                        50% -50%,
+
+                        /* Bottom Right */
+                        150% 50%,
+
+                        /* Bottom Left */
+                        50% 150%,
+                    );
+                    visibility: visible;
+                }
+            }
+        }
+
+        // Clip positioned to the right
+        .checkbox-text {
+            clip-path: polygon(
+                100% 0%,
+                100% 0%,
+                100% 100%,
+                100% 100%
+            );
+            visibility: hidden;
+        }
+
+        .checkbox-text-hover {
+            clip-path: polygon(
+                0% 0%,
+                100% 0%,
+                100% 100%,
+                0% 100%
+            );
+            visibility: visible;
+        }
+    }
+}
+
+.checkbox-text-wrap {
+    @include t.tx((transform), 0.5);
+}
+
+label {
     cursor: pointer;
+
+    &:hover {
+        .checkbox-text-wrap {
+            transform: translateX(v.space(xs));
+        }
+    }
+}
+
+.checkbox-visual {
+    :global(.checkbox-icon) {
+        @include t.tx((clip-path, visibility), 1, t.$power-3-out);
+
+        &:nth-child(1) {
+            clip-path: polygon(
+                /* Top Left */
+                -50% 50%,
+
+                /* Top Right */
+                50% -50%,
+
+                /* Bottom Right */
+                150% 50%,
+
+                /* Bottom Left */
+                50% 150%,
+            );
+            visibility: visible;
+        }
+
+        &:nth-child(2) {
+            // Clip path at 45deg
+            clip-path: polygon(
+                /* Top Left */
+                -50% 50%,
+
+                /* Top Right */
+                50% -50%,
+
+                /* Bottom Right */
+                50% -50%,
+
+                /* Bottom Left */
+                -50% 50%,
+            );
+            visibility: hidden;
+        }
+    }
+}
+
+.checkbox-text {
+    display: block;
+
+    clip-path: polygon(
+        0% 0%,
+        100% 0%,
+        100% 100%,
+        0% 100%
+    );
+
+    @include t.tx((clip-path, visibility), 1);
+}
+
+.checkbox-text-hover {
+    display: block;
+
+    // Clip positioned to the left
+    clip-path: polygon(
+        0% 0%,
+        0% 0%,
+        0% 100%,
+        0% 100%
+    );
+    visibility: hidden;
+
+    @include t.tx((clip-path, visibility), 1);
 }

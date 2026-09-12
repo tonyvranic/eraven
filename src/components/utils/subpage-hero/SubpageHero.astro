@@ -80,7 +80,7 @@ const singleWordTitleClass = isSingleWordTitle ? 'single-word' : '';
       xs={{ start: 1, span: 8 }}
       xxs={{ start: 1, span: 12 }}
     >
-      <Text el='h1' set:html={title} aria-hidden class:list={['visually-hidden']} />
+      <Text el='h1' set:html={title} aria-hidden class:list={['hidden-title', 'abs']} />
 
       <div class:list={['content']}>
 
