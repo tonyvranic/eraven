@@ -1,0 +1,44 @@
+@use 'vars' as v;
+@use 'mixins' as mix;
+@use 'typography' as typo;
+
+
+.input-wrap {
+    width: calc(50% - var(--flex-gap) * 0.5);
+
+    &.fw {
+        width: 100%;
+    }
+}
+
+label {
+    display: block;
+}
+
+input {
+    --size: 24px;
+
+    padding: v.space(2xs) v.space(lg) v.space(2xs) v.space(sm);
+
+    background-color: v.color(light-700);
+    color: v.color(light-0);
+
+    @include typo.type(display, md);
+
+    &[type="number"] {
+        &::-webkit-outer-spin-button,
+        &::-webkit-inner-spin-button {
+            display: none;
+        }
+
+        appearance: none;
+        -moz-appearance: textfield;
+    }
+}
+
+.suffix {
+    display: block;
+
+    bottom: v.space(sm);
+    right: v.space(sm);
+}

@@ -1,0 +1,65 @@
+---
+import Text from '../text/Text.astro';
+
+/* Props */
+interface Props {
+  id: string;
+  label?: string;
+  type?: 'text' | 'password' | 'email' | 'number';
+  value?: string;
+  suffix?: string;
+}
+
+const { 
+  id,
+  label,
+  type = "text",
+  value = "",
+  suffix = "",
+} = Astro.props;
+
+
+/* Computed */
+---
+
+
+{/* Html */}
+<div class:list={['input-wrap']}> 
+  {label && (
+    <Text 
+      for={id}
+      el="label" type="label-md"
+      class:list={['primary-300', 'mb-sm']}
+    >
+      {label}
+    </Text>
+  )}
+
+  <div class:list={['rel']}>
+    <input 
+      id={id} type={type} value={value}
+      class:list={['slice-top-right']}
+    />
+
+    {suffix && (
+      <Text 
+        el="span" type="display-sm"
+        class:list={['suffix', 'abs', 'z-2']}
+      >
+        {suffix}
+      </Text>
+    )}
+  </div>
+</div>
+
+
+{/* Styles */}
+<style lang="scss">
+  @use './Input.scss';
+</style>
+
+
+{/* Script */}
+<script>
+  
+</script>

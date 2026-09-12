@@ -4,7 +4,7 @@ import type { TypographyType } from '../../ui/text/Text.types';
 
 /* Props */
 interface Props {
-  label: string;
+  label?: string;
   value: string;
   type?: 'small' | 'large';
   classes?: string[];
@@ -25,9 +25,11 @@ const valueType: TypographyType = type === 'small' ? 'display-md' : 'display-lg'
 
 {/* Html */}
 <div class:list={['stat', ...classes]}>
-  <Text el="span" type="label-md" class:list={['primary-300', 'mb-sm']}>
-    {label}
-  </Text>
+  {label && (
+    <Text el="span" type="label-md" class:list={['primary-300', 'mb-sm']}>
+      {label}
+    </Text>
+  )}
   <Text el="span" type={valueType} class:list={['light-0']}>
     {value}
   </Text>

@@ -2,9 +2,42 @@
 @use 'timings' as t;
 
 
+.serving-size-label {
+    display: block;
+    cursor: text;
+}
+
+.serving-size-normal-wrap {
+    @include t.tx((grid-template-rows, visibility, clip-path), 1);
+
+    clip-path: polygon(
+        0% 0%,
+        100% 0%,
+        100% 100%,
+        0% 100%
+    );
+}
+
+.serving-size-input-wrap {
+    @include t.tx((grid-template-rows, visibility, clip-path), 1);
+
+    // Clip to bottom
+    clip-path: polygon(
+        0% 100%,
+        100% 100%,
+        100% 100%,
+        0% 100%
+    );
+}
+
+
 .calculator-label {
     right: 0;
     bottom: 0;
+}
+
+.dd {
+    transition-duration: t.mul(1.4);
 }
 
 .calculator-dd-input {
@@ -12,9 +45,40 @@
         outline: v.space(2xs) solid v.color(primary-400);
     }
 
-    &:checked + .serving-size .calculator-label {
-        transform: rotate(180deg);
-    }
+    &:checked + .serving-size {
+        .serving-size-label {
+            cursor: default;
+        }
+
+        .calculator-label {
+            transform: rotate(180deg);
+        }
+
+        .serving-size-normal-wrap {
+            grid-template-rows: 0fr;
+            visibility: hidden;
+
+            // Clip to top
+            clip-path: polygon(
+                0% 0%,
+                100% 0%,
+                100% 0%,
+                0% 0%
+            );
+        }
+
+        .serving-size-input-wrap {
+            grid-template-rows: 1fr;
+            visibility: visible;
+
+            clip-path: polygon(
+                0% 0%,
+                100% 0%,
+                100% 100%,
+                0% 100%
+            );
+        }
+    } 
 
     &:checked ~ .dd {
         grid-template-rows: 1fr;
