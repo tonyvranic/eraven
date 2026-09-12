@@ -6,15 +6,15 @@ import type { TypographyType } from '../../ui/text/Text.types';
 interface Props {
   label: string;
   value: string;
-  numberValue?: number;
   type?: 'small' | 'large';
+  classes?: string[];
 }
 
 const { 
   label,
   value,
-  numberValue,
   type = 'small',
+  classes = [],
 } = Astro.props;
 
 
@@ -24,7 +24,7 @@ const valueType: TypographyType = type === 'small' ? 'display-md' : 'display-lg'
 
 
 {/* Html */}
-<div class:list={['stat']}>
+<div class:list={['stat', ...classes]}>
   <Text el="span" type="label-md" class:list={['primary-300', 'mb-sm']}>
     {label}
   </Text>

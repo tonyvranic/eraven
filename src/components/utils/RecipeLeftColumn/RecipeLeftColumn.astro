@@ -1,8 +1,9 @@
 ---
 import type { IngredientCategory, Nutrients, Servings } from './RecipeLeftColumn.types';
-import Flex from '../Flex.astro';
 import RecipeLeftColumnTop from './RecipeLeftColumnTop/RecipeLeftColumnTop.astro';
+import RecipeLeftColumnCenter from './RecipeLeftColumCenter/RecipeLeftColumCenter.astro';
 import RecipeLeftColumnBottom from './RecipeLeftColumnBottom/RecipeLeftColumnBottom.astro';
+import Flex from '../Flex.astro';
 
 
 /* Props */
@@ -36,6 +37,12 @@ const {
     time={time}
     complexity={complexity}
     class:list={['item-left', 'slice-top-right']}
+  />
+
+  <RecipeLeftColumnCenter
+    servings={servings}
+    nutrients={nutrients}
+    classes={['item-left', 'slice-top-right']}
   />
 
   <RecipeLeftColumnBottom

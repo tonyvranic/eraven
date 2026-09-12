@@ -1,0 +1,149 @@
+---
+import Icon from '../../../ui/icon/Icon.astro';
+import Flex from '../../Flex.astro';
+import Stat from '../../stat/Stat.astro';
+import type { Nutrients, Servings } from '../RecipeLeftColumn.types';
+
+/* Props */
+interface Props {
+  servings: Servings;
+  nutrients: Nutrients;
+  classes?: string[];
+}
+
+const { 
+  servings,
+  nutrients,
+  classes = [],
+  ...rest
+} = Astro.props;
+
+
+/* Computed */
+---
+
+
+{/* Html */}
+<div 
+  class:list={['recipe-left-colum-center', 'rel', ...classes]}
+  {...rest}
+>
+  <input 
+    type="checkbox" name="calculator" id="calculator"
+    class:list={['calculator-dd-input', 'visually-hidden']}
+  >
+
+  {/* Serving Size */}
+  <div class:list={['serving-size', 'rel']}>
+    <Stat
+      label="Serving Size"
+      value={servings.servingsCount.toString()}
+      classes={['fw']}
+    />
+  
+    {/* Dropdown */}
+    <label 
+      for="calculator"
+      aria-label="Toggle calculator dropdown"
+      title="Toggle calculator dropdown"
+      class:list={['calculator-label', 'abs']}
+    >
+      <Icon
+        name="DownArrow"
+        size={24}
+        class:list={['calculator-icon']}
+      />
+    </label>
+  </div>
+
+  <div class:list={['dd']}>
+
+    {/* Note about the negative mb. I am getting some white space at the
+        end of the wrapper. The white space seems to be cause by the width
+        of the Stat components.
+        Why this is happening, I have no fucking idea,
+        nor the time, energy and/or desire to figure this shit out.
+    */}
+    <Flex 
+      dt={{ dir: 'column', wrap: 'nowrap', gap: 'md', negMb: 'lg' }}
+      class:list={['o-h']}
+    >
+
+      {/* Per serving, total */}
+      <Flex
+        dt={{ gap: 'md', mt: 'md' }}
+      >
+        <Stat
+          label="Per Serving"
+          value={servings.perServingWeight.toString()}
+        />
+        <Stat
+          label="Total"
+          value={servings.totalWeight.toString()}
+        />
+      </Flex>
+
+      {/* Calories */}
+      <Stat
+        label="Calories"
+        value={nutrients.calories.toString()}
+        type="large"
+      />
+
+      {/* Carbs, Sugars */}
+      <Flex
+        dt={{ gap: 'md' }}
+      >
+        <Stat
+          label="Carbs"
+          value={nutrients.carbs.toString()}
+        />
+        <Stat
+          label="Sugars"
+          value={nutrients.sugars.toString()}
+        />
+      </Flex>
+
+      {/* Fats, Saturated Fats */}
+      <Flex
+        dt={{ gap: 'md' }}
+      >
+        <Stat
+          label="Fats"
+          value={nutrients.fats.toString()}
+        />
+        <Stat
+          label="Saturated Fats"
+          value={nutrients.saturatedFats.toString()}
+        />
+      </Flex>
+
+      {/* Protein, Fibers */}
+      <Flex
+        dt={{ gap: 'md' }}
+      >
+        <Stat
+          label="Protein"
+          value={nutrients.protein.toString()}
+        />
+        <Stat
+          label="Fibers"
+          value={nutrients.fibers.toString()}
+        />
+      </Flex>
+
+      {/* Salts */}
+      <Stat
+        label="Salts"
+        value={nutrients.salts.toString()}
+      />
+
+    </Flex>
+  </div>
+</div>
+
+
+{/* Styles */}
+<style lang="scss">
+  @use './RecipeLeftColumCenter.scss';
+</style>

@@ -314,7 +314,6 @@ h6 {
 
 .has-stroke {
     svg {
-        // TODO - Single property values don't have to have a ";"
         stroke: currentColor;
     }
 }

@@ -1,0 +1,29 @@
+@use 'vars' as v;
+@use 'timings' as t;
+
+
+.calculator-label {
+    right: 0;
+    bottom: 0;
+}
+
+.calculator-dd-input {
+    &:focus-visible + .serving-size .calculator-label {
+        outline: v.space(2xs) solid v.color(primary-400);
+    }
+
+    &:checked + .serving-size .calculator-label {
+        transform: rotate(180deg);
+    }
+
+    &:checked ~ .dd {
+        grid-template-rows: 1fr;
+        visibility: visible;
+    }
+}
+
+.calculator-label {
+    cursor: pointer;
+
+    @include t.tx((transform));
+}

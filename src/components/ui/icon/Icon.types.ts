@@ -1,6 +1,6 @@
 import type { SvgComponent } from 'astro/types';
 
-export type IconSize = 16 | 24 | 32;
+export type IconSize = 16 | 24 | 32 | 48;
 
 export const numberMap = [
   'Number0',
@@ -27,7 +27,9 @@ export const iconRegistry = [
   'SocialCopyLink',
   ...numberMap,
   'CheckboxUnchecked',
-  'CheckboxChecked'
+  'CheckboxChecked',
+  'DownArrow',
+  'SaltShaker'
 ] as const;
 
 

@@ -17,6 +17,8 @@ input[type="checkbox"] {
         .checkbox-visual {
             :global(.checkbox-icon) {
                 &:nth-child(1) {
+                    transition-delay: t.mul(0);
+
                     clip-path: polygon(
                         /* Top Left */
                         50% 150%,
@@ -33,6 +35,8 @@ input[type="checkbox"] {
                     visibility: hidden;
                 }
                 &:nth-child(2) {
+                    transition-delay: t.mul(0);
+
                     // Clip path at 45deg
                     clip-path: polygon(
                         /* Top Left */
@@ -54,6 +58,8 @@ input[type="checkbox"] {
 
         // Clip positioned to the right
         .checkbox-text {
+            transition-delay: t.mul(0.1);
+
             clip-path: polygon(
                 100% 0%,
                 100% 0%,
@@ -64,6 +70,8 @@ input[type="checkbox"] {
         }
 
         .checkbox-text-hover {
+            transition-delay: t.mul(0.1);
+
             clip-path: polygon(
                 0% 0%,
                 100% 0%,
@@ -92,6 +100,7 @@ label {
 .checkbox-visual {
     :global(.checkbox-icon) {
         @include t.tx((clip-path, visibility), 1, t.$power-3-out);
+        transition-delay: t.mul(0.125);
 
         &:nth-child(1) {
             clip-path: polygon(
