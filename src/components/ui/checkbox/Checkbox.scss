@@ -84,7 +84,7 @@ input[type="checkbox"] {
 }
 
 .checkbox-text-wrap {
-    @include t.tx((transform), 0.5);
+    @include t.tx((transform), 0.55);
 }
 
 label {

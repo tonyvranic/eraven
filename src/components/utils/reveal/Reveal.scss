@@ -25,18 +25,18 @@
 
 @keyframes reveal-img-hide {
     from {
-        transform: translate(-50%, -50%) scale(1) rotateY(0deg);
+        transform: scale(1) rotateY(0deg);
     }
     to {
-        transform: translate(-50%, -50%) scale(0.8) rotateY(360deg);
+        transform: scale(0.8) rotateY(360deg);
     }
 }
 @keyframes reveal-img-show {
     from {
-        transform: translate(-50%, -50%) scale(0.8) rotateY(0deg);
+        transform: scale(0.8) rotateY(0deg);
     }
     to {
-        transform: translate(-50%, -50%) scale(1) rotateY(360deg);
+        transform: scale(1) rotateY(360deg);
     }
 }
 
@@ -51,10 +51,30 @@
 
 @keyframes not-target-img {
     from {
-        transform: translate(-50%, -50%) scale(1) rotateY(-360deg);
+        transform: scale(1) rotateY(-360deg);
     }
     to {
-        transform: translate(-50%, -50%) scale(0.75) rotateY(0deg);
+        transform: scale(0.75) rotateY(0deg);
+    }
+}
+@keyframes not-target-img-wrap {
+    from {
+        clip-path: polygon(-20% 0%, 140% 0%, 120% 100%, -40% 100%);
+        visibility: visible;
+    }
+    to {
+        clip-path: polygon(140% 0%, 140% 0%, 120% 100%, 120% 100%);
+        visibility: hidden;
+    }
+}
+@keyframes not-target-img-wrap-reverse {
+    from {
+        clip-path: polygon(140% 0%, 140% 0%, 120% 100%, 120% 100%);
+        visibility: hidden;
+    }
+    to {
+        clip-path: polygon(-20% 0%, 140% 0%, 120% 100%, -40% 100%);
+        visibility: visible;
     }
 }
 
@@ -63,21 +83,31 @@
     perspective: 360px;
 
     &:target {
-        opacity: 1;
-        visibility: visible;
+        // animation: reveal-hide t.mul(1.4) t.$power-2-out forwards;
 
-        animation: reveal-hide t.mul(1.4) t.$power-2-out forwards;
+        .bg {
+            animation: reveal-hide t.mul(1.4) t.$power-2-out forwards;
+        }
+
+        .img-wrap {
+            animation: not-target-img-wrap t.mul(1.05) t.$power-2-out forwards t.mul(1.05);
+        }
 
         img {
-            animation: reveal-img-hide t.mul(2.4) t.$power-2-out forwards;
+            animation: reveal-img-hide t.mul(1.35) t.$power-2-io forwards;
         }
     }
 
     // This gets run even if the element is in fact targeted,
     // So we need to delay it a bit
     &:not(:target) {
-        animation: not-target t.mul(0.7) t.$power-1-in forwards t.mul(1.4);
-        // animation: reveal-hide t.mul(1) t.$power-2-io forwards;
+        .bg {
+            animation: reveal-hide t.mul(0.7) t.$power-1-in forwards t.mul(1);
+        }
+
+        .img-wrap {
+            animation: not-target-img-wrap t.mul(1.05) t.$power-2-out forwards t.mul(1.6);
+        }
 
         img {
             animation: not-target-img t.mul(1.8) t.$power-2-io forwards;
@@ -85,20 +115,18 @@
     }
 
     &.show-reveal {
-        transition: none;
-        opacity: 1;
-        visibility: visible;
+        // animation: reveal-show t.mul(1.4) t.$power-2-out forwards;
 
-        animation: reveal-show t.mul(1.4) t.$power-2-out forwards;
+        .bg {
+            animation: reveal-show t.mul(1.4) t.$power-2-out forwards;
+        }
+
+        .img-wrap {
+            animation: not-target-img-wrap-reverse t.mul(1) t.$power-2-io forwards;
+        }
 
         img {
             animation: reveal-img-show t.mul(1.4) t.$power-2-out forwards;
         }
     }
-}
-
-img {
-    display: block;
-    width: 360px;
-    height: 360px;
 }

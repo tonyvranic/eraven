@@ -17,13 +17,23 @@ const {
 <div 
   id="reveal"
   aria-hidden inert
-  style="position:fixed; top: 0; left: 0; bottom: 0; right: 0; z-index: 20; background-color: #131313"
+  style="position:fixed; top: 0; left: 0; bottom: 0; right: 0; z-index: 20;"
 > 
-  <img 
-    width="360" height="360"
-    src="/reveal-logo.webp" alt="Reveal Logo"
-    class:list={['abs-c']}
-  />
+  <div
+    class:list={['bg']}
+    style="position:absolute; top: 0; left: 0; bottom: 0; right: 0; z-index: 1; background-color: #131313"
+  ></div>
+
+  <div 
+    class:list={['img-wrap']}
+    style="position:absolute; top: 50%; left: 50%; transform: translate(-50%, -50%); z-index: 2; width: 360px; height: 360px;"
+  >
+    <img 
+      width="360" height="360"
+      src="/logo.svg" alt="Reveal Logo"
+      style="display: block; width: 100%; height: 100%;"
+    />
+  </div>
 </div>
 
 
@@ -40,7 +50,8 @@ const {
   const revealIdName = 'reveal';
   const fragmentName = '#reveal';
   const showRevealClassName = 'show-reveal';
-  const timeBeforeRedirectMs = 800;
+  const timeBeforeRedirectMs = 650;
+  const timeBeforeUrlCheckMs = 1000;
 
 
   // Queries
@@ -105,7 +116,12 @@ const {
 
   function removeFragmentFromUrlAfterDelay() {
     setTimeout(() => {
+      // Check if fragment exists in the URL before removing it
+      if (!window.location.href.includes('#')) {
+        return;
+      }
+
       window.history.replaceState(null, '', window.location.href.split('#')[0]);
-    }, timeBeforeRedirectMs);
+    }, timeBeforeUrlCheckMs);
   }
 </script>
