@@ -32,6 +32,7 @@ const {
 <Flex
   dt={{ dir: 'column', gap: 'md' }}
   class:list={['recipe-left-column', 'sticky']}
+  data-recipe-left-column
 >
   <RecipeLeftColumnTop
     time={time}
@@ -60,5 +61,88 @@ const {
 
 {/* Script */}
 <script>
-  
+import { queryFn } from "../../../utils/queryFn";
+
+  const sections = document.querySelectorAll('[data-recipe-left-column]');
+
+  sections.forEach(section => {
+    // Config
+    const servingSizeDisplaySelector = '[data-serving-size-display]';
+
+    const servingSizeInputSelector = '[data-serving-size-input]';
+    const perServingInputSelector = '[data-per-serving-input]';
+    const totalServingInputSelector = '[data-total-serving-input]';
+
+    const servingSizeLockButtonSelector = '[data-serving-size-lock-button]';
+    const perServingLockButtonSelector = '[data-per-serving-lock-button]';
+    const totalServingLockButtonSelector = '[data-total-serving-lock-button]';
+
+    const caloriesDisplaySelector = '[data-calories-display]';
+    const carbsDisplaySelector = '[data-carbs-display]';
+    const sugarsDisplaySelector = '[data-sugars-display]';
+    const fatsDisplaySelector = '[data-fats-display]';
+    const saturatedFatsDisplaySelector = '[data-saturated-fats-display]';
+    const proteinDisplaySelector = '[data-protein-display]';
+    const fibersDisplaySelector = '[data-fibers-display]';
+    const saltsDisplaySelector = '[data-salts-display]';
+
+
+    // Queries
+    const servingSizeDisplayEl = queryFn(section, servingSizeDisplaySelector);
+
+    const servingSizeInputEl = queryFn(section, servingSizeInputSelector);
+    const perServingInputEl = queryFn(section, perServingInputSelector);
+    const totalInputEl = queryFn(section, totalServingInputSelector);
+
+    const servingSizeLockButtonEl = queryFn(section, servingSizeLockButtonSelector);
+    const perServingLockButtonEl = queryFn(section, perServingLockButtonSelector);
+    const totalServingLockButtonEl = queryFn(section, totalServingLockButtonSelector);
+
+    const caloriesDisplayEl = queryFn(section, caloriesDisplaySelector);
+    const carbsDisplayEl = queryFn(section, carbsDisplaySelector);
+    const sugarsDisplayEl = queryFn(section, sugarsDisplaySelector);
+    const fatsDisplayEl = queryFn(section, fatsDisplaySelector);
+    const saturatedFatsDisplayEl = queryFn(section, saturatedFatsDisplaySelector);
+    const proteinDisplayEl = queryFn(section, proteinDisplaySelector);
+    const fibersDisplayEl = queryFn(section, fibersDisplaySelector);
+    const saltsDisplayEl = queryFn(section, saltsDisplaySelector);
+
+    if (!servingSizeDisplayEl || !servingSizeInputEl || !perServingInputEl || !totalInputEl ||
+      !servingSizeLockButtonEl || !perServingLockButtonEl || !totalServingLockButtonEl ||
+      !caloriesDisplayEl || !carbsDisplayEl || !sugarsDisplayEl || !fatsDisplayEl ||
+      !saturatedFatsDisplayEl || !proteinDisplayEl || !fibersDisplayEl || !saltsDisplayEl
+    ) { return; }
+
+
+    // Computed - Stale
+    const origServingSize = parseFloat((servingSizeInputEl as HTMLInputElement).value);
+    const origPerServing = parseFloat((perServingInputEl as HTMLInputElement).value);
+    const origTotal = parseFloat((totalInputEl as HTMLInputElement).value);
+
+    const origCalories = parseFloat(caloriesDisplayEl.textContent);
+    const origCarbs = parseFloat(carbsDisplayEl.textContent);
+    const origSugars = parseFloat(sugarsDisplayEl.textContent);
+    const origFats = parseFloat(fatsDisplayEl.textContent);
+    const origSaturatedFats = parseFloat(saturatedFatsDisplayEl.textContent);
+    const origProtein = parseFloat(proteinDisplayEl.textContent);
+    const origFibers = parseFloat(fibersDisplayEl.textContent);
+    const origSalts = parseFloat(saltsDisplayEl.textContent);
+
+
+    // Events
+    servingSizeInputEl.addEventListener('input', () => {
+      const newValue = parseFloat((servingSizeInputEl as HTMLInputElement).value);
+      console.log('New serving size:', newValue);
+    });
+
+    perServingInputEl.addEventListener('input', () => {
+      const newValue = parseFloat((perServingInputEl as HTMLInputElement).value);
+      console.log('New per serving value:', newValue);
+    });
+    
+    totalInputEl.addEventListener('input', () => {
+      const newValue = parseFloat((totalInputEl as HTMLInputElement).value);
+      console.log('New total value:', newValue);
+    });
+  });
 </script>

@@ -29,7 +29,9 @@ export const iconRegistry = [
   'CheckboxUnchecked',
   'CheckboxChecked',
   'DownArrow',
-  'SaltShaker'
+  'SaltShaker',
+  'Locked',
+  'Unlocked',
 ] as const;
 
 

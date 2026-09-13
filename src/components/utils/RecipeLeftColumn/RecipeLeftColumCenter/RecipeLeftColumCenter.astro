@@ -3,6 +3,7 @@ import Icon from '../../../ui/icon/Icon.astro';
 import Input from '../../../ui/input/Input.astro';
 import Text from '../../../ui/text/Text.astro';
 import Flex from '../../Flex.astro';
+import LabelIconButton from '../../label-icon-button/LabelIconButton.astro';
 import Stat from '../../stat/Stat.astro';
 import type { Nutrients, Servings } from '../RecipeLeftColumn.types';
 
@@ -37,19 +38,32 @@ const {
 
   {/* Serving Size */}
   <div class:list={['serving-size', 'rel']}>
-    <Text
-      for="serving-size"
-      el="label" type="label-md"
-      class:list={['serving-size-label', 'primary-300', 'mb-sm']}
+
+    <Flex
+      dt={{ wrap: 'nowrap', align: 'center', justify: 'between' }}
+      class:list={['serving-size-label-wrap', 'primary-300', 'mb-sm']}
     >
-      Serving Size
-    </Text>
+      <Text
+        for="serving-size"
+        el="label" type="label-md"
+        class:list={['serving-size-label']}
+      >
+        Serving Size
+      </Text>
+
+      <LabelIconButton
+        label={'Serving Size'}
+        locked="Unlocked"
+        lockedButtonAttributes={{ 'data-serving-size-lock-button': '' }}
+      />
+    </Flex>
 
     <div class:list={['serving-size-normal-wrap', 'rel', 'dd', 'active']}>
       <div class:list={['o-h']}>
         <Stat
           value={servings.servingsCount.toString()}
           classes={['fw']}
+          valueAttributes={{ 'data-serving-size-display': '' }}
         />
       </div>
     </div>
@@ -60,6 +74,7 @@ const {
             id="serving-size"
             value={servings.servingsCount.toString()}
             type="number"
+            inputAttributes={{ 'data-serving-size-input': '' }}
           />
       </div>
     </div>
@@ -96,6 +111,9 @@ const {
           value={servings.perServingWeight.toString()}
           type="number"
           suffix="g"
+          locked="Locked"
+          inputAttributes={{ 'data-per-serving-input': '' }}
+          lockedButtonAttributes={{ 'data-per-serving-lock-button': '' }}
         />
         <Input
           id="total-serving"
@@ -103,6 +121,9 @@ const {
           value={servings.totalWeight.toString()}
           type="number"
           suffix="g"
+          locked="Unlocked"
+          inputAttributes={{ 'data-total-serving-input': '' }}
+          lockedButtonAttributes={{ 'data-total-serving-lock-button': '' }}
         />
       </Flex>
 
@@ -111,6 +132,7 @@ const {
         label="Calories"
         value={nutrients.calories.toString()}
         type="large"
+        valueAttributes={{ 'data-calories-display': '' }}
       />
 
       {/* Carbs, Sugars */}
@@ -120,10 +142,12 @@ const {
         <Stat
           label="Carbs"
           value={nutrients.carbs.toString()}
+          valueAttributes={{ 'data-carbs-display': '' }}
         />
         <Stat
           label="Sugars"
           value={nutrients.sugars.toString()}
+          valueAttributes={{ 'data-sugars-display': '' }}
         />
       </Flex>
 
@@ -134,10 +158,12 @@ const {
         <Stat
           label="Fats"
           value={nutrients.fats.toString()}
+          valueAttributes={{ 'data-fats-display': '' }}
         />
         <Stat
           label="Saturated Fats"
           value={nutrients.saturatedFats.toString()}
+          valueAttributes={{ 'data-saturated-fats-display': '' }}
         />
       </Flex>
 
@@ -148,10 +174,12 @@ const {
         <Stat
           label="Protein"
           value={nutrients.protein.toString()}
+          valueAttributes={{ 'data-protein-display': '' }}
         />
         <Stat
           label="Fibers"
           value={nutrients.fibers.toString()}
+          valueAttributes={{ 'data-fibers-display': '' }}
         />
       </Flex>
 
@@ -159,6 +187,7 @@ const {
       <Stat
         label="Salts"
         value={nutrients.salts.toString()}
+        valueAttributes={{ 'data-salts-display': '' }}
       />
 
     </Flex>

@@ -1,0 +1,30 @@
+@use 'vars' as v;
+@use 'timings' as t;
+
+
+button {
+    :global(.icon) {
+        @include t.tx((opacity, visibility));
+    }
+
+    :global(.icon:nth-child(1)) {
+        opacity: 0;
+        visibility: hidden;
+    }
+    :global(.icon:nth-child(2)) {
+        opacity: 1;
+        visibility: visible;
+    }
+
+
+    &[disabled] {
+        :global(.icon:nth-child(1)) {
+            opacity: 1;
+            visibility: visible;
+        }
+        :global(.icon:nth-child(2)) {
+            opacity: 0;
+            visibility: hidden;
+        }
+    }
+}

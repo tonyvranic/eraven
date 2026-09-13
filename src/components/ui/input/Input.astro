@@ -1,4 +1,8 @@
 ---
+import Flex from '../../utils/Flex.astro';
+import LabelIconButton from '../../utils/label-icon-button/LabelIconButton.astro';
+import Icon from '../icon/Icon.astro';
+import type { IconName } from '../icon/Icon.types';
 import Text from '../text/Text.astro';
 
 /* Props */
@@ -8,6 +12,9 @@ interface Props {
   type?: 'text' | 'password' | 'email' | 'number';
   value?: string;
   suffix?: string;
+  inputAttributes?: Record<string, any>;
+  locked?: 'Locked' | 'Unlocked'
+  lockedButtonAttributes?: Record<string, any>;
 }
 
 const { 
@@ -16,29 +23,47 @@ const {
   type = "text",
   value = "",
   suffix = "",
+  inputAttributes = {},
+  locked,
+  lockedButtonAttributes = {},
 } = Astro.props;
 
 
 /* Computed */
+const disabledInput = locked === 'Locked';
 ---
 
 
 {/* Html */}
 <div class:list={['input-wrap']}> 
   {label && (
-    <Text 
-      for={id}
-      el="label" type="label-md"
+    <Flex
+      dt={{ wrap: 'nowrap', align: 'center', justify: 'between' }}
       class:list={['primary-300', 'mb-sm']}
     >
-      {label}
-    </Text>
+      <Text 
+        for={id}
+        el="label" type="label-md"
+      >
+        {label}
+      </Text>
+
+      {locked && (
+        <LabelIconButton
+          label={label}
+          locked={locked}
+          lockedButtonAttributes={lockedButtonAttributes}
+        />
+      )} 
+    </Flex>
   )}
 
   <div class:list={['rel']}>
     <input 
       id={id} type={type} value={value}
       class:list={['slice-top-right']}
+      disabled={disabledInput}
+      {...inputAttributes}
     />
 
     {suffix && (

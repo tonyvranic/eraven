@@ -1,0 +1,40 @@
+---
+import Icon from '../../ui/icon/Icon.astro';
+
+/* Props */
+interface Props {
+  label: string;
+  locked?: 'Locked' | 'Unlocked';
+  lockedButtonAttributes?: Record<string, any>;
+}
+
+const { 
+  label,
+  locked,
+  lockedButtonAttributes = {},
+} = Astro.props;
+
+
+/* Computed */
+const disabledInput = locked === 'Locked';
+const lockButtonLabel = 'Toggle lock state for ' + label;
+---
+
+
+{/* Html */}
+<button
+  class:list={['label-icon-button', 'fs-0', 'primary-300', 'rel']}
+  {...lockedButtonAttributes}
+  aria-label={lockButtonLabel}
+  title={lockButtonLabel}
+  disabled={disabledInput}
+>
+  <Icon name="Locked" size={24} class:list={'abs'} />
+  <Icon name="Unlocked" size={24} />
+</button>
+
+
+{/* Styles */}
+<style lang="scss">
+  @use './LabelIconButton.scss';
+</style>

@@ -2,6 +2,21 @@
 @use 'timings' as t;
 
 
+.serving-size {
+    :global(.label-icon-button) {
+        transform: translateX(v.space(sm) * -1);
+        opacity: 0;
+        visibility: hidden;
+
+        @include t.tx((opacity, visibility, transform), $delays: (0.4, 0.4, 0.4));
+    }
+}
+
+
+.serving-size-label-wrap {
+    width: calc(50% - var(--flex-gap) * 0.5);
+}
+
 .serving-size-label {
     display: block;
     cursor: text;
@@ -77,6 +92,12 @@
                 100% 100%,
                 0% 100%
             );
+        }
+
+        :global(.label-icon-button) {
+            opacity: 1;
+            visibility: visible;
+            transform: translateX(0);
         }
     } 
 

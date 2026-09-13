@@ -8,6 +8,7 @@ interface Props {
   value: string;
   type?: 'small' | 'large';
   classes?: string[];
+  valueAttributes?: Record<string, any>;
 }
 
 const { 
@@ -15,6 +16,7 @@ const {
   value,
   type = 'small',
   classes = [],
+  valueAttributes = {},
 } = Astro.props;
 
 
@@ -31,7 +33,7 @@ const labelSpacingClasses = type === 'small' ? ['mb-xs'] : ['mb-sm'];
       {label}
     </Text>
   )}
-  <Text el="span" type={valueType} class:list={['light-0']}>
+  <Text el="span" type={valueType} class:list={['light-0']} {...valueAttributes}>
     {value}
   </Text>
 </div>
