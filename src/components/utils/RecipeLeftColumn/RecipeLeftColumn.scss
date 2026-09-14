@@ -1,8 +1,20 @@
 @use 'vars' as v;
+@use 'mixins' as mix;
+
 
 .item-left {
     padding: v.space(md);
-    max-width: 408px;
 
     background-color: v.color(light-800);
+}
+
+.recipe-left-column {
+    max-width: 408px;
+
+    top: v.space(md);
+
+    max-height: calc(100svh - v.space(md) * 2);
+    overflow-y: auto;
+
+    @include mix.scrollbar();
 }

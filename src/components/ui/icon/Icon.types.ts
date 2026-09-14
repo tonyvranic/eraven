@@ -32,6 +32,7 @@ export const iconRegistry = [
   'SaltShaker',
   'Locked',
   'Unlocked',
+  'Forward'
 ] as const;
 
 

@@ -78,7 +78,19 @@ const {
           />
       </div>
     </div>
-  
+
+    {/* Revert Button */}
+    <button 
+      class:list={['revert-button', 'abs', 'error-300']}
+      type="button" 
+      aria-label="Revert all changes" title="Revert all changes"
+    >
+      <Icon
+        name="Forward"
+        size={24}
+      />
+    </button>
+
     {/* Dropdown */}
     <label 
       for="calculator"
@@ -94,8 +106,9 @@ const {
     </label>
   </div>
 
-  <div class:list={['dd']}>
 
+  {/* Dropdown */}
+  <div class:list={['dd']}>
     <Flex 
       dt={{ dir: 'column', wrap: 'nowrap', gap: 'md' }}
       class:list={['o-h']}

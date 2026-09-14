@@ -125,6 +125,7 @@ $colors: (
 
     error-100: color.adjust(map.get($base-colors, error), $lightness: 30%),
     error-150: color.adjust(map.get($base-colors, error), $lightness: 25%),
+    error-300: #FE7C91,
     error-400: map.get($base-colors, error),
     error-600: color.adjust(map.get($base-colors, error), $lightness: -20%),
 

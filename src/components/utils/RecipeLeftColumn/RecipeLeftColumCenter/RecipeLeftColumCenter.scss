@@ -15,6 +15,13 @@
 
 .serving-size-label-wrap {
     width: calc(50% - var(--flex-gap) * 0.5);
+
+    @include t.tx((opacity));
+
+    &.disabled {
+        pointer-events: none;
+        opacity: 0.7;
+    }
 }
 
 .serving-size-label {
@@ -45,6 +52,18 @@
     );
 }
 
+.revert-button {
+    top: 0;
+    right: 0;
+    transform: rotate(180deg);
+
+    opacity: 0;
+    visibility: hidden;
+    transform: rotate(180deg) translateX(v.space(sm));
+
+    @include t.tx((opacity, visibility, transform), $delays: (0.8, 0.8, 0.8));
+}
+
 
 .calculator-label {
     right: 0;
@@ -53,6 +72,11 @@
 
 .dd {
     transition-duration: t.mul(1.4);
+
+    .o-h {
+        padding-right: v.space(sm);
+        margin-right: calc(v.space(sm) * -1);
+    }
 }
 
 .calculator-dd-input {
@@ -63,6 +87,12 @@
     &:checked + .serving-size {
         .serving-size-label {
             cursor: default;
+        }
+
+        .revert-button.active {
+            opacity: 1;
+            visibility: visible;
+            transform: rotate(180deg) translateX(0);
         }
 
         .calculator-label {

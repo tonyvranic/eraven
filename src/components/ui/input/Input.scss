@@ -1,6 +1,7 @@
 @use 'vars' as v;
 @use 'mixins' as mix;
 @use 'typography' as typo;
+@use 'timings' as t;
 
 
 .input-wrap {
@@ -10,9 +11,11 @@
         width: 100%;
     }
 
+    @include t.tx((opacity));
+
     &:has(input:disabled) {
         pointer-events: none;
-        opacity: 0.75;
+        opacity: 0.7;
     }
 }
 
@@ -23,7 +26,7 @@ label {
 input {
     --size: 24px;
 
-    padding: v.space(2xs) v.space(lg) v.space(2xs) v.space(sm);
+    padding: v.space(2xs) calc(v.space(md) + v.space(sm) + v.space(xs)) v.space(2xs) v.space(sm);
 
     background-color: v.color(light-700);
     color: v.color(light-0);
