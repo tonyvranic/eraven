@@ -23,6 +23,9 @@ const {
 
 
 /* Computed */
+let perServing = servings.totalWeight / servings.servingsCount;
+// Round to 2 decimal places
+perServing = Math.round(perServing * 100) / 100;
 ---
 
 
@@ -121,7 +124,7 @@ const {
         <Input
           id="per-serving"
           label="Per Serving"
-          value={servings.perServingWeight.toString()}
+          value={perServing.toString()}
           type="number"
           suffix="g"
           locked="Locked"

@@ -1,6 +1,5 @@
 export interface Servings {
     servingsCount: number;
-    perServingWeight: number;
     totalWeight: number;
 }
 

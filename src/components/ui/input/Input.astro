@@ -35,7 +35,7 @@ const disabledInput = locked === 'Locked';
 
 
 {/* Html */}
-<div class:list={['input-wrap']}> 
+<div class:list={['input-wrap-outer']}> 
   {label && (
     <Flex
       dt={{ wrap: 'nowrap', align: 'center', justify: 'between' }}
@@ -58,10 +58,9 @@ const disabledInput = locked === 'Locked';
     </Flex>
   )}
 
-  <div class:list={['rel']}>
+  <div class:list={['input-wrap', 'rel', 'slice-top-right']}>
     <input 
       id={id} type={type} value={value}
-      class:list={['slice-top-right']}
       disabled={disabledInput}
       {...inputAttributes}
     />

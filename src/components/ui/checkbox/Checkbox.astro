@@ -43,11 +43,13 @@ const slugifiedName = slugify(name);
         el="span" type="body-lg"
         aria-hidden
         class:list={['checkbox-text-hover', 'light-0', 'abs', 'z-2']}
+        data-checkbox-text-hover
       />
       <Text 
         set:html={name}
         el="span" type="body-lg"
         class:list={['checkbox-text', 'light-200']}
+        data-checkbox-text
       />
     </div>
   </Flex>

@@ -4,7 +4,7 @@
 @use 'timings' as t;
 
 
-.input-wrap {
+.input-wrap-outer {
     width: calc(50% - var(--flex-gap) * 0.5);
 
     &.fw {
@@ -23,13 +23,22 @@ label {
     display: block;
 }
 
-input {
+.input-wrap {
     --size: 24px;
-
-    padding: v.space(2xs) calc(v.space(md) + v.space(sm) + v.space(xs)) v.space(2xs) v.space(sm);
-
     background-color: v.color(light-700);
+}
+
+input {
+    padding: v.space(2xs) calc(v.space(md) + v.space(sm)) v.space(2xs) v.space(sm);
+
+    background-color: transparent;
     color: v.color(light-0);
+
+    mask-image: linear-gradient(
+        to right,
+        black calc(100% - calc(v.space(md) + v.space(md))),
+        transparent calc(100% - calc(v.space(md) + v.space(sm)))
+    );
 
     @include typo.type(display, md);
 

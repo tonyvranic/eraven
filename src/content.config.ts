@@ -19,7 +19,6 @@ const accordionItemSchema = z.object({
 // Recipe Detail
 const servingsSchema = z.object({
   servingsCount: z.number(),
-  perServingWeight: z.number(),
   totalWeight: z.number(),
 });
 

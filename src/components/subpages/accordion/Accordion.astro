@@ -35,16 +35,18 @@ const computedTitle = title ?? 'A few<br><em>notes</em>';
       dt={{ start: 1, span: 5 }}
     >
 
-      {/* Title */}
-      <Text set:html={computedTitle} el="h2" />
+      <div class:list={['sticky']}>
+        {/* Title */}
+        <Text set:html={computedTitle} el="h2" />
 
-      {/* Content */}
-      {content && (
-        <div 
-          set:html={content}
-          class:list={['user-content', 'mt-lg']}
-        />
-      )}
+        {/* Content */}
+        {content && (
+          <div 
+            set:html={content}
+            class:list={['user-content', 'mt-lg']}
+          />
+        )}
+      </div>
 
     </Cell>
 

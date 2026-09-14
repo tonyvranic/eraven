@@ -32,6 +32,9 @@ export default function Init() {
 
     const revertButtonSelector = '.revert-button';
 
+    const checkboxTextSelector = '[data-checkbox-text]';
+    const checkboxTextHoverSelector = '[data-checkbox-text-hover]';
+
 
     // Queries
     const servingSizeTopWrapEl = queryFn(section, servingSizeTopWrapSelector);
@@ -56,6 +59,9 @@ export default function Init() {
 
     const revertButtonEl = queryFn(section, revertButtonSelector);
 
+    const checkboxTextEls = queryFn(section, checkboxTextSelector, { all: true });
+    const checkboxTextHoverEls = queryFn(section, checkboxTextHoverSelector, { all: true });
+
     if (!servingSizeTopWrapEl || !servingSizeDisplayEl || !servingSizeInputEl || !perServingInputEl || !totalInputEl ||
       !servingSizeLockButtonEl || !perServingLockButtonEl || !totalServingLockButtonEl ||
       !caloriesDisplayEl || !carbsDisplayEl || !sugarsDisplayEl || !fatsDisplayEl ||
@@ -76,6 +82,8 @@ export default function Init() {
     const origProtein = parseFloat(proteinDisplayEl.textContent);
     const origFibers = parseFloat(fibersDisplayEl.textContent);
     const origSalts = parseFloat(saltsDisplayEl.textContent);
+
+    const origCheckboxStrings = checkboxTextEls ? Array.from(checkboxTextEls).map(el => el.textContent) : [];
 
 
     // Events
@@ -119,6 +127,7 @@ export default function Init() {
       resetButtonLocks();
       resetInputValues();
       resetNutrition();
+      updateCheckboxTexts();
       showRevertButton(false);
     }
 
@@ -159,29 +168,44 @@ export default function Init() {
         case 'servingSize':
           // Check if total isn't disabled and set it, otherwise update perServing
           if (!(totalInputEl as HTMLInputElement).disabled) {
-            (totalInputEl as HTMLInputElement).value = (servingSize * perServing).toString();
+            const newValue = reactInputValue((servingSize * perServing));
+
+            (totalInputEl as HTMLInputElement).value = newValue.toString();
+            updateCheckboxTexts();
           } else if (!(perServingInputEl as HTMLInputElement).disabled) {
-            (perServingInputEl as HTMLInputElement).value = (total / servingSize).toString();
+            const newValue = reactInputValue((total / servingSize));
+
+            (perServingInputEl as HTMLInputElement).value = newValue.toString();
             updateNutrition();
           }
           break;
         case 'perServing':
           // Check if servingSize isn't disabled and set it, otherwise update total
           if (!(servingSizeInputEl as HTMLInputElement).disabled) {
-            (servingSizeInputEl as HTMLInputElement).value = (total / perServing).toString();
+            const newValue = reactInputValue((total / perServing), 2);
+
+            (servingSizeInputEl as HTMLInputElement).value = newValue.toString();
           } else if (!(totalInputEl as HTMLInputElement).disabled) {
-            (totalInputEl as HTMLInputElement).value = (servingSize * perServing).toString();
+            const newValue = reactInputValue((perServing * servingSize));
+
+            (totalInputEl as HTMLInputElement).value = newValue.toString();
+            updateCheckboxTexts();
           }
           updateNutrition();
           break;
         case 'total':
           // Check if perServing isn't disabled and set it, otherwise update servingSize
           if (!(perServingInputEl as HTMLInputElement).disabled) {
-            (perServingInputEl as HTMLInputElement).value = (total / servingSize).toString();
+            const newValue = reactInputValue((total / servingSize));
+
+            (perServingInputEl as HTMLInputElement).value = newValue.toString();
             updateNutrition();
           } else if (!(servingSizeInputEl as HTMLInputElement).disabled) {
-            (servingSizeInputEl as HTMLInputElement).value = (total / perServing).toString();
+            const newValue = reactInputValue((total / perServing), 2);
+
+            (servingSizeInputEl as HTMLInputElement).value = newValue.toString();
           }
+          updateCheckboxTexts();
           break;
       }
     }
@@ -202,9 +226,62 @@ export default function Init() {
     }
 
 
+    // Update all the numbers based on the original total and total values
+    function updateCheckboxTexts() {
+      if (!checkboxTextEls || !checkboxTextHoverEls || origCheckboxStrings.length == 0) return;
+      const { total } = getInputValues();
+
+      origCheckboxStrings.forEach((origString, index) => {
+        const el = checkboxTextEls[index];
+        const hoverEl = checkboxTextHoverEls[index];
+
+        // Find all the numbers in the text content
+        const numbers = origString.match(/\d+(\.\d+)?/g);
+
+        if (!numbers) return;
+
+        const updatedNumbers = numbers.map(num => {
+          let parsedNum = parseFloat(num);
+          if (isNaN(parsedNum)) parsedNum = 0;
+
+          // Original number / original total * new total
+          // And round to 1 decimal point
+          const updatedNum = Math.round((parsedNum / origTotal * total) * 10) / 10;
+          return updatedNum.toString();
+        });
+
+        // Replace the numbers in the original string with the updated numbers
+        let updatedString = origString;
+        numbers.forEach((num, i) => {
+          updatedString = updatedString.replace(num, updatedNumbers[i]);
+        });
+
+        // Update the text content of the elements
+        el.textContent = updatedString;
+        hoverEl.textContent = updatedString;
+      });
+    }
+
+
     // Helpers
+    function reactInputValue(
+      newValue: number, roundTo: number = 0
+    ): number {
+      let result = newValue;
+
+      if (isNaN(result)) result = 0;
+
+      // Round to the specified number of decimal places before returning
+      const factor = Math.pow(10, roundTo);
+      result = Math.round(result * factor) / factor;
+      return result;
+    }
+
     function calculateNutritionValue(origValue: number, origPerServing: number, perServing: number): number {
       let newValue = origValue / origPerServing * perServing;
+
+      if (isNaN(newValue)) newValue = 0;
+
       // Round to 1 decimal place
       newValue = Math.round(newValue * 10) / 10;
       return newValue;

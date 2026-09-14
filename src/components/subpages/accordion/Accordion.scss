@@ -1,5 +1,5 @@
 @use 'vars' as v;
 
-.component {
-    
+.sticky {
+    top: v.space(md);
 }
