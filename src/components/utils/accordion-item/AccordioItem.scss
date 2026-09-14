@@ -1,5 +1,7 @@
 @use 'vars' as v;
 @use 'timings' as t;
+@use 'mixins' as mix;
+
 
 $border-width: calc(v.space(xs) + v.space(2xs) * 0.3);
 
@@ -24,10 +26,34 @@ $border-width: calc(v.space(xs) + v.space(2xs) * 0.3);
         transform-origin: right;
         @include t.tx((transform), 1.4);
     }
+
+
+    @include mix.respond(xs) {
+        padding-right: calc(v.space(md) + v.space(sm));
+    }
+
+    @include mix.respond(xxs) {
+        padding: calc(v.space(sm) + v.space(xs));
+        padding-right: calc(v.space(md) + v.space(xs));
+    }
 }
 
 .icon {
     @include t.tx((transform, color));
+
+    @include mix.respond(xs) {
+        :global(.icon) {
+            width: 40px;
+            height: 40px
+        }
+    }
+
+    @include mix.respond(xxs) {
+        :global(.icon) {
+            width: 36px;
+            height: 36px
+        }
+    }
 }
 
 .title {
@@ -52,6 +78,10 @@ $border-width: calc(v.space(xs) + v.space(2xs) * 0.3);
         .icon {
             transform: translateX(v.space(xs)) rotate(-180deg);
             color: v.color(primary-400);
+
+            @include mix.respond(xxs) {
+                transform: translateX(v.space(xs) * -1) rotate(-180deg);
+            }
         }
 
         .title {
@@ -77,4 +107,8 @@ $border-width: calc(v.space(xs) + v.space(2xs) * 0.3);
 
 .user-content {
     padding: v.space(md) calc(v.space(sm) + v.space(xs));
+
+    @include mix.respond(xxs) {
+        padding: calc(v.space(sm));
+    }
 }

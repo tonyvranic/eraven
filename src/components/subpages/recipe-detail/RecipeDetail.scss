@@ -1,2 +1,30 @@
 @use 'vars' as v;
+@use 'mixins' as mix;
 
+
+.right {
+    @include mix.respond(lg) {
+        padding-left: v.space(md);
+    }
+    @include mix.respond(xs) {
+        padding-left: 0;
+    }
+}
+
+.left {
+    @include mix.respond(sm) {
+        position: fixed;
+        z-index: 10;
+
+        left: 0;
+        top: 0;
+        width: 100%;
+
+        transform: translateX(-100%);
+        visibility: hidden;
+    }
+}
+
+.menu-overlay {
+    opacity: 0.75;
+}

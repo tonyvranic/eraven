@@ -28,11 +28,14 @@ const computedTitle = title ?? 'A few<br><em>notes</em>';
 
 {/* Html */}
 <section class:list={['accordion']}> 
-  <Grid>
+  <Grid lg sm xs>
 
     {/* Left */}
     <Cell
       dt={{ start: 1, span: 5 }}
+      lg={{ start: 1, span: 4 }}
+      sm={{ start: 1, span: 11, mb: 'md' }}
+      xs={{ start: 1, span: 12 }}
     >
 
       <div class:list={['sticky']}>
@@ -43,7 +46,7 @@ const computedTitle = title ?? 'A few<br><em>notes</em>';
         {content && (
           <div 
             set:html={content}
-            class:list={['user-content', 'mt-lg']}
+            class:list={['user-content', 'mt-lg', 'sm:mt-md']}
           />
         )}
       </div>
@@ -53,9 +56,13 @@ const computedTitle = title ?? 'A few<br><em>notes</em>';
     {/* Right - Content */}
     <Cell
       dt={{ start: 6, span: 7 }}
+      lg={{ start: 5, span: 8 }}
+      sm={{ start: 2, span: 11 }}
+      xs={{ start: 1, span: 12 }}
     >
       <Flex
         dt={{ dir: 'column', gap: 'lg' }}
+        sm={{ dir: 'column', gap: 'md' }}
       >
         {items.map(item => (
           <AccordioItem

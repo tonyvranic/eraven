@@ -9,12 +9,22 @@
 }
 
 .recipe-left-column {
-    max-width: 408px;
+    max-width: min(408px, 90vw);
 
     top: v.space(md);
 
+    max-height: calc(100vh - v.space(md) * 2);
     max-height: calc(100svh - v.space(md) * 2);
     overflow-y: auto;
 
     @include mix.scrollbar();
+
+    @include mix.respond(sm) {
+        padding-top: v.space(md);
+        padding-bottom: v.space(md);
+
+
+        max-height: 100vh;
+        max-height: 100svh;
+    }
 }

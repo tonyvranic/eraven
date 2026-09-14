@@ -96,6 +96,7 @@
     },
     {
       "type": "accordion",
+      "content": "<p>Bread is picky. <br><br>I learned that the hard way</p>",
       "items": [
         {
           "title": "Temperature and time",

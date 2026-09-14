@@ -45,8 +45,11 @@ const stepsHeading = stepsTitle ?? 'Instructions';
     {/* Left */}
     <Cell
       dt={{ start: 1, span: 4 }}
+      md={{ start: 1, span: 5 }}
       class:list={['left']}
     >
+      <div class:list={['menu-overlay', 'abs-fw', 'z-1', 'bg-light-900', 'none']}></div>
+
       <RecipeLeftColumn
         time={time}
         complexity={complexity}
@@ -59,7 +62,13 @@ const stepsHeading = stepsTitle ?? 'Instructions';
 
     {/* Right */}
     <Cell
-      dt={{ start: 5, span: 6}}
+      dt={{ start: 5, span: 6 }}
+      xl={{ start: 5, span: 7 }}
+      lg={{ start: 5, span: 8 }}
+      md={{ start: 6, span: 7 }}
+      sm={{ start: 1, span: 11 }}
+      xs={{ start: 1, span: 12 }}
+      class:list={['right']}
     >
       <Text 
         el="h2" type="display-xl"
@@ -70,6 +79,7 @@ const stepsHeading = stepsTitle ?? 'Instructions';
 
       <Flex
         dt={{ dir: 'column', gap: 'xl' }}
+        xxs={{ gap: 'lg' }}
       >
         {steps.map((stepGroup, index) => (
           <Step

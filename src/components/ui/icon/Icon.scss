@@ -17,6 +17,8 @@ $sizes: (16, 24, 32, 48);
 }
 
 .number {
-    width: 64px;
-    height: 116px;
+    width: clamp(26px, 3.4vw, 64px);
+    height: auto;
+
+    aspect-ratio: 64 / 116;
 }
