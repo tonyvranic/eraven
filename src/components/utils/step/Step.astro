@@ -33,13 +33,39 @@ const number1 = numberMap[number % 10];
 >
   <Text el="h3" class:list={['hidden-title', 'abs']}>Step {number}</Text>
 
+  {/* Hidden checkbox */}
+  <input 
+    type="checkbox"
+    name={`step-${number}-togg`} id={`step-${number}-togg`}
+    class:list={['checkbox', 'visually-hidden']}
+  />
+
   {/* Left */}
   <Flex 
-    dt={{ shrink: true, align: 'start' }}
-    class:list={['step-left']}
+  dt={{ shrink: true, align: 'start' }}
+  class:list={['step-left', 'rel', 'primary-700']}
   >
-    <Icon name={number0} class:list={['number', 'primary-700']} />
-    <Icon name={number1} class:list={['number', 'primary-700']} />
+    {/* 
+      The label has been position at the top of the step.
+      I was contemplating to add it over the text, but that would
+      interfere with the ability to highlight the text.
+    */}
+    <label 
+      aria-label={`Toggle step ${number}`}
+      title={`Toggle step ${number}`}
+      for={`step-${number}-togg`}
+      class:list={['checkbox-label', 'abs-fw', 'z-3']}
+    ></label>
+
+    <Flex class:list={['step-active', 'abs', 'z-2', 'primary-400']}>
+      <Icon name={number0} class:list={['number']} />
+      <Icon name={number1} class:list={['number']} />
+    </Flex>
+
+    <Flex class:list={['step-inactive']}>
+      <Icon name={number0} class:list={['number']} />
+      <Icon name={number1} class:list={['number']} />
+    </Flex>
   </Flex>
 
   {/* Right */}

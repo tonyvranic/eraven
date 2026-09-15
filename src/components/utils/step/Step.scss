@@ -1,9 +1,71 @@
 @use 'vars' as v;
 @use 'mixins' as mix;
+@use 'timings' as t;
 
+
+.step-left {
+    @include t.tx((color));
+}
 
 .step-right {
     @include mix.respond(xxs) {
         align-self: flex-start;
+    }
+}
+
+.checkbox-label {
+    cursor: pointer;
+
+    &:hover {
+        & ~ .step-inactive,
+        & ~ .step-active {
+            :global(.number:nth-child(1)) {
+                transform: scale(1.125) translateX(calc(#{v.space(xs)} * -1));
+            }
+            :global(.number:nth-child(2)) {
+                transform: scale(1.125) translateX(calc(#{v.space(xs)}));
+            }
+        }
+    }
+
+    @include mix.respond((v.width(xxs) + 1px), min-width) {
+        top: calc(v.space(sm) * -1);
+        left: calc(v.space(sm) * -1);
+        width: calc(100% + v.space(md));
+        height: calc(100% + v.space(md));
+    }
+}
+
+.checkbox:focus-visible + .step-left .step-inactive {
+    @include mix.focus-outline();
+}
+
+.checkbox:checked + .step-left .step-active {
+    :global(.number:nth-child(1)) {
+        clip-path: polygon(0% 0%, 100% 0%, 100% 100%, 0% 100%);
+        visibility: visible;
+    }
+    :global(.number:nth-child(2)) {
+        clip-path: polygon(0% 0%, 100% 0%, 100% 100%, 0% 100%);
+        visibility: visible;
+    }
+}
+
+.step :global(.number) {
+    @include t.tx((clip-path, visibility, transform), $muls: (1, 1, 0.6));
+}
+
+.step-active {
+    :global(.number) {
+        visibility: hidden;
+    }
+
+    :global(.number:nth-child(1)) {
+        // Clip from bottom
+        clip-path: polygon(0% 100%, 100% 100%, 100% 100%, 0% 100%);
+    }
+    :global(.number:nth-child(2)) {
+        // Clip from top
+        clip-path: polygon(0% 0%, 100% 0%, 100% 0%, 0% 0%);
     }
 }

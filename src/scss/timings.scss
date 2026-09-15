@@ -33,27 +33,39 @@ $power-4-io: cubic-bezier(0.85, -0.1, 0.1, 1.05);
     $props: (opacity, transform, visibility),
     $mul: 1,
     $ease: $power-2-out,
-    $delays: (0)
+    $delays: (0),
+    $muls: (),   // per-property multiplier overrides, e.g. (1.5, 1, 2)
+    $eases: ()   // per-property easing overrides, e.g. ($power-3-out, $power-1-io)
 ) {
-    $duration: mul($mul);
     $transitions: ();
 
     @each $property in $props {
-        $delay: 0ms;
-
-        // Check if a delay is provided for this property
         $propsIndex: list.index($props, $property);
-        $delaysLength: list.length($delays);
 
+        // Resolve per-property multiplier, falling back to $mul
+        $propMul: $mul;
+        @if $propsIndex != null and $propsIndex <= list.length($muls) {
+            $propMul: list.nth($muls, $propsIndex);
+        }
+
+        // Resolve per-property easing, falling back to $ease
+        $propEase: $ease;
+        @if $propsIndex != null and $propsIndex <= list.length($eases) {
+            $propEase: list.nth($eases, $propsIndex);
+        }
+
+        $duration: mul($propMul);
+
+        $delay: 0ms;
+        $delaysLength: list.length($delays);
         @if $propsIndex != null and $propsIndex <= $delaysLength {
-            $delayMul: list.nth($delays, $propsIndex) * $mul;
+            $delayMul: list.nth($delays, $propsIndex) * $propMul;
             $delay: mul($delayMul);
         }
 
-
         $transitions: list.append(
             $transitions,
-            $property $duration $ease $delay,
+            $property $duration $propEase $delay,
             comma
         );
     }
