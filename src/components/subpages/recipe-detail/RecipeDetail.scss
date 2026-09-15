@@ -1,5 +1,6 @@
 @use 'vars' as v;
 @use 'mixins' as mix;
+@use 'timings' as t;
 
 
 .right {
@@ -8,6 +9,7 @@
     }
     @include mix.respond(xs) {
         padding-left: 0;
+        padding-bottom: calc(v.space(lg) + v.space(xs));
     }
 }
 
@@ -20,11 +22,73 @@
         top: 0;
         width: 100%;
 
-        transform: translateX(-100%);
-        visibility: hidden;
+        :global(.recipe-left-column) {
+            transform: translateX(-100%);
+            visibility: hidden;
+
+            @include t.tx((transform, visibility));
+        }
     }
 }
 
 .menu-overlay {
-    opacity: 0.75;
+    cursor: pointer;
+    opacity: 0;
+    visibility: hidden;
+
+    @include mix.respond(sm) {
+        @include t.tx((opacity, visibility));
+    }
+}
+
+.menu-overlay-label {
+    display: block;
+    top: v.space(sm);
+    left: v.space(sm);
+    right: v.space(sm);
+    bottom: v.space(sm);
+}
+
+.ingr-sbar-togg-label {
+    display: inline-flex;
+    top: 50%;
+    left: 100%;
+
+    padding: v.space(sm);
+    cursor: pointer;
+
+    .bg {
+        --size: 16px;
+        --bottom-size: 16px;
+    }
+}
+
+.ingr-sbar-togg-checkbox {
+    top: 50%;
+    position: fixed;
+}
+
+.ingr-sbar-togg-checkbox:not(:checked):focus-visible + .ingr-sbar-togg-wrap .ingr-sbar-togg-label {
+    @include mix.focus-outline();
+}
+.ingr-sbar-togg-checkbox:checked:focus-visible ~ .left .menu-overlay-label {
+    @include mix.focus-outline();
+}
+
+.ingr-sbar-togg-checkbox:checked ~ .left {
+    @include mix.respond(sm) {
+        .menu-overlay {
+            opacity: 0.9;
+            visibility: visible;
+        }
+
+        :global(.recipe-left-column) {
+            transform: translateX(0%);
+            visibility: visible;
+        }
+    }
+}
+
+:global(body:has(.ingr-sbar-togg-checkbox:checked)) {
+    overflow: hidden;
 }

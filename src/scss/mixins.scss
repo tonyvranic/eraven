@@ -72,3 +72,7 @@
         }
     }
 }
+
+@mixin focus-outline($color: v.color(primary-400)) {
+    outline: v.space(2xs) solid $color;
+}

@@ -26,6 +26,10 @@ label {
 .input-wrap {
     --size: 24px;
     background-color: v.color(light-700);
+
+    @include mix.respond(sm) {
+        --size: 16px;
+    }
 }
 
 input {

@@ -72,7 +72,7 @@ $border-width: calc(v.space(xs) + v.space(2xs) * 0.3);
 }
 
 .input {
-    &:checked + label {
+    &:checked + .label {
         color: v.color(primary-400);
 
         .icon {
@@ -96,6 +96,10 @@ $border-width: calc(v.space(xs) + v.space(2xs) * 0.3);
         :global(.border-right.orig) {
             transform: scaleX(0);
         }
+    }
+
+    &:focus-visible + .label {
+        @include mix.focus-outline();
     }
 
     &:checked ~ .dd {

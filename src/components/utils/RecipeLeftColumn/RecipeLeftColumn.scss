@@ -6,6 +6,10 @@
     padding: v.space(md);
 
     background-color: v.color(light-800);
+
+    @include mix.respond(xxs) {
+        padding: calc(v.space(sm) + v.space(xs));
+    }
 }
 
 .recipe-left-column {
@@ -20,6 +24,7 @@
     @include mix.scrollbar();
 
     @include mix.respond(sm) {
+        padding-left: v.space(md);
         padding-top: v.space(md);
         padding-bottom: v.space(md);
 

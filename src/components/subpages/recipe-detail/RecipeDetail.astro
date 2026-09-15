@@ -8,6 +8,8 @@ import Flex from '../../utils/Flex.astro';
 import Grid from '../../utils/Grid.astro';
 import Step from '../../utils/step/Step.astro';
 import RecipeLeftColumn from '../../utils/RecipeLeftColumn/RecipeLeftColumn.astro';
+import Icon from '../../ui/icon/Icon.astro';
+import MediaBorder from '../../utils/media-border/MediaBorder.astro';
 
 /* Props */
 interface Props {
@@ -39,16 +41,50 @@ const stepsHeading = stepsTitle ?? 'Instructions';
 
 
 {/* Html */}
-<section class:list={['recipe-detail']}>
-  <Grid>
+<section 
+  class:list={['recipe-detail']}
+  data-recipe-detail
+>
+  <Grid xl lg md sm xs>
+    <input 
+      type="checkbox"
+      name="ingr-sbar-togg"
+      id="ingr-sbar-togg"
+      class:list={['ingr-sbar-togg-checkbox', 'visually-hidden', 'none', 'sm:show']}
+    />
+
+    <div class:list={['ingr-sbar-togg-wrap', 'abs-fw', 'z-2', 'no-e', 'none', 'sm:show']}>
+      <label 
+        aria-label="Open sidebar menu"
+        title="Open sidebar menu"
+        for="ingr-sbar-togg"
+        class:list={['ingr-sbar-togg-label', 'sticky', 'all-e']}
+      >
+        <div class:list={['bg', 'bg-primary-700', 'slice-top-right', 'abs-fw', 'z-1']}></div>
+        <Icon
+          name="BookOpen"
+          size={24}
+          class:list={['primary-400', 'rel', 'z-2']}
+        />
+      </label>
+    </div>
 
     {/* Left */}
     <Cell
       dt={{ start: 1, span: 4 }}
+      xl={{ start: 1, span: 4 }}
+      lg={{ start: 1, span: 4 }}
       md={{ start: 1, span: 5 }}
-      class:list={['left']}
+      class:list={['left', 'no-e']}
     >
-      <div class:list={['menu-overlay', 'abs-fw', 'z-1', 'bg-light-900', 'none']}></div>
+      <div class:list={['menu-overlay', 'abs-fw', 'z-1', 'bg-light-900', 'none', 'sm:show', 'all-e']}>
+        <label 
+          aria-label="Close sidebar menu"
+          title="Close sidebar menu"
+          for="ingr-sbar-togg"
+          class:list={['menu-overlay-label', 'abs']}
+        ></label>
+      </div>
 
       <RecipeLeftColumn
         time={time}
@@ -68,11 +104,11 @@ const stepsHeading = stepsTitle ?? 'Instructions';
       md={{ start: 6, span: 7 }}
       sm={{ start: 1, span: 11 }}
       xs={{ start: 1, span: 12 }}
-      class:list={['right']}
+      class:list={['right', 'section-content']}
     >
       <Text 
         el="h2" type="display-xl"
-        class:list={['light-200', 'mb-xl']}
+        class:list={['light-200', 'mb-xl', 'xs:mb-lg']}
       >
         {stepsHeading}
       </Text>
@@ -101,5 +137,98 @@ const stepsHeading = stepsTitle ?? 'Instructions';
 
 {/* Script */}
 <script>
+import { queryFn } from "../../../utils/queryFn";
+const sections = document.querySelectorAll('[data-recipe-detail]');
+
+sections.forEach(section => {
+  // Config
+  const contentSelector = '.section-content';
+  const popupCheckboxSelector = '#ingr-sbar-togg';
+  const touchDistanceThreshold = 50;
+
+
+  // Queries
+  const popupCheckboxInput = queryFn(section, popupCheckboxSelector);
+  if (!popupCheckboxInput) return;
+
+
+  // State
+  let touchStartX = 0;
+  let touchEndX = 0;
+
+
+  // Computed - Stale
+  const isMobile = 
+    /Mobi|Android|webOS|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i.test(navigator.userAgent) &&
+    getComputedStyle(popupCheckboxInput).display !== 'none';
+
+  // Computed - Dynamic
+  const isChecked = () => (popupCheckboxInput as HTMLInputElement).checked;
+
+
+  // Events
+  popupCheckboxInput.addEventListener('change', () => {
+    if (isChecked()) {
+      hideSiteContentFromAria();
+    } else {
+      showSiteContentToAria();
+    }
+  });
+
+  if (isMobile) {
+    section.addEventListener('touchstart', (event) => {
+      touchStartX = (event as TouchEvent).changedTouches[0].screenX;
+    });
   
+    section.addEventListener('touchend', (event) => {
+      touchEndX = (event as TouchEvent).changedTouches[0].screenX;
+      handleSwipeGesture();
+    });
+  }
+
+
+  // Functions
+  function handleSwipeGesture() {
+    // Swipe from left to right
+    if (touchEndX - touchStartX > touchDistanceThreshold) {
+      (popupCheckboxInput as HTMLInputElement).checked = true;
+      hideSiteContentFromAria();
+    } 
+    
+    // Swipe from right to left
+    else if (touchStartX - touchEndX > touchDistanceThreshold) {
+      (popupCheckboxInput as HTMLInputElement).checked = false;
+      showSiteContentToAria();
+    }
+  }
+
+  function showSiteContentToAria() {
+    const siteContentEls = gatherSiteContentEls();
+    siteContentEls.forEach(el => {
+      el.removeAttribute('aria-hidden');
+      el.removeAttribute('inert');
+    });
+  }
+
+  function hideSiteContentFromAria() {
+    const siteContentEls = gatherSiteContentEls();
+
+    siteContentEls.forEach(el => {
+      el.setAttribute('aria-hidden', 'true');
+      el.setAttribute('inert', 'true');
+    });
+  }
+
+
+  // Helpers
+  function gatherSiteContentEls(): HTMLElement[] {
+    const headerEl = document.querySelector<HTMLElement>('header');
+    const footerEl = document.querySelector<HTMLElement>('footer');
+    
+    const siblingSectionEls = Array.from(document.querySelectorAll<HTMLElement>('section')).filter(sec => sec !== section);
+    const sectionContentEls = Array.from(section.querySelectorAll<HTMLElement>(contentSelector));
+    
+    return [headerEl!, footerEl!, ...siblingSectionEls, ...sectionContentEls];
+  }
+});
 </script>

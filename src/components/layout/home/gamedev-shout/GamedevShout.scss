@@ -27,7 +27,7 @@
     overflow: visible;
 
     :focus-visible {
-        outline: v.space(2xs) solid v.color(primary-700);
+        @include mix.focus-outline(v.color(primary-700));
     }
 }
 

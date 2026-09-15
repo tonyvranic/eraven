@@ -22,9 +22,9 @@ const slugifiedName = slugify(name);
 {/* Html */}
 <input type="checkbox" id={slugifiedName} name={name} />
 <Text el="label" for={slugifiedName}>
-  <Flex dt={{ inline: true, gap: 'sm', align: 'center' }}> 
+  <Flex dt={{ inline: true, gap: 'sm', align: 'center', wrap: 'nowrap' }}> 
 
-    <div class:list={['checkbox-visual', 'rel']}>
+    <div class:list={['checkbox-visual', 'rel', 'fs-0']}>
       <Icon
         name="CheckboxUnchecked"
         [size]={32}

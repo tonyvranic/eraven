@@ -1,5 +1,6 @@
 @use 'vars' as v;
 @use 'timings' as t;
+@use 'mixins' as mix;
 
 
 input[type="checkbox"] {
@@ -10,7 +11,7 @@ input[type="checkbox"] {
     opacity: 0;
 
     &:focus-visible + label {
-        outline: v.space(2xs) solid v.color(primary-400);
+        @include mix.focus-outline();
     }
 
     &:checked + label {

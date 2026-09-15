@@ -46,7 +46,7 @@ body {
     outline-offset: v.space(2xs);
 
     &:focus-visible {
-        outline: v.space(2xs) solid v.color(primary-400);
+        @include mix.focus-outline();
     }
 
     &.no-focus-outline {
@@ -58,7 +58,7 @@ body {
 body.secondary-styling main {
     * {
         &:focus-visible {
-            outline: v.space(2xs) solid v.color(secondary-400);
+            @include mix.focus-outline(v.color(secondary-400));
         }
     }
 

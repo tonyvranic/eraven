@@ -154,16 +154,17 @@ const singleWordTitleClass = isSingleWordTitle ? 'single-word' : '';
   const sections = document.querySelectorAll<HTMLElement>('[data-subpage-hero-section]');
 
   sections.forEach(section => {
-    const bgEl = queryFn(section, '.parallax-bg');
-    if (!bgEl) return;
-
-
     // Config
     // How far the bg should travel over the full height of the hero
     const parallaxDistancePx = 560;
     const scaleDecrAmount = 0.1;
     const rotateDeg = -25;
     const opacityDecrAmount = 0.8;
+
+
+    // Queries
+    const bgEl = queryFn(section, '.parallax-bg');
+    if (!bgEl) return;
 
 
     // State

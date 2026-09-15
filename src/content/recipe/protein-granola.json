@@ -34,7 +34,7 @@
         [
           {
             "type": "text",
-            "content": "<p>Bake for 18 minutes or until golden brown</p>"
+            "content": "<span>Bake for 18 minutes or until golden brown</span>"
           }
         ]
       ],
@@ -81,7 +81,7 @@
         },
         {
           "title": "You \"may\" use less fat",
-          "content": "<p>Yes.</p><br><p>I've personally tried using:</p><ul><li>57g peanut butter</li><li>143g egg whites</li><li>69g protein powder</li></ul><p>These numbers kept the size the same.<br>Even though this did work, the bars/granola tasted noticably more dry</p>"
+          "content": "<span>Yes.</span><br><br><span>I've personally tried using:</span><br><ul><li>57g peanut butter</li><li>143g egg whites</li><li>69g protein powder</li></ul><p>These numbers kept the size the same.<br>Even though this did work, the bars/granola tasted noticably more dry</p>"
         },
         {
           "title": "Where did this come from?",

@@ -1,5 +1,9 @@
 @use 'vars' as v;
+@use 'mixins' as mix;
 
-.component {
-    
+
+.step-right {
+    @include mix.respond(xxs) {
+        align-self: flex-start;
+    }
 }

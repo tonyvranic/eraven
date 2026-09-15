@@ -1,5 +1,6 @@
 @use 'vars' as v;
 @use 'timings' as t;
+@use 'mixins' as mix;
 
 
 .serving-size {
@@ -9,6 +10,10 @@
         visibility: hidden;
 
         @include t.tx((opacity, visibility, transform), $delays: (0.4, 0.4, 0.4));
+    }
+
+    @include mix.respond(xxs) {
+        --flex-gap: #{v.space(sm)};
     }
 }
 
@@ -81,7 +86,7 @@
 
 .calculator-dd-input {
     &:focus-visible + .serving-size .calculator-label {
-        outline: v.space(2xs) solid v.color(primary-400);
+        @include mix.focus-outline();
     }
 
     &:checked + .serving-size {
