@@ -88,7 +88,7 @@ $layout: (
 $color-light: #E5E2E1;
 $color-primary: #5086FE;
 $color-secondary: #FEC850;
-$color-error: color.change($color-primary, $hue: -10);
+$color-error: #FE506D;
 $color-success: color.change($color-primary, $hue: 150);
 
 $base-colors: (
@@ -127,7 +127,8 @@ $colors: (
     error-150: color.adjust(map.get($base-colors, error), $lightness: 25%),
     error-300: #FE7C91,
     error-400: map.get($base-colors, error),
-    error-600: color.adjust(map.get($base-colors, error), $lightness: -20%),
+    error-600: #E8304F,
+    error-700: #512A30,
 
     success-400: map.get($base-colors, success),
 );

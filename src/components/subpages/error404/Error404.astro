@@ -1,0 +1,58 @@
+---
+import Text from '../../ui/text/Text.astro';
+import Flex from '../../utils/Flex.astro';
+
+/* Props */
+interface Props {
+  title: string;
+}
+
+const { 
+  title,
+} = Astro.props;
+
+
+/* Computed */
+const repeatedTitle = `${title} —&nbsp;`.repeat(2);
+const repeatTimes = 3;
+---
+
+
+{/* Html */}
+<section class:list={['error-404', 'rel', 'o-h']}> 
+  <a 
+    href="/"
+    aria-label="Back to the Homepage"
+    title="Back to the Homepage"
+    class:list={['home-link', 'abs-fw', 'z-2']}
+  />
+
+  <Flex
+    dt={{ align: 'center' }}
+    class:list={['error-400-wrap-outer']}
+  >
+    <Flex
+      dt={{ wrap: 'nowrap', pt: 'lg', pb: 'lg' }}
+      class:list={['error-400-wrap', 'error-400', 'bg-error-700']}
+    >
+      <Text 
+        el="h1" type="display-3xl"
+        class:list={['text', 'fs-0', 'tnw']}
+        set:html={repeatedTitle}
+      />
+      {Array.from({ length: repeatTimes }).map(() => (
+        <Text
+          el="span" type="display-3xl"
+          class:list={['text', 'block', 'fs-0', 'tnw']}
+          set:html={repeatedTitle}
+        />
+      ))}
+    </Flex>
+  </Flex>
+</section>
+
+
+{/* Styles */}
+<style lang="scss">
+  @use './Error404.scss';
+</style>

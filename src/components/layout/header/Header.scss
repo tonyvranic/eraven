@@ -21,15 +21,17 @@
     perspective: 360px;
 
     &:hover {
-        img {
+        & > div {
             transform: scale(1.1) rotateY(360deg);
         }
     }
 
+    & > div {
+        @include t.tx((transform), 1.85);
+    }
+
     img {
         display: block;
-
-        @include t.tx((transform), 1.85);
     }
 }
 

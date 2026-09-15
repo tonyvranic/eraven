@@ -1,0 +1,64 @@
+@use 'vars' as v;
+@use 'mixins' as mix;
+
+
+.error-400-wrap-outer {
+    min-height: calc(100vh - var(--header-height));
+    min-height: calc(100svh - var(--header-height));
+
+    transform: rotate(-10deg);
+}
+
+.error-400-wrap {
+    margin-left: calc(v.space(lg) * -1);
+}
+
+@keyframes horizontal-scroll {
+    0% {
+        transform: translate(0%, 0%);
+    }
+    100% {
+        transform: translate(-100%, 0%);
+    }
+}
+
+.text {
+    display: block;
+    color: inherit;
+
+    animation: horizontal-scroll 30s linear infinite;
+
+    @include mix.respond(sm) {
+        animation-duration: 12s;
+    }
+}
+
+:global(.error-404 .primary-300) {
+    color: v.color(error-300);
+}
+:global(
+    .error-404 em,
+    .error-404 .blaze,
+    .error-404 .secondary-400,
+    .error-404 .primary-400
+) {
+    color: v.color(error-400);
+}
+:global(.error-404 em span) {
+    background-color: v.color(error-400) !important;
+}
+
+:global(.error-404 .hero-bg-pattern) {
+    filter: hue-rotate(130deg);
+}
+
+:global(
+    .error-404 .logo-link img,
+    .error-404 .logo-link .image,
+) {
+    display: none !important;
+}
+
+:global(.error-404 .logo-link > div) {
+    content: url('/logo-error.svg');
+}

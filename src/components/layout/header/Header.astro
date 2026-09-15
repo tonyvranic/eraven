@@ -25,12 +25,14 @@ const navLinks = [
     <Cell dt={{ start: 1, span: 3 }}>
       <Flex dt={{ align: 'center' }} class:list={['logo-wrap', 'fh']}>
         <a href="/" title="Home" aria-label="Home" class:list={['media', 'logo-link']}>
-          <img 
-            width="160" height="160"
-            src="/logo.svg"
-            class:list={['logo']}
-            alt={logoAltText}
-          />
+          <div class:list={['rel-fw']}>
+            <img 
+              width="160" height="160"
+              src="/logo.svg"
+              class:list={['logo']}
+              alt={logoAltText}
+            />
+          </div>
         </a>
       </Flex>
     </Cell>
